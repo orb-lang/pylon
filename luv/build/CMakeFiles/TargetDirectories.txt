@@ -1,0 +1,12 @@
+/Users/atman/code/pylon/luv/build/CMakeFiles/install/strip.dir
+/Users/atman/code/pylon/luv/build/CMakeFiles/install.dir
+/Users/atman/code/pylon/luv/build/CMakeFiles/list_install_components.dir
+/Users/atman/code/pylon/luv/build/CMakeFiles/luajit.dir
+/Users/atman/code/pylon/luv/build/CMakeFiles/rebuild_cache.dir
+/Users/atman/code/pylon/luv/build/CMakeFiles/buildvm.dir
+/Users/atman/code/pylon/luv/build/CMakeFiles/uv.dir
+/Users/atman/code/pylon/luv/build/CMakeFiles/luajit-5.1.dir
+/Users/atman/code/pylon/luv/build/CMakeFiles/install/local.dir
+/Users/atman/code/pylon/luv/build/CMakeFiles/luv.dir
+/Users/atman/code/pylon/luv/build/CMakeFiles/edit_cache.dir
+/Users/atman/code/pylon/luv/build/CMakeFiles/minilua.dir

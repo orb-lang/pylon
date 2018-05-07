@@ -1,0 +1,360 @@
+The system is: Darwin - 17.5.0 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is AppleClang, found in "/Users/atman/code/pylon/luv/build/CMakeFiles/3.10.3/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a22d8/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_a22d8.dir/build.make CMakeFiles/cmTC_a22d8.dir/build
+Building C object CMakeFiles/cmTC_a22d8.dir/testCCompiler.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_a22d8.dir/testCCompiler.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_a22d8
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a22d8.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_a22d8.dir/testCCompiler.c.o  -o cmTC_a22d8 
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bf63d/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_bf63d.dir/build.make CMakeFiles/cmTC_bf63d.dir/build
+Building C object CMakeFiles/cmTC_bf63d.dir/CMakeCCompilerABI.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_bf63d.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_bf63d
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bf63d.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_bf63d.dir/CMakeCCompilerABI.c.o  -o cmTC_bf63d 
+Apple LLVM version 9.1.0 (clang-902.0.39.1)
+Target: x86_64-apple-darwin17.5.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.13.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -o cmTC_bf63d -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_bf63d.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-351.8
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
+Library search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib
+Framework search paths:
+	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_bf63d/fast"]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_bf63d.dir/build.make CMakeFiles/cmTC_bf63d.dir/build]
+  ignore line: [Building C object CMakeFiles/cmTC_bf63d.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_bf63d.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_bf63d]
+  ignore line: [/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bf63d.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_bf63d.dir/CMakeCCompilerABI.c.o  -o cmTC_bf63d ]
+  ignore line: [Apple LLVM version 9.1.0 (clang-902.0.39.1)]
+  ignore line: [Target: x86_64-apple-darwin17.5.0]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
+  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.13.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -o cmTC_bf63d -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_bf63d.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-lto_library] ==> ignore, skip following value
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.13.0] ==> ignore
+    arg [-syslibroot] ==> ignore
+    arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_bf63d] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_bf63d.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lSystem] ==> lib [System]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib]
+  Framework search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/]
+  remove lib [System]
+  remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib]
+  collapse framework dir [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/] ==> [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks]
+  implicit libs: []
+  implicit dirs: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib]
+  implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks]
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a7204/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_a7204.dir/build.make CMakeFiles/cmTC_a7204.dir/build
+Building C object CMakeFiles/cmTC_a7204.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c11 -o CMakeFiles/cmTC_a7204.dir/feature_tests.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_a7204
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a7204.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_a7204.dir/feature_tests.c.o  -o cmTC_a7204 
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:1c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_f643f/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f643f.dir/build.make CMakeFiles/cmTC_f643f.dir/build
+Building C object CMakeFiles/cmTC_f643f.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c99 -o CMakeFiles/cmTC_f643f.dir/feature_tests.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_f643f
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f643f.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_f643f.dir/feature_tests.c.o  -o cmTC_f643f 
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:1c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:1c_variadic_macros
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_33d3c/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_33d3c.dir/build.make CMakeFiles/cmTC_33d3c.dir/build
+Building C object CMakeFiles/cmTC_33d3c.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c90 -o CMakeFiles/cmTC_33d3c.dir/feature_tests.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_33d3c
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_33d3c.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_33d3c.dir/feature_tests.c.o  -o cmTC_33d3c 
+
+
+    Feature record: C_FEATURE:1c_function_prototypes
+    Feature record: C_FEATURE:0c_restrict
+    Feature record: C_FEATURE:0c_static_assert
+    Feature record: C_FEATURE:0c_variadic_macros
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_22202/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_22202.dir/build.make CMakeFiles/cmTC_22202.dir/build
+Building C object CMakeFiles/cmTC_22202.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_22202.dir/CheckIncludeFile.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_22202
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_22202.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_22202.dir/CheckIncludeFile.c.o  -o cmTC_22202 
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5af14/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_5af14.dir/build.make CMakeFiles/cmTC_5af14.dir/build
+Building C object CMakeFiles/cmTC_5af14.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_5af14.dir/CheckIncludeFile.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_5af14
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5af14.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_5af14.dir/CheckIncludeFile.c.o  -o cmTC_5af14 
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1a590/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_1a590.dir/build.make CMakeFiles/cmTC_1a590.dir/build
+Building C object CMakeFiles/cmTC_1a590.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_1a590.dir/CheckIncludeFile.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_1a590
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1a590.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_1a590.dir/CheckIncludeFile.c.o  -o cmTC_1a590 
+
+
+Determining size of void* passed with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e55aa/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_e55aa.dir/build.make CMakeFiles/cmTC_e55aa.dir/build
+Building C object CMakeFiles/cmTC_e55aa.dir/SIZEOF_VOID_P.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_e55aa.dir/SIZEOF_VOID_P.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CheckTypeSize/SIZEOF_VOID_P.c
+Linking C executable cmTC_e55aa
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e55aa.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_e55aa.dir/SIZEOF_VOID_P.c.o  -o cmTC_e55aa 
+
+
+Determining if the function dlopen exists passed with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d2812/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_d2812.dir/build.make CMakeFiles/cmTC_d2812.dir/build
+Building C object CMakeFiles/cmTC_d2812.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/code/pylon/luv/deps/luajit -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build  -DCHECK_FUNCTION_EXISTS=dlopen -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_d2812.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_d2812
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2812.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=dlopen -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_d2812.dir/CheckFunctionExists.c.o  -o cmTC_d2812 /usr/lib/libdl.dylib 
+
+
+Determining if the function sin exists in the m passed with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_303ca/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_303ca.dir/build.make CMakeFiles/cmTC_303ca.dir/build
+Building C object CMakeFiles/cmTC_303ca.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sin -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_303ca.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c:7:3: warning: incompatible redeclaration of library function 'sin' [-Wincompatible-library-redeclaration]
+  CHECK_FUNCTION_EXISTS(void);
+  ^
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS sin
+                              ^
+/usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c:7:3: note: 'sin' is a builtin with type 'double (double)'
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS sin
+                              ^
+1 warning generated.
+Linking C executable cmTC_303ca
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_303ca.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sin -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_303ca.dir/CheckFunctionExists.c.o  -o cmTC_303ca -lm /usr/lib/libdl.dylib 
+
+
+Performing C SOURCE FILE Test LJ_TARGET_X64 succeeded with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e4632/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_e4632.dir/build.make CMakeFiles/cmTC_e4632.dir/build
+Building C object CMakeFiles/cmTC_e4632.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/code/pylon/luv/deps/luajit -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build  -DLJ_TARGET_X64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_e4632.dir/src.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e4632
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e4632.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DLJ_TARGET_X64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_e4632.dir/src.c.o  -o cmTC_e4632 /usr/lib/libdl.dylib 
+
+Source file was:
+
+#undef LJ_TARGET_X64
+#include "lj_arch.h"
+#if LJ_TARGET_X64
+int main() { return 0; }
+#else
+#error "not defined"
+#endif
+
+Performing C SOURCE FILE Test LJ_ARCH_BITS_64 succeeded with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a3c75/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_a3c75.dir/build.make CMakeFiles/cmTC_a3c75.dir/build
+Building C object CMakeFiles/cmTC_a3c75.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/code/pylon/luv/deps/luajit -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build  -DLJ_ARCH_BITS_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_a3c75.dir/src.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_a3c75
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a3c75.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DLJ_ARCH_BITS_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_a3c75.dir/src.c.o  -o cmTC_a3c75 /usr/lib/libdl.dylib 
+
+Source file was:
+
+#undef LJ_ARCH_BITS
+#include "lj_arch.h"
+#if LJ_ARCH_BITS == 64
+int main() { return 0; }
+#else
+#error "not defined"
+#endif
+
+Performing C SOURCE FILE Test LJ_HASJIT_1 succeeded with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_30b17/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_30b17.dir/build.make CMakeFiles/cmTC_30b17.dir/build
+Building C object CMakeFiles/cmTC_30b17.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/code/pylon/luv/deps/luajit -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build  -DLJ_HASJIT_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_30b17.dir/src.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_30b17
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_30b17.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DLJ_HASJIT_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_30b17.dir/src.c.o  -o cmTC_30b17 /usr/lib/libdl.dylib 
+
+Source file was:
+
+#undef LJ_HASJIT
+#include "lj_arch.h"
+#if LJ_HASJIT == 1
+int main() { return 0; }
+#else
+#error "not defined"
+#endif
+
+Performing C SOURCE FILE Test LJ_HASFFI_1 succeeded with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e39af/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_e39af.dir/build.make CMakeFiles/cmTC_e39af.dir/build
+Building C object CMakeFiles/cmTC_e39af.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/code/pylon/luv/deps/luajit -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build  -DLJ_HASFFI_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_e39af.dir/src.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e39af
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e39af.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DLJ_HASFFI_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_e39af.dir/src.c.o  -o cmTC_e39af /usr/lib/libdl.dylib 
+
+Source file was:
+
+#undef LJ_HASFFI
+#include "lj_arch.h"
+#if LJ_HASFFI == 1
+int main() { return 0; }
+#else
+#error "not defined"
+#endif
+
+Performing C SOURCE FILE Test LJ_ARCH_HASFPU_1 succeeded with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3a029/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_3a029.dir/build.make CMakeFiles/cmTC_3a029.dir/build
+Building C object CMakeFiles/cmTC_3a029.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/code/pylon/luv/deps/luajit -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build  -DLJ_ARCH_HASFPU_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_3a029.dir/src.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_3a029
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3a029.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DLJ_ARCH_HASFPU_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_3a029.dir/src.c.o  -o cmTC_3a029 /usr/lib/libdl.dylib 
+
+Source file was:
+
+#undef LJ_ARCH_HASFPU
+#include "lj_arch.h"
+#if LJ_ARCH_HASFPU == 1
+int main() { return 0; }
+#else
+#error "not defined"
+#endif
+
+Determining if the function sin exists in the m passed with the following output:
+Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d6669/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_d6669.dir/build.make CMakeFiles/cmTC_d6669.dir/build
+Building C object CMakeFiles/cmTC_d6669.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sin -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_d6669.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+/usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c:7:3: warning: incompatible redeclaration of library function 'sin' [-Wincompatible-library-redeclaration]
+  CHECK_FUNCTION_EXISTS(void);
+  ^
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS sin
+                              ^
+/usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c:7:3: note: 'sin' is a builtin with type 'double (double)'
+<command line>:1:31: note: expanded from here
+#define CHECK_FUNCTION_EXISTS sin
+                              ^
+1 warning generated.
+Linking C executable cmTC_d6669
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d6669.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sin -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_d6669.dir/CheckFunctionExists.c.o  -o cmTC_d6669 -lm /usr/lib/libdl.dylib 
+
+
