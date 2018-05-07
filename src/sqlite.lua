@@ -28,6 +28,7 @@ local bit  = require "bit"
 -- String ----------------------------------------------------------------------
 -- CREDIT: Steve Dovan snippet.
 -- TODO: Clarify corner cases, make more robust.
+local insert = table.insert
 local function split(s, re)
   local i1, ls = 1, { }
   if not re then re = '%s+' end
@@ -101,7 +102,11 @@ end
 
 -- Cdef ------------------------------------------------------------------------
 -- SQLITE_*, OPEN_*
-ffi.cdef(table.concat(sqlconstants))
+
+
+local catted = table.concat(sqlconstants)
+
+ffi.cdef(catted)
 
 -- sqlite3*, ljsqlite3_*
 ffi.cdef[[
