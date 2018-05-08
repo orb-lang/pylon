@@ -18,7 +18,7 @@
 APPLICATION_SERVICES_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/ApplicationServices.framework
 
 //Build as module
-BUILD_MODULE:BOOL=ON
+BUILD_MODULE:BOOL=OFF
 
 //Build shared library
 BUILD_SHARED_LIBS:BOOL=OFF
@@ -195,6 +195,12 @@ DL_LIBRARY:FILEPATH=/usr/lib/libdl.dylib
 
 //Path to a library.
 FOUNDATION_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework
+
+//Installation directory for headers
+INSTALL_INC_DIR:PATH=/usr/local/include/luv
+
+//Installation directory for libraries
+INSTALL_LIB_DIR:PATH=/usr/local/lib
 
 //Disable NOCMOV.
 LUAJIT_CPU_NOCMOV:BOOL=OFF

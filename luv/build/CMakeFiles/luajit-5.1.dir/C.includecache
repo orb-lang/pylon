@@ -522,6 +522,8 @@ lj_def.h
 lj_arch.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_arch.h
 
+/Users/atman/code/pylon/luv/deps/luajit/src/lj_bcdef.h
+
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_bcdump.h
 lj_obj.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_obj.h
@@ -992,6 +994,8 @@ lj_errmsg.h
 lj_ffdef.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_ffdef.h
 
+/Users/atman/code/pylon/luv/deps/luajit/src/lj_ffdef.h
+
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_ffrecord.c
 lj_obj.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_obj.h
@@ -1037,6 +1041,8 @@ lj_obj.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_obj.h
 lj_jit.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_jit.h
+
+/Users/atman/code/pylon/luv/deps/luajit/src/lj_folddef.h
 
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_frame.h
 lj_obj.h
@@ -1243,6 +1249,8 @@ lj_lib.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_lib.h
 lj_obj.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_obj.h
+
+/Users/atman/code/pylon/luv/deps/luajit/src/lj_libdef.h
 
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_load.c
 errno.h
@@ -1497,6 +1505,8 @@ lj_obj.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_obj.h
 lj_lex.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_lex.h
+
+/Users/atman/code/pylon/luv/deps/luajit/src/lj_recdef.h
 
 /Users/atman/code/pylon/luv/deps/luajit/src/lj_record.c
 lj_obj.h
@@ -1821,14 +1831,4 @@ lua.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lualib.h
 lua.h
 /Users/atman/code/pylon/luv/deps/luajit/src/lua.h
-
-lj_bcdef.h
-
-lj_ffdef.h
-
-lj_folddef.h
-
-lj_libdef.h
-
-lj_recdef.h
 

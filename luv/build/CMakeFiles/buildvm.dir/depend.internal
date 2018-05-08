@@ -25,7 +25,7 @@ CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm.c.o
  ../deps/luajit/src/luajit.h
  /Users/atman/code/pylon/luv/deps/luajit/src/host/buildvm.c
  /Users/atman/code/pylon/luv/deps/luajit/src/host/buildvm.h
- buildvm_arch.h
+ /Users/atman/code/pylon/luv/deps/luajit/src/host/buildvm_arch.h
 CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_asm.c.o
  ../deps/luajit/src/lj_arch.h
  ../deps/luajit/src/lj_bc.h

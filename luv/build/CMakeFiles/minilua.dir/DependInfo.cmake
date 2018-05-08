@@ -10,7 +10,6 @@ set(CMAKE_C_COMPILER_ID "Clang")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C
-  "BUILDING_UV_SHARED"
   "LJ_ABI_SOFTFP=0"
   "LJ_ARCH_HASFPU=1"
   "LUAJIT_CPU_SSE2"

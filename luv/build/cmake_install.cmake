@@ -34,20 +34,35 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/usr/local/lib/lua/./luv.so")
+   "/usr/local/lib/libluv.a")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/lib/lua/." TYPE MODULE FILES "/Users/atman/code/pylon/luv/build/luv.so")
-  if(EXISTS "$ENV{DESTDIR}/usr/local/lib/lua/./luv.so" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/lib/lua/./luv.so")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/strip" "$ENV{DESTDIR}/usr/local/lib/lua/./luv.so")
-    endif()
+file(INSTALL DESTINATION "/usr/local/lib" TYPE STATIC_LIBRARY FILES "/Users/atman/code/pylon/luv/build/libluv.a")
+  if(EXISTS "$ENV{DESTDIR}/usr/local/lib/libluv.a" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/lib/libluv.a")
+    execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib" "$ENV{DESTDIR}/usr/local/lib/libluv.a")
   endif()
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+   "/usr/local/include/luv/luv.h;/usr/local/include/luv/util.h;/usr/local/include/luv/lhandle.h;/usr/local/include/luv/lreq.h")
+  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+file(INSTALL DESTINATION "/usr/local/include/luv" TYPE FILE FILES
+    "/Users/atman/code/pylon/luv/src/luv.h"
+    "/Users/atman/code/pylon/luv/src/util.h"
+    "/Users/atman/code/pylon/luv/src/lhandle.h"
+    "/Users/atman/code/pylon/luv/src/lreq.h"
+    )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

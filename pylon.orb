@@ -1,0 +1,55 @@
+* Pylon
+
+
+*** Minimum Viable Pylon
+
+- [ ] #Todo
+
+  - [ ]  pylon.o
+
+     - [X]  Build libluajit.o
+
+     - [X]  Build luv (uv + lua binds)
+
+     - [X]  Build sqlite3.o
+
+     - [X]  Adapt SQLite FFI binding
+
+     - [ ]  build nanomsg
+
+     - [ ]  Adapt ffi
+
+     - [ ]  Write a namespace module that makes a full _ENV
+
+     - [ ]  Dump it as a LuaJIT .so
+
+     - [ ]  Link into single static binary.
+
+  - [ ]  Write mkpylon.sh to orchestrate this.
+
+  - [ ]  =br= executable
+
+    - [ ]  Modify femto to be a library.
+
+           I'm going to want to spend some time on this to get a good
+           surface area for REPLing while keeping stuff that's useful
+           for =ed=.
+
+    - [ ]  Write a lua loader which:
+
+           -  [ ]  Puts argv into a Lua table
+
+           -  [ ]  Starts the VM with the pylon _ENV
+
+           -  [ ]  Loads a (bytecode) script which:
+
+             - [ ]  Runs a prelude if REPLing
+
+             - [ ]  Runs the script via our own conventions
+
+             - [ ]  If REPLing, throw a prompt.
+
+
+At that point I'm going to have a whole box of toys and motive to make it all
+work with the battery.
+

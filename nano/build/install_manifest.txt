@@ -1,0 +1,14 @@
+/Users/atman/code/pylon/lib/include/nanomsg/nn.h
+/Users/atman/code/pylon/lib/include/nanomsg/inproc.h
+/Users/atman/code/pylon/lib/include/nanomsg/ipc.h
+/Users/atman/code/pylon/lib/include/nanomsg/tcp.h
+/Users/atman/code/pylon/lib/include/nanomsg/ws.h
+/Users/atman/code/pylon/lib/include/nanomsg/pair.h
+/Users/atman/code/pylon/lib/include/nanomsg/pubsub.h
+/Users/atman/code/pylon/lib/include/nanomsg/reqrep.h
+/Users/atman/code/pylon/lib/include/nanomsg/pipeline.h
+/Users/atman/code/pylon/lib/include/nanomsg/survey.h
+/Users/atman/code/pylon/lib/include/nanomsg/bus.h
+/Users/atman/code/pylon/lib/bin/nanocat
+/Users/atman/code/pylon/lib/lib/pkgconfig/nanomsg.pc
+/Users/atman/code/pylon/lib/lib/libnanomsg.a
