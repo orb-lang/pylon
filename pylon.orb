@@ -15,7 +15,7 @@
 
      - [X]  Adapt SQLite FFI binding
 
-     - [ ]  build nanomsg
+     - [X]  build nanomsg
 
      - [ ]  Adapt ffi
 
@@ -25,7 +25,7 @@
 
      - [ ]  Link into single static binary.
 
-  - [ ]  Write mkpylon.sh to orchestrate this.
+  - [1/2]  Write mkpylon.sh to orchestrate this.
 
   - [ ]  =br= executable
 
@@ -36,6 +36,8 @@
            for =ed=.
 
     - [ ]  Write a lua loader which:
+
+           -  [ ]  Includes pylon and femto
 
            -  [ ]  Puts argv into a Lua table
 

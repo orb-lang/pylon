@@ -30,7 +30,14 @@
 cd luv
 make reset
 BUILD_MODULE=OFF make
-cd ..
+
+# Move our artifacts over to pylon/lib
+
+cd build
+mv libuv.a ../../lib/
+mv libluv.a ../../lib/
+
+cd ../..
 
 # This builds luajit and uv and a luv binary to call from the Lua side.
 # luv's build process doesn't use the amalgamated LuaJIT build, which we
@@ -38,6 +45,15 @@ cd ..
 
 cd luv/deps/luajit
 make amalg
+
+# Copy headers and objects to own the libs
+
+cp src/lua.h ../../../lib/
+cp src/lualib.h ../../../lib/
+cp src/luajit.h ../../../lib/
+cp src/luaconf.h ../../../lib/
+cp src/lauxlib.h ../../../lib/
+cp src/libluajit.a ../../../lib/
 cd ../../..
 
 # Next we make sqlite, which has the amalgamated build as the short path:
@@ -54,4 +70,6 @@ cd nano/build
 cmake -DCMAKE_INSTALL_PREFIX=../../lib/ -DNN_STATIC_LIB=ON ..
 make install
 cd ../..
+
+gcc -o hello -Ilib/ hello.c lib/libluajit.a -lm -pagezero_size 10000 -image_base 100000000
 
