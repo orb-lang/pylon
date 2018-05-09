@@ -3,6 +3,53 @@
 #include <lualib.h>
 #include <lauxlib.h>
 #include "luajit.h"
+#include "sqlite3.h"
+#include "src/femto.h"
+
+// To make this work I'm going to need:
+
+// https://www.freelists.org/post/luajit/How-to-call-functions-from-a-static-library-in-Luajit,8
+
+struct femto_cell {
+    void (*initFm)();
+    void (*fmProcessKeypress)();
+    void (*fmMoveCursor)(int key);
+    void (*fmDrawMessageBar)(struct abuf *ab);
+    void (*fmDrawStatusBar)(struct abuf *ab);
+    void (*fmDrawRows)(struct abuf *ab);
+    void (*fmScroll)();
+    void (*abFree)(struct abuf *ab);
+    void (*abAppend)(struct abuf *ab,const char *s,int len);
+    void (*fmFind)();
+    void (*fmFindCallback)(char *query,int key);
+    void (*fmSave)();
+    void (*fmOpen)(char *filename);
+    void *(*fmRowsToString)(int *buflen);
+    void (*fmDelChar)();
+    void (*fmInsertNewline)();
+    void (*fmInsertChar)(int c);
+    void (*fmRowDelChar)(frow *row,int at);
+    void (*fmRowAppendString)(frow *row,char *s,size_t len);
+    void (*fmRowInsertChar)(frow *row,int at,int c);
+    void (*fmDelRow)(int at);
+    void (*fmFreeRow)(frow *row);
+    void (*fmInsertRow)(int at,char *s,size_t len);
+    void (*fmUpdateRow)(frow *row);
+    int (*fmRowRxToCx)(frow *row,int rx);
+    int (*fmRowCxToRx)(frow *row,int cx);
+    int (*fmSyntaxToColor)(int hl);
+    void (*fmUpdateSyntax)(frow *row);
+    int (*getWindowSize)(int *rows,int *cols);
+    int (*getCursorPosition)(int *rows,int *cols);
+    int (*fmReadKey)();
+    void (*enableRawMode)();
+    void (*disableRawMode)();
+    void (*die)(const char *s);
+    char *(*fmPrompt)(char *prompt,void(*callback)(char *,int));
+    void (*fmRefreshScreen)();
+    void (*fmSetStatusMessage)(const char *fmt,...);
+};
+
 
 int main(int argc, char *argv[])
 {

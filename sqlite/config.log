@@ -30,8 +30,8 @@ Kernel configured for up to 4 processors.
 Processor type: x86_64h (Intel x86-64h Haswell)
 Processors active: 0 1 2 3
 Primary memory available: 8.00 gigabytes
-Default processor set: 382 tasks, 3049 threads, 4 processors
-Load average: 2.31, Mach factor: 1.79
+Default processor set: 383 tasks, 2171 threads, 4 processors
+Load average: 1.63, Mach factor: 2.57
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -227,7 +227,7 @@ configure:5643: checking the name lister (/usr/bin/nm -B) interface
 configure:5650: gcc -c -g -O2  conftest.c >&5
 configure:5653: /usr/bin/nm -B "conftest.o"
 configure:5656: output
-00000000000001e0 S _some_variable
+00000000000001cc S _some_variable
 configure:5663: result: BSD nm
 configure:5666: checking whether ln -s works
 configure:5670: result: yes
@@ -452,7 +452,7 @@ configure:12970: checking for fullfsync
 configure:12970: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fullfsync", referenced from:
-      _main in conftest-2a2f96.o
+      _main in conftest-138c2b.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:12970: $? = 1
@@ -635,7 +635,7 @@ configure:13115: checking for library containing readline
 configure:13146: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_readline", referenced from:
-      _main in conftest-0a41e7.o
+      _main in conftest-53e453.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13146: $? = 1
@@ -748,7 +748,7 @@ configure:13199: checking for library containing tgetent
 configure:13230: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_tgetent", referenced from:
-      _main in conftest-64895f.o
+      _main in conftest-eed300.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13230: $? = 1
@@ -805,7 +805,7 @@ configure:13255: checking for library containing readline
 configure:13286: gcc -o conftest -g -O2   conftest.c -ltermcap  >&5
 Undefined symbols for architecture x86_64:
   "_readline", referenced from:
-      _main in conftest-72d8b3.o
+      _main in conftest-38be68.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13286: $? = 1
@@ -885,7 +885,7 @@ configure:13674: checking for posix_fallocate
 configure:13674: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_posix_fallocate", referenced from:
-      _main in conftest-cf82a8.o
+      _main in conftest-83f2d2.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13674: $? = 1
@@ -974,7 +974,7 @@ configure:13691: checking for library containing deflate
 configure:13722: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_deflate", referenced from:
-      _main in conftest-3ac571.o
+      _main in conftest-d87087.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13722: $? = 1
@@ -1175,7 +1175,7 @@ lt_cv_truncate_bin='/bin/dd bs=4096 count=1'
 ## Output variables. ##
 ## ----------------- ##
 
-ACLOCAL='${SHELL} /Users/atman/code/pylon/sqlite-snapshot-201805040449/missing aclocal-1.15'
+ACLOCAL='${SHELL} /Users/atman/code/pylon/sqlite/missing aclocal-1.15'
 AMDEPBACKSLASH='\'
 AMDEP_FALSE='#'
 AMDEP_TRUE=''
@@ -1185,9 +1185,9 @@ AM_DEFAULT_V='$(AM_DEFAULT_VERBOSITY)'
 AM_DEFAULT_VERBOSITY='1'
 AM_V='$(V)'
 AR='ar'
-AUTOCONF='${SHELL} /Users/atman/code/pylon/sqlite-snapshot-201805040449/missing autoconf'
-AUTOHEADER='${SHELL} /Users/atman/code/pylon/sqlite-snapshot-201805040449/missing autoheader'
-AUTOMAKE='${SHELL} /Users/atman/code/pylon/sqlite-snapshot-201805040449/missing automake-1.15'
+AUTOCONF='${SHELL} /Users/atman/code/pylon/sqlite/missing autoconf'
+AUTOHEADER='${SHELL} /Users/atman/code/pylon/sqlite/missing autoheader'
+AUTOMAKE='${SHELL} /Users/atman/code/pylon/sqlite/missing automake-1.15'
 AWK='awk'
 BUILD_CFLAGS=''
 CC='gcc'
@@ -1226,7 +1226,7 @@ LIPO='lipo'
 LN_S='ln -s'
 LTLIBOBJS=''
 LT_SYS_LIBRARY_PATH=''
-MAKEINFO='${SHELL} /Users/atman/code/pylon/sqlite-snapshot-201805040449/missing makeinfo'
+MAKEINFO='${SHELL} /Users/atman/code/pylon/sqlite/missing makeinfo'
 MANIFEST_TOOL=':'
 MKDIR_P='./install-sh -c -d'
 NM='/usr/bin/nm -B'
@@ -1287,7 +1287,7 @@ host_vendor='apple'
 htmldir='${docdir}'
 includedir='${prefix}/include'
 infodir='${datarootdir}/info'
-install_sh='${SHELL} /Users/atman/code/pylon/sqlite-snapshot-201805040449/install-sh'
+install_sh='${SHELL} /Users/atman/code/pylon/sqlite/install-sh'
 libdir='${exec_prefix}/lib'
 libexecdir='${exec_prefix}/libexec'
 localedir='${datarootdir}/locale'

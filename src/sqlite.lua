@@ -103,10 +103,7 @@ end
 -- Cdef ------------------------------------------------------------------------
 -- SQLITE_*, OPEN_*
 
-
-local catted = table.concat(sqlconstants)
-
-ffi.cdef(catted)
+ffi.cdef(table.concat(sqlconstants))
 
 -- sqlite3*, ljsqlite3_*
 ffi.cdef[[

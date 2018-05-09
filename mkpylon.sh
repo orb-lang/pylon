@@ -59,6 +59,7 @@ cd ../../..
 # Next we make sqlite, which has the amalgamated build as the short path:
 
 cd sqlite
+./configure
 make
 cd ..
 
