@@ -50,6 +50,10 @@ struct femto_cell {
     void (*fmSetStatusMessage)(const char *fmt,...);
 };
 
+struct femto_cell Femto;
+
+void do_nothing() {};
+
 
 int main(int argc, char *argv[])
 {
@@ -70,6 +74,12 @@ int main(int argc, char *argv[])
       fprintf(stderr, "%s\n", lua_tostring(L, -1)); // tell us what mistake we made
       return 1;
     }
+    /*
+    lua_getfield(L, LUA_GLOBALSINDEX, "__mkfemto");
+    // load pointer to femto_cell into namespace
+    lua_pushlightuserdata(L, (void *) &Femto);
+    lua_call(L, 3, 0);
+    */
   }
 
   lua_close(L); // Close Lua
