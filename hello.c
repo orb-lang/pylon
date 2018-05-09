@@ -10,6 +10,9 @@
 
 // https://www.freelists.org/post/luajit/How-to-call-functions-from-a-static-library-in-Luajit,8
 
+
+// Set up a struct to hold the femto library
+
 struct femto_cell {
     void (*initFm)();
     void (*fmProcessKeypress)();
@@ -50,9 +53,48 @@ struct femto_cell {
     void (*fmSetStatusMessage)(const char *fmt,...);
 };
 
-struct femto_cell Femto;
+// Populate the instance
 
-void do_nothing() {};
+struct femto_cell Femto = {
+    .initFm = &initFm,
+    .fmProcessKeypress = &fmProcessKeypress,
+    .fmMoveCursor = &fmMoveCursor,
+    .fmDrawMessageBar = &fmDrawMessageBar,
+    .fmDrawStatusBar = &fmDrawStatusBar,
+    .fmDrawRows = &fmDrawRows,
+    .fmScroll = &fmScroll,
+    .abFree = &abFree,
+    .abAppend = &abAppend,
+    .fmFind = &fmFind,
+    .fmFindCallback = &fmFindCallback,
+    .fmSave = &fmSave,
+    .fmOpen = &fmOpen,
+    .fmRowsToString = &fmRowsToString,
+    .fmDelChar = &fmDelChar,
+    .fmInsertNewline = &fmInsertNewline,
+    .fmInsertChar = &fmInsertChar,
+    .fmRowDelChar = &fmRowDelChar,
+    .fmRowAppendString = &fmRowAppendString,
+    .fmRowInsertChar = &fmRowInsertChar,
+    .fmDelRow = &fmDelRow,
+    .fmFreeRow = &fmFreeRow,
+    .fmInsertRow = &fmInsertRow,
+    .fmUpdateRow = &fmUpdateRow,
+    .fmRowRxToCx = &fmRowRxToCx,
+    .fmRowCxToRx = &fmRowCxToRx,
+    .fmSyntaxToColor = &fmSyntaxToColor,
+    .fmUpdateSyntax = &fmUpdateSyntax,
+    .getWindowSize = &getWindowSize,
+    .getCursorPosition = &getCursorPosition,
+    .fmReadKey = &fmReadKey,
+    .enableRawMode = &enableRawMode,
+    .disableRawMode = &disableRawMode,
+    .die = &die,
+    .fmPrompt = &fmPrompt,
+    .fmRefreshScreen = &fmRefreshScreen,
+    .fmSetStatusMessage = &fmSetStatusMessage
+};
+
 
 
 int main(int argc, char *argv[])
@@ -68,18 +110,22 @@ int main(int argc, char *argv[])
   luaL_openlibs(L); // load Lua libraries
   printf("Lua\n");
   if (argc > 1) {
-    status = luaL_loadfile(L, argv[1]);  // load Lua script
+    status = luaL_loadfile(L, "hello.lua");  // load Lua script
     int ret = lua_pcall(L, 0, 0, 0); // tell Lua to run the script
     if (ret != 0) {
       fprintf(stderr, "%s\n", lua_tostring(L, -1)); // tell us what mistake we made
       return 1;
     }
-    /*
     lua_getfield(L, LUA_GLOBALSINDEX, "__mkfemto");
     // load pointer to femto_cell into namespace
     lua_pushlightuserdata(L, (void *) &Femto);
-    lua_call(L, 3, 0);
-    */
+    lua_call(L, 1, 0);
+    status = luaL_loadfile(L, "femto.lua");
+    ret = lua_pcall(L, 0, 0, 0);
+    if (ret != 0) {
+        fprintf(stderr, "%s\n", lua_tostring(L, -1));
+        return 2;
+    }
   }
 
   lua_close(L); // Close Lua
