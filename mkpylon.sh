@@ -61,6 +61,7 @@ cd ../../..
 cd sqlite
 ./configure
 make
+cp sqlite3.h ../lib/
 cd ..
 
 # "nano" is going to jump from nanomsg to nng when the latter is fully baked.
@@ -72,5 +73,5 @@ cmake -DCMAKE_INSTALL_PREFIX=../../lib/ -DNN_STATIC_LIB=ON ..
 make install
 cd ../..
 
-gcc -o hello -Ilib/ hello.c lib/libluajit.a -lm -pagezero_size 10000 -image_base 100000000
+gcc -o hello -Ilib/ hello.c src/libfemto.o lib/libluajit.a -lm -pagezero_size 10000 -image_base 100000000
 

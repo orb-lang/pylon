@@ -1,4 +1,4 @@
-sql = require "src/sqlite"
+--sql = require "src/sqlite"
 
 ffi = require "ffi"
 

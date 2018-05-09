@@ -24,7 +24,7 @@ CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm.c.o: ../deps/luajit/src/luac
 CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm.c.o: ../deps/luajit/src/luajit.h
 CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm.c.o: ../deps/luajit/src/host/buildvm.c
 CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm.c.o: ../deps/luajit/src/host/buildvm.h
-CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm.c.o: ../deps/luajit/src/host/buildvm_arch.h
+CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm.c.o: buildvm_arch.h
 
 CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_asm.c.o: ../deps/luajit/src/lj_arch.h
 CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_asm.c.o: ../deps/luajit/src/lj_bc.h

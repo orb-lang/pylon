@@ -36,12 +36,10 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_di
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_err.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_ff.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_ffdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_gc.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_ir.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_jit.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_lib.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_libdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_meta.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_obj.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_state.h
@@ -51,6 +49,8 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lj_ta
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/luaconf.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: ../deps/luajit/src/lualib.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: lj_ffdef.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_base.c.o: lj_libdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/lauxlib.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/lib_bit.c
@@ -60,12 +60,12 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/lj_err
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/lj_gc.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/lj_lib.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/lj_libdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/lj_obj.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/lj_str.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/luaconf.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: ../deps/luajit/src/lualib.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_bit.c.o: lj_libdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: ../deps/luajit/src/lauxlib.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: ../deps/luajit/src/lib_debug.c
@@ -76,11 +76,11 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: ../deps/luajit/src/lj_e
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: ../deps/luajit/src/lj_gc.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: ../deps/luajit/src/lj_lib.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: ../deps/luajit/src/lj_libdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: ../deps/luajit/src/lj_obj.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: ../deps/luajit/src/luaconf.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: ../deps/luajit/src/lualib.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_debug.c.o: lj_libdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lauxlib.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lib_ffi.c
@@ -97,10 +97,8 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_def
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_err.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_ff.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_ffdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_gc.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_lib.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_libdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_meta.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_obj.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_str.h
@@ -108,6 +106,8 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lj_tab
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/luaconf.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: ../deps/luajit/src/lualib.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: lj_ffdef.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_ffi.c.o: lj_libdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_init.c.o: ../deps/luajit/src/lauxlib.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_init.c.o: ../deps/luajit/src/lib_init.c
@@ -123,16 +123,16 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lj_def.
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lj_err.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lj_ff.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lj_ffdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lj_gc.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lj_lib.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lj_libdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lj_obj.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lj_state.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lj_str.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/luaconf.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: ../deps/luajit/src/lualib.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: lj_ffdef.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_io.c.o: lj_libdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lauxlib.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lib_jit.c
@@ -149,7 +149,6 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lj_irc
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lj_iropt.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lj_jit.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lj_lib.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lj_libdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lj_obj.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lj_str.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lj_tab.h
@@ -164,6 +163,7 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/luaconf.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/luajit.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: ../deps/luajit/src/lualib.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_jit.c.o: lj_libdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/lauxlib.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/lib_math.c
@@ -171,12 +171,12 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/lj_ar
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/lj_def.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/lj_gc.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/lj_lib.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/lj_libdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/lj_obj.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/lj_vm.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/luaconf.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: ../deps/luajit/src/lualib.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_math.c.o: lj_libdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: ../deps/luajit/src/lauxlib.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: ../deps/luajit/src/lib_os.c
@@ -186,11 +186,11 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: ../deps/luajit/src/lj_err.
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: ../deps/luajit/src/lj_gc.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: ../deps/luajit/src/lj_lib.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: ../deps/luajit/src/lj_libdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: ../deps/luajit/src/lj_obj.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: ../deps/luajit/src/luaconf.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: ../deps/luajit/src/lualib.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_os.c.o: lj_libdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_package.c.o: ../deps/luajit/src/lauxlib.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_package.c.o: ../deps/luajit/src/lib_package.c
@@ -214,11 +214,9 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_err.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_ff.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_ffdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_gc.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_lex.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_lib.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_libdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_meta.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_obj.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_state.h
@@ -227,6 +225,8 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lj_
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/luaconf.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: ../deps/luajit/src/lualib.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: lj_ffdef.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_string.c.o: lj_libdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/lauxlib.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/lib_table.c
@@ -236,12 +236,12 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/lj_e
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/lj_gc.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/lj_lib.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/lj_libdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/lj_obj.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/lj_tab.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/luaconf.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: ../deps/luajit/src/lualib.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lib_table.c.o: lj_libdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_alloc.c.o: ../deps/luajit/src/lj_alloc.c
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_alloc.c.o: ../deps/luajit/src/lj_alloc.h
@@ -316,12 +316,12 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_asm.c.o: ../deps/luajit/src/luaconf
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bc.c.o: ../deps/luajit/src/lj_arch.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bc.c.o: ../deps/luajit/src/lj_bc.c
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bc.c.o: ../deps/luajit/src/lj_bc.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bc.c.o: ../deps/luajit/src/lj_bcdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bc.c.o: ../deps/luajit/src/lj_def.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bc.c.o: ../deps/luajit/src/lj_gc.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bc.c.o: ../deps/luajit/src/lj_obj.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bc.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bc.c.o: ../deps/luajit/src/luaconf.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bc.c.o: lj_bcdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bcread.c.o: ../deps/luajit/src/lj_arch.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bcread.c.o: ../deps/luajit/src/lj_bc.h
@@ -515,7 +515,6 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/lj_
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/lj_err.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/lj_ff.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/lj_ffdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/lj_ffrecord.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/lj_frame.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/lj_gc.h
@@ -532,6 +531,7 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/lj_
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/lj_traceerr.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: ../deps/luajit/src/luaconf.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_crecord.c.o: lj_ffdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ctype.c.o: ../deps/luajit/src/lj_arch.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ctype.c.o: ../deps/luajit/src/lj_ccallback.h
@@ -577,7 +577,6 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/lj
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/lj_err.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/lj_ff.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/lj_ffdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/lj_frame.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/lj_func.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/lj_gc.h
@@ -594,6 +593,7 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/lj
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/luaconf.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: ../deps/luajit/src/luajit.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_dispatch.c.o: lj_ffdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_arch.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_bc.h
@@ -604,7 +604,6 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_err.
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_err.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_ff.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_ffdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_frame.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_func.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_gc.h
@@ -618,6 +617,7 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_trac
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lj_vm.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: ../deps/luajit/src/luaconf.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_err.c.o: lj_ffdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_arch.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_bc.h
@@ -627,7 +627,6 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_err.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_ff.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_ffdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_ffrecord.c
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_ffrecord.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_frame.h
@@ -637,7 +636,6 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_iropt.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_jit.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_obj.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_recdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_record.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_str.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_strscan.h
@@ -647,6 +645,8 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lj_vm.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: ../deps/luajit/src/luaconf.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: lj_ffdef.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_ffrecord.c.o: lj_recdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_func.c.o: ../deps/luajit/src/lj_arch.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_func.c.o: ../deps/luajit/src/lj_bc.h
@@ -850,7 +850,6 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/lj
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/lj_ctype.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/lj_def.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/lj_dispatch.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/lj_folddef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/lj_gc.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/lj_ir.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/lj_iropt.h
@@ -865,6 +864,7 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/lj
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/lj_vm.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: ../deps/luajit/src/luaconf.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_fold.c.o: lj_folddef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_loop.c.o: ../deps/luajit/src/lj_arch.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_opt_loop.c.o: ../deps/luajit/src/lj_bc.h
@@ -976,7 +976,6 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/lj_d
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/lj_err.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/lj_errmsg.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/lj_ff.h
-CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/lj_ffdef.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/lj_ffrecord.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/lj_frame.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/lj_gc.h
@@ -996,6 +995,7 @@ CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/lj_t
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/lj_vm.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/lua.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: ../deps/luajit/src/luaconf.h
+CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_record.c.o: lj_ffdef.h
 
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_snap.c.o: ../deps/luajit/src/lj_arch.h
 CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_snap.c.o: ../deps/luajit/src/lj_bc.h
