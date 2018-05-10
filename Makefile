@@ -21,8 +21,8 @@ src/femto.h: src/femto.c
 	rm src/femto.h
 	mv src/femto.h_strip src/femto.h
 
-boot_string.h: boot.lua
-	lua stringulate.lua boot.lua > boot_string.h
+boot_string.h: boot.lua femto_struct.h
+	lua stringulate.lua boot.lua femto_struct.h > boot_string.h
 
 boot.o: boot.lua src/femto.h
 	gcc -c -Ilib/ -I/src boot.c

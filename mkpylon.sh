@@ -34,8 +34,8 @@ BUILD_MODULE=OFF make
 # Move our artifacts over to pylon/lib
 
 cd build
-mv libuv.a ../../lib/
-mv libluv.a ../../lib/
+cp libuv.a ../../lib/
+cp libluv.a ../../lib/
 
 cd ../..
 

@@ -30,6 +30,11 @@ local function trim(s)
    end
 end
 
+local function sane_pr(line)
+   line = line:gsub("\\", "\\\\"):gsub("'","\\'"):gsub("\"", "\\\"")
+   io.write("\"" .. line .. "\\n\"")
+end
+
 --
 io.write("const char * const LUA_BOOT = ")
 
@@ -46,11 +51,22 @@ while true do
    else
       contd = true
    end
-   -- Strip comment lines and blank lines
-   if not (string.sub(line, 1, 2) == "--")
+   --  Handle our interpolation point
+   if line == "--INTERPOLATE--" then
+      local f_struct = io.open(arg[2])
+      local reading = true
+      while reading do
+         f_line = trim(f_struct:read())
+         if f_line == nil then
+            reading = false
+         else
+            sane_pr(f_line)
+            io.write("\n")
+         end
+      end
+   elseif not (string.sub(line, 1, 2) == "--") -- Strip comment lines and blank lines
       and not (#line == 0) then
-      line = line:gsub("\\", "\\\\"):gsub("'","\\'"):gsub("\"", "\\\"")
-      io.write("\"" .. line .. "\\n\"")
+      line = sane_pr(line)
    else
       contd = false
    end
