@@ -15,42 +15,66 @@
 #include "femto_instance.h"
 
 
-// big ol' static string.
+//  Big ol' static string.
 
 #include "boot_string.h"
 
+// Print an error.
+//
+// Passes errno through to keep invocation to
+// one line.
+int lua_die(lua_State *L, int errno) {
+    fprintf(stderr, "%s\n", lua_tostring(L, -1));
+    return errno;
+}
 
-int main(int argc, char *argv[])
-{
-  int status;
+//  main()
+//
+//  We do the minimum necessary and hand control to Lua.
 
-  lua_State *L = luaL_newstate(); // open Lua
-  if (!L) {
-    printf("No Lua\n");
-    return -1; // Checks that Lua started up
-  }
+int main(int argc, char *argv[]) {
+    int status;
 
-  luaL_openlibs(L); // load Lua libraries
-  printf("Lua\n");
-  if (argc > 1) {
-    status = luaL_loadstring(L, LUA_BOOT);  // load Lua script
-    int ret = lua_pcall(L, 0, 0, 0); // tell Lua to run the script
-    if (ret != 0) {
-      fprintf(stderr, "%s\n", lua_tostring(L, -1)); // tell us what mistake we made
-      return 1;
+    //  Start a VM
+    lua_State *L = luaL_newstate();
+
+    if (!L) {
+        return 1;
     }
-    lua_getfield(L, LUA_GLOBALSINDEX, "__mkfemto");
-    // load pointer to femto_cell into namespace
-    lua_pushlightuserdata(L, (void *) &Femto);
-    lua_call(L, 1, 0);
-    status = luaL_loadfile(L, "femto.lua");
-    ret = lua_pcall(L, 0, 0, 0);
-    if (ret != 0) {
-        fprintf(stderr, "%s\n", lua_tostring(L, -1));
-        return 2;
-    }
-  }
 
-  lua_close(L); // Close Lua
-  return 0;
+    // load Lua libraries
+    luaL_openlibs(L);
+    printf("Lua\n");
+    if (argc > 1) {
+        // constant strings, the poor man's bytecode!
+        status = luaL_loadstring(L, LUA_BOOT);
+        if (status != 0) {
+            return lua_die(L, 2);
+        }
+        int ret = lua_pcall(L, 0, 0, 0);
+        if (ret != 0) {
+            return lua_die(L, 2);
+        }
+        printf("Load\n");
+        // This prelude draws the FFI into memory, now to
+        // pass in our jump table
+        lua_getfield(L, LUA_GLOBALSINDEX, "__mkfemto");
+        lua_pushlightuserdata(L, (void *) &Femto);
+        ret = lua_pcall(L, 1, 0, 0);
+        if (ret != 0) {
+            return lua_die(L, 3);
+        }
+        printf("femto\n");
+
+        // Now we've got the pointers on the Lua side and
+        // can just fire it up:
+        status = luaL_loadfile(L, "femto.lua");
+        ret = lua_pcall(L, 0, 0, 0);
+        if (ret != 0) {
+            return lua_die(L, 4);
+        }
+    }
+
+    lua_close(L); // Close Lua
+    return 0;
 }
