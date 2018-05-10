@@ -62,6 +62,7 @@ cd sqlite
 ./configure
 make
 cp sqlite3.h ../lib/
+cp sqlite3.o ../lib/
 cd ..
 
 # "nano" is going to jump from nanomsg to nng when the latter is fully baked.

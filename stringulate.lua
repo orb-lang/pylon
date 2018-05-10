@@ -9,14 +9,28 @@ local L = require "lpeg"
 
 local file = io.open(arg[1])
 
-local phrase = file:read("*a")
+local line = nil
 
--- Fearfully anointing himself, he opened the crypt, intoning the
--- ancient evocation:
+io.write("const char * const LUA_BOOT = ")
 
-phrase = phrase:gsub("\\", "\\\\"):gsub("\"", "\\\""):gsub("\n","\\n")
+local contd = false
+while true do
+   line = file:read()
+   if line == nil then
+      -- end of write
+      io.write(";")
+      break
+   end
+   if contd then
+      io.write("\n")
+   else
+      contd = true
+   end
+   line = line:gsub("\\", "\\\\"):gsub("'","\\'"):gsub("\"", "\\\"")
+   io.write("\"" .. line .. "\"")
+end
 
-io.write(phrase .. "\n")
+io.write("\n")
 
 -- ΑΠΟ ΠΑΝΤΟΣ ΚΑΚΟΔΑΙΜΟΝΟΣ!
 
