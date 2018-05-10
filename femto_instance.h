@@ -1,4 +1,4 @@
-struct femto_cell Femto = {
+struct femto_struct Femto = {
     .initFm = &initFm,
     .fmProcessKeypress = &fmProcessKeypress,
     .fmMoveCursor = &fmMoveCursor,
@@ -35,5 +35,5 @@ struct femto_cell Femto = {
     .die = &die,
     .fmPrompt = &fmPrompt,
     .fmRefreshScreen = &fmRefreshScreen,
-    .fmSetStatusMessage = &fmSetStatusMessage
+    .fmSetStatusMessage = &fmSetStatusMessage,
 };

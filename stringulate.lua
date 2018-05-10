@@ -57,9 +57,4 @@ while true do
 end
 
 io.write("\n")
-
--- ΑΠΟ ΠΑΝΤΟΣ ΚΑΚΟΔΑΙΜΟΝΟΣ!
-
--- one may not exit cleanly from such a deed.
-
-os.exit(-666)
+os.exit(0)

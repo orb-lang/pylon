@@ -4,6 +4,8 @@
 #include <lauxlib.h>
 #include "luajit.h"
 #include "sqlite3.h"
+
+#include "src/femto_class.h"
 #include "src/femto.h"
 
 // Set up a struct to hold the femto library
@@ -49,11 +51,11 @@ int main(int argc, char *argv[]) {
         // constant strings, the poor man's bytecode!
         status = luaL_loadstring(L, LUA_BOOT);
         if (status != 0) {
-            return lua_die(L, 2);
+            return lua_die(L, status);
         }
         int ret = lua_pcall(L, 0, 0, 0);
         if (ret != 0) {
-            return lua_die(L, 2);
+            return lua_die(L, ret);
         }
         printf("Load\n");
         // This prelude draws the FFI into memory, now to
@@ -62,8 +64,11 @@ int main(int argc, char *argv[]) {
         lua_pushlightuserdata(L, (void *) &Femto);
         ret = lua_pcall(L, 1, 0, 0);
         if (ret != 0) {
-            return lua_die(L, 3);
+            return lua_die(L, ret);
         }
+        //  Remove __mkfemto from the namespace, freeing it
+        lua_pushnil(L);
+        lua_setglobal(L, "__mkfemto");
         printf("femto\n");
 
         // Now we've got the pointers on the Lua side and
@@ -71,7 +76,7 @@ int main(int argc, char *argv[]) {
         status = luaL_loadfile(L, "femto.lua");
         ret = lua_pcall(L, 0, 0, 0);
         if (ret != 0) {
-            return lua_die(L, 4);
+            return lua_die(L, ret);
         }
     }
 

@@ -13,9 +13,10 @@
 #include <string.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
+#include <unistd.h>
 #include <termios.h>
 #include <time.h>
-#include <unistd.h>
+
 
 /*** defines ***/
 
@@ -751,10 +752,10 @@ void fmMoveCursor(int key) {
   }
 }
 
-void fmProcessKeypress() {
+void fmProcessKeypress(int c) {
   static int quit_times = FEMTO_QUIT_TIMES;
 
-  int c = fmReadKey();
+  // int c = fmReadKey();
 
   switch (c) {
     case '\r':
@@ -850,22 +851,3 @@ void initFm() {
   F.screenrows -= 2;
 }
 
-/* Keeping this here as a template for the Lua code
-
-int main(int argc, char *argv[]) {
-  enableRawMode();
-  initFm();
-  if (argc >= 2) {
-    fmOpen(argv[1]);
-  }
-
-  fmSetStatusMessage("HELP: Ctrl-S = save | Ctrl-Q = quit | Ctrl-F = find");
-
-  while (1) {
-    fmRefreshScreen();
-    fmProcessKeypress();
-  }
-
-  return 0;
-}
-*/

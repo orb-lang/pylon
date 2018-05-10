@@ -1,6 +1,6 @@
-struct femto_cell {
+struct femto_struct {
     void (*initFm)();
-    void (*fmProcessKeypress)();
+    void (*fmProcessKeypress)(int c);
     void (*fmMoveCursor)(int key);
     void (*fmDrawMessageBar)(struct abuf *ab);
     void (*fmDrawStatusBar)(struct abuf *ab);
