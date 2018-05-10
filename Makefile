@@ -7,7 +7,7 @@
 
 all: br
 
-br: boot.o src/libfemto.o femto_instance.h femto_struct.h boot_string.h src/femto.h
+br: boot.o src/libfemto.o
 	gcc -o br -Ilib/ boot.o src/libfemto.o lib/libluajit.a -lm -pagezero_size 10000 -image_base 100000000
 
 src/libfemto.o: src/femto.c
@@ -16,15 +16,14 @@ src/libfemto.o: src/femto.c
 src/femto.h: src/femto.c
 	rm src/femto.h
 	makeheaders src/femto.c
-	# The below is brittle, depending on the last line drop
 	tail -n +2 < src/femto.h | uniq | sed '/extern/d' | sed '$d' > src/femto.h_strip
 	rm src/femto.h
 	mv src/femto.h_strip src/femto.h
 
 boot_string.h: boot.lua femto_struct.h
-	lua stringulate.lua boot.lua femto_struct.h > boot_string.h
+	lua stringulate.lua boot.lua > boot_string.h
 
-boot.o: boot.lua src/femto.h
+boot.o: boot.lua src/libfemto.o femto_instance.h femto_struct.h boot_string.h
 	gcc -c -Ilib/ -I/src boot.c
 
 femto_instance.h: src/femto.h

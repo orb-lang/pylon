@@ -753,8 +753,9 @@ void fmMoveCursor(int key) {
 }
 
 void fmProcessKeypress(int c) {
-  static int quit_times = FEMTO_QUIT_TIMES;
 
+  static int quit_times = FEMTO_QUIT_TIMES;
+  // int c = fmReadKey();
   switch (c) {
     case '\r':
       fmInsertNewline();

@@ -35,7 +35,10 @@ local function sane_pr(line)
    io.write("\"" .. line .. "\\n\"")
 end
 
---
+-- Interpolation string
+
+local INTERPOL = "--INTERPOLATE<"
+
 io.write("const char * const LUA_BOOT = ")
 
 local contd = false
@@ -52,8 +55,12 @@ while true do
       contd = true
    end
    --  Handle our interpolation point
-   if line == "--INTERPOLATE--" then
-      local f_struct = io.open(arg[2])
+   if sub(line, 1, #INTERPOL) == INTERPOL then
+
+      local line_trim = sub(line, #INTERPOL + 1)
+      local l_off = find(line_trim, ">")
+      local f_handle = sub(line_trim, 1, l_off-1)
+      local f_struct = io.open(f_handle)
       local reading = true
       while reading do
          f_line = trim(f_struct:read())

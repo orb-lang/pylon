@@ -75,10 +75,11 @@ ffi.cdef [[
    };
 ]]
 
+
 --  Including our all-important collection of function pointers:
 
 ffi.cdef [[
---INTERPOLATE--
+--INTERPOLATE<femto_struct.h>--
 ]]
 
 femto = ""
