@@ -1,10 +1,14 @@
---  Stringulation
-
+--  * Interpol
+--
+--
 --  LuaJIT provides a facility for turning bytecode into an object file,
 --  which may be linked against a binary with the right flags.
 --
 --  This won't work for us, because normally the ffi is filled out dynamically,
 --  with ffi.load().  Our pointers are only available at runtime.
+--
+--  =interpol= takes two arguments: the first is the template to load, the second
+--  the name of the constant pointer.
 --
 --  To achieve this, we resort to the hoary old trick of embedding the boot sequence
 --  as an ordinary C string.
@@ -13,6 +17,12 @@
 --  that are Lua code with Lua strings that are C code.
 --
 --  Some effort is made to remove comments, blank lines, and leading whitespace.
+--
+--  - [ ] #todo  Add a flag to output without stringulation.
+--
+--               This implies suppressing the C wrapper entirely, and a bit of arg juggling.
+--
+
 
 local file = io.open(arg[1])
 

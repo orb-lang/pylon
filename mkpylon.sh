@@ -29,7 +29,12 @@
 
 cd luv
 make reset
-BUILD_MODULE=OFF make
+
+# For the static binary use this:
+
+# BUILD_MODULE=OFF make
+
+make
 
 # Move our artifacts over to pylon/lib
 

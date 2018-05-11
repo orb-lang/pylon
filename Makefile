@@ -17,7 +17,7 @@ src/femto.h: src/femto.c
 	mv src/femto.h_strip src/femto.h
 
 boot_string.h: boot.lua femto_struct.h
-	lua stringulate.lua boot.lua LUA_BOOT > ~boot_string.h
+	lua interpol.lua boot.lua LUA_BOOT > ~boot_string.h
 	- colordiff boot_string.h ~boot_string.h
 	mv ~boot_string.h boot_string.h
 

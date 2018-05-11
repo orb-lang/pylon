@@ -1,0 +1,37 @@
+* Pylon
+
+
+=pylon= is our userspace kernel.
+
+After some thought, I've decided to pull in nanomsg as a shared library.
+
+I may change my mind, but =luv= contains the network primitives to pull a
+codex off the Internet, and using a properly-rebased shared library is
+actually cleaner LuaJIT since you don't have to explicitly build a vtable.
+
+Though I believe that's exactly what LJ is doing under the hood.
+
+
+** Next
+
+I've got =femto= booting with the main event loop in Lua.
+
+It can call a shared sqlite and luv.  I do intend to statically link them,
+but that's a brisk afternoon's work porting the interface.
+
+That's worthwhile work, and I can and should break them out into their own
+repos.  I don't know if the =luv= one will get used by anyone else, but
+=sqlite= is a common include in binaries, as is LuaJIT, and I'd bet money
+that what I'm about to do has been done a few times.
+
+It turns out =uv= has a whole tty module, because of course it does.  Wiring
+=femto= up to luaJIT was an essential learning experience, and I'm going to
+make some blog posts about it, but it became clear that the surface area isn't
+right.
+
+Which is good for the blog post!  The only thing I won't end up using is
+=femto= itself and the main event loop I ported from C.  All the tools will
+be essential for building femto proper and internalizing =uv=.
+
+In the meantime, my next step is to build my own repl on =luv= and start
+persisting things!
