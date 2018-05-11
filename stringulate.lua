@@ -13,14 +13,12 @@
 --  that are Lua code with Lua strings that are C code.
 --
 --  Some effort is made to remove comments, blank lines, and leading whitespace.
---
---  I draw the line at replacing newlines with semicolons.
 
 local file = io.open(arg[1])
 
 local line = nil
 
-local find, sub = string.find, string.sub
+local find, sub, gsub = string.find, string.sub, string.gsub
 
 local function trim(s)
    if s then
@@ -31,7 +29,7 @@ local function trim(s)
 end
 
 local function sane_pr(line)
-   line = line:gsub("\\", "\\\\"):gsub("'","\\'"):gsub("\"", "\\\"")
+   line = gsub(line, "\\", "\\\\"):gsub("'","\\'"):gsub("\"", "\\\"")
    io.write("\"" .. line .. "\\n\"")
 end
 
@@ -39,7 +37,9 @@ end
 
 local INTERPOL = "--INTERPOLATE<"
 
-io.write("const char * const LUA_BOOT = ")
+local var_name = arg[2] or ""
+
+io.write("const char * const " .. var_name .. " = ")
 
 local contd = false
 while true do
@@ -56,7 +56,7 @@ while true do
    end
    --  Handle our interpolation point
    if sub(line, 1, #INTERPOL) == INTERPOL then
-
+      -- extract filename and open
       local line_trim = sub(line, #INTERPOL + 1)
       local l_off = find(line_trim, ">")
       local f_handle = sub(line_trim, 1, l_off-1)
@@ -65,13 +65,14 @@ while true do
       while reading do
          f_line = trim(f_struct:read())
          if f_line == nil then
-            reading = false
+            reading, contd = false, false
          else
             sane_pr(f_line)
             io.write("\n")
          end
       end
-   elseif not (string.sub(line, 1, 2) == "--") -- Strip comment lines and blank lines
+   -- Strip comment lines and blank lines
+   elseif not (string.sub(line, 1, 2) == "--")
       and not (#line == 0) then
       line = sane_pr(line)
    else

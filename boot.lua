@@ -74,8 +74,6 @@ ffi.cdef [[
      int len;
    };
 ]]
-
-
 --  Including our all-important collection of function pointers:
 
 ffi.cdef [[

@@ -74,5 +74,5 @@ cmake -DCMAKE_INSTALL_PREFIX=../../lib/ -DNN_STATIC_LIB=ON ..
 make install
 cd ../..
 
-gcc -o br -Ilib/ boot.c src/libfemto.o lib/libluajit.a -lm -pagezero_size 10000 -image_base 100000000
+make
 

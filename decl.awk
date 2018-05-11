@@ -14,7 +14,7 @@ BEGIN {
       Paren = " (*"
    }
 
-   $1=$2=""
+   $1= $2= ""
 
    print "    " Type Paren Fn ")" substr($0,3)
 }

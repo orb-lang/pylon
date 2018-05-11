@@ -3,9 +3,9 @@
 
 *** Minimum Viable Pylon
 
-- [ ] #Todo
+- [X] #Todo
 
-  - [ ]  pylon.o
+  - [X]  pylon.o
 
      - [X]  Build libluajit.o
 
@@ -17,39 +17,39 @@
 
      - [X]  build nanomsg
 
-     - [ ]  Adapt ffi
+     - [x]  Adapt ffi
 
-     - [ ]  Write a namespace module that makes a full _ENV
+     - [X]  Write a namespace module that makes a full _ENV
 
-     - [ ]  Dump it as a LuaJIT .so
+     - [X]  Dump it as a LuaJIT .so -- kiiiinnda.
 
-     - [ ]  Link into single static binary.
+     - [X]  Link into single static binary.
 
   - [1/2]  Write mkpylon.sh to orchestrate this.
 
-  - [ ]  =br= executable
+  - [X]  =br= executable
 
-    - [ ]  Modify femto to be a library.
+    - [X]  Modify femto to be a library.
 
            I'm going to want to spend some time on this to get a good
            surface area for REPLing while keeping stuff that's useful
            for =ed=.
 
-    - [ ]  Write a lua loader which:
+    - [X]  Write a lua loader which:
 
-           -  [ ]  Includes pylon and femto
+           -  [X]  Includes pylon and femto
 
-           -  [ ]  Puts argv into a Lua table
+           -  [X]  Puts argv into a Lua table
 
-           -  [ ]  Starts the VM with the pylon _ENV
+           -  [X]  Starts the VM with the pylon _ENV
 
-           -  [ ]  Loads a (bytecode) script which:
+           -  [X]  Loads a (bytecode) script which:
 
-             - [ ]  Runs a prelude if REPLing
+             - [X]  Runs a prelude if REPLing
 
-             - [ ]  Runs the script via our own conventions
+             - [X]  Runs the script via our own conventions
 
-             - [ ]  If REPLing, throw a prompt.
+             - [X]  If REPLing, throw a prompt.
 
 
 At that point I'm going to have a whole box of toys and motive to make it all

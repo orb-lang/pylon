@@ -85,7 +85,6 @@ const char * const LUA_BOOT = "ffi = require \"ffi\"\n"
 "void (*fmRefreshScreen)();\n"
 "void (*fmSetStatusMessage)(const char *fmt,...);\n"
 "};\n"
-
 "]]\n"
 "femto = \"\"\n"
 "function __mkfemto(fm_struct_pt)\n"
