@@ -9,14 +9,14 @@ BEGIN {
    Fn = $2
 
    if (substr(Fn, 0, 1) == "*") {
-      Paren = " *("
+      Paren = "*("
    } else {
-      Paren = " (*"
+      Paren = "(*"
    }
 
    $1= $2= ""
 
-   print "    " Type Paren Fn ")" substr($0,3)
+   print "    " Type, Paren Fn ")" substr($0,3)
 }
 
 END {

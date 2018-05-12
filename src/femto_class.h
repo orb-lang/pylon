@@ -12,7 +12,7 @@
 
 enum fmKey {
   BACKSPACE = 127,
-  ARROW_LEFT = 1000,
+  ARROW_LEFT = 1 << 23,
   ARROW_RIGHT,
   ARROW_UP,
   ARROW_DOWN,

@@ -32,9 +32,9 @@ make reset
 
 # For the static binary use this:
 
-# BUILD_MODULE=OFF make
+BUILD_MODULE=OFF make
 
-make
+# make
 
 # Move our artifacts over to pylon/lib
 

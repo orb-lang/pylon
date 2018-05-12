@@ -8,6 +8,9 @@
 #include "src/femto_class.h"
 #include "src/femto.h"
 
+// declaration for luv registry
+LUALIB_API int luaopen_luv (lua_State *L);
+
 // Set up a struct to hold the femto library
 
 #include "femto_struct.h"
@@ -15,7 +18,6 @@
 // Populate the instance
 
 #include "femto_instance.h"
-
 
 //  Big ol' static string.
 
@@ -56,6 +58,11 @@ int main(int argc, char *argv[]) {
         }
         lua_setglobal(L, "arg");
     }
+    lua_getglobal(L, "package");
+    lua_getfield(L, -1, "preload"); /* get 'package.preload' */
+    lua_pushcfunction(L, luaopen_luv);
+    lua_setfield(L, -2, "luv"); /* package.preload[cjson] = luaopen_cjson */
+    lua_pop(L, 2); /* pop 'package' and 'preload' tables */
     // constant strings, the poor man's bytecode!
     status = luaL_loadstring(L, LUA_BOOT);
     if (status != 0) {
@@ -80,7 +87,7 @@ int main(int argc, char *argv[]) {
 
     // Now we've got the pointers on the Lua side and
     // can just fire it up:
-    status = luaL_loadfile(L, "femto.lua");
+    status = luaL_loadfile(L, "src/femto.lua");
     ret = lua_pcall(L, 0, 0, 0);
     if (ret != 0) {
         return lua_die(L, ret);
