@@ -79,5 +79,16 @@ cmake -DCMAKE_INSTALL_PREFIX=../../lib/ -DNN_STATIC_LIB=ON ..
 make install
 cd ../..
 
+# Annnnd lpeg
+
+cd lpeg-1.0.1
+make macosx
+cp liblpeg.a ../lib/
+cd ..
+
+# Toss in lfs
+
+cp luafilesystem/lfs-ffi.lua lib/lfs.lua
+
 make
 

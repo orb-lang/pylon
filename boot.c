@@ -10,6 +10,7 @@
 
 // declaration for luv registry
 LUALIB_API int luaopen_luv (lua_State *L);
+LUALIB_API int luaopen_lpeg (lua_State *L);
 
 // Set up a struct to hold the femto library
 
@@ -61,7 +62,9 @@ int main(int argc, char *argv[]) {
     lua_getglobal(L, "package");
     lua_getfield(L, -1, "preload"); /* get 'package.preload' */
     lua_pushcfunction(L, luaopen_luv);
-    lua_setfield(L, -2, "luv"); /* package.preload[cjson] = luaopen_cjson */
+    lua_setfield(L, -2, "luv"); /* package.preload[luv] = luaopen_luv */
+    lua_pushcfunction(L, luaopen_lpeg);
+    lua_setfield(L, -2, "lpeg");
     lua_pop(L, 2); /* pop 'package' and 'preload' tables */
     // constant strings, the poor man's bytecode!
     status = luaL_loadstring(L, LUA_BOOT);

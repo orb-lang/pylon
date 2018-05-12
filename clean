@@ -16,6 +16,4 @@ mkdir build
 
 cd ..
 
-rm -rf lib/*
-
 rm br

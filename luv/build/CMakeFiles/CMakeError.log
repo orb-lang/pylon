@@ -1,16 +1,16 @@
 Performing C SOURCE FILE Test LJ_DUALNUM_1 failed with the following output:
 Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2072a/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2072a.dir/build.make CMakeFiles/cmTC_2072a.dir/build
-Building C object CMakeFiles/cmTC_2072a.dir/src.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/code/pylon/luv/deps/luajit -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build  -DLJ_DUALNUM_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_2072a.dir/src.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
+Run Build Command:"/usr/bin/make" "cmTC_16d2f/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_16d2f.dir/build.make CMakeFiles/cmTC_16d2f.dir/build
+Building C object CMakeFiles/cmTC_16d2f.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/code/pylon/luv/deps/luajit -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build  -DLJ_DUALNUM_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_16d2f.dir/src.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
 /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/src.c:7:2: error: "not defined"
 #error "not defined"
  ^
 1 error generated.
-make[2]: *** [CMakeFiles/cmTC_2072a.dir/src.c.o] Error 1
-make[1]: *** [cmTC_2072a/fast] Error 2
+make[2]: *** [CMakeFiles/cmTC_16d2f.dir/src.c.o] Error 1
+make[1]: *** [cmTC_16d2f/fast] Error 2
 
 Source file was:
 
@@ -25,16 +25,16 @@ int main() { return 0; }
 Performing C SOURCE FILE Test LJ_ABI_SOFTFP_1 failed with the following output:
 Change Dir: /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_503b7/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_503b7.dir/build.make CMakeFiles/cmTC_503b7.dir/build
-Building C object CMakeFiles/cmTC_503b7.dir/src.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/code/pylon/luv/deps/luajit -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build  -DLJ_ABI_SOFTFP_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_503b7.dir/src.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
+Run Build Command:"/usr/bin/make" "cmTC_7296b/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_7296b.dir/build.make CMakeFiles/cmTC_7296b.dir/build
+Building C object CMakeFiles/cmTC_7296b.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/code/pylon/luv/deps/luajit -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build  -DLJ_ABI_SOFTFP_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_7296b.dir/src.c.o   -c /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
 /Users/atman/code/pylon/luv/build/CMakeFiles/CMakeTmp/src.c:7:2: error: "not defined"
 #error "not defined"
  ^
 1 error generated.
-make[2]: *** [CMakeFiles/cmTC_503b7.dir/src.c.o] Error 1
-make[1]: *** [cmTC_503b7/fast] Error 2
+make[2]: *** [CMakeFiles/cmTC_7296b.dir/src.c.o] Error 1
+make[1]: *** [cmTC_7296b/fast] Error 2
 
 Source file was:
 
