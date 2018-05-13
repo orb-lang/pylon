@@ -103,16 +103,16 @@ level forever.
 
 Here's a hit list:
 
-- [ ]  Summon the raw terminal from =luv=
+- [X]  Summon the raw terminal from =luv=
 
 - [ ]  Write a minimum-viable pure-lua readline.
 
-- [ ]  Write an evented REPL.
+- [X]  Write an evented REPL.
 
 - [ ]  Add persistence of history in a SQLite database called ~/.bridge
 
-... that's about it.  This is when I start to adapt =orb= et. al. to run
-natively on the bridge.
+... turns out there's a repl in the =luv= examples file. Fine place to
+start.
 
 The hardest part of all of this will be keeping the event loop from
 contaminating my libraries.  I'm keeping certain compacts with the Lua

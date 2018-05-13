@@ -1,191 +1,191 @@
 Determining if the function gethrtime exists failed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_5060b/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_5060b.dir/build.make CMakeFiles/cmTC_5060b.dir/build
-Building C object CMakeFiles/cmTC_5060b.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethrtime -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_5060b.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_5060b
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5060b.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethrtime -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_5060b.dir/CheckFunctionExists.c.o  -o cmTC_5060b 
+Run Build Command:"/usr/bin/make" "cmTC_10bfc/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_10bfc.dir/build.make CMakeFiles/cmTC_10bfc.dir/build
+Building C object CMakeFiles/cmTC_10bfc.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethrtime -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_10bfc.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_10bfc
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_10bfc.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethrtime -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_10bfc.dir/CheckFunctionExists.c.o  -o cmTC_10bfc 
 Undefined symbols for architecture x86_64:
   "_gethrtime", referenced from:
       _main in CheckFunctionExists.c.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[1]: *** [cmTC_5060b] Error 1
-make: *** [cmTC_5060b/fast] Error 2
+make[1]: *** [cmTC_10bfc] Error 1
+make: *** [cmTC_10bfc/fast] Error 2
 
 
 Determining if the function eventfd exists failed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_4b350/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_4b350.dir/build.make CMakeFiles/cmTC_4b350.dir/build
-Building C object CMakeFiles/cmTC_4b350.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=eventfd -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_4b350.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_4b350
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b350.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=eventfd -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_4b350.dir/CheckFunctionExists.c.o  -o cmTC_4b350 
+Run Build Command:"/usr/bin/make" "cmTC_bfeef/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_bfeef.dir/build.make CMakeFiles/cmTC_bfeef.dir/build
+Building C object CMakeFiles/cmTC_bfeef.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=eventfd -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_bfeef.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_bfeef
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bfeef.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=eventfd -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_bfeef.dir/CheckFunctionExists.c.o  -o cmTC_bfeef 
 Undefined symbols for architecture x86_64:
   "_eventfd", referenced from:
       _main in CheckFunctionExists.c.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[1]: *** [cmTC_4b350] Error 1
-make: *** [cmTC_4b350/fast] Error 2
+make[1]: *** [cmTC_bfeef] Error 1
+make: *** [cmTC_bfeef/fast] Error 2
 
 
 Determining if the function pipe2 exists failed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_797cd/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_797cd.dir/build.make CMakeFiles/cmTC_797cd.dir/build
-Building C object CMakeFiles/cmTC_797cd.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pipe2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_797cd.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_797cd
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_797cd.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pipe2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_797cd.dir/CheckFunctionExists.c.o  -o cmTC_797cd 
+Run Build Command:"/usr/bin/make" "cmTC_5bd5c/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_5bd5c.dir/build.make CMakeFiles/cmTC_5bd5c.dir/build
+Building C object CMakeFiles/cmTC_5bd5c.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pipe2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_5bd5c.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5bd5c
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5bd5c.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pipe2 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_5bd5c.dir/CheckFunctionExists.c.o  -o cmTC_5bd5c 
 Undefined symbols for architecture x86_64:
   "_pipe2", referenced from:
       _main in CheckFunctionExists.c.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[1]: *** [cmTC_797cd] Error 1
-make: *** [cmTC_797cd/fast] Error 2
+make[1]: *** [cmTC_5bd5c] Error 1
+make: *** [cmTC_5bd5c/fast] Error 2
 
 
 Determining if the function accept4 exists failed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_3da07/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_3da07.dir/build.make CMakeFiles/cmTC_3da07.dir/build
-Building C object CMakeFiles/cmTC_3da07.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=accept4 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_3da07.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_3da07
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3da07.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=accept4 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_3da07.dir/CheckFunctionExists.c.o  -o cmTC_3da07 
+Run Build Command:"/usr/bin/make" "cmTC_c4634/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_c4634.dir/build.make CMakeFiles/cmTC_c4634.dir/build
+Building C object CMakeFiles/cmTC_c4634.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=accept4 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_c4634.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_c4634
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c4634.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=accept4 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_c4634.dir/CheckFunctionExists.c.o  -o cmTC_c4634 
 Undefined symbols for architecture x86_64:
   "_accept4", referenced from:
       _main in CheckFunctionExists.c.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[1]: *** [cmTC_3da07] Error 1
-make: *** [cmTC_3da07/fast] Error 2
+make[1]: *** [cmTC_c4634] Error 1
+make: *** [cmTC_c4634/fast] Error 2
 
 
 Determining if the function epoll_create exists failed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_81e96/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_81e96.dir/build.make CMakeFiles/cmTC_81e96.dir/build
-Building C object CMakeFiles/cmTC_81e96.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=epoll_create -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_81e96.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_81e96
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_81e96.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=epoll_create -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_81e96.dir/CheckFunctionExists.c.o  -o cmTC_81e96 
+Run Build Command:"/usr/bin/make" "cmTC_bd47a/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_bd47a.dir/build.make CMakeFiles/cmTC_bd47a.dir/build
+Building C object CMakeFiles/cmTC_bd47a.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=epoll_create -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_bd47a.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_bd47a
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bd47a.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=epoll_create -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_bd47a.dir/CheckFunctionExists.c.o  -o cmTC_bd47a 
 Undefined symbols for architecture x86_64:
   "_epoll_create", referenced from:
       _main in CheckFunctionExists.c.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[1]: *** [cmTC_81e96] Error 1
-make: *** [cmTC_81e96/fast] Error 2
+make[1]: *** [cmTC_bd47a] Error 1
+make: *** [cmTC_bd47a/fast] Error 2
 
 
 Determining if the function getaddrinfo_a exists in the anl failed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_920aa/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_920aa.dir/build.make CMakeFiles/cmTC_920aa.dir/build
-Building C object CMakeFiles/cmTC_920aa.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=getaddrinfo_a -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_920aa.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_920aa
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_920aa.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=getaddrinfo_a -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_920aa.dir/CheckFunctionExists.c.o  -o cmTC_920aa -lanl 
+Run Build Command:"/usr/bin/make" "cmTC_ff07f/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ff07f.dir/build.make CMakeFiles/cmTC_ff07f.dir/build
+Building C object CMakeFiles/cmTC_ff07f.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=getaddrinfo_a -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_ff07f.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_ff07f
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff07f.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=getaddrinfo_a -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_ff07f.dir/CheckFunctionExists.c.o  -o cmTC_ff07f -lanl 
 ld: library not found for -lanl
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[1]: *** [cmTC_920aa] Error 1
-make: *** [cmTC_920aa/fast] Error 2
+make[1]: *** [cmTC_ff07f] Error 1
+make: *** [cmTC_ff07f/fast] Error 2
 
 
 Determining if the function clock_gettime exists in the rt failed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_4ed4d/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_4ed4d.dir/build.make CMakeFiles/cmTC_4ed4d.dir/build
-Building C object CMakeFiles/cmTC_4ed4d.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=clock_gettime -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_4ed4d.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_4ed4d
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4ed4d.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=clock_gettime -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_4ed4d.dir/CheckFunctionExists.c.o  -o cmTC_4ed4d -lrt 
+Run Build Command:"/usr/bin/make" "cmTC_e9a64/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_e9a64.dir/build.make CMakeFiles/cmTC_e9a64.dir/build
+Building C object CMakeFiles/cmTC_e9a64.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=clock_gettime -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_e9a64.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_e9a64
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9a64.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=clock_gettime -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_e9a64.dir/CheckFunctionExists.c.o  -o cmTC_e9a64 -lrt 
 ld: library not found for -lrt
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[1]: *** [cmTC_4ed4d] Error 1
-make: *** [cmTC_4ed4d/fast] Error 2
+make[1]: *** [cmTC_e9a64] Error 1
+make: *** [cmTC_e9a64/fast] Error 2
 
 
 Determining if the function sem_wait exists in the rt failed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_aa588/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_aa588.dir/build.make CMakeFiles/cmTC_aa588.dir/build
-Building C object CMakeFiles/cmTC_aa588.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sem_wait -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_aa588.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_aa588
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_aa588.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sem_wait -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_aa588.dir/CheckFunctionExists.c.o  -o cmTC_aa588 -lrt 
+Run Build Command:"/usr/bin/make" "cmTC_a2975/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_a2975.dir/build.make CMakeFiles/cmTC_a2975.dir/build
+Building C object CMakeFiles/cmTC_a2975.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sem_wait -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_a2975.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a2975
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a2975.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sem_wait -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_a2975.dir/CheckFunctionExists.c.o  -o cmTC_a2975 -lrt 
 ld: library not found for -lrt
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[1]: *** [cmTC_aa588] Error 1
-make: *** [cmTC_aa588/fast] Error 2
+make[1]: *** [cmTC_a2975] Error 1
+make: *** [cmTC_a2975/fast] Error 2
 
 
 Determining if the function gethostbyname exists in the nsl failed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_52831/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_52831.dir/build.make CMakeFiles/cmTC_52831.dir/build
-Building C object CMakeFiles/cmTC_52831.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_52831.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_52831
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_52831.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethostbyname -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_52831.dir/CheckFunctionExists.c.o  -o cmTC_52831 -lnsl 
+Run Build Command:"/usr/bin/make" "cmTC_26cf6/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_26cf6.dir/build.make CMakeFiles/cmTC_26cf6.dir/build
+Building C object CMakeFiles/cmTC_26cf6.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=gethostbyname -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_26cf6.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_26cf6
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_26cf6.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=gethostbyname -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_26cf6.dir/CheckFunctionExists.c.o  -o cmTC_26cf6 -lnsl 
 ld: library not found for -lnsl
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[1]: *** [cmTC_52831] Error 1
-make: *** [cmTC_52831/fast] Error 2
+make[1]: *** [cmTC_26cf6] Error 1
+make: *** [cmTC_26cf6/fast] Error 2
 
 
 Determining if the function socket exists in the socket failed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d5b4b/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_d5b4b.dir/build.make CMakeFiles/cmTC_d5b4b.dir/build
-Building C object CMakeFiles/cmTC_d5b4b.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=socket -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_d5b4b.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_d5b4b
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d5b4b.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=socket -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_d5b4b.dir/CheckFunctionExists.c.o  -o cmTC_d5b4b -lsocket 
+Run Build Command:"/usr/bin/make" "cmTC_2e777/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2e777.dir/build.make CMakeFiles/cmTC_2e777.dir/build
+Building C object CMakeFiles/cmTC_2e777.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=socket -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_2e777.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_2e777
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2e777.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=socket -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_2e777.dir/CheckFunctionExists.c.o  -o cmTC_2e777 -lsocket 
 ld: library not found for -lsocket
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make[1]: *** [cmTC_d5b4b] Error 1
-make: *** [cmTC_d5b4b/fast] Error 2
+make[1]: *** [cmTC_2e777] Error 1
+make: *** [cmTC_2e777/fast] Error 2
 
 
 Determining if the atomic_cas_32 exist failed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_8abaa/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_8abaa.dir/build.make CMakeFiles/cmTC_8abaa.dir/build
-Building C object CMakeFiles/cmTC_8abaa.dir/CheckSymbolExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_8abaa.dir/CheckSymbolExists.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Run Build Command:"/usr/bin/make" "cmTC_0c674/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_0c674.dir/build.make CMakeFiles/cmTC_0c674.dir/build
+Building C object CMakeFiles/cmTC_0c674.dir/CheckSymbolExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_0c674.dir/CheckSymbolExists.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
 /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:2:10: fatal error: 'atomic.h' file not found
 #include <atomic.h>
          ^~~~~~~~~~
 1 error generated.
-make[1]: *** [CMakeFiles/cmTC_8abaa.dir/CheckSymbolExists.c.o] Error 1
-make: *** [cmTC_8abaa/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_0c674.dir/CheckSymbolExists.c.o] Error 1
+make: *** [cmTC_0c674/fast] Error 2
 
 File /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */

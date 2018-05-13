@@ -15,30 +15,30 @@ The C compiler identification is AppleClang, found in "/Users/atman/code/pylon/n
 Determining if the C compiler works passed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_07b64/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_07b64.dir/build.make CMakeFiles/cmTC_07b64.dir/build
-Building C object CMakeFiles/cmTC_07b64.dir/testCCompiler.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_07b64.dir/testCCompiler.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_07b64
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_07b64.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_07b64.dir/testCCompiler.c.o  -o cmTC_07b64 
+Run Build Command:"/usr/bin/make" "cmTC_ad64b/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ad64b.dir/build.make CMakeFiles/cmTC_ad64b.dir/build
+Building C object CMakeFiles/cmTC_ad64b.dir/testCCompiler.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_ad64b.dir/testCCompiler.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_ad64b
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ad64b.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_ad64b.dir/testCCompiler.c.o  -o cmTC_ad64b 
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_13bbf/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_13bbf.dir/build.make CMakeFiles/cmTC_13bbf.dir/build
-Building C object CMakeFiles/cmTC_13bbf.dir/CMakeCCompilerABI.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_13bbf.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_13bbf
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_13bbf.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_13bbf.dir/CMakeCCompilerABI.c.o  -o cmTC_13bbf 
+Run Build Command:"/usr/bin/make" "cmTC_ede57/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ede57.dir/build.make CMakeFiles/cmTC_ede57.dir/build
+Building C object CMakeFiles/cmTC_ede57.dir/CMakeCCompilerABI.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_ede57.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_ede57
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ede57.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_ede57.dir/CMakeCCompilerABI.c.o  -o cmTC_ede57 
 Apple LLVM version 9.1.0 (clang-902.0.39.1)
 Target: x86_64-apple-darwin17.5.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.13.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -o cmTC_13bbf -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_13bbf.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.13.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -o cmTC_ede57 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_ede57.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a
 @(#)PROGRAM:ld  PROJECT:ld64-351.8
 configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
 Library search paths:
@@ -51,18 +51,18 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_13bbf/fast"]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_13bbf.dir/build.make CMakeFiles/cmTC_13bbf.dir/build]
-  ignore line: [Building C object CMakeFiles/cmTC_13bbf.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_13bbf.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_13bbf]
-  ignore line: [/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_13bbf.dir/link.txt --verbose=1]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_13bbf.dir/CMakeCCompilerABI.c.o  -o cmTC_13bbf ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_ede57/fast"]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ede57.dir/build.make CMakeFiles/cmTC_ede57.dir/build]
+  ignore line: [Building C object CMakeFiles/cmTC_ede57.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_ede57.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_ede57]
+  ignore line: [/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ede57.dir/link.txt --verbose=1]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_ede57.dir/CMakeCCompilerABI.c.o  -o cmTC_ede57 ]
   ignore line: [Apple LLVM version 9.1.0 (clang-902.0.39.1)]
   ignore line: [Target: x86_64-apple-darwin17.5.0]
   ignore line: [Thread model: posix]
   ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.13.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -o cmTC_13bbf -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_13bbf.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
+  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.13.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -o cmTC_ede57 -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_ede57.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
     arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
     arg [-demangle] ==> ignore
     arg [-lto_library] ==> ignore, skip following value
@@ -75,11 +75,11 @@ Parsed C implicit link information from above output:
     arg [-syslibroot] ==> ignore
     arg [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_13bbf] ==> ignore
+    arg [cmTC_ede57] ==> ignore
     arg [-search_paths_first] ==> ignore
     arg [-headerpad_max_install_names] ==> ignore
     arg [-v] ==> ignore
-    arg [CMakeFiles/cmTC_13bbf.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_ede57.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lSystem] ==> lib [System]
     arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/lib/darwin/libclang_rt.osx.a]
   Library search paths: [;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib]
@@ -98,13 +98,13 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2133d/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2133d.dir/build.make CMakeFiles/cmTC_2133d.dir/build
-Building C object CMakeFiles/cmTC_2133d.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c11 -o CMakeFiles/cmTC_2133d.dir/feature_tests.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_2133d
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2133d.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_2133d.dir/feature_tests.c.o  -o cmTC_2133d 
+Run Build Command:"/usr/bin/make" "cmTC_7fd5e/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_7fd5e.dir/build.make CMakeFiles/cmTC_7fd5e.dir/build
+Building C object CMakeFiles/cmTC_7fd5e.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c11 -o CMakeFiles/cmTC_7fd5e.dir/feature_tests.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_7fd5e
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7fd5e.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_7fd5e.dir/feature_tests.c.o  -o cmTC_7fd5e 
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -116,13 +116,13 @@ Linking C executable cmTC_2133d
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b4e4c/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_b4e4c.dir/build.make CMakeFiles/cmTC_b4e4c.dir/build
-Building C object CMakeFiles/cmTC_b4e4c.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c99 -o CMakeFiles/cmTC_b4e4c.dir/feature_tests.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_b4e4c
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b4e4c.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_b4e4c.dir/feature_tests.c.o  -o cmTC_b4e4c 
+Run Build Command:"/usr/bin/make" "cmTC_a71b6/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_a71b6.dir/build.make CMakeFiles/cmTC_a71b6.dir/build
+Building C object CMakeFiles/cmTC_a71b6.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c99 -o CMakeFiles/cmTC_a71b6.dir/feature_tests.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_a71b6
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a71b6.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_a71b6.dir/feature_tests.c.o  -o cmTC_a71b6 
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -134,13 +134,13 @@ Linking C executable cmTC_b4e4c
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_19da2/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_19da2.dir/build.make CMakeFiles/cmTC_19da2.dir/build
-Building C object CMakeFiles/cmTC_19da2.dir/feature_tests.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c90 -o CMakeFiles/cmTC_19da2.dir/feature_tests.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_19da2
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_19da2.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_19da2.dir/feature_tests.c.o  -o cmTC_19da2 
+Run Build Command:"/usr/bin/make" "cmTC_7db29/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_7db29.dir/build.make CMakeFiles/cmTC_7db29.dir/build
+Building C object CMakeFiles/cmTC_7db29.dir/feature_tests.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -std=c90 -o CMakeFiles/cmTC_7db29.dir/feature_tests.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_7db29
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7db29.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_7db29.dir/feature_tests.c.o  -o cmTC_7db29 
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -150,25 +150,25 @@ Linking C executable cmTC_19da2
 Determining if the include file pthread.h exists passed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_7d4e6/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_7d4e6.dir/build.make CMakeFiles/cmTC_7d4e6.dir/build
-Building C object CMakeFiles/cmTC_7d4e6.dir/CheckIncludeFile.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_7d4e6.dir/CheckIncludeFile.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_7d4e6
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7d4e6.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_7d4e6.dir/CheckIncludeFile.c.o  -o cmTC_7d4e6 
+Run Build Command:"/usr/bin/make" "cmTC_9ec0f/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_9ec0f.dir/build.make CMakeFiles/cmTC_9ec0f.dir/build
+Building C object CMakeFiles/cmTC_9ec0f.dir/CheckIncludeFile.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_9ec0f.dir/CheckIncludeFile.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_9ec0f
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9ec0f.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_9ec0f.dir/CheckIncludeFile.c.o  -o cmTC_9ec0f 
 
 
 Determining if the pthread_create exist passed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_fe4fd/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_fe4fd.dir/build.make CMakeFiles/cmTC_fe4fd.dir/build
-Building C object CMakeFiles/cmTC_fe4fd.dir/CheckSymbolExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_fe4fd.dir/CheckSymbolExists.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_fe4fd
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fe4fd.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_fe4fd.dir/CheckSymbolExists.c.o  -o cmTC_fe4fd 
+Run Build Command:"/usr/bin/make" "cmTC_92135/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_92135.dir/build.make CMakeFiles/cmTC_92135.dir/build
+Building C object CMakeFiles/cmTC_92135.dir/CheckSymbolExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_92135.dir/CheckSymbolExists.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_92135
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92135.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_92135.dir/CheckSymbolExists.c.o  -o cmTC_92135 
 
 File /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -188,73 +188,73 @@ int main(int argc, char** argv)
 Determining if the function socketpair exists passed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_32abd/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_32abd.dir/build.make CMakeFiles/cmTC_32abd.dir/build
-Building C object CMakeFiles/cmTC_32abd.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=socketpair -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_32abd.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_32abd
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32abd.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=socketpair -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_32abd.dir/CheckFunctionExists.c.o  -o cmTC_32abd 
+Run Build Command:"/usr/bin/make" "cmTC_8a8a7/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_8a8a7.dir/build.make CMakeFiles/cmTC_8a8a7.dir/build
+Building C object CMakeFiles/cmTC_8a8a7.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=socketpair -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_8a8a7.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8a8a7
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a8a7.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=socketpair -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_8a8a7.dir/CheckFunctionExists.c.o  -o cmTC_8a8a7 
 
 
 Determining if the function pipe exists passed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_49c08/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_49c08.dir/build.make CMakeFiles/cmTC_49c08.dir/build
-Building C object CMakeFiles/cmTC_49c08.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pipe -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_49c08.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_49c08
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49c08.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pipe -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_49c08.dir/CheckFunctionExists.c.o  -o cmTC_49c08 
+Run Build Command:"/usr/bin/make" "cmTC_8931a/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_8931a.dir/build.make CMakeFiles/cmTC_8931a.dir/build
+Building C object CMakeFiles/cmTC_8931a.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pipe -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_8931a.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_8931a
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8931a.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pipe -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_8931a.dir/CheckFunctionExists.c.o  -o cmTC_8931a 
 
 
 Determining if the function kqueue exists passed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_5062c/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_5062c.dir/build.make CMakeFiles/cmTC_5062c.dir/build
-Building C object CMakeFiles/cmTC_5062c.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=kqueue -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_5062c.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_5062c
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5062c.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=kqueue -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_5062c.dir/CheckFunctionExists.c.o  -o cmTC_5062c 
+Run Build Command:"/usr/bin/make" "cmTC_f25f4/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f25f4.dir/build.make CMakeFiles/cmTC_f25f4.dir/build
+Building C object CMakeFiles/cmTC_f25f4.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=kqueue -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_f25f4.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_f25f4
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f25f4.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=kqueue -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_f25f4.dir/CheckFunctionExists.c.o  -o cmTC_f25f4 
 
 
 Determining if the function poll exists passed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c8892/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_c8892.dir/build.make CMakeFiles/cmTC_c8892.dir/build
-Building C object CMakeFiles/cmTC_c8892.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=poll -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_c8892.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_c8892
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8892.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=poll -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_c8892.dir/CheckFunctionExists.c.o  -o cmTC_c8892 
+Run Build Command:"/usr/bin/make" "cmTC_2a633/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2a633.dir/build.make CMakeFiles/cmTC_2a633.dir/build
+Building C object CMakeFiles/cmTC_2a633.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=poll -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_2a633.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_2a633
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2a633.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=poll -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_2a633.dir/CheckFunctionExists.c.o  -o cmTC_2a633 
 
 
 Determining if the function sem_wait exists in the pthread passed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ec525/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ec525.dir/build.make CMakeFiles/cmTC_ec525.dir/build
-Building C object CMakeFiles/cmTC_ec525.dir/CheckFunctionExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sem_wait -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_ec525.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
-Linking C executable cmTC_ec525
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec525.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sem_wait -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_ec525.dir/CheckFunctionExists.c.o  -o cmTC_ec525 -lpthread 
+Run Build Command:"/usr/bin/make" "cmTC_de0c1/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_de0c1.dir/build.make CMakeFiles/cmTC_de0c1.dir/build
+Building C object CMakeFiles/cmTC_de0c1.dir/CheckFunctionExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sem_wait -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_de0c1.dir/CheckFunctionExists.c.o   -c /usr/local/Cellar/cmake/3.10.3/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTC_de0c1
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_de0c1.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sem_wait -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_de0c1.dir/CheckFunctionExists.c.o  -o cmTC_de0c1 -lpthread 
 
 
 Determining if the CLOCK_MONOTONIC exist passed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_df855/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_df855.dir/build.make CMakeFiles/cmTC_df855.dir/build
-Building C object CMakeFiles/cmTC_df855.dir/CheckSymbolExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_df855.dir/CheckSymbolExists.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_df855
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_df855.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_df855.dir/CheckSymbolExists.c.o  -o cmTC_df855 
+Run Build Command:"/usr/bin/make" "cmTC_8e02c/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_8e02c.dir/build.make CMakeFiles/cmTC_8e02c.dir/build
+Building C object CMakeFiles/cmTC_8e02c.dir/CheckSymbolExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_8e02c.dir/CheckSymbolExists.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_8e02c
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8e02c.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_8e02c.dir/CheckSymbolExists.c.o  -o cmTC_8e02c 
 
 File /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -274,13 +274,13 @@ int main(int argc, char** argv)
 Determining if the AF_UNIX exist passed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_f455b/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f455b.dir/build.make CMakeFiles/cmTC_f455b.dir/build
-Building C object CMakeFiles/cmTC_f455b.dir/CheckSymbolExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_f455b.dir/CheckSymbolExists.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_f455b
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f455b.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_f455b.dir/CheckSymbolExists.c.o  -o cmTC_f455b 
+Run Build Command:"/usr/bin/make" "cmTC_091be/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_091be.dir/build.make CMakeFiles/cmTC_091be.dir/build
+Building C object CMakeFiles/cmTC_091be.dir/CheckSymbolExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_091be.dir/CheckSymbolExists.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_091be
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_091be.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_091be.dir/CheckSymbolExists.c.o  -o cmTC_091be 
 
 File /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -300,13 +300,13 @@ int main(int argc, char** argv)
 Determining if the backtrace_symbols_fd exist passed with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_33bee/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_33bee.dir/build.make CMakeFiles/cmTC_33bee.dir/build
-Building C object CMakeFiles/cmTC_33bee.dir/CheckSymbolExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_33bee.dir/CheckSymbolExists.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_33bee
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_33bee.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_33bee.dir/CheckSymbolExists.c.o  -o cmTC_33bee 
+Run Build Command:"/usr/bin/make" "cmTC_0cd64/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_0cd64.dir/build.make CMakeFiles/cmTC_0cd64.dir/build
+Building C object CMakeFiles/cmTC_0cd64.dir/CheckSymbolExists.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_0cd64.dir/CheckSymbolExists.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_0cd64
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0cd64.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_0cd64.dir/CheckSymbolExists.c.o  -o cmTC_0cd64 
 
 File /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -326,13 +326,13 @@ int main(int argc, char** argv)
 Performing C SOURCE FILE Test NN_HAVE_MSG_CONTROL succeeded with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_24758/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_24758.dir/build.make CMakeFiles/cmTC_24758.dir/build
-Building C object CMakeFiles/cmTC_24758.dir/src.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DNN_HAVE_MSG_CONTROL -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_24758.dir/src.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_24758
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_24758.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DNN_HAVE_MSG_CONTROL -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_24758.dir/src.c.o  -o cmTC_24758 
+Run Build Command:"/usr/bin/make" "cmTC_b8656/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_b8656.dir/build.make CMakeFiles/cmTC_b8656.dir/build
+Building C object CMakeFiles/cmTC_b8656.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DNN_HAVE_MSG_CONTROL -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_b8656.dir/src.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_b8656
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b8656.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DNN_HAVE_MSG_CONTROL -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_b8656.dir/src.c.o  -o cmTC_b8656 
 
 Source file was:
 
@@ -347,13 +347,13 @@ int main()
 Performing C SOURCE FILE Test NN_HAVE_GCC_ATOMIC_BUILTINS succeeded with the following output:
 Change Dir: /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e8ca8/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_e8ca8.dir/build.make CMakeFiles/cmTC_e8ca8.dir/build
-Building C object CMakeFiles/cmTC_e8ca8.dir/src.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DNN_HAVE_GCC_ATOMIC_BUILTINS -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_e8ca8.dir/src.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_e8ca8
-/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e8ca8.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DNN_HAVE_GCC_ATOMIC_BUILTINS -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_e8ca8.dir/src.c.o  -o cmTC_e8ca8 
+Run Build Command:"/usr/bin/make" "cmTC_7235a/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_7235a.dir/build.make CMakeFiles/cmTC_7235a.dir/build
+Building C object CMakeFiles/cmTC_7235a.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -DNN_HAVE_GCC_ATOMIC_BUILTINS -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -o CMakeFiles/cmTC_7235a.dir/src.c.o   -c /Users/atman/code/pylon/nano/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_7235a
+/usr/local/Cellar/cmake/3.10.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7235a.dir/link.txt --verbose=1
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -DNN_HAVE_GCC_ATOMIC_BUILTINS -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_7235a.dir/src.c.o  -o cmTC_7235a 
 
 Source file was:
 

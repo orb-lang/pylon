@@ -39,8 +39,8 @@ BUILD_MODULE=OFF make
 # Move our artifacts over to pylon/lib
 
 cd build
-cp libuv.a ../../lib/
-cp libluv.a ../../lib/
+cp libuv.a ../../build/
+cp libluv.a ../../build/
 
 cd ../..
 
@@ -58,7 +58,7 @@ cp src/lualib.h ../../../lib/
 cp src/luajit.h ../../../lib/
 cp src/luaconf.h ../../../lib/
 cp src/lauxlib.h ../../../lib/
-cp src/libluajit.a ../../../lib/
+cp src/libluajit.a ../../../build/
 cd ../../..
 
 # Next we make sqlite, which has the amalgamated build as the short path:
@@ -67,23 +67,23 @@ cd sqlite
 ./configure
 make
 cp sqlite3.h ../lib/
-cp sqlite3.o ../lib/
+cp sqlite3.o ../build/
 cd ..
 
 # "nano" is going to jump from nanomsg to nng when the latter is fully baked.
 #
 # This require cmake.
 
-cd nano/build
-cmake -DCMAKE_INSTALL_PREFIX=../../lib/ -DNN_STATIC_LIB=ON ..
-make install
-cd ../..
+#cd nano/build
+#cmake -DCMAKE_INSTALL_PREFIX=../../lib/ -DNN_STATIC_LIB=ON ..
+#make install
+#cd ../..
 
 # Annnnd lpeg
 
 cd lpeg-1.0.1
 make macosx
-cp liblpeg.a ../lib/
+cp liblpeg.a ../build/
 cd ..
 
 # Toss in lfs
