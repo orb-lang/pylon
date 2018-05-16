@@ -11,6 +11,7 @@ set(CMAKE_ASM_COMPILER_ID "Clang")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_ASM
+  "BUILDING_UV_SHARED"
   "LUAJIT_CPU_SSE2"
   "LUAJIT_ENABLE_LUA52COMPAT"
   "_FILE_OFFSET_BITS=64"
@@ -94,6 +95,7 @@ set(CMAKE_C_COMPILER_ID "Clang")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C
+  "BUILDING_UV_SHARED"
   "LUAJIT_CPU_SSE2"
   "LUAJIT_ENABLE_LUA52COMPAT"
   "_FILE_OFFSET_BITS=64"

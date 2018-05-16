@@ -18,7 +18,7 @@
 APPLICATION_SERVICES_LIBRARY:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/ApplicationServices.framework
 
 //Build as module
-BUILD_MODULE:BOOL=OFF
+BUILD_MODULE:BOOL=ON
 
 //Build shared library
 BUILD_SHARED_LIBS:BOOL=OFF

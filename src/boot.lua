@@ -1,5 +1,13 @@
 --sql = require "src/sqlite"
 
+_BRIDGE = true
+
+-- For now let's stay clear of LUA_PATH and friends.
+
+package.path = "./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;"
+               .. "./lib/?.lua;./lib/?/?.lua;"
+               .. "./lib/?/src/?.lua;./lib/?/src/?/?.lua"
+
 ffi = require "ffi"
 
 --  LuaJIT can't read header files, so we need to paste in

@@ -30,8 +30,10 @@ struct femto_struct {
     int (*getWindowSize)(int *rows,int *cols);
     int (*getCursorPosition)(int *rows,int *cols);
     int (*fmReadKey)(void);
-    void (*enableRawMode)(void);
+    void (*raw)(void);
     void (*disableRawMode)(void);
+    void (*enableRawMode)(void);
+    void (*cooked)(void);
     void (*die)(const char *s);
     char *(*fmPrompt)(char *prompt,void(*callback)(char *,int));
     void (*fmRefreshScreen)(void);

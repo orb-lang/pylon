@@ -25,9 +25,6 @@ LUALIB_API int luaopen_lpeg (lua_State *L);
 #include "boot_string.h"
 
 // Print an error.
-//
-// Passes errno through to keep invocation to
-// one line.
 static int lua_die(lua_State *L, int errno) {
     fprintf(stderr, "%d: %s\n", errno, lua_tostring(L, -1));
     return errno;
@@ -53,9 +50,9 @@ int main(int argc, char *argv[]) {
     if (argc > 1) {
         lua_newtable(L); // args
         for (int i = 1; i < argc; i++) {
-            lua_pushnumber(L, i);
+            lua_pushnumber(L, i - 1);
             lua_pushstring(L, argv[i]);
-            lua_settable(L, 1);  // args[i] = argv[i]
+            lua_settable(L, 1);  // args[i - 1] = argv[i]
         }
         lua_setglobal(L, "arg");
     }
@@ -87,10 +84,18 @@ int main(int argc, char *argv[]) {
     lua_pushnil(L);
     lua_setglobal(L, "__mkfemto");
     printf("femto\n");
-    status = luaL_loadfile(L, "src/femto.lua");
-    ret = lua_pcall(L, 0, 0, 0);
-    if (ret != 0) {
-        return lua_die(L, ret);
+    if (argc > 1) {
+        // load.lua is interned here
+        // This one can probably be bytecode
+
+        status = luaL_loadstring(L, "require (arg[0])");
+        if (status != 0) {
+            return lua_die(L, status);
+        }
+        ret = lua_pcall(L, 0, 0, 0);
+        if (ret != 0) {
+            return lua_die(L, ret);
+        }
     }
 
     lua_close(L); // Close Lua

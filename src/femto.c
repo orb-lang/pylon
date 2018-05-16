@@ -1,3 +1,4 @@
+
 /*** includes ***/
 
 #define _DEFAULT_SOURCE
@@ -34,12 +35,15 @@ void die(const char *s) {
   exit(1);
 }
 
-void disableRawMode() {
+void cooked() {
   if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &F.orig_termios) == -1)
     die("tcsetattr");
 }
 
-void enableRawMode() {
+void enableRawMode() {}
+void disableRawMode() {}
+
+void raw() {
   if (tcgetattr(STDIN_FILENO, &F.orig_termios) == -1) die("tcgetattr");
   atexit(disableRawMode);
 

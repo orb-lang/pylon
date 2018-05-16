@@ -5,13 +5,13 @@
 # compile C with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
 ASM_FLAGS =   -D=_DARWIN_USE_64_BIT_INODE
 
-ASM_DEFINES = -DLUAJIT_CPU_SSE2 -DLUAJIT_ENABLE_LUA52COMPAT -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Dluajit_EXPORTS
+ASM_DEFINES = -DBUILDING_UV_SHARED -DLUAJIT_CPU_SSE2 -DLUAJIT_ENABLE_LUA52COMPAT -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Dluajit_EXPORTS
 
 ASM_INCLUDES = -I/Users/atman/code/pylon/luv/deps/libuv/src -I/Users/atman/code/pylon/luv/deps/libuv/include -I/Users/atman/code/pylon/luv/deps/libuv/src/unix -I/Users/atman/code/pylon/luv/deps/luajit/dynasm -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build -I/Users/atman/code/pylon/luv/deps/lua-compat-5.3 
 
 C_FLAGS =  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk   -D=_DARWIN_USE_64_BIT_INODE
 
-C_DEFINES = -DLUAJIT_CPU_SSE2 -DLUAJIT_ENABLE_LUA52COMPAT -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Dluajit_EXPORTS
+C_DEFINES = -DBUILDING_UV_SHARED -DLUAJIT_CPU_SSE2 -DLUAJIT_ENABLE_LUA52COMPAT -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Dluajit_EXPORTS
 
 C_INCLUDES = -I/Users/atman/code/pylon/luv/deps/libuv/src -I/Users/atman/code/pylon/luv/deps/libuv/include -I/Users/atman/code/pylon/luv/deps/libuv/src/unix -I/Users/atman/code/pylon/luv/deps/luajit/dynasm -I/Users/atman/code/pylon/luv/deps/luajit/src -I/Users/atman/code/pylon/luv/build -I/Users/atman/code/pylon/luv/deps/lua-compat-5.3 
 

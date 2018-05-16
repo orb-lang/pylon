@@ -23,6 +23,14 @@ static uv_fs_event_t* luv_check_fs_event(lua_State* L, int index) {
   return handle;
 }
 
+static int luv_fs_event_stop(lua_State* L) {
+  uv_fs_event_t* handle = luv_check_fs_event(L, 1);
+  int ret = uv_fs_event_stop(handle);
+  if (ret < 0) return luv_error(L, ret);
+  lua_pushinteger(L, ret);
+  return 1;
+}
+
 static int luv_new_fs_event(lua_State* L) {
   uv_fs_event_t* handle = (uv_fs_event_t*)luv_newuserdata(L, sizeof(*handle));
   int ret = uv_fs_event_init(luv_loop(L), handle);
@@ -78,13 +86,7 @@ static int luv_fs_event_start(lua_State* L) {
   return 1;
 }
 
-static int luv_fs_event_stop(lua_State* L) {
-  uv_fs_event_t* handle = luv_check_fs_event(L, 1);
-  int ret = uv_fs_event_stop(handle);
-  if (ret < 0) return luv_error(L, ret);
-  lua_pushinteger(L, ret);
-  return 1;
-}
+
 
 static int luv_fs_event_getpath(lua_State* L) {
   uv_fs_event_t* handle = luv_check_fs_event(L, 1);
