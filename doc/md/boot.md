@@ -1,7 +1,7 @@
+# boot
 
 
-
-
+```lua
 --sql = require "src/sqlite"
 
 _BRIDGE = true
@@ -13,33 +13,33 @@ package.path = "./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;"
                .. "./lib/?/src/?.lua;./lib/?/src/?/?.lua"
 
 ffi = require "ffi"
+```
 
+Change this to uint32_t if you're on a system that expires
+in a couple decades.
 
-
-
-
-
-
-
-
+```lua
 ffi.cdef[[
    typedef uint64_t time_t;
 ]]
+```
+
+The termios struct might well be different for your OS.
 
 
+To figure out approximately where your system keeps its headers,
+run gcc --version.  This path will be overly specific, get off
+the train at include.
 
 
+Please submit a patch for your OS! Our build process will
+introduce the necessary metadata eventually.
 
 
+After some rummaging around, I found this for Darwin.
+The magic number 20 is #defined under NCCS in termios.h.
 
-
-
-
-
-
-
-
-
+```lua
 ffi.cdef [[
    typedef unsigned long   tcflag_t;
    typedef unsigned char   cc_t;
@@ -101,3 +101,4 @@ femto = ""
 function __mkfemto(fm_struct_pt)
    femto = ffi.cast("struct femto_struct *", fm_struct_pt)
 end
+```

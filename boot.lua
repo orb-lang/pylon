@@ -1,44 +1,28 @@
-
-
-
-
 --sql = require "src/sqlite"
-
-_BRIDGE = true
-
--- For now let's stay clear of LUA_PATH and friends.
-
-package.path = "./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;"
-               .. "./lib/?.lua;./lib/?/?.lua;"
-               .. "./lib/?/src/?.lua;./lib/?/src/?/?.lua"
 
 ffi = require "ffi"
 
-
-
-
-
-
-
-
+--  LuaJIT can't read header files, so we need to paste in
+--  a few snippets.
+--
+--  Change this to uint32_t if you're on a system that expires
+--  in a couple decades.
 
 ffi.cdef[[
    typedef uint64_t time_t;
 ]]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+--  The termios struct might well be different for your OS.
+--
+--  To figure out approximately where your system keeps its headers,
+--  run `gcc --version`.  This path will be overly specific, get off
+--  the train at `include`.
+--
+--  Please submit a patch for your OS! Our build process will
+--  introduce the necessary metadata eventually.
+--
+--  After some rummaging around, I found this for Darwin.
+--  The magic number 20 is #defined under NCCS in termios.h.
 
 ffi.cdef [[
    typedef unsigned long   tcflag_t;
@@ -93,7 +77,7 @@ ffi.cdef [[
 --  Including our all-important collection of function pointers:
 
 ffi.cdef [[
---INTERPOLATE<build/femto_struct.h>--
+--INTERPOLATE<femto_struct.h>--
 ]]
 
 femto = ""

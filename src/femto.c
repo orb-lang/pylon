@@ -40,6 +40,7 @@ void cooked() {
     die("tcsetattr");
 }
 
+// todo remove almost everything in this file
 void enableRawMode() {}
 void disableRawMode() {}
 

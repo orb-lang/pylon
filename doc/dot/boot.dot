@@ -1,0 +1,257 @@
+digraph lpegNode {
+
+node [fontname=Helvetica]
+edge [style=dashed]
+
+doc_0 [label="doc - 104"]
+
+
+doc_0 -> { section_1}
+{rank=same; section_1}
+
+section_1 [label="section: 1-104"]
+
+
+// END RANK doc_0
+
+section_1 -> { header_2 prose_3 codeblock_4 prose_5 codeblock_6 prose_7 prose_8 prose_9 prose_10 codeblock_11}
+{rank=same; header_2 prose_3 codeblock_4 prose_5 codeblock_6 prose_7 prose_8 prose_9 prose_10 codeblock_11}
+
+header_2 [label="1 : boot"]
+
+prose_3 [label="prose"]
+
+codeblock_4 [label="code block 4-16"]
+
+prose_5 [label="prose"]
+
+codeblock_6 [label="code block 24-28"]
+
+prose_7 [label="prose"]
+
+prose_8 [label="prose"]
+
+prose_9 [label="prose"]
+
+prose_10 [label="prose"]
+
+codeblock_11 [label="code block 42-104"]
+
+
+// END RANK section_1
+
+header_2 -> leaf_12
+leaf_12  [color=Gray,shape=rectangle,fontname=Inconsolata,label="* boot"]
+// END RANK header_2
+
+prose_3 -> { raw_13}
+{rank=same; raw_13}
+
+raw_13 [label="raw"]
+
+
+// END RANK prose_3
+
+raw_13 -> leaf_14
+leaf_14  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+"]
+// END RANK raw_13
+
+codeblock_4 -> leaf_15
+leaf_15  [color=Gray,shape=rectangle,fontname=Inconsolata,label="--sql = require \"src/sqlite\"
+
+_BRIDGE = true
+
+-- For now let's stay clear of LUA_PATH and friends.
+
+package.path = \"./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;\"
+               .. \"./lib/?.lua;./lib/?/?.lua;\"
+               .. \"./lib/?/src/?.lua;./lib/?/src/?/?.lua\"
+
+ffi = require \"ffi\""]
+// END RANK codeblock_4
+
+prose_5 -> { raw_16}
+{rank=same; raw_16}
+
+raw_16 [label="raw"]
+
+
+// END RANK prose_5
+
+raw_16 -> leaf_17
+leaf_17  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Change this to uint32_t if you're on a system that expires
+in a couple decades.
+"]
+// END RANK raw_16
+
+codeblock_6 -> leaf_18
+leaf_18  [color=Gray,shape=rectangle,fontname=Inconsolata,label="ffi.cdef[[
+   typedef uint64_t time_t;
+]]"]
+// END RANK codeblock_6
+
+prose_7 -> { raw_19}
+{rank=same; raw_19}
+
+raw_19 [label="raw"]
+
+
+// END RANK prose_7
+
+raw_19 -> leaf_20
+leaf_20  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+The termios struct might well be different for your OS.
+"]
+// END RANK raw_19
+
+prose_8 -> { raw_21 prespace_22 interpolated_23 raw_24 prespace_25 interpolated_26 raw_27}
+{rank=same; raw_21 prespace_22 interpolated_23 raw_24 prespace_25 interpolated_26 raw_27}
+
+raw_21 [label="raw"]
+
+prespace_22 [label="prespace"]
+
+interpolated_23 [label="interpolated"]
+
+raw_24 [label="raw"]
+
+prespace_25 [label="prespace"]
+
+interpolated_26 [label="interpolated"]
+
+raw_27 [label="raw"]
+
+
+// END RANK prose_8
+
+raw_21 -> leaf_28
+leaf_28  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+To figure out approximately where your system keeps its headers,
+run"]
+// END RANK raw_21
+
+prespace_22 -> leaf_29
+leaf_29  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_22
+
+interpolated_23 -> leaf_30
+leaf_30  [color=Gray,shape=rectangle,fontname=Inconsolata,label="gcc --version"]
+// END RANK interpolated_23
+
+raw_24 -> leaf_31
+leaf_31  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".  This path will be overly specific, get off
+the train at"]
+// END RANK raw_24
+
+prespace_25 -> leaf_32
+leaf_32  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_25
+
+interpolated_26 -> leaf_33
+leaf_33  [color=Gray,shape=rectangle,fontname=Inconsolata,label="include"]
+// END RANK interpolated_26
+
+raw_27 -> leaf_34
+leaf_34  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".
+"]
+// END RANK raw_27
+
+prose_9 -> { raw_35}
+{rank=same; raw_35}
+
+raw_35 [label="raw"]
+
+
+// END RANK prose_9
+
+raw_35 -> leaf_36
+leaf_36  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Please submit a patch for your OS! Our build process will
+introduce the necessary metadata eventually.
+"]
+// END RANK raw_35
+
+prose_10 -> { raw_37}
+{rank=same; raw_37}
+
+raw_37 [label="raw"]
+
+
+// END RANK prose_10
+
+raw_37 -> leaf_38
+leaf_38  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+After some rummaging around, I found this for Darwin.
+The magic number 20 is #defined under NCCS in termios.h.
+"]
+// END RANK raw_37
+
+codeblock_11 -> leaf_39
+leaf_39  [color=Gray,shape=rectangle,fontname=Inconsolata,label="ffi.cdef [[
+   typedef unsigned long   tcflag_t;
+   typedef unsigned char   cc_t;
+   typedef unsigned long   speed_t;
+
+   struct termios {
+      tcflag_t c_iflag; /* input flags */
+      tcflag_t c_oflag; /* output flags */
+      tcflag_t c_cflag; /* control flags */
+      tcflag_t c_lflag; /* local flags */
+      cc_t     c_cc[20]; /* control chars */
+      speed_t     c_ispeed;   /* input speed */
+      speed_t     c_ospeed;   /* output speed */
+   };
+]]
+
+--  The rest we straight up copy-paste from the header:
+
+ffi.cdef [[
+   typedef struct frow {
+     int size;
+     int rsize;
+     char *chars;
+     char *render;
+     unsigned char *hl;
+   } frow;
+
+   struct fmConfig {
+     int cx, cy;
+     int rx;
+     int rowoff;
+     int coloff;
+     int screenrows;
+     int screencols;
+     int numrows;
+     frow *row;
+     int dirty;
+     char *filename;
+     char statusmsg[80];
+     time_t statusmsg_time;
+     struct termios orig_termios;
+   };
+
+   struct fmConfig F;
+
+   struct abuf {
+     char *b;
+     int len;
+   };
+]]
+--  Including our all-important collection of function pointers:
+
+ffi.cdef [[
+--INTERPOLATE<build/femto_struct.h>--
+]]
+
+femto = \"\"
+
+function __mkfemto(fm_struct_pt)
+   femto = ffi.cast(\"struct femto_struct *\", fm_struct_pt)
+end"]
+// END RANK codeblock_11
+
+
+}
