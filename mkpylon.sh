@@ -49,7 +49,6 @@ cd ../..
 # want, so we make this separately:
 
 cd luv/deps/luajit
-git checkout v2.1
 make amalg
 
 # Copy headers and objects to own the libs
