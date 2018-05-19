@@ -3,7 +3,7 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 100"]
+doc_0 [label="doc - 111"]
 
 
 doc_0 -> { section_1}
@@ -25,7 +25,7 @@ prose_4 [label="prose"]
 
 prose_5 [label="prose"]
 
-section_6 [label="section: 12-100"]
+section_6 [label="section: 12-111"]
 
 
 // END RANK section_1
@@ -105,9 +105,9 @@ header_20 [label="2 : Stricture"]
 
 prose_21 [label="prose"]
 
-codeblock_22 [label="code block 16-95"]
+codeblock_22 [label="code block 16-106"]
 
-codeblock_23 [label="code block 98-100"]
+codeblock_23 [label="code block 109-111"]
 
 
 // END RANK section_6
@@ -145,7 +145,7 @@ end
 -- @tab[opt] mod table - if `nil` then we'll return a new table
 -- @tab[opt] predeclared - table of variables that are to be considered predeclared.
 -- @return the given table, or a new table
-function strict.module (name,mod,predeclared)
+local function stricture(name,mod,predeclared)
     local mt, old_newindex, old_index, old_index_type, global, closed
     if predeclared then
         global = predeclared.__global
@@ -208,8 +208,19 @@ function strict.module (name,mod,predeclared)
     return mod
 end
 
-strict.module(nil,_G,{_PROMPT=true,__global=true})
-"]
+-- So `strict.make_all_strict(_G)` prevents monkey-patching
+-- of any global table
+-- @tab T
+local function make_all_strict (T)
+    for k,v in pairs(T) do
+        if type(v) == 'table' and v ~= T then
+            stricture(k,v)
+        end
+    end
+end
+
+stricture(nil,_G,{_PROMPT=true,__global=true})
+-- make_all_strict(_G)"]
 // END RANK codeblock_22
 
 codeblock_23 -> leaf_28

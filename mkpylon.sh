@@ -1,4 +1,4 @@
-#!/usr/bin/sh
+   #!/usr/bin/sh
 
 # Copyright 2018 Sam Putman.
 
@@ -49,6 +49,7 @@ cd ../..
 # want, so we make this separately:
 
 cd luv/deps/luajit
+git checkout v2.1
 make amalg
 
 # Copy headers and objects to own the libs
@@ -90,5 +91,5 @@ cd ..
 
 cp luafilesystem/lfs-ffi.lua lib/lfs.lua
 
-make
+make install
 

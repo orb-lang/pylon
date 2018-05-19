@@ -1,9 +1,0 @@
-# Hashes of file build rules.
-a575557d3c72f02195c7ec9766b7ea4d buildvm_arch.h
-ae20ba87d09a25f34e699d3dff65bdc1 lj_bcdef.h
-d22e1df3df8b66fc11cb7d78a4f4d922 lj_ffdef.h
-6cb5ec564bc1c82c27044295bbca5c2e lj_folddef.h
-cbae70ee4af6762597120cf3f1584ef5 lj_libdef.h
-22a10f027ae93d6a372fddc7523ab48d lj_recdef.h
-4ccc44c3450329140c0b0d286734c72d lj_vm.S
-cd925c5969180577411b35d1bf19ae71 vmdef.lua

@@ -27,7 +27,7 @@ end
 -- @tab[opt] mod table - if `nil` then we'll return a new table
 -- @tab[opt] predeclared - table of variables that are to be considered predeclared.
 -- @return the given table, or a new table
-function strict.module (name,mod,predeclared)
+local function stricture(name,mod,predeclared)
     local mt, old_newindex, old_index, old_index_type, global, closed
     if predeclared then
         global = predeclared.__global
@@ -90,8 +90,19 @@ function strict.module (name,mod,predeclared)
     return mod
 end
 
-strict.module(nil,_G,{_PROMPT=true,__global=true})
+-- So `strict.make_all_strict(_G)` prevents monkey-patching
+-- of any global table
+-- @tab T
+local function make_all_strict (T)
+    for k,v in pairs(T) do
+        if type(v) == 'table' and v ~= T then
+            stricture(k,v)
+        end
+    end
+end
 
+stricture(nil,_G,{_PROMPT=true,__global=true})
+-- make_all_strict(_G)
 
 
 
