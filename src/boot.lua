@@ -2,6 +2,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 --sql = require "src/sqlite"
 
 _BRIDGE = true
@@ -13,6 +23,10 @@ package.path = "./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;"
                .. "./lib/?/src/?.lua;./lib/?/src/?/?.lua"
 
 ffi = require "ffi"
+
+
+
+
 
 
 

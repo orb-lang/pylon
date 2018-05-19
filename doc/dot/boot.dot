@@ -3,63 +3,263 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 104"]
+doc_0 [label="doc - 118"]
 
 
 doc_0 -> { section_1}
 {rank=same; section_1}
 
-section_1 [label="section: 1-104"]
+section_1 [label="section: 1-29"]
 
 
 // END RANK doc_0
 
-section_1 -> { header_2 prose_3 codeblock_4 prose_5 codeblock_6 prose_7 prose_8 prose_9 prose_10 codeblock_11}
-{rank=same; header_2 prose_3 codeblock_4 prose_5 codeblock_6 prose_7 prose_8 prose_9 prose_10 codeblock_11}
+section_1 -> { header_2 prose_3 prose_4 prose_5 codeblock_6 structure_7 section_8}
+{rank=same; header_2 prose_3 prose_4 prose_5 codeblock_6 structure_7 section_8}
 
 header_2 [label="1 : boot"]
 
 prose_3 [label="prose"]
 
-codeblock_4 [label="code block 4-16"]
+prose_4 [label="prose"]
 
 prose_5 [label="prose"]
 
-codeblock_6 [label="code block 24-28"]
+codeblock_6 [label="code block 14-26"]
 
-prose_7 [label="prose"]
+structure_7 [label="structure"]
 
-prose_8 [label="prose"]
-
-prose_9 [label="prose"]
-
-prose_10 [label="prose"]
-
-codeblock_11 [label="code block 42-104"]
+section_8 [label="section: 30-118"]
 
 
 // END RANK section_1
 
-header_2 -> leaf_12
-leaf_12  [color=Gray,shape=rectangle,fontname=Inconsolata,label="* boot"]
+header_2 -> leaf_9
+leaf_9  [color=Gray,shape=rectangle,fontname=Inconsolata,label="* boot"]
 // END RANK header_2
 
-prose_3 -> { raw_13}
-{rank=same; raw_13}
+prose_3 -> { raw_10 prespace_11 literal_12 raw_13 prespace_14 literal_15 raw_16}
+{rank=same; raw_10 prespace_11 literal_12 raw_13 prespace_14 literal_15 raw_16}
+
+raw_10 [label="raw"]
+
+prespace_11 [label="prespace"]
+
+literal_12 [label="literal"]
 
 raw_13 [label="raw"]
+
+prespace_14 [label="prespace"]
+
+literal_15 [label="literal"]
+
+raw_16 [label="raw"]
 
 
 // END RANK prose_3
 
-raw_13 -> leaf_14
-leaf_14  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_10 -> leaf_17
+leaf_17  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 
-"]
+
+We have both a"]
+// END RANK raw_10
+
+prespace_11 -> leaf_18
+leaf_18  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_11
+
+literal_12 -> leaf_19
+leaf_19  [color=Gray,shape=rectangle,fontname=Inconsolata,label="boot.lua"]
+// END RANK literal_12
+
+raw_13 -> leaf_20
+leaf_20  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" and a"]
 // END RANK raw_13
 
-codeblock_4 -> leaf_15
-leaf_15  [color=Gray,shape=rectangle,fontname=Inconsolata,label="--sql = require \"src/sqlite\"
+prespace_14 -> leaf_21
+leaf_21  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_14
+
+literal_15 -> leaf_22
+leaf_22  [color=Gray,shape=rectangle,fontname=Inconsolata,label="boot.c"]
+// END RANK literal_15
+
+raw_16 -> leaf_23
+leaf_23  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".
+"]
+// END RANK raw_16
+
+prose_4 -> { raw_24 prespace_25 literal_26 raw_27}
+{rank=same; raw_24 prespace_25 literal_26 raw_27}
+
+raw_24 [label="raw"]
+
+prespace_25 [label="prespace"]
+
+literal_26 [label="literal"]
+
+raw_27 [label="raw"]
+
+
+// END RANK prose_4
+
+raw_24 -> leaf_28
+leaf_28  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Happily,"]
+// END RANK raw_24
+
+prespace_25 -> leaf_29
+leaf_29  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_25
+
+literal_26 -> leaf_30
+leaf_30  [color=Gray,shape=rectangle,fontname=Inconsolata,label="orb"]
+// END RANK literal_26
+
+raw_27 -> leaf_31
+leaf_31  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" will not currently clobber the latter. Nor will it write to it,
+yet.
+"]
+// END RANK raw_27
+
+prose_5 -> { prespace_32 literal_33 raw_34 prespace_35 literal_36 raw_37 prespace_38 literal_39 raw_40 prespace_41 literal_42 raw_43 prespace_44 literal_45 raw_46 prespace_47 literal_48 raw_49 prespace_50 literal_51 raw_52}
+{rank=same; prespace_32 literal_33 raw_34 prespace_35 literal_36 raw_37 prespace_38 literal_39 raw_40 prespace_41 literal_42 raw_43 prespace_44 literal_45 raw_46 prespace_47 literal_48 raw_49 prespace_50 literal_51 raw_52}
+
+prespace_32 [label="prespace"]
+
+literal_33 [label="literal"]
+
+raw_34 [label="raw"]
+
+prespace_35 [label="prespace"]
+
+literal_36 [label="literal"]
+
+raw_37 [label="raw"]
+
+prespace_38 [label="prespace"]
+
+literal_39 [label="literal"]
+
+raw_40 [label="raw"]
+
+prespace_41 [label="prespace"]
+
+literal_42 [label="literal"]
+
+raw_43 [label="raw"]
+
+prespace_44 [label="prespace"]
+
+literal_45 [label="literal"]
+
+raw_46 [label="raw"]
+
+prespace_47 [label="prespace"]
+
+literal_48 [label="literal"]
+
+raw_49 [label="raw"]
+
+prespace_50 [label="prespace"]
+
+literal_51 [label="literal"]
+
+raw_52 [label="raw"]
+
+
+// END RANK prose_5
+
+prespace_32 -> leaf_53
+leaf_53  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_32
+
+literal_33 -> leaf_54
+leaf_54  [color=Gray,shape=rectangle,fontname=Inconsolata,label="orb"]
+// END RANK literal_33
+
+raw_34 -> leaf_55
+leaf_55  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" semantics dictate that a"]
+// END RANK raw_34
+
+prespace_35 -> leaf_56
+leaf_56  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_35
+
+literal_36 -> leaf_57
+leaf_57  [color=Gray,shape=rectangle,fontname=Inconsolata,label="boot.c.orb"]
+// END RANK literal_36
+
+raw_37 -> leaf_58
+leaf_58  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" file will be knit after a"]
+// END RANK raw_37
+
+prespace_38 -> leaf_59
+leaf_59  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_38
+
+literal_39 -> leaf_60
+leaf_60  [color=Gray,shape=rectangle,fontname=Inconsolata,label="boot.orb"]
+// END RANK literal_39
+
+raw_40 -> leaf_61
+leaf_61  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" file, overwriting any"]
+// END RANK raw_40
+
+prespace_41 -> leaf_62
+leaf_62  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_41
+
+literal_42 -> leaf_63
+leaf_63  [color=Gray,shape=rectangle,fontname=Inconsolata,label="boot.c"]
+// END RANK literal_42
+
+raw_43 -> leaf_64
+leaf_64  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" from"]
+// END RANK raw_43
+
+prespace_44 -> leaf_65
+leaf_65  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_44
+
+literal_45 -> leaf_66
+leaf_66  [color=Gray,shape=rectangle,fontname=Inconsolata,label="boot.orb"]
+// END RANK literal_45
+
+raw_46 -> leaf_67
+leaf_67  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" in the process. All
+of this may of course be configured, we will have a"]
+// END RANK raw_46
+
+prespace_47 -> leaf_68
+leaf_68  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_47
+
+literal_48 -> leaf_69
+leaf_69  [color=Gray,shape=rectangle,fontname=Inconsolata,label="boot.c.orb"]
+// END RANK literal_48
+
+raw_49 -> leaf_70
+leaf_70  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" and should
+have no need for an"]
+// END RANK raw_49
+
+prespace_50 -> leaf_71
+leaf_71  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_50
+
+literal_51 -> leaf_72
+leaf_72  [color=Gray,shape=rectangle,fontname=Inconsolata,label="#!c"]
+// END RANK literal_51
+
+raw_52 -> leaf_73
+leaf_73  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" block in this file.
+"]
+// END RANK raw_52
+
+codeblock_6 -> leaf_74
+leaf_74  [color=Gray,shape=rectangle,fontname=Inconsolata,label="--sql = require \"src/sqlite\"
 
 _BRIDGE = true
 
@@ -70,127 +270,191 @@ package.path = \"./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;\"
                .. \"./lib/?/src/?.lua;./lib/?/src/?/?.lua\"
 
 ffi = require \"ffi\""]
-// END RANK codeblock_4
+// END RANK codeblock_6
 
-prose_5 -> { raw_16}
-{rank=same; raw_16}
+structure_7 -> { hashline_75}
+{rank=same; hashline_75}
 
-raw_16 [label="raw"]
+hashline_75 [label="hashline"]
 
 
-// END RANK prose_5
+// END RANK structure_7
 
-raw_16 -> leaf_17
-leaf_17  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+hashline_75 -> { hashtag_76}
+{rank=same; hashtag_76}
+
+hashtag_76 [label="hashtag"]
+
+
+// END RANK hashline_75
+
+hashtag_76 -> leaf_77
+leaf_77  [color=Gray,shape=rectangle,fontname=Inconsolata,label="NB"]
+// END RANK hashtag_76
+
+section_8 -> { header_78 prose_79 prose_80 codeblock_81 prose_82 prose_83 prose_84 prose_85 codeblock_86}
+{rank=same; header_78 prose_79 prose_80 codeblock_81 prose_82 prose_83 prose_84 prose_85 codeblock_86}
+
+header_78 [label="3 : configs (system-dependent!)"]
+
+prose_79 [label="prose"]
+
+prose_80 [label="prose"]
+
+codeblock_81 [label="code block 38-42"]
+
+prose_82 [label="prose"]
+
+prose_83 [label="prose"]
+
+prose_84 [label="prose"]
+
+prose_85 [label="prose"]
+
+codeblock_86 [label="code block 56-118"]
+
+
+// END RANK section_8
+
+header_78 -> leaf_87
+leaf_87  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** configs (system-dependent!)"]
+// END RANK header_78
+
+prose_79 -> { raw_88}
+{rank=same; raw_88}
+
+raw_88 [label="raw"]
+
+
+// END RANK prose_79
+
+raw_88 -> leaf_89
+leaf_89  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+LuaJIT can't read header files, so we need to paste in
+a few snippets.
+"]
+// END RANK raw_88
+
+prose_80 -> { raw_90}
+{rank=same; raw_90}
+
+raw_90 [label="raw"]
+
+
+// END RANK prose_80
+
+raw_90 -> leaf_91
+leaf_91  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 Change this to uint32_t if you're on a system that expires
 in a couple decades.
 "]
-// END RANK raw_16
+// END RANK raw_90
 
-codeblock_6 -> leaf_18
-leaf_18  [color=Gray,shape=rectangle,fontname=Inconsolata,label="ffi.cdef[[
+codeblock_81 -> leaf_92
+leaf_92  [color=Gray,shape=rectangle,fontname=Inconsolata,label="ffi.cdef[[
    typedef uint64_t time_t;
 ]]"]
-// END RANK codeblock_6
+// END RANK codeblock_81
 
-prose_7 -> { raw_19}
-{rank=same; raw_19}
+prose_82 -> { raw_93}
+{rank=same; raw_93}
 
-raw_19 [label="raw"]
+raw_93 [label="raw"]
 
 
-// END RANK prose_7
+// END RANK prose_82
 
-raw_19 -> leaf_20
-leaf_20  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_93 -> leaf_94
+leaf_94  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 The termios struct might well be different for your OS.
 "]
-// END RANK raw_19
+// END RANK raw_93
 
-prose_8 -> { raw_21 prespace_22 interpolated_23 raw_24 prespace_25 interpolated_26 raw_27}
-{rank=same; raw_21 prespace_22 interpolated_23 raw_24 prespace_25 interpolated_26 raw_27}
+prose_83 -> { raw_95 prespace_96 literal_97 raw_98 prespace_99 literal_100 raw_101}
+{rank=same; raw_95 prespace_96 literal_97 raw_98 prespace_99 literal_100 raw_101}
 
-raw_21 [label="raw"]
+raw_95 [label="raw"]
 
-prespace_22 [label="prespace"]
+prespace_96 [label="prespace"]
 
-interpolated_23 [label="interpolated"]
+literal_97 [label="literal"]
 
-raw_24 [label="raw"]
+raw_98 [label="raw"]
 
-prespace_25 [label="prespace"]
+prespace_99 [label="prespace"]
 
-interpolated_26 [label="interpolated"]
+literal_100 [label="literal"]
 
-raw_27 [label="raw"]
+raw_101 [label="raw"]
 
 
-// END RANK prose_8
+// END RANK prose_83
 
-raw_21 -> leaf_28
-leaf_28  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_95 -> leaf_102
+leaf_102  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 To figure out approximately where your system keeps its headers,
 run"]
-// END RANK raw_21
+// END RANK raw_95
 
-prespace_22 -> leaf_29
-leaf_29  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
-// END RANK prespace_22
+prespace_96 -> leaf_103
+leaf_103  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_96
 
-interpolated_23 -> leaf_30
-leaf_30  [color=Gray,shape=rectangle,fontname=Inconsolata,label="gcc --version"]
-// END RANK interpolated_23
+literal_97 -> leaf_104
+leaf_104  [color=Gray,shape=rectangle,fontname=Inconsolata,label="gcc --version"]
+// END RANK literal_97
 
-raw_24 -> leaf_31
-leaf_31  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".  This path will be overly specific, get off
+raw_98 -> leaf_105
+leaf_105  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".  This path will be overly specific, get off
 the train at"]
-// END RANK raw_24
+// END RANK raw_98
 
-prespace_25 -> leaf_32
-leaf_32  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
-// END RANK prespace_25
+prespace_99 -> leaf_106
+leaf_106  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_99
 
-interpolated_26 -> leaf_33
-leaf_33  [color=Gray,shape=rectangle,fontname=Inconsolata,label="include"]
-// END RANK interpolated_26
+literal_100 -> leaf_107
+leaf_107  [color=Gray,shape=rectangle,fontname=Inconsolata,label="include"]
+// END RANK literal_100
 
-raw_27 -> leaf_34
-leaf_34  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".
+raw_101 -> leaf_108
+leaf_108  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".
 "]
-// END RANK raw_27
+// END RANK raw_101
 
-prose_9 -> { raw_35}
-{rank=same; raw_35}
+prose_84 -> { raw_109}
+{rank=same; raw_109}
 
-raw_35 [label="raw"]
+raw_109 [label="raw"]
 
 
-// END RANK prose_9
+// END RANK prose_84
 
-raw_35 -> leaf_36
-leaf_36  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_109 -> leaf_110
+leaf_110  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 Please submit a patch for your OS! Our build process will
 introduce the necessary metadata eventually.
 "]
-// END RANK raw_35
+// END RANK raw_109
 
-prose_10 -> { raw_37}
-{rank=same; raw_37}
+prose_85 -> { raw_111}
+{rank=same; raw_111}
 
-raw_37 [label="raw"]
+raw_111 [label="raw"]
 
 
-// END RANK prose_10
+// END RANK prose_85
 
-raw_37 -> leaf_38
-leaf_38  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_111 -> leaf_112
+leaf_112  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 After some rummaging around, I found this for Darwin.
 The magic number 20 is #defined under NCCS in termios.h.
 "]
-// END RANK raw_37
+// END RANK raw_111
 
-codeblock_11 -> leaf_39
-leaf_39  [color=Gray,shape=rectangle,fontname=Inconsolata,label="ffi.cdef [[
+codeblock_86 -> leaf_113
+leaf_113  [color=Gray,shape=rectangle,fontname=Inconsolata,label="ffi.cdef [[
    typedef unsigned long   tcflag_t;
    typedef unsigned char   cc_t;
    typedef unsigned long   speed_t;
@@ -251,7 +515,7 @@ femto = \"\"
 function __mkfemto(fm_struct_pt)
    femto = ffi.cast(\"struct femto_struct *\", fm_struct_pt)
 end"]
-// END RANK codeblock_11
+// END RANK codeblock_86
 
 
 }

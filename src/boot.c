@@ -20,9 +20,14 @@ LUALIB_API int luaopen_lpeg (lua_State *L);
 
 #include "femto_instance.h"
 
-//  Big ol' static string.
+// Big ol' static string.
 
 #include "boot_string.h"
+
+// And another. This we can make into bytecode, it's pure Lua.
+
+
+#include "load_string.h"
 
 // Print an error.
 static int lua_die(lua_State *L, int errno) {
@@ -88,7 +93,7 @@ int main(int argc, char *argv[]) {
         // load.lua is interned here
         // This one can probably be bytecode
 
-        status = luaL_loadstring(L, "require (arg[0])");
+        status = luaL_loadstring(L, LUA_LOAD);
         if (status != 0) {
             return lua_die(L, status);
         }

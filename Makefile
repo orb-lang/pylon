@@ -33,12 +33,32 @@ br: build/boot.o src/libfemto.o build/libluv.a
 	$(CC) -o br -Ibuild/ -Ilib/ $(CWARNS) build/boot.o $(BRLIBS) -lm -pagezero_size 10000 -image_base 100000000
 
 build/boot.o: src/boot.lua src/boot.c src/libfemto.o \
-              src/femto_instance.h src/femto_struct.h src/boot_string.h
+              src/femto_instance.h src/femto_struct.h \
+              src/boot_string.h src/load_string.h
 	$(CC) -c -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/boot.c -o build/boot.o -Wall -Wextra -pedantic -std=c99
+
+src/boot_string.h: src/boot.lua src/femto_struct.h src/interpol.lua
+	lua src/interpol.lua src/boot.lua LUA_BOOT > build/~boot_string.h
+	- colordiff build/boot_string.h build/~boot_string.h
+	mv build/~boot_string.h build/boot_string.h
+
+src/load_string.h: src/load.lua
+	lua src/interpol.lua src/load.lua LUA_LOAD > build/~load_string.h
+	- colordiff build/load_string.h build/~load_string.h
+	mv build/~load_string.h build/load_string.h
+
+#  This step should be pre-baked in an install so we - the call in case orb
+#  is not installed
+
+src/boot.lua: orb/boot.orb
+	- orb
+
+src/load.lua: orb/load.orb
+	- orb
 
 #  I am not currently using any of this.
 
-#  There will be a need for it relatively soon.  I think.
+#  It will serve as a template for static binding SQLite.
 
 #  It might not be this repo though.  Harmless for now.
 
@@ -52,11 +72,6 @@ src/femto.h: src/femto.c
 	- colordiff src/~femto.h src/femto.h_strip
 	rm src/~femto.h
 	mv src/femto.h_strip src/femto.h
-
-src/boot_string.h: src/boot.lua src/femto_struct.h src/interpol.lua
-	lua src/interpol.lua src/boot.lua LUA_BOOT > build/~boot_string.h
-	- colordiff build/boot_string.h build/~boot_string.h
-	mv build/~boot_string.h build/boot_string.h
 
 src/femto_instance.h: src/femto.h src/pop.awk
 	awk -f src/pop.awk -v class=femto_struct -v Instance=Femto src/femto.h > build/~femto_instance.h

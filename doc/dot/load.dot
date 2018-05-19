@@ -3,49 +3,218 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 5"]
+doc_0 [label="doc - 100"]
 
 
 doc_0 -> { section_1}
 {rank=same; section_1}
 
-section_1 [label="section: 1-5"]
+section_1 [label="section: 1-11"]
 
 
 // END RANK doc_0
 
-section_1 -> { header_2 prose_3 codeblock_4}
-{rank=same; header_2 prose_3 codeblock_4}
+section_1 -> { header_2 prose_3 prose_4 prose_5 section_6}
+{rank=same; header_2 prose_3 prose_4 prose_5 section_6}
 
 header_2 [label="1 : load"]
 
 prose_3 [label="prose"]
 
-codeblock_4 [label="code block 3-5"]
+prose_4 [label="prose"]
+
+prose_5 [label="prose"]
+
+section_6 [label="section: 12-100"]
 
 
 // END RANK section_1
 
-header_2 -> leaf_5
-leaf_5  [color=Gray,shape=rectangle,fontname=Inconsolata,label="* load"]
+header_2 -> leaf_7
+leaf_7  [color=Gray,shape=rectangle,fontname=Inconsolata,label="* load"]
 // END RANK header_2
 
-prose_3 -> { raw_6}
-{rank=same; raw_6}
+prose_3 -> { raw_8 prespace_9 literal_10 raw_11}
+{rank=same; raw_8 prespace_9 literal_10 raw_11}
 
-raw_6 [label="raw"]
+raw_8 [label="raw"]
+
+prespace_9 [label="prespace"]
+
+literal_10 [label="literal"]
+
+raw_11 [label="raw"]
 
 
 // END RANK prose_3
 
-raw_6 -> leaf_7
-leaf_7  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
-"]
-// END RANK raw_6
+raw_8 -> leaf_12
+leaf_12  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 
-codeblock_4 -> leaf_8
-leaf_8  [color=Gray,shape=rectangle,fontname=Inconsolata,label="require \"your mom\""]
-// END RANK codeblock_4
+The responsibilities of"]
+// END RANK raw_8
+
+prespace_9 -> leaf_13
+leaf_13  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_9
+
+literal_10 -> leaf_14
+leaf_14  [color=Gray,shape=rectangle,fontname=Inconsolata,label="load"]
+// END RANK literal_10
+
+raw_11 -> leaf_15
+leaf_15  [color=Gray,shape=rectangle,fontname=Inconsolata,label=":
+"]
+// END RANK raw_11
+
+prose_4 -> { raw_16}
+{rank=same; raw_16}
+
+raw_16 [label="raw"]
+
+
+// END RANK prose_4
+
+raw_16 -> leaf_17
+leaf_17  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+- Parse arguments
+"]
+// END RANK raw_16
+
+prose_5 -> { raw_18}
+{rank=same; raw_18}
+
+raw_18 [label="raw"]
+
+
+// END RANK prose_5
+
+raw_18 -> leaf_19
+leaf_19  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+- If interactive and scripts:
+   - Clone the global namespace
+   - Run scripts into namespace clone
+   - Launch REPL.
+"]
+// END RANK raw_18
+
+section_6 -> { header_20 prose_21 codeblock_22 codeblock_23}
+{rank=same; header_20 prose_21 codeblock_22 codeblock_23}
+
+header_20 [label="2 : Stricture"]
+
+prose_21 [label="prose"]
+
+codeblock_22 [label="code block 16-95"]
+
+codeblock_23 [label="code block 98-100"]
+
+
+// END RANK section_6
+
+header_20 -> leaf_24
+leaf_24  [color=Gray,shape=rectangle,fontname=Inconsolata,label="** Stricture"]
+// END RANK header_20
+
+prose_21 -> { raw_25}
+{rank=same; raw_25}
+
+raw_25 [label="raw"]
+
+
+// END RANK prose_21
+
+raw_25 -> leaf_26
+leaf_26  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+Lifted straight from penlight.
+"]
+// END RANK raw_25
+
+codeblock_22 -> leaf_27
+leaf_27  [color=Gray,shape=rectangle,fontname=Inconsolata,label="local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget
+local strict = {}
+
+local function what ()
+    local d = getinfo(3, \"S\")
+    return d and d.what or \"C\"
+end
+
+--- make an existing table strict.
+-- @string name name of table (optional)
+-- @tab[opt] mod table - if `nil` then we'll return a new table
+-- @tab[opt] predeclared - table of variables that are to be considered predeclared.
+-- @return the given table, or a new table
+function strict.module (name,mod,predeclared)
+    local mt, old_newindex, old_index, old_index_type, global, closed
+    if predeclared then
+        global = predeclared.__global
+        closed = predeclared.__closed
+    end
+    if type(mod) == 'table' then
+        mt = getmetatable(mod)
+        if mt and rawget(mt,'__declared') then return end -- already patched...
+    else
+        mod = {}
+    end
+    if mt == nil then
+        mt = {}
+        setmetatable(mod, mt)
+    else
+        old_newindex = mt.__newindex
+        old_index = mt.__index
+        old_index_type = type(old_index)
+    end
+    mt.__declared = predeclared or {}
+    mt.__newindex = function(t, n, v)
+        if old_newindex then
+            old_newindex(t, n, v)
+            if rawget(t,n)~=nil then return end
+        end
+        if not mt.__declared[n] then
+            if global then
+                local w = what()
+                if w ~= \"main\" and w ~= \"C\" then
+                    error(\"assign to undeclared global '\"..n..\"'\", 2)
+                end
+            end
+            mt.__declared[n] = true
+        end
+        rawset(t, n, v)
+    end
+    mt.__index = function(t,n)
+        if not mt.__declared[n] and what() ~= \"C\" then
+            if old_index then
+                if old_index_type == \"table\" then
+                    local fallback = old_index[n]
+                    if fallback ~= nil then
+                        return fallback
+                    end
+                else
+                    local res = old_index(t, n)
+                    if res ~= nil then
+                        return res
+                    end
+                end
+            end
+            local msg = \"variable '\"..n..\"' is not declared\"
+            if name then
+                msg = msg .. \" in '\"..name..\"'\"
+            end
+            error(msg, 2)
+        end
+        return rawget(t, n)
+    end
+    return mod
+end
+
+strict.module(nil,_G,{_PROMPT=true,__global=true})
+"]
+// END RANK codeblock_22
+
+codeblock_23 -> leaf_28
+leaf_28  [color=Gray,shape=rectangle,fontname=Inconsolata,label="require (arg[0])"]
+// END RANK codeblock_23
 
 
 }

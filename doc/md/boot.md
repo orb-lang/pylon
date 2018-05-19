@@ -1,6 +1,18 @@
 # boot
 
 
+We have both a ``boot.lua`` and a ``boot.c``.
+
+
+Happily, ``orb`` will not currently clobber the latter. Nor will it write to it,
+yet.
+
+
+``orb`` semantics dictate that a ``boot.c.orb`` file will be knit after a
+``boot.orb`` file, overwriting any ``boot.c`` from ``boot.orb`` in the process. All
+of this may of course be configured, we will have a ``boot.c.orb`` and should
+have no need for an ``#!c`` block in this file.
+
 ```lua
 --sql = require "src/sqlite"
 
@@ -14,6 +26,11 @@ package.path = "./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;"
 
 ffi = require "ffi"
 ```
+#NB I am officially using femto.c for nothing.### configs (system-dependent!)
+
+LuaJIT can't read header files, so we need to paste in
+a few snippets.
+
 
 Change this to uint32_t if you're on a system that expires
 in a couple decades.
@@ -28,8 +45,8 @@ The termios struct might well be different for your OS.
 
 
 To figure out approximately where your system keeps its headers,
-run gcc --version.  This path will be overly specific, get off
-the train at include.
+run ``gcc --version``.  This path will be overly specific, get off
+the train at ``include``.
 
 
 Please submit a patch for your OS! Our build process will

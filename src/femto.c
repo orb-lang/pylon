@@ -216,6 +216,7 @@ void fmUpdateRow(frow *row) {
   fmUpdateSyntax(row);
 }
 
+
 void fmInsertRow(int at, char *s, size_t len) {
   if (at < 0 || at > F.numrows) return;
 
