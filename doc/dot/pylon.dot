@@ -3,7 +3,7 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 137"]
+doc_0 [label="doc - 135"]
 
 
 doc_0 -> { section_1}
@@ -150,7 +150,7 @@ prose_35 [label="prose"]
 
 section_36 [label="section: 40-87"]
 
-section_37 [label="section: 88-137"]
+section_37 [label="section: 88-135"]
 
 
 // END RANK section_7
@@ -806,8 +806,8 @@ migrating code over to the FFI will be traumatic if it proves useful.
 "]
 // END RANK raw_196
 
-section_37 -> { header_198 prose_199 prose_200 prose_201 prose_202 prose_203 prose_204 prose_205 prose_206 prose_207 prose_208 prose_209 prose_210 prose_211 prose_212 prose_213}
-{rank=same; header_198 prose_199 prose_200 prose_201 prose_202 prose_203 prose_204 prose_205 prose_206 prose_207 prose_208 prose_209 prose_210 prose_211 prose_212 prose_213}
+section_37 -> { header_198 prose_199 prose_200 prose_201 prose_202 prose_203 prose_204 prose_205 prose_206 prose_207 prose_208 prose_209 prose_210 prose_211 prose_212}
+{rank=same; header_198 prose_199 prose_200 prose_201 prose_202 prose_203 prose_204 prose_205 prose_206 prose_207 prose_208 prose_209 prose_210 prose_211 prose_212}
 
 header_198 [label="3 : Priorities"]
 
@@ -839,369 +839,335 @@ prose_211 [label="prose"]
 
 prose_212 [label="prose"]
 
-prose_213 [label="prose"]
-
 
 // END RANK section_37
 
-header_198 -> leaf_214
-leaf_214  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** Priorities"]
+header_198 -> leaf_213
+leaf_213  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** Priorities"]
 // END RANK header_198
 
-prose_199 -> { raw_215 prespace_216 literal_217 raw_218}
-{rank=same; raw_215 prespace_216 literal_217 raw_218}
+prose_199 -> { raw_214 prespace_215 literal_216 raw_217}
+{rank=same; raw_214 prespace_215 literal_216 raw_217}
 
-raw_215 [label="raw"]
+raw_214 [label="raw"]
 
-prespace_216 [label="prespace"]
+prespace_215 [label="prespace"]
 
-literal_217 [label="literal"]
+literal_216 [label="literal"]
 
-raw_218 [label="raw"]
+raw_217 [label="raw"]
 
 
 // END RANK prose_199
 
-raw_215 -> leaf_219
-leaf_219  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_214 -> leaf_218
+leaf_218  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 
 At this point I have the main project building with"]
-// END RANK raw_215
+// END RANK raw_214
 
-prespace_216 -> leaf_220
-leaf_220  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
-// END RANK prespace_216
+prespace_215 -> leaf_219
+leaf_219  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_215
 
-literal_217 -> leaf_221
-leaf_221  [color=Gray,shape=rectangle,fontname=Inconsolata,label="make"]
-// END RANK literal_217
+literal_216 -> leaf_220
+leaf_220  [color=Gray,shape=rectangle,fontname=Inconsolata,label="make"]
+// END RANK literal_216
 
-raw_218 -> leaf_222
-leaf_222  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" and the
+raw_217 -> leaf_221
+leaf_221  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" and the
 dependencies I can clean and rebuild.
 "]
-// END RANK raw_218
+// END RANK raw_217
 
-prose_200 -> { raw_223}
-{rank=same; raw_223}
+prose_200 -> { raw_222}
+{rank=same; raw_222}
 
-raw_223 [label="raw"]
+raw_222 [label="raw"]
 
 
 // END RANK prose_200
 
-raw_223 -> leaf_224
-leaf_224  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_222 -> leaf_223
+leaf_223  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 I will need to tinker with this substantially, and soon.  The minimum is
 detecting a few custom flags based on flavor of operating system.  Gitlab
 makes it at least tractable to test builds against most of the flavors, and I
 of course have a Mac and Ubuntu distro to work with at home.
 "]
-// END RANK raw_223
+// END RANK raw_222
 
-prose_201 -> { raw_225}
-{rank=same; raw_225}
+prose_201 -> { raw_224}
+{rank=same; raw_224}
 
-raw_225 [label="raw"]
+raw_224 [label="raw"]
 
 
 // END RANK prose_201
 
-raw_225 -> leaf_226
-leaf_226  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_224 -> leaf_225
+leaf_225  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 I do need to focus through this stretch.  It's going to be littered with
 opportunities to 'really get it right'.  At least I recognize that the
 sensibilities which have lead me to wiring up low-level libraries into
 something called 'pylon' are the kind that can also get stuck at that base
 level forever.
 "]
-// END RANK raw_225
+// END RANK raw_224
 
-prose_202 -> { raw_227}
-{rank=same; raw_227}
+prose_202 -> { raw_226}
+{rank=same; raw_226}
 
-raw_227 [label="raw"]
+raw_226 [label="raw"]
 
 
 // END RANK prose_202
 
-raw_227 -> leaf_228
-leaf_228  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_226 -> leaf_227
+leaf_227  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 Here's a hit list:
 "]
-// END RANK raw_227
+// END RANK raw_226
 
-prose_203 -> { raw_229 prespace_230 literal_231 raw_232}
-{rank=same; raw_229 prespace_230 literal_231 raw_232}
+prose_203 -> { raw_228 prespace_229 literal_230 raw_231}
+{rank=same; raw_228 prespace_229 literal_230 raw_231}
 
-raw_229 [label="raw"]
+raw_228 [label="raw"]
 
-prespace_230 [label="prespace"]
+prespace_229 [label="prespace"]
 
-literal_231 [label="literal"]
+literal_230 [label="literal"]
 
-raw_232 [label="raw"]
+raw_231 [label="raw"]
 
 
 // END RANK prose_203
 
-raw_229 -> leaf_233
-leaf_233  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_228 -> leaf_232
+leaf_232  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 - [X]  Summon the raw terminal from"]
-// END RANK raw_229
+// END RANK raw_228
 
-prespace_230 -> leaf_234
-leaf_234  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
-// END RANK prespace_230
+prespace_229 -> leaf_233
+leaf_233  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_229
 
-literal_231 -> leaf_235
-leaf_235  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
-// END RANK literal_231
+literal_230 -> leaf_234
+leaf_234  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
+// END RANK literal_230
 
-raw_232 -> leaf_236
-leaf_236  [color=Gray,shape=rectangle,fontname=Inconsolata,label="!
+raw_231 -> leaf_235
+leaf_235  [color=Gray,shape=rectangle,fontname=Inconsolata,label="!
 "]
-// END RANK raw_232
+// END RANK raw_231
 
-prose_204 -> { raw_237}
-{rank=same; raw_237}
+prose_204 -> { raw_236}
+{rank=same; raw_236}
 
-raw_237 [label="raw"]
+raw_236 [label="raw"]
 
 
 // END RANK prose_204
 
-raw_237 -> leaf_238
-leaf_238  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_236 -> leaf_237
+leaf_237  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 - [ ]  Write a minimum-viable pure-lua readline.
 "]
-// END RANK raw_237
+// END RANK raw_236
 
-prose_205 -> { raw_239}
-{rank=same; raw_239}
+prose_205 -> { raw_238}
+{rank=same; raw_238}
 
-raw_239 [label="raw"]
+raw_238 [label="raw"]
 
 
 // END RANK prose_205
 
-raw_239 -> leaf_240
-leaf_240  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_238 -> leaf_239
+leaf_239  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 - [X]  Write an evented REPL.
 "]
-// END RANK raw_239
+// END RANK raw_238
 
-prose_206 -> { raw_241}
-{rank=same; raw_241}
+prose_206 -> { raw_240}
+{rank=same; raw_240}
 
-raw_241 [label="raw"]
+raw_240 [label="raw"]
 
 
 // END RANK prose_206
 
-raw_241 -> leaf_242
-leaf_242  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
-- [ ]  Add persistence of history in a SQLite database called ~/.bridge
+raw_240 -> leaf_241
+leaf_241  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+- [X]  Add persistence of history in a SQLite database called ~/.bridge
+
 "]
-// END RANK raw_241
+// END RANK raw_240
 
-prose_207 -> { raw_243 prespace_244 literal_245 raw_246}
-{rank=same; raw_243 prespace_244 literal_245 raw_246}
+prose_207 -> { raw_242}
+{rank=same; raw_242}
 
-raw_243 [label="raw"]
-
-prespace_244 [label="prespace"]
-
-literal_245 [label="literal"]
-
-raw_246 [label="raw"]
+raw_242 [label="raw"]
 
 
 // END RANK prose_207
 
-raw_243 -> leaf_247
-leaf_247  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
-... turns out there's a repl in the"]
-// END RANK raw_243
-
-prespace_244 -> leaf_248
-leaf_248  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
-// END RANK prespace_244
-
-literal_245 -> leaf_249
-leaf_249  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
-// END RANK literal_245
-
-raw_246 -> leaf_250
-leaf_250  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" examples file. Fine place to
-start.
-"]
-// END RANK raw_246
-
-prose_208 -> { raw_251}
-{rank=same; raw_251}
-
-raw_251 [label="raw"]
-
-
-// END RANK prose_208
-
-raw_251 -> leaf_252
-leaf_252  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_242 -> leaf_243
+leaf_243  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 The hardest part of all of this will be keeping the event loop from
 contaminating my libraries.  I'm keeping certain compacts with the Lua
 community, which amount to respecting bytecode-compatibility with both VMs.
 "]
-// END RANK raw_251
+// END RANK raw_242
 
-prose_209 -> { raw_253}
-{rank=same; raw_253}
+prose_208 -> { raw_244}
+{rank=same; raw_244}
 
-raw_253 [label="raw"]
+raw_244 [label="raw"]
 
 
-// END RANK prose_209
+// END RANK prose_208
 
-raw_253 -> leaf_254
-leaf_254  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_244 -> leaf_245
+leaf_245  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 The rule is that LuaJIT is the tie breaker: I will do things in the fast and
 natural way for LuaJIT and provide shims to Lua.  Lua's minimalism means that
 everything is exposed through the same sort of interface, this is entirely
 practical.
 "]
-// END RANK raw_253
+// END RANK raw_244
 
-prose_210 -> { raw_255 prespace_256 literal_257 raw_258}
-{rank=same; raw_255 prespace_256 literal_257 raw_258}
+prose_209 -> { raw_246 prespace_247 literal_248 raw_249}
+{rank=same; raw_246 prespace_247 literal_248 raw_249}
 
-raw_255 [label="raw"]
+raw_246 [label="raw"]
 
-prespace_256 [label="prespace"]
+prespace_247 [label="prespace"]
 
-literal_257 [label="literal"]
+literal_248 [label="literal"]
 
-raw_258 [label="raw"]
+raw_249 [label="raw"]
+
+
+// END RANK prose_209
+
+raw_246 -> leaf_250
+leaf_250  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Indeed"]
+// END RANK raw_246
+
+prespace_247 -> leaf_251
+leaf_251  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_247
+
+literal_248 -> leaf_252
+leaf_252  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
+// END RANK literal_248
+
+raw_249 -> leaf_253
+leaf_253  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" can build against 5.3.  So there's that. The problem is
+callbacks, which spread osmotically across everything they touch.
+"]
+// END RANK raw_249
+
+prose_210 -> { raw_254 prespace_255 literal_256 raw_257 prespace_258 literal_259 raw_260}
+{rank=same; raw_254 prespace_255 literal_256 raw_257 prespace_258 literal_259 raw_260}
+
+raw_254 [label="raw"]
+
+prespace_255 [label="prespace"]
+
+literal_256 [label="literal"]
+
+raw_257 [label="raw"]
+
+prespace_258 [label="prespace"]
+
+literal_259 [label="literal"]
+
+raw_260 [label="raw"]
 
 
 // END RANK prose_210
 
-raw_255 -> leaf_259
-leaf_259  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
-Indeed"]
-// END RANK raw_255
+raw_254 -> leaf_261
+leaf_261  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+I'll need to make"]
+// END RANK raw_254
 
-prespace_256 -> leaf_260
-leaf_260  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
-// END RANK prespace_256
+prespace_255 -> leaf_262
+leaf_262  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_255
 
-literal_257 -> leaf_261
-leaf_261  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
-// END RANK literal_257
+literal_256 -> leaf_263
+leaf_263  [color=Gray,shape=rectangle,fontname=Inconsolata,label="orb"]
+// END RANK literal_256
 
-raw_258 -> leaf_262
-leaf_262  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" can build against 5.3.  So there's that. The problem is
-callbacks, which spread osmotically across everything they touch.
+raw_257 -> leaf_264
+leaf_264  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" evented in the presence of"]
+// END RANK raw_257
+
+prespace_258 -> leaf_265
+leaf_265  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_258
+
+literal_259 -> leaf_266
+leaf_266  [color=Gray,shape=rectangle,fontname=Inconsolata,label="bridge"]
+// END RANK literal_259
+
+raw_260 -> leaf_267
+leaf_267  [color=Gray,shape=rectangle,fontname=Inconsolata,label=", and that needs to
+be as simple as using coroutines internally to yield between operations on
+files.
 "]
-// END RANK raw_258
+// END RANK raw_260
 
-prose_211 -> { raw_263 prespace_264 literal_265 raw_266 prespace_267 literal_268 raw_269}
-{rank=same; raw_263 prespace_264 literal_265 raw_266 prespace_267 literal_268 raw_269}
+prose_211 -> { raw_268 prespace_269 literal_270 raw_271}
+{rank=same; raw_268 prespace_269 literal_270 raw_271}
 
-raw_263 [label="raw"]
+raw_268 [label="raw"]
 
-prespace_264 [label="prespace"]
+prespace_269 [label="prespace"]
 
-literal_265 [label="literal"]
+literal_270 [label="literal"]
 
-raw_266 [label="raw"]
-
-prespace_267 [label="prespace"]
-
-literal_268 [label="literal"]
-
-raw_269 [label="raw"]
+raw_271 [label="raw"]
 
 
 // END RANK prose_211
 
-raw_263 -> leaf_270
-leaf_270  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
-I'll need to make"]
-// END RANK raw_263
+raw_268 -> leaf_272
+leaf_272  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Which means the"]
+// END RANK raw_268
 
-prespace_264 -> leaf_271
-leaf_271  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
-// END RANK prespace_264
+prespace_269 -> leaf_273
+leaf_273  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_269
 
-literal_265 -> leaf_272
-leaf_272  [color=Gray,shape=rectangle,fontname=Inconsolata,label="orb"]
-// END RANK literal_265
+literal_270 -> leaf_274
+leaf_274  [color=Gray,shape=rectangle,fontname=Inconsolata,label="bridge"]
+// END RANK literal_270
 
-raw_266 -> leaf_273
-leaf_273  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" evented in the presence of"]
-// END RANK raw_266
-
-prespace_267 -> leaf_274
-leaf_274  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
-// END RANK prespace_267
-
-literal_268 -> leaf_275
-leaf_275  [color=Gray,shape=rectangle,fontname=Inconsolata,label="bridge"]
-// END RANK literal_268
-
-raw_269 -> leaf_276
-leaf_276  [color=Gray,shape=rectangle,fontname=Inconsolata,label=", and that needs to
-be as simple as using coroutines internally to yield between operations on
-files.
+raw_271 -> leaf_275
+leaf_275  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" callside must read as simple method calls. I'm
+still not quite sure how to do this.
 "]
-// END RANK raw_269
+// END RANK raw_271
 
-prose_212 -> { raw_277 prespace_278 literal_279 raw_280}
-{rank=same; raw_277 prespace_278 literal_279 raw_280}
+prose_212 -> { raw_276}
+{rank=same; raw_276}
 
-raw_277 [label="raw"]
-
-prespace_278 [label="prespace"]
-
-literal_279 [label="literal"]
-
-raw_280 [label="raw"]
+raw_276 [label="raw"]
 
 
 // END RANK prose_212
 
-raw_277 -> leaf_281
-leaf_281  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
-Which means the"]
-// END RANK raw_277
-
-prespace_278 -> leaf_282
-leaf_282  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
-// END RANK prespace_278
-
-literal_279 -> leaf_283
-leaf_283  [color=Gray,shape=rectangle,fontname=Inconsolata,label="bridge"]
-// END RANK literal_279
-
-raw_280 -> leaf_284
-leaf_284  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" callside must read as simple method calls. I'm
-still not quite sure how to do this.
-"]
-// END RANK raw_280
-
-prose_213 -> { raw_285}
-{rank=same; raw_285}
-
-raw_285 [label="raw"]
-
-
-// END RANK prose_213
-
-raw_285 -> leaf_286
-leaf_286  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_276 -> leaf_277
+leaf_277  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 There's only one way to find out. In the meantime, registering a callback is
 no big."]
-// END RANK raw_285
+// END RANK raw_276
 
 
 }

@@ -8,9 +8,10 @@
 #include "femto_class.h"
 #include "femto.h"
 
-// declaration for luv registry
+// declaration for registries of static object libraries
 LUALIB_API int luaopen_luv (lua_State *L);
 LUALIB_API int luaopen_lpeg (lua_State *L);
+LUALIB_API int luaopen_utf8(lua_State *L);
 
 // Set up a struct to hold the femto library
 
@@ -68,6 +69,9 @@ int main(int argc, char *argv[]) {
     lua_setfield(L, -2, "luv"); /* package.preload[luv] = luaopen_luv */
     lua_pushcfunction(L, luaopen_lpeg);
     lua_setfield(L, -2, "lpeg");
+    lua_pushcfunction(L, luaopen_utf8);
+    lua_setfield(L, -2, "lua-utf8");
+
     lua_pop(L, 2); /* pop 'package' and 'preload' tables */
     // constant strings, the poor man's bytecode!
     status = luaL_loadstring(L, LUA_BOOT);

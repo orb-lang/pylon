@@ -2,7 +2,8 @@ BRLIBS = build/libfemto.o   \
          build/libluv.a   \
          build/libuv.a    \
          build/liblpeg.a  \
-         build/libluajit.a
+         build/libluajit.a \
+         build/lua-utf8.a
 
 CWARNS = -Wall -Wextra -pedantic \
 			-Waggregate-return \
@@ -30,7 +31,7 @@ uninstall:
 	rm ~/scripture/br
 
 br: build/boot.o src/libfemto.o build/libluv.a
-	$(CC) -o br -Ibuild/ -Ilib/ $(CWARNS) build/boot.o $(BRLIBS) -lm -pagezero_size 10000 -image_base 100000000
+	$(CC) -o br $(CWARNS) build/boot.o $(BRLIBS) -Ibuild/ -Ilib/ -lm -pagezero_size 10000 -image_base 100000000
 
 build/boot.o: src/boot.lua src/boot.c src/libfemto.o \
               src/femto_instance.h src/femto_struct.h \

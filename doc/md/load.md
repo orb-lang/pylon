@@ -11,11 +11,18 @@ The responsibilities of ``load``:
    - Run scripts into namespace clone
    - Launch REPL.
 
+### Check for lua-utf8
+
+```lua
+local utf8 = require "lua-utf8"
+assert(utf8, "no utf8")
+```
 ## Stricture
 
 Lifted straight from penlight.
 
 ```lua
+
 local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget
 local strict = {}
 
@@ -107,5 +114,11 @@ stricture(nil,_G,{_PROMPT=true,__global=true})
 -- make_all_strict(_G)
 ```
 ```lua
-require (arg[0])
+if string.sub(arg[0], -4) == ".lua" then
+   require(string.sub(arg[0], 1, -5))
+elseif string.sub(arg[0], -4) == ".raw" then
+   loadfile(arg[0])()
+else
+   require (arg[0])
+end
 ```

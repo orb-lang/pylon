@@ -136,11 +136,8 @@ Here's a hit list:
 - [X]  Write an evented REPL.
 
 
-- [ ]  Add persistence of history in a SQLite database called ~/.bridge
+- [X]  Add persistence of history in a SQLite database called ~/.bridge
 
-
-... turns out there's a repl in the ``luv`` examples file. Fine place to
-start.
 
 
 The hardest part of all of this will be keeping the event loop from

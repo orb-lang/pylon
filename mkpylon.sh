@@ -49,6 +49,7 @@ cd ../..
 # want, so we make this separately:
 
 cd luv/deps/luajit
+git checkout v2.1
 make amalg
 
 # Copy headers and objects to own the libs
@@ -89,6 +90,20 @@ cd ..
 # Toss in lfs
 
 cp luafilesystem/lfs-ffi.lua lib/lfs.lua
+
+# Now lua-utf8
+# Note that this is full-on macOS only right now and we need to fix that ASAP
+
+cd luautf8
+echo "BUILDING lua-utf8"
+env MACOSX_DEPLOYMENT_TARGET=10.8 gcc -O2 \
+-I../lib/ -I../luv/deps/luajit  -c lutf8lib.c -o lutf8lib.o
+ar rcs lua-utf8.a lutf8lib.o
+mv lua-utf8.a ../build/
+cd ..
+
+
+# Make br and install.
 
 make install
 
