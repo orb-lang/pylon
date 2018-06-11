@@ -48,6 +48,8 @@ cd ../..
 # luv's build process doesn't use the amalgamated LuaJIT build, which we
 # want, so we make this separately:
 
+# Note: the next release of 'luv' will build the amalgamation directly
+
 cd luv/deps/luajit
 git checkout v2.1
 make amalg
@@ -87,7 +89,7 @@ make macosx
 cp liblpeg.a ../build/
 cd ..
 
-# Toss in lfs
+# Toss in lfs, this is a no-op and we're going to use luv eventually so
 
 cp luafilesystem/lfs-ffi.lua lib/lfs.lua
 
@@ -95,7 +97,6 @@ cp luafilesystem/lfs-ffi.lua lib/lfs.lua
 # Note that this is full-on macOS only right now and we need to fix that ASAP
 
 cd luautf8
-echo "BUILDING lua-utf8"
 env MACOSX_DEPLOYMENT_TARGET=10.8 gcc -O2 \
 -I../lib/ -I../luv/deps/luajit  -c lutf8lib.c -o lutf8lib.o
 ar rcs lua-utf8.a lutf8lib.o
