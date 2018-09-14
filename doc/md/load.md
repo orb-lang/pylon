@@ -14,8 +14,8 @@ The responsibilities of ``load``:
 ### Check for lua-utf8
 
 ```lua
-local utf8 = require "lua-utf8"
-assert(utf8, "no utf8")
+-- local utf8 = require "lua-utf8"
+-- assert(utf8, "no utf8")
 ```
 ## Stricture
 
@@ -115,10 +115,11 @@ stricture(nil,_G,{_PROMPT=true,__global=true})
 ```
 ```lua
 if string.sub(arg[0], -4) == ".lua" then
-   require(string.sub(arg[0], 1, -5))
+    loadfile(arg[0])()
+   --require(string.sub(arg[0], 1, -5))
 elseif string.sub(arg[0], -4) == ".raw" then
    loadfile(arg[0])()
 else
-   require (arg[0])
+   loadfile(arg[0] .. ".lua")()
 end
 ```

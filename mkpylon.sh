@@ -1,4 +1,4 @@
-   #!/usr/bin/sh
+#!/usr/bin/sh
 
 # Copyright 2018 Sam Putman.
 
@@ -27,7 +27,7 @@
 
 # They also come with their own build systems, which we use:
 
-cd luv
+cd luv || exit
 make reset
 
 # For the static binary use this:
@@ -38,7 +38,7 @@ BUILD_MODULE=OFF make
 
 # Move our artifacts over to pylon/lib
 
-cd build
+cd build || exit
 cp libuv.a ../../build/
 cp libluv.a ../../build/
 
@@ -48,7 +48,7 @@ cd ../..
 # luv's build process doesn't use the amalgamated LuaJIT build, which we
 # want, so we make this separately:
 
-cd luv/deps/luajit
+cd luv/deps/luajit || exit
 git checkout v2.1
 make amalg
 
@@ -64,7 +64,7 @@ cd ../../..
 
 # Next we make sqlite, which has the amalgamated build as the short path:
 
-cd sqlite
+cd sqlite || exit
 ./configure
 make
 cp sqlite3.h ../lib/
@@ -82,7 +82,7 @@ cd ..
 
 # Annnnd lpeg
 
-cd lpeg-1.0.1
+cd lpeg-1.0.1 || exit
 make macosx
 cp liblpeg.a ../build/
 cd ..
@@ -94,7 +94,7 @@ cp luafilesystem/lfs-ffi.lua lib/lfs.lua
 # Now lua-utf8
 # Note that this is full-on macOS only right now and we need to fix that ASAP
 
-cd luautf8
+cd luautf8 || exit
 echo "BUILDING lua-utf8"
 env MACOSX_DEPLOYMENT_TARGET=10.8 gcc -O2 \
 -I../lib/ -I../luv/deps/luajit  -c lutf8lib.c -o lutf8lib.o
@@ -106,4 +106,3 @@ cd ..
 # Make br and install.
 
 make install
-

@@ -1,4 +1,4 @@
-#include <stdio.h>
+    #include <stdio.h>
 #include <lua.h>
 #include <lualib.h>
 #include <lauxlib.h>
@@ -33,7 +33,7 @@ LUALIB_API int luaopen_utf8(lua_State *L);
 
 // Print an error.
 static int lua_die(lua_State *L, int errno) {
-    fprintf(stderr, "%d: %s\n", errno, lua_tostring(L, -1));
+    fprintf(stderr, "%d!!!: %s\n", errno, lua_tostring(L, -1));
     return errno;
 }
 
@@ -97,15 +97,18 @@ int main(int argc, char *argv[]) {
     if (argc > 1) {
         // load.lua is interned here
         // This one can probably be bytecode
-
+        lua_getglobal(L, "debug");
+        lua_getfield(L, -1, "traceback");
+        lua_replace(L, -2);
         status = luaL_loadstring(L, LUA_LOAD);
         if (status != 0) {
             return lua_die(L, status);
         }
-        ret = lua_pcall(L, 0, 0, 0);
+        ret = lua_pcall(L, 0, 0, -2);
         if (ret != 0) {
             return lua_die(L, ret);
         }
+        lua_pop(L, 1);
     }
 
     lua_close(L); // Close Lua

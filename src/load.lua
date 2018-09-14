@@ -13,6 +13,17 @@
 
 
 
+
+-- local utf8 = require "lua-utf8"
+-- assert(utf8, "no utf8")
+
+
+
+
+
+
+
+
 local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget
 local strict = {}
 
@@ -107,9 +118,10 @@ stricture(nil,_G,{_PROMPT=true,__global=true})
 
 
 if string.sub(arg[0], -4) == ".lua" then
-   require(string.sub(arg[0], 1, -5))
+    loadfile(arg[0])()
+   --require(string.sub(arg[0], 1, -5))
 elseif string.sub(arg[0], -4) == ".raw" then
    loadfile(arg[0])()
 else
-   require (arg[0])
+   loadfile(arg[0] .. ".lua")()
 end

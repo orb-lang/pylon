@@ -30,8 +30,8 @@ Kernel configured for up to 4 processors.
 Processor type: x86_64h (Intel x86-64h Haswell)
 Processors active: 0 1 2 3
 Primary memory available: 8.00 gigabytes
-Default processor set: 411 tasks, 2738 threads, 4 processors
-Load average: 1.93, Mach factor: 2.12
+Default processor set: 368 tasks, 2283 threads, 4 processors
+Load average: 2.42, Mach factor: 1.58
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -454,7 +454,7 @@ configure:12970: checking for fullfsync
 configure:12970: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fullfsync", referenced from:
-      _main in conftest-734f89.o
+      _main in conftest-d7768d.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:12970: $? = 1
@@ -637,7 +637,7 @@ configure:13115: checking for library containing readline
 configure:13146: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_readline", referenced from:
-      _main in conftest-f2b2b2.o
+      _main in conftest-26e8f8.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13146: $? = 1
@@ -750,7 +750,7 @@ configure:13199: checking for library containing tgetent
 configure:13230: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_tgetent", referenced from:
-      _main in conftest-1d44af.o
+      _main in conftest-ccc1d9.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13230: $? = 1
@@ -807,7 +807,7 @@ configure:13255: checking for library containing readline
 configure:13286: gcc -o conftest -g -O2   conftest.c -ltermcap  >&5
 Undefined symbols for architecture x86_64:
   "_readline", referenced from:
-      _main in conftest-4ed946.o
+      _main in conftest-3c469c.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13286: $? = 1
@@ -887,7 +887,7 @@ configure:13674: checking for posix_fallocate
 configure:13674: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_posix_fallocate", referenced from:
-      _main in conftest-7527b3.o
+      _main in conftest-868ea5.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13674: $? = 1
@@ -976,7 +976,7 @@ configure:13691: checking for library containing deflate
 configure:13722: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_deflate", referenced from:
-      _main in conftest-6560bc.o
+      _main in conftest-4309dd.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13722: $? = 1

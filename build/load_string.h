@@ -75,9 +75,10 @@ const char * const LUA_LOAD = "local getinfo, error, rawset, rawget = debug.geti
 "end\n"
 "stricture(nil,_G,{_PROMPT=true,__global=true})\n"
 "if string.sub(arg[0], -4) == \".lua\" then\n"
-"   require(string.sub(arg[0], 1, -5))\n"
+"    loadfile(arg[0])()\n"
+"   --require(string.sub(arg[0], 1, -5))\n"
 "elseif string.sub(arg[0], -4) == \".raw\" then\n"
 "   loadfile(arg[0])()\n"
 "else\n"
-"   require (arg[0])\n"
+"   loadfile(arg[0] .. \".lua\")()\n"
 "end\n";

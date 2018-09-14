@@ -3,13 +3,13 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 138"]
+doc_0 [label="doc - 141"]
 
 
 doc_0 -> { section_1}
 {rank=same; section_1}
 
-section_1 [label="section: 1-18"]
+section_1 [label="section: 1-20"]
 
 
 // END RANK doc_0
@@ -25,9 +25,9 @@ prose_4 [label="prose"]
 
 prose_5 [label="prose"]
 
-section_6 [label="section: 12-18"]
+section_6 [label="section: 12-20"]
 
-section_7 [label="section: 19-138"]
+section_7 [label="section: 21-141"]
 
 
 // END RANK section_1
@@ -107,7 +107,7 @@ header_21 [label="3 : Check for lua-utf8"]
 
 prose_22 [label="prose"]
 
-codeblock_23 [label="code block 14-17"]
+codeblock_23 [label="code block 16-19"]
 
 
 // END RANK section_6
@@ -130,8 +130,8 @@ leaf_26  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 // END RANK raw_25
 
 codeblock_23 -> leaf_27
-leaf_27  [color=Gray,shape=rectangle,fontname=Inconsolata,label="local utf8 = require \"lua-utf8\"
-assert(utf8, \"no utf8\")"]
+leaf_27  [color=Gray,shape=rectangle,fontname=Inconsolata,label="-- local utf8 = require \"lua-utf8\"
+-- assert(utf8, \"no utf8\")"]
 // END RANK codeblock_23
 
 section_7 -> { header_28 prose_29 codeblock_30 codeblock_31}
@@ -141,9 +141,9 @@ header_28 [label="2 : Stricture"]
 
 prose_29 [label="prose"]
 
-codeblock_30 [label="code block 23-114"]
+codeblock_30 [label="code block 25-116"]
 
-codeblock_31 [label="code block 117-125"]
+codeblock_31 [label="code block 119-128"]
 
 
 // END RANK section_7
@@ -262,11 +262,12 @@ stricture(nil,_G,{_PROMPT=true,__global=true})
 
 codeblock_31 -> leaf_36
 leaf_36  [color=Gray,shape=rectangle,fontname=Inconsolata,label="if string.sub(arg[0], -4) == \".lua\" then
-   require(string.sub(arg[0], 1, -5))
+    loadfile(arg[0])()
+   --require(string.sub(arg[0], 1, -5))
 elseif string.sub(arg[0], -4) == \".raw\" then
    loadfile(arg[0])()
 else
-   require (arg[0])
+   loadfile(arg[0] .. \".lua\")()
 end"]
 // END RANK codeblock_31
 
