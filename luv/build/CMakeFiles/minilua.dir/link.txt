@@ -1,1 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -Wl,-search_paths_first -Wl,-headerpad_max_install_names -pagezero_size 10000 -image_base 100000000  CMakeFiles/minilua.dir/deps/luajit/src/host/minilua.c.o  -o minilua -lm 

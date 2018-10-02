@@ -22,7 +22,6 @@ The responsibilities of ``load``:
 Lifted straight from penlight.
 
 ```lua
-
 local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget
 local strict = {}
 

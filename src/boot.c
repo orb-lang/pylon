@@ -1,4 +1,5 @@
-    #include <stdio.h>
+#include <stdio.h>
+#include <string.h>
 #include <lua.h>
 #include <lualib.h>
 #include <lauxlib.h>
@@ -22,14 +23,15 @@ LUALIB_API int luaopen_utf8(lua_State *L);
 #include "femto_instance.h"
 
 // Big ol' static string.
+// creates LUA_BOOT:
 
 #include "boot_string.h"
+int LUA_BOOT_L = strlen(LUA_BOOT);
 
 // And another. This we can make into bytecode, it's pure Lua.
 
-
-
 #include "load_string.h"
+int LUA_LOAD_L = strlen(LUA_LOAD);
 
 // Print an error.
 static int lua_die(lua_State *L, int errno) {
@@ -74,7 +76,7 @@ int main(int argc, char *argv[]) {
 
     lua_pop(L, 2); /* pop 'package' and 'preload' tables */
     // constant strings, the poor man's bytecode!
-    status = luaL_loadstring(L, LUA_BOOT);
+    status = luaL_loadbuffer(L, LUA_BOOT, LUA_BOOT_L, "boot");
     if (status != 0) {
         return lua_die(L, status);
     }
@@ -100,7 +102,7 @@ int main(int argc, char *argv[]) {
         lua_getglobal(L, "debug");
         lua_getfield(L, -1, "traceback");
         lua_replace(L, -2);
-        status = luaL_loadstring(L, LUA_LOAD);
+        status = luaL_loadbuffer(L, LUA_LOAD, LUA_LOAD_L, "load");
         if (status != 0) {
             return lua_die(L, status);
         }
