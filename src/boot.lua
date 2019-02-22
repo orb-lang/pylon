@@ -16,15 +16,11 @@
 
 _BRIDGE = true
 
--- For now let's stay clear of LUA_PATH and friends.
--- update: how dumb can I fucking be
---[[
---package.path = "./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;"
---               .. "./lib/?.lua;./lib/?/?.lua;"
---               .. "./lib/?/src/?.lua;./lib/?/src/?/?.lua"
---]]
-
-ffi = require "ffi"
+   --[[
+package.path = "./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;"
+               .. "./lib/?.lua;./lib/?/?.lua;"
+               .. "./lib/?/src/?.lua;./lib/?/src/?/?.lua"
+--]] ffi = require "ffi"
 
 
 
