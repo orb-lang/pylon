@@ -35,7 +35,7 @@ int LUA_LOAD_L = strlen(LUA_LOAD);
 
 // Print an error.
 static int lua_die(lua_State *L, int errno) {
-    fprintf(stderr, "%d!!!: %s\n", errno, lua_tostring(L, -1));
+    fprintf(stderr, "err #%d: %s\n", errno, lua_tostring(L, -1));
     return errno;
 }
 
@@ -102,7 +102,7 @@ int main(int argc, char *argv[]) {
         lua_getglobal(L, "debug");
         lua_getfield(L, -1, "traceback");
         lua_replace(L, -2);
-        status = luaL_loadbuffer(L, LUA_LOAD, LUA_LOAD_L, "load");
+        status = luaL_loadbuffer(L, LUA_LOAD, LUA_LOAD_L, "load_string");
         if (status != 0) {
             return lua_die(L, status);
         }

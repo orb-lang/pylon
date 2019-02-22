@@ -3,13 +3,13 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 118"]
+doc_0 [label="doc - 120"]
 
 
 doc_0 -> { section_1}
 {rank=same; section_1}
 
-section_1 [label="section: 1-29"]
+section_1 [label="section: 1-31"]
 
 
 // END RANK doc_0
@@ -25,11 +25,11 @@ prose_4 [label="prose"]
 
 prose_5 [label="prose"]
 
-codeblock_6 [label="code block 14-26"]
+codeblock_6 [label="code block 14-28"]
 
 structure_7 [label="structure"]
 
-section_8 [label="section: 30-118"]
+section_8 [label="section: 32-120"]
 
 
 // END RANK section_1
@@ -264,10 +264,12 @@ leaf_74  [color=Gray,shape=rectangle,fontname=Inconsolata,label="--sql = require
 _BRIDGE = true
 
 -- For now let's stay clear of LUA_PATH and friends.
-
-package.path = \"./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;\"
-               .. \"./lib/?.lua;./lib/?/?.lua;\"
-               .. \"./lib/?/src/?.lua;./lib/?/src/?/?.lua\"
+-- update: how dumb can I fucking be
+--[[
+--package.path = \"./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;\"
+--               .. \"./lib/?.lua;./lib/?/?.lua;\"
+--               .. \"./lib/?/src/?.lua;./lib/?/src/?/?.lua\"
+--]]
 
 ffi = require \"ffi\""]
 // END RANK codeblock_6
@@ -301,7 +303,7 @@ prose_79 [label="prose"]
 
 prose_80 [label="prose"]
 
-codeblock_81 [label="code block 38-42"]
+codeblock_81 [label="code block 40-44"]
 
 prose_82 [label="prose"]
 
@@ -311,7 +313,7 @@ prose_84 [label="prose"]
 
 prose_85 [label="prose"]
 
-codeblock_86 [label="code block 56-118"]
+codeblock_86 [label="code block 58-120"]
 
 
 // END RANK section_8

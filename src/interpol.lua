@@ -13,8 +13,8 @@
 --  To achieve this, we resort to the hoary old trick of embedding the boot sequence
 --  as an ordinary C string.
 --
---  Since this contains the cdef as its primary payload, this means we will have C code with
---  C strings that are Lua code with Lua strings that are C code.
+--  Since this contains the cdef as its primary payload, this means we will have C strings
+--  that are Lua code with Lua strings that are C code.
 --
 --  Some effort is made to remove comments, blank lines, and leading whitespace.
 --
@@ -22,19 +22,13 @@
 --
 --               This implies suppressing the C wrapper entirely, and a bit of arg juggling.
 --
---  Note that this is a *build tool* and will trivially inject Lua code into your binary if
---  used by outside forces.  We make no attempt to prevent this.  Interpol's purpose is to
---  inject Lua code into your binary.
 
-
-local find, sub, gsub = string.find, string.sub, string.gsub
 
 local file = io.open(arg[1])
 
-if not file then
-   io.error("cannot open: " .. arg[1])
-   return 1
-end
+local line = nil
+
+local find, sub, gsub = string.find, string.sub, string.gsub
 
 local function trim(s)
    if s then
@@ -58,28 +52,34 @@ local var_name = arg[2] or ""
 io.write("const char * const " .. var_name .. " = ")
 
 local contd = false
-for line in file:lines() do
+while true do
+   line = trim(file:read())
+   if line == nil then
+      -- end of write
+      io.write(";")
+      break
+   end
    if contd then
       io.write("\n")
    else
       contd = true
    end
-   --  Handle our interpolation point(s)
+   --  Handle our interpolation point
    if sub(line, 1, #INTERPOL) == INTERPOL then
       -- extract filename and open
-      contd = false
       local line_trim = sub(line, #INTERPOL + 1)
       local l_off = find(line_trim, ">")
       local f_handle = sub(line_trim, 1, l_off-1)
-      local in_file, err = io.open(f_handle)
-      if not in_file then
-         io.error("failed to open " .. f_handle .. ": " .. err)
-         os.exit(2)
-      end
-      for f_line in in_file:lines() do
-         f_line = trim(f_line)
-         sane_pr(f_line)
-         io.write("\n")
+      local f_struct = io.open(f_handle)
+      local reading = true
+      while reading do
+         f_line = trim(f_struct:read())
+         if f_line == nil then
+            reading, contd = false, false
+         else
+            sane_pr(f_line)
+            io.write("\n")
+         end
       end
    -- Strip comment lines and blank lines
    elseif not (string.sub(line, 1, 2) == "--")
@@ -90,5 +90,5 @@ for line in file:lines() do
    end
 end
 
-io.write(";\n")
+io.write("\n")
 os.exit(0)

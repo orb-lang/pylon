@@ -118,7 +118,6 @@ stricture(nil,_G,{_PROMPT=true,__global=true})
 #!lua
 if string.sub(arg[0], -4) == ".lua" then
     loadfile(arg[0])()
-   --require(string.sub(arg[0], 1, -5))
 elseif string.sub(arg[0], -4) == ".raw" then
    loadfile(arg[0])()
 else

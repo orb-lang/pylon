@@ -3,7 +3,7 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 140"]
+doc_0 [label="doc - 139"]
 
 
 doc_0 -> { section_1}
@@ -27,7 +27,7 @@ prose_5 [label="prose"]
 
 section_6 [label="section: 12-20"]
 
-section_7 [label="section: 21-140"]
+section_7 [label="section: 21-139"]
 
 
 // END RANK section_1
@@ -143,7 +143,7 @@ prose_29 [label="prose"]
 
 codeblock_30 [label="code block 25-115"]
 
-codeblock_31 [label="code block 118-127"]
+codeblock_31 [label="code block 118-126"]
 
 
 // END RANK section_7
@@ -262,7 +262,6 @@ stricture(nil,_G,{_PROMPT=true,__global=true})
 codeblock_31 -> leaf_36
 leaf_36  [color=Gray,shape=rectangle,fontname=Inconsolata,label="if string.sub(arg[0], -4) == \".lua\" then
     loadfile(arg[0])()
-   --require(string.sub(arg[0], 1, -5))
 elseif string.sub(arg[0], -4) == \".raw\" then
    loadfile(arg[0])()
 else

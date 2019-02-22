@@ -1,7 +1,4 @@
 const char * const LUA_BOOT = "_BRIDGE = true\n"
-"package.path = \"./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;\"\n"
-"               .. \"./lib/?.lua;./lib/?/?.lua;\"\n"
-"               .. \"./lib/?/src/?.lua;./lib/?/src/?/?.lua\"\n"
 "ffi = require \"ffi\"\n"
 "ffi.cdef[[\n"
 "   typedef uint64_t time_t;\n"

@@ -30,7 +30,7 @@ install: br
 uninstall:
 	rm ~/scripture/br
 
-br: build/boot.o src/libfemto.o build/libluv.a
+br: build/boot.o build/libfemto.o build/libluv.a
 	$(CC) -o br $(CWARNS) build/boot.o $(BRLIBS) -Ibuild/ -Ilib/ -lm -pagezero_size 10000 -image_base 100000000
 
 build/boot.o: src/boot.lua src/boot.c src/libfemto.o \
@@ -63,7 +63,7 @@ src/load.lua: orb/load.orb
 
 #  It might not be this repo though.  Harmless for now.
 
-src/libfemto.o: src/femto.c src/femto_class.h
+build/libfemto.o: src/femto.c src/femto_class.h
 	$(CC) -c src/femto.c -o build/libfemto.o -Ilib/ -Ibuild/ -Wall -Wextra -pedantic -std=c99
 
 src/femto.h: src/femto.c
