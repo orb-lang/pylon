@@ -6,27 +6,10 @@
 #include "luajit.h"
 #include "sqlite3.h"
 
-#include "femto_class.h"
-#include "femto.h"
-
 // declaration for registries of static object libraries
 LUALIB_API int luaopen_luv (lua_State *L);
 LUALIB_API int luaopen_lpeg (lua_State *L);
 LUALIB_API int luaopen_utf8(lua_State *L);
-
-// Set up a struct to hold the femto library
-
-#include "femto_struct.h"
-
-// Populate the instance
-
-#include "femto_instance.h"
-
-// Big ol' static string.
-// creates LUA_BOOT:
-
-#include "boot_string.h"
-int LUA_BOOT_L = strlen(LUA_BOOT);
 
 // And another. This we can make into bytecode, it's pure Lua.
 
@@ -73,28 +56,6 @@ int main(int argc, char *argv[]) {
     lua_setfield(L, -2, "lpeg");
     lua_pushcfunction(L, luaopen_utf8);
     lua_setfield(L, -2, "lua-utf8");
-
-    lua_pop(L, 2); /* pop 'package' and 'preload' tables */
-    // constant strings, the poor man's bytecode!
-    status = luaL_loadbuffer(L, LUA_BOOT, LUA_BOOT_L, "boot");
-    if (status != 0) {
-        return lua_die(L, status);
-    }
-    int ret = lua_pcall(L, 0, 0, 0);
-    if (ret != 0) {
-        return lua_die(L, ret);
-    }
-    // This prelude draws the FFI into memory, now to
-    // pass in our jump table
-    lua_getfield(L, LUA_GLOBALSINDEX, "__mkfemto");
-    lua_pushlightuserdata(L, (void *) &Femto);
-    ret = lua_pcall(L, 1, 0, 0);
-    if (ret != 0) {
-        return lua_die(L, ret);
-    }
-    //  Remove __mkfemto from the namespace, freeing it
-    lua_pushnil(L);
-    lua_setglobal(L, "__mkfemto");
     printf("femto\n");
     if (argc > 1) {
         // load.lua is interned here
@@ -106,7 +67,7 @@ int main(int argc, char *argv[]) {
         if (status != 0) {
             return lua_die(L, status);
         }
-        ret = lua_pcall(L, 0, 0, -2);
+        int ret = lua_pcall(L, 0, 0, -2);
         if (ret != 0) {
             return lua_die(L, ret);
         }
