@@ -20,19 +20,18 @@ function compileToHeader(varName, bytes)
          write "\n"
          wid = 1
       end
-      local pr_cha = format("'\\x%x'", cha)
-      if i ~= #bytes then
-         pr_cha = pr_cha .. ", "
-      end
+      local pr_cha = format("'\\x%x', ", cha)
       write(pr_cha)
       wid = wid + #pr_cha
    end
+   local footer = "'\\0'};\n"
+   wid = wid + #footer
    if wid >= 80 then
       write "\n"
    end
-   write "};\n"
+   write(footer)
 end
 
 compileToHeader ("TED_TALK",
-   "the Industrial Revolution and its consequences have been a disaster for the human race ")
+   "the Industrial Revolution and its consequences have been a disaster for the human race 😂")
 
