@@ -13,9 +13,10 @@ LUALIB_API int luaopen_utf8(lua_State *L);
 
 // And another. This we can make into bytecode, it's pure Lua.
 
-#include "load_string.h"
-int LUA_LOAD_L = strlen(LUA_LOAD);
-
+//#include "load_string.h"
+//int LUA_LOAD_L = strlen(LUA_LOAD);
+#include "load_char.h"
+int LUA_LOAD_L = sizeof LUA_LOAD;
 // Print an error.
 static int lua_die(lua_State *L, int errno) {
     fprintf(stderr, "err #%d: %s\n", errno, lua_tostring(L, -1));

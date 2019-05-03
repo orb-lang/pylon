@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Copyright 2018 Sam Putman.
 
@@ -50,6 +50,7 @@ cd ../..
 
 cd luv/deps/luajit || exit
 git checkout v2.1
+export MACOSX_DEPLOYMENT_TARGET=10.14
 make amalg
 
 # Copy headers and objects to own the libs
@@ -60,6 +61,7 @@ cp src/luajit.h ../../../lib/
 cp src/luaconf.h ../../../lib/
 cp src/lauxlib.h ../../../lib/
 cp src/libluajit.a ../../../build/
+cp src/luajit ../../../build/
 cd ../../..
 
 # Next we make sqlite, which has the amalgamated build as the short path:

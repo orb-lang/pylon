@@ -16,4 +16,7 @@ mkdir build
 
 cd ..
 
+rm build/*
+rm lib/*
+
 rm br

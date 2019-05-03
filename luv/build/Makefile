@@ -1749,36 +1749,6 @@ deps/luajit/src/lj_bcwrite.c.s:
 	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_bcwrite.c.s
 .PHONY : deps/luajit/src/lj_bcwrite.c.s
 
-deps/luajit/src/lj_buf.o: deps/luajit/src/lj_buf.c.o
-
-.PHONY : deps/luajit/src/lj_buf.o
-
-# target to build an object file
-deps/luajit/src/lj_buf.c.o:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_buf.c.o
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_buf.c.o
-.PHONY : deps/luajit/src/lj_buf.c.o
-
-deps/luajit/src/lj_buf.i: deps/luajit/src/lj_buf.c.i
-
-.PHONY : deps/luajit/src/lj_buf.i
-
-# target to preprocess a source file
-deps/luajit/src/lj_buf.c.i:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_buf.c.i
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_buf.c.i
-.PHONY : deps/luajit/src/lj_buf.c.i
-
-deps/luajit/src/lj_buf.s: deps/luajit/src/lj_buf.c.s
-
-.PHONY : deps/luajit/src/lj_buf.s
-
-# target to generate assembly for a file
-deps/luajit/src/lj_buf.c.s:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_buf.c.s
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_buf.c.s
-.PHONY : deps/luajit/src/lj_buf.c.s
-
 deps/luajit/src/lj_carith.o: deps/luajit/src/lj_carith.c.o
 
 .PHONY : deps/luajit/src/lj_carith.o
@@ -2739,36 +2709,6 @@ deps/luajit/src/lj_parse.c.s:
 	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_parse.c.s
 .PHONY : deps/luajit/src/lj_parse.c.s
 
-deps/luajit/src/lj_profile.o: deps/luajit/src/lj_profile.c.o
-
-.PHONY : deps/luajit/src/lj_profile.o
-
-# target to build an object file
-deps/luajit/src/lj_profile.c.o:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_profile.c.o
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_profile.c.o
-.PHONY : deps/luajit/src/lj_profile.c.o
-
-deps/luajit/src/lj_profile.i: deps/luajit/src/lj_profile.c.i
-
-.PHONY : deps/luajit/src/lj_profile.i
-
-# target to preprocess a source file
-deps/luajit/src/lj_profile.c.i:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_profile.c.i
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_profile.c.i
-.PHONY : deps/luajit/src/lj_profile.c.i
-
-deps/luajit/src/lj_profile.s: deps/luajit/src/lj_profile.c.s
-
-.PHONY : deps/luajit/src/lj_profile.s
-
-# target to generate assembly for a file
-deps/luajit/src/lj_profile.c.s:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_profile.c.s
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_profile.c.s
-.PHONY : deps/luajit/src/lj_profile.c.s
-
 deps/luajit/src/lj_record.o: deps/luajit/src/lj_record.c.o
 
 .PHONY : deps/luajit/src/lj_record.o
@@ -2888,66 +2828,6 @@ deps/luajit/src/lj_str.c.s:
 	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_str.c.s
 	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_str.c.s
 .PHONY : deps/luajit/src/lj_str.c.s
-
-deps/luajit/src/lj_strfmt.o: deps/luajit/src/lj_strfmt.c.o
-
-.PHONY : deps/luajit/src/lj_strfmt.o
-
-# target to build an object file
-deps/luajit/src/lj_strfmt.c.o:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_strfmt.c.o
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_strfmt.c.o
-.PHONY : deps/luajit/src/lj_strfmt.c.o
-
-deps/luajit/src/lj_strfmt.i: deps/luajit/src/lj_strfmt.c.i
-
-.PHONY : deps/luajit/src/lj_strfmt.i
-
-# target to preprocess a source file
-deps/luajit/src/lj_strfmt.c.i:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_strfmt.c.i
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_strfmt.c.i
-.PHONY : deps/luajit/src/lj_strfmt.c.i
-
-deps/luajit/src/lj_strfmt.s: deps/luajit/src/lj_strfmt.c.s
-
-.PHONY : deps/luajit/src/lj_strfmt.s
-
-# target to generate assembly for a file
-deps/luajit/src/lj_strfmt.c.s:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_strfmt.c.s
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_strfmt.c.s
-.PHONY : deps/luajit/src/lj_strfmt.c.s
-
-deps/luajit/src/lj_strfmt_num.o: deps/luajit/src/lj_strfmt_num.c.o
-
-.PHONY : deps/luajit/src/lj_strfmt_num.o
-
-# target to build an object file
-deps/luajit/src/lj_strfmt_num.c.o:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_strfmt_num.c.o
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_strfmt_num.c.o
-.PHONY : deps/luajit/src/lj_strfmt_num.c.o
-
-deps/luajit/src/lj_strfmt_num.i: deps/luajit/src/lj_strfmt_num.c.i
-
-.PHONY : deps/luajit/src/lj_strfmt_num.i
-
-# target to preprocess a source file
-deps/luajit/src/lj_strfmt_num.c.i:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_strfmt_num.c.i
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_strfmt_num.c.i
-.PHONY : deps/luajit/src/lj_strfmt_num.c.i
-
-deps/luajit/src/lj_strfmt_num.s: deps/luajit/src/lj_strfmt_num.c.s
-
-.PHONY : deps/luajit/src/lj_strfmt_num.s
-
-# target to generate assembly for a file
-deps/luajit/src/lj_strfmt_num.c.s:
-	$(MAKE) -f CMakeFiles/luajit.dir/build.make CMakeFiles/luajit.dir/deps/luajit/src/lj_strfmt_num.c.s
-	$(MAKE) -f CMakeFiles/luajit-5.1.dir/build.make CMakeFiles/luajit-5.1.dir/deps/luajit/src/lj_strfmt_num.c.s
-.PHONY : deps/luajit/src/lj_strfmt_num.c.s
 
 deps/luajit/src/lj_strscan.o: deps/luajit/src/lj_strscan.c.o
 
@@ -3373,9 +3253,6 @@ help:
 	@echo "... deps/luajit/src/lj_bcwrite.o"
 	@echo "... deps/luajit/src/lj_bcwrite.i"
 	@echo "... deps/luajit/src/lj_bcwrite.s"
-	@echo "... deps/luajit/src/lj_buf.o"
-	@echo "... deps/luajit/src/lj_buf.i"
-	@echo "... deps/luajit/src/lj_buf.s"
 	@echo "... deps/luajit/src/lj_carith.o"
 	@echo "... deps/luajit/src/lj_carith.i"
 	@echo "... deps/luajit/src/lj_carith.s"
@@ -3472,9 +3349,6 @@ help:
 	@echo "... deps/luajit/src/lj_parse.o"
 	@echo "... deps/luajit/src/lj_parse.i"
 	@echo "... deps/luajit/src/lj_parse.s"
-	@echo "... deps/luajit/src/lj_profile.o"
-	@echo "... deps/luajit/src/lj_profile.i"
-	@echo "... deps/luajit/src/lj_profile.s"
 	@echo "... deps/luajit/src/lj_record.o"
 	@echo "... deps/luajit/src/lj_record.i"
 	@echo "... deps/luajit/src/lj_record.s"
@@ -3487,12 +3361,6 @@ help:
 	@echo "... deps/luajit/src/lj_str.o"
 	@echo "... deps/luajit/src/lj_str.i"
 	@echo "... deps/luajit/src/lj_str.s"
-	@echo "... deps/luajit/src/lj_strfmt.o"
-	@echo "... deps/luajit/src/lj_strfmt.i"
-	@echo "... deps/luajit/src/lj_strfmt.s"
-	@echo "... deps/luajit/src/lj_strfmt_num.o"
-	@echo "... deps/luajit/src/lj_strfmt_num.i"
-	@echo "... deps/luajit/src/lj_strfmt_num.s"
 	@echo "... deps/luajit/src/lj_strscan.o"
 	@echo "... deps/luajit/src/lj_strscan.i"
 	@echo "... deps/luajit/src/lj_strscan.s"
