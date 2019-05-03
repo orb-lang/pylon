@@ -32,6 +32,5 @@ function compileToHeader(varName, bytes)
    write(footer)
 end
 
-compileToHeader ("TED_TALK",
-   "the Industrial Revolution and its consequences have been a disaster for the human race 😂")
+return compileToHeader
 

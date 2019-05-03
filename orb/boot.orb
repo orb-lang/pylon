@@ -1,7 +1,0 @@
-* boot
-
-No longer using the femto library for anything since UV is a complete
-replacement.
-
-This file will disappear in the commit after next.
-#/lua
