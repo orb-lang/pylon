@@ -39,10 +39,18 @@ BUILD_MODULE=OFF make
 # Move our artifacts over to pylon/lib
 
 cd build || exit
-cp libuv.a ../../build/
 cp libluv.a ../../build/
 
 cd ../..
+
+# Somehow we're losing libuv.a now, so build that:
+
+cd luv/deps/libuv
+./gyp_uv.py -f xcode
+xcodebuild -ARCHS="x86_64" -project out/uv.xcodeproj -configuration Release -alltargets
+cp build/Release/libuv.a ../../../build/
+
+cd ../../../
 
 # This builds luajit and uv and a luv binary to call from the Lua side.
 # luv's build process doesn't use the amalgamated LuaJIT build, which we

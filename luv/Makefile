@@ -34,7 +34,7 @@ deps/luajit/src:
 	git submodule update --init deps/luajit
 
 build/Makefile: deps/libuv/include deps/luajit/src
-	cmake -H. -Bbuild ${CMAKE_OPTIONS} -DWITH_AMALG=OFF
+	cmake -H. -Bbuild ${CMAKE_OPTIONS} 
 
 luv: build/Makefile
 	cmake --build build --config Debug
@@ -52,11 +52,6 @@ reset:
 	  git checkout .
 
 publish-luarocks:
-	rm -rf luv-${LUV_TAG}
-	mkdir -p luv-${LUV_TAG}/deps
-	cp -r src cmake CMakeLists.txt LICENSE.txt README.md docs.md luv-${LUV_TAG}/
-	cp -r deps/libuv deps/*.cmake deps/lua_one.c luv-${LUV_TAG}/deps/
-	COPYFILE_DISABLE=true tar -czvf luv-${LUV_TAG}.tar.gz luv-${LUV_TAG}
 	github-release upload --user luvit --repo luv --tag ${LUV_TAG} \
 	  --file luv-${LUV_TAG}.tar.gz --name luv-${LUV_TAG}.tar.gz
 	luarocks upload luv-${LUV_TAG}.rockspec --api-key=${LUAROCKS_TOKEN}
