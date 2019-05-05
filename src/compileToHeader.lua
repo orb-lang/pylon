@@ -8,8 +8,6 @@ local byte, sub, format = assert(string.byte),
                           assert(string.sub),
                           assert(string.format)
 
-
-
 function compileToHeader(varName, bytes, out)
    out = out or io.stdout
    local wid = 1
@@ -29,7 +27,7 @@ function compileToHeader(varName, bytes, out)
       end
      out:write(pr_cha)
    end
-   local footer = "};\n"
+   local footer = "};\n\n"
    wid = wid + #footer
    if wid >= 80 then
       out:write "\n"

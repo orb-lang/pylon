@@ -13,6 +13,7 @@
 
 
 
+
 -- local utf8 = require "lua-utf8"
 -- assert(utf8, "no utf8")
 
@@ -26,7 +27,7 @@ local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget
 local strict = {}
 
 local function what ()
-                                    local d = getinfo(3, "S")
+    local d = getinfo(3, "S")
     return d and d.what or "C"
 end
 

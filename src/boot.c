@@ -11,16 +11,33 @@ LUALIB_API int luaopen_luv (lua_State *L);
 LUALIB_API int luaopen_lpeg (lua_State *L);
 LUALIB_API int luaopen_utf8(lua_State *L);
 
-// And another. This we can make into bytecode, it's pure Lua.
+// Constant arrays of compiled bytecode
 
-//#include "load_string.h"
-//int LUA_LOAD_L = strlen(LUA_LOAD);
+#include "preamble.h"
 #include "load_char.h"
-int LUA_LOAD_L = sizeof LUA_LOAD;
+
 // Print an error.
 static int lua_die(lua_State *L, int errno) {
     fprintf(stderr, "err #%d: %s\n", errno, lua_tostring(L, -1));
     return errno;
+}
+
+// debug-load a string (or bytecode)
+
+static int debug_load(lua_State *L, const char bytecode[], int byte_len, const char name[]) {
+    lua_getglobal(L, "debug");
+    lua_getfield(L, -1, "traceback");
+    lua_replace(L, -2);
+    int status = luaL_loadbuffer(L, bytecode, byte_len, name);
+    if (status != 0) {
+       return lua_die(L, status);
+    }
+    int ret = lua_pcall(L, 0, 0, -2);
+    if (ret != 0) {
+        return lua_die(L, ret);
+    }
+    lua_pop(L, 1);
+    return ret;
 }
 
 //  main()
@@ -28,8 +45,6 @@ static int lua_die(lua_State *L, int errno) {
 //  We do the minimum necessary and hand control to Lua.
 
 int main(int argc, char *argv[]) {
-    int status;
-
     //  Start a VM
     lua_State *L = luaL_newstate();
 
@@ -57,22 +72,9 @@ int main(int argc, char *argv[]) {
     lua_setfield(L, -2, "lpeg");
     lua_pushcfunction(L, luaopen_utf8);
     lua_setfield(L, -2, "lua-utf8");
-    printf("femto\n");
     if (argc > 1) {
-        // load.lua is interned here
-        // This one can probably be bytecode
-        lua_getglobal(L, "debug");
-        lua_getfield(L, -1, "traceback");
-        lua_replace(L, -2);
-        status = luaL_loadbuffer(L, LUA_LOAD, LUA_LOAD_L, "load_string");
-        if (status != 0) {
-            return lua_die(L, status);
-        }
-        int ret = lua_pcall(L, 0, 0, -2);
-        if (ret != 0) {
-            return lua_die(L, ret);
-        }
-        lua_pop(L, 1);
+       //debug_load(L, LUA_PREAMBLE, sizeof LUA_PREAMBLE, "preamble.lua");
+       debug_load(L, LUA_LOAD, sizeof LUA_LOAD, "load.lua");
     }
 
     lua_close(L); // Close Lua

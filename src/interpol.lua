@@ -22,6 +22,7 @@
 --
 --               This implies suppressing the C wrapper entirely, and a bit of arg juggling.
 --
+--  #NB this has been deprecated in favor of compileToHeader.lua
 
 
 local file = io.open(arg[1])
