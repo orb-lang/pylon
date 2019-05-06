@@ -707,7 +707,7 @@ SQLite, so the system library is likely to be just fine.
 #/lua
 
 
-*** Additional SQL layer
+** Additional SQL layer
 
 This is all code I wrote to make the library more useable.
 
@@ -719,7 +719,7 @@ This is all code I wrote to make the library more useable.
    local format = assert(string.format)
 #/lua
 
-** sql.san(str)
+*** sql.san(str)
 
 Sanitizes a string for SQL(ite) quoting.
 
@@ -728,11 +728,11 @@ Sanitizes a string for SQL(ite) quoting.
       return gsub(str, "'", "''")
    end
 
-   sql.san = san
+   sqlayer.san = san
 #/lua
 
 
-** sql.format(str)
+*** sql.format(str)
 
 The SQLite bindings I'm using support only an impoverished subset of the
 SQLite binds.  In the meantime we're going to use format strings, which at
@@ -776,7 +776,7 @@ keywords and values, and this only allows for inserting literal strings.
    end
 #/lua
 
-** sql.pexec(conn, stmt)
+*** sql.pexec(conn, stmt)
 
 Executes the statement on conn in protected mode.
 
@@ -796,7 +796,7 @@ Unwraps and returns success, or =false= and error.
 #/lua
 
 
-** sql.lastid(conn)
+*** sql.lastid(conn)
 
 This could be improved by natively handling uint64_t =cdata=.
 
@@ -872,21 +872,26 @@ This is the fun part: we swap the old metatable for a function which closes
 over our =conn=, passing it along to the pragma.
 
 #!lua
-local function new_conn_index(conn, key)
-   local conn_M = getmetatable(conn)
-   local function _prag_index(_, prag)
-      return _prag_set(conn, prag)
+   local function new_conn_index(conn, key)
+      local conn_M = getmetatable(conn)
+      local function _prag_index(_, prag)
+         return _prag_set(conn, prag)
+      end
+      if key == "pragma" then
+         return setmetatable({}, {__index = _prag_index})
+      else
+         return conn_M[key]
+      end
    end
-   if key == "pragma" then
-      return setmetatable({}, {__index = _prag_index})
-   else
-      return conn_M[key]
-   end
-end
 
-conn_mt.__index = new_conn_index
+   conn_mt.__index = new_conn_index
 #/lua
+
+
+**** End Closure and Add =sql= to _G
 
 #!lua
 end
+sql = sqlayer
+sqlayer = nil
 #/lua

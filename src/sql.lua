@@ -728,7 +728,7 @@ do
       return gsub(str, "'", "''")
    end
 
-   sql.san = san
+   sqlayer.san = san
 
 
 
@@ -872,20 +872,25 @@ do
 
 
 
-local function new_conn_index(conn, key)
-   local conn_M = getmetatable(conn)
-   local function _prag_index(_, prag)
-      return _prag_set(conn, prag)
+   local function new_conn_index(conn, key)
+      local conn_M = getmetatable(conn)
+      local function _prag_index(_, prag)
+         return _prag_set(conn, prag)
+      end
+      if key == "pragma" then
+         return setmetatable({}, {__index = _prag_index})
+      else
+         return conn_M[key]
+      end
    end
-   if key == "pragma" then
-      return setmetatable({}, {__index = _prag_index})
-   else
-      return conn_M[key]
-   end
-end
 
-conn_mt.__index = new_conn_index
+   conn_mt.__index = new_conn_index
+
+
+
 
 
 
 end
+sql = sqlayer
+sqlayer = nil
