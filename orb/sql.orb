@@ -126,7 +126,9 @@ SQLite, so the system library is likely to be just fine.
      for i=100,101 do t[#t+1] = pre..codes[i].."="..i..";\n" end
      for i=1,5     do t[#t+1] = pre..types[i].."="..i..";\n" end
      pre = pre.."OPEN_"
-     for k,v in pairs(opens) do t[#t+1] = pre..k.."="..bit.tobit(v)..";\n" end
+     for k,v in pairs(opens) do
+       t[#t+1] = pre..k.."="..bit.tobit(v)..";\n"
+     end
    end
 
    -- Cdef ------------------------------------------------------------------------
@@ -873,14 +875,13 @@ over our =conn=, passing it along to the pragma.
 
 #!lua
    local function new_conn_index(conn, key)
-      local conn_M = getmetatable(conn)
       local function _prag_index(_, prag)
          return _prag_set(conn, prag)
       end
       if key == "pragma" then
          return setmetatable({}, {__index = _prag_index})
       else
-         return conn_M[key]
+         return conn_mt[key]
       end
    end
 

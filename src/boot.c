@@ -13,7 +13,8 @@ LUALIB_API int luaopen_utf8(lua_State *L);
 
 // Constant arrays of compiled bytecode
 
-#include "preamble.h"
+//#include "preamble.h"
+#include "sql.h"
 #include "load_char.h"
 
 // Print an error.
@@ -73,6 +74,7 @@ int main(int argc, char *argv[]) {
     lua_pushcfunction(L, luaopen_utf8);
     lua_setfield(L, -2, "lua-utf8");
     if (argc > 1) {
+       debug_load(L, LUA_SQL, sizeof LUA_SQL, "sql.lua");
        //debug_load(L, LUA_PREAMBLE, sizeof LUA_PREAMBLE, "preamble.lua");
        debug_load(L, LUA_LOAD, sizeof LUA_LOAD, "load.lua");
     }
