@@ -32,7 +32,7 @@ uninstall:
 br: build/boot.o build/libluv.a
 	$(CC) -o br $(CWARNS) build/boot.o $(BRLIBS) -Ibuild/ -Ilib/ -lm -pagezero_size 10000 -image_base 100000000
 
-build/boot.o: src/boot.c build/load_char.h build/sql.h #build/preamble.h
+build/boot.o: src/boot.c build/load_char.h build/sql.h build/preamble.h
 	$(CC) -c -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/boot.c -o build/boot.o -Wall -Wextra -pedantic -std=c99
 
 build/load_char.h: src/load.lua src/compileToHeader.lua
@@ -45,10 +45,10 @@ build/sql.h: src/sql.lua src/compileToHeader.lua
 	- colordiff build/sql.h build/~sql.h
 	mv build/~sql.h build/sql.h
 
-#build/preamble.h: src/preamble.lua src/compileToHeader.lua
-#	build/luajit src/compileToHeader.lua LUA_PREAMBLE src/preamble.lua build/~preamble.h
-#	- colordiff build/preamble.h build/~preamble.h
-#	mv build/~preamble.h build/preamble.h
+build/preamble.h: src/preamble.lua src/compileToHeader.lua
+	build/luajit src/compileToHeader.lua LUA_PREAMBLE src/preamble.lua build/~preamble.h
+	- colordiff build/preamble.h build/~preamble.h
+	mv build/~preamble.h build/preamble.h
 
 #  These steps should be pre-baked in an install so we - the call in case orb
 #  is not installed
