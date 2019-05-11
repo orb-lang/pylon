@@ -38,5 +38,12 @@ end
 local infile = arg[2] and io.open(arg[2]) or io.stdin
 local outfile = arg[3] and io.open(arg[3], "w+") or io.stdout
 
-compileToHeader(arg[1], string.dump(load(infile:read("*a"))), outfile)
+local bytes, err = load(infile:read("*a"))
+if not bytes then
+   print(err)
+   os.exit(1)
+else
+   compileToHeader(arg[1], string.dump(bytes, ""), outfile)
+   os.exit(0)
+end
 

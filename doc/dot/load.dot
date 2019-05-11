@@ -3,7 +3,7 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 139"]
+doc_0 [label="doc - 142"]
 
 
 doc_0 -> { section_1}
@@ -27,7 +27,7 @@ prose_5 [label="prose"]
 
 section_6 [label="section: 12-20"]
 
-section_7 [label="section: 21-139"]
+section_7 [label="section: 21-107"]
 
 
 // END RANK section_1
@@ -134,16 +134,16 @@ leaf_27  [color=Gray,shape=rectangle,fontname=Inconsolata,label="-- local utf8 =
 -- assert(utf8, \"no utf8\")"]
 // END RANK codeblock_23
 
-section_7 -> { header_28 prose_29 codeblock_30 codeblock_31}
-{rank=same; header_28 prose_29 codeblock_30 codeblock_31}
+section_7 -> { header_28 prose_29 codeblock_30 section_31}
+{rank=same; header_28 prose_29 codeblock_30 section_31}
 
 header_28 [label="2 : Stricture"]
 
 prose_29 [label="prose"]
 
-codeblock_30 [label="code block 25-115"]
+codeblock_30 [label="code block 25-105"]
 
-codeblock_31 [label="code block 118-126"]
+section_31 [label="section: 108-142"]
 
 
 // END RANK section_7
@@ -168,106 +168,173 @@ Lifted straight from penlight.
 // END RANK raw_33
 
 codeblock_30 -> leaf_35
-leaf_35  [color=Gray,shape=rectangle,fontname=Inconsolata,label="local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget
-local strict = {}
+leaf_35  [color=Gray,shape=rectangle,fontname=Inconsolata,label="do
+    local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget
+    local strict = {}
 
-local function what ()
-    local d = getinfo(3, \"S\")
-    return d and d.what or \"C\"
-end
+    local function what ()
+        local d = getinfo(3, \"S\")
+        return d and d.what or \"C\"
+    end
 
---- make an existing table strict.
--- @string name name of table (optional)
--- @tab[opt] mod table - if `nil` then we'll return a new table
--- @tab[opt] predeclared - table of variables that are to be considered predeclared.
--- @return the given table, or a new table
-local function stricture(name,mod,predeclared)
-    local mt, old_newindex, old_index, old_index_type, global, closed
-    if predeclared then
-        global = predeclared.__global
-        closed = predeclared.__closed
-    end
-    if type(mod) == 'table' then
-        mt = getmetatable(mod)
-        if mt and rawget(mt,'__declared') then return end -- already patched...
-    else
-        mod = {}
-    end
-    if mt == nil then
-        mt = {}
-        setmetatable(mod, mt)
-    else
-        old_newindex = mt.__newindex
-        old_index = mt.__index
-        old_index_type = type(old_index)
-    end
-    mt.__declared = predeclared or {}
-    mt.__newindex = function(t, n, v)
-        if old_newindex then
-            old_newindex(t, n, v)
-            if rawget(t,n)~=nil then return end
+    --- make an existing table strict.
+    -- @string name name of table (optional)
+    -- @tab[opt] mod table - if `nil` then we'll return a new table
+    -- @tab[opt] predeclared - table of variables that are to be considered predeclared.
+    -- @return the given table, or a new table
+    local function stricture(name,mod,predeclared)
+        local mt, old_newindex, old_index, old_index_type, global, closed
+        if predeclared then
+            global = predeclared.__global
+            closed = predeclared.__closed
         end
-        if not mt.__declared[n] then
-            if global then
-                local w = what()
-                if w ~= \"main\" and w ~= \"C\" then
-                    error(\"assign to undeclared global '\"..n..\"'\", 2)
-                end
+        if type(mod) == 'table' then
+            mt = getmetatable(mod)
+            if mt and rawget(mt,'__declared') then return end -- already patched...
+        else
+            mod = {}
+        end
+        if mt == nil then
+            mt = {}
+            setmetatable(mod, mt)
+        else
+            old_newindex = mt.__newindex
+            old_index = mt.__index
+            old_index_type = type(old_index)
+        end
+        mt.__declared = predeclared or {}
+        mt.__newindex = function(t, n, v)
+            if old_newindex then
+                old_newindex(t, n, v)
+                if rawget(t,n)~=nil then return end
             end
-            mt.__declared[n] = true
-        end
-        rawset(t, n, v)
-    end
-    mt.__index = function(t,n)
-        if not mt.__declared[n] and what() ~= \"C\" then
-            if old_index then
-                if old_index_type == \"table\" then
-                    local fallback = old_index[n]
-                    if fallback ~= nil then
-                        return fallback
-                    end
-                else
-                    local res = old_index(t, n)
-                    if res ~= nil then
-                        return res
+            if not mt.__declared[n] then
+                if global then
+                    local w = what()
+                    if w ~= \"main\" and w ~= \"C\" then
+                        error(\"assign to undeclared global '\"..n..\"'\", 2)
                     end
                 end
+                mt.__declared[n] = true
             end
-            local msg = \"variable '\"..n..\"' is not declared\"
-            if name then
-                msg = msg .. \" in '\"..name..\"'\"
+            rawset(t, n, v)
+        end
+        mt.__index = function(t,n)
+            if not mt.__declared[n] and what() ~= \"C\" then
+                if old_index then
+                    if old_index_type == \"table\" then
+                        local fallback = old_index[n]
+                        if fallback ~= nil then
+                            return fallback
+                        end
+                    else
+                        local res = old_index(t, n)
+                        if res ~= nil then
+                            return res
+                        end
+                    end
+                end
+                local msg = \"variable '\"..n..\"' is not declared\"
+                if name then
+                    msg = msg .. \" in '\"..name..\"'\"
+                end
+                error(msg, 2)
             end
-            error(msg, 2)
+            return rawget(t, n)
         end
-        return rawget(t, n)
+        return mod
     end
-    return mod
-end
 
--- So `strict.make_all_strict(_G)` prevents monkey-patching
--- of any global table
--- @tab T
-local function make_all_strict (T)
-    for k,v in pairs(T) do
-        if type(v) == 'table' and v ~= T then
-            stricture(k,v)
-        end
-    end
-end
-
-stricture(nil,_G,{_PROMPT=true,__global=true})
--- make_all_strict(_G)"]
+    stricture(nil,_G,{_PROMPT=true,__global=true})
+end"]
 // END RANK codeblock_30
 
-codeblock_31 -> leaf_36
-leaf_36  [color=Gray,shape=rectangle,fontname=Inconsolata,label="if string.sub(arg[0], -4) == \".lua\" then
-    loadfile(arg[0])()
-elseif string.sub(arg[0], -4) == \".raw\" then
-   loadfile(arg[0])()
-else
-   loadfile(arg[0] .. \".lua\")()
+section_31 -> { header_36 prose_37 codeblock_38 codeblock_39}
+{rank=same; header_36 prose_37 codeblock_38 codeblock_39}
+
+header_36 [label="4 : gc"]
+
+prose_37 [label="prose"]
+
+codeblock_38 [label="code block 114-116"]
+
+codeblock_39 [label="code block 119-129"]
+
+
+// END RANK section_31
+
+header_36 -> leaf_40
+leaf_40  [color=Gray,shape=rectangle,fontname=Inconsolata,label="**** gc"]
+// END RANK header_36
+
+prose_37 -> { raw_41 prespace_42 literal_43 raw_44 prespace_45 literal_46 raw_47}
+{rank=same; raw_41 prespace_42 literal_43 raw_44 prespace_45 literal_46 raw_47}
+
+raw_41 [label="raw"]
+
+prespace_42 [label="prespace"]
+
+literal_43 [label="literal"]
+
+raw_44 [label="raw"]
+
+prespace_45 [label="prespace"]
+
+literal_46 [label="literal"]
+
+raw_47 [label="raw"]
+
+
+// END RANK prose_37
+
+raw_41 -> leaf_48
+leaf_48  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+All of these"]
+// END RANK raw_41
+
+prespace_42 -> leaf_49
+leaf_49  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_42
+
+literal_43 -> leaf_50
+leaf_50  [color=Gray,shape=rectangle,fontname=Inconsolata,label="do"]
+// END RANK literal_43
+
+raw_44 -> leaf_51
+leaf_51  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" blocks are to emulate the per-module behavior of Lua,
+creating closures so that all"]
+// END RANK raw_44
+
+prespace_45 -> leaf_52
+leaf_52  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_45
+
+literal_46 -> leaf_53
+leaf_53  [color=Gray,shape=rectangle,fontname=Inconsolata,label="local"]
+// END RANK literal_46
+
+raw_47 -> leaf_54
+leaf_54  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" variables become garbage.  So let's
+collect them.
+"]
+// END RANK raw_47
+
+codeblock_38 -> leaf_55
+leaf_55  [color=Gray,shape=rectangle,fontname=Inconsolata,label="collectgarbage()"]
+// END RANK codeblock_38
+
+codeblock_39 -> leaf_56
+leaf_56  [color=Gray,shape=rectangle,fontname=Inconsolata,label="if rawget(_G, \"arg\") ~= nil then
+    if string.sub(arg[0], -4) == \".lua\" then
+        loadfile(arg[0])()
+    elseif string.sub(arg[0], -4) == \".raw\" then
+       loadfile(arg[0])()
+    else
+       loadfile(arg[0] .. \".lua\")()
+    end
 end"]
-// END RANK codeblock_31
+// END RANK codeblock_39
 
 
 }

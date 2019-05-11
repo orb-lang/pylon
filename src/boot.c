@@ -17,6 +17,10 @@ LUALIB_API int luaopen_utf8(lua_State *L);
 #include "preamble.h"
 #include "load_char.h"
 
+const char * SQL_NAME = "@sql";
+const char * PREAMBLE_NAME = "@preamble";
+const char * LOAD_NAME = "@load";
+
 // Print an error.
 static int lua_die(lua_State *L, int errno) {
     fprintf(stderr, "err #%d: %s\n", errno, lua_tostring(L, -1));
@@ -25,7 +29,7 @@ static int lua_die(lua_State *L, int errno) {
 
 // debug-load a string (or bytecode)
 
-static int debug_load(lua_State *L, const char bytecode[], int byte_len, const char name[]) {
+static int debug_load(lua_State *L, const char bytecode[], int byte_len, const char * name) {
     lua_getglobal(L, "debug");
     lua_getfield(L, -1, "traceback");
     lua_replace(L, -2);
@@ -73,9 +77,9 @@ int main(int argc, char *argv[]) {
     lua_setfield(L, -2, "lpeg");
     lua_pushcfunction(L, luaopen_utf8);
     lua_setfield(L, -2, "lua-utf8");
-    debug_load(L, LUA_SQL, sizeof LUA_SQL, "sql.lua");
-    debug_load(L, LUA_PREAMBLE, sizeof LUA_PREAMBLE, "preamble.lua");
-    debug_load(L, LUA_LOAD, sizeof LUA_LOAD, "load.lua");
+    debug_load(L, LUA_SQL, sizeof LUA_SQL, SQL_NAME);
+    debug_load(L, LUA_PREAMBLE, sizeof LUA_PREAMBLE, PREAMBLE_NAME);
+    debug_load(L, LUA_LOAD, sizeof LUA_LOAD, LOAD_NAME);
 
     lua_close(L); // Close Lua
     return 0;

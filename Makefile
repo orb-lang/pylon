@@ -54,7 +54,7 @@ build/preamble.h: src/preamble.lua src/compileToHeader.lua
 #  is not installed
 
 src/load.lua: orb/load.orb
-	- orb
+	- grym
 
 src/preamble.lua: orb/preamble.orb
-	- orb
+	- grym
