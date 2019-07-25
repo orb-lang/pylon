@@ -1,4 +1,4 @@
-# Install script for directory: /Users/atman/code/pylon/luv
+# Install script for directory: /Users/atman/Dropbox/br/pylon/luv
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -41,7 +41,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/lib" TYPE STATIC_LIBRARY FILES "/Users/atman/code/pylon/luv/build/libluv.a")
+file(INSTALL DESTINATION "/usr/local/lib" TYPE STATIC_LIBRARY FILES "/Users/atman/Dropbox/br/pylon/luv/build/libluv.a")
   if(EXISTS "$ENV{DESTDIR}/usr/local/lib/libluv.a" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}/usr/local/lib/libluv.a")
     execute_process(COMMAND "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib" "$ENV{DESTDIR}/usr/local/lib/libluv.a")
@@ -58,10 +58,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
 file(INSTALL DESTINATION "/usr/local/include/luv" TYPE FILE FILES
-    "/Users/atman/code/pylon/luv/src/luv.h"
-    "/Users/atman/code/pylon/luv/src/util.h"
-    "/Users/atman/code/pylon/luv/src/lhandle.h"
-    "/Users/atman/code/pylon/luv/src/lreq.h"
+    "/Users/atman/Dropbox/br/pylon/luv/src/luv.h"
+    "/Users/atman/Dropbox/br/pylon/luv/src/util.h"
+    "/Users/atman/Dropbox/br/pylon/luv/src/lhandle.h"
+    "/Users/atman/Dropbox/br/pylon/luv/src/lreq.h"
     )
 endif()
 
@@ -78,5 +78,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/atman/code/pylon/luv/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/atman/Dropbox/br/pylon/luv/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

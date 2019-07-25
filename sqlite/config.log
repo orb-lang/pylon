@@ -30,8 +30,8 @@ Kernel configured for up to 4 processors.
 Processor type: x86_64h (Intel x86-64h Haswell)
 Processors active: 0 1 2 3
 Primary memory available: 8.00 gigabytes
-Default processor set: 438 tasks, 1887 threads, 4 processors
-Load average: 3.61, Mach factor: 1.02
+Default processor set: 444 tasks, 2340 threads, 4 processors
+Load average: 3.93, Mach factor: 1.29
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -98,7 +98,7 @@ configure:3043: found /usr/bin/gcc
 configure:3054: result: gcc
 configure:3283: checking for C compiler version
 configure:3292: gcc --version >&5
-Apple LLVM version 10.0.0 (clang-1000.11.45.5)
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
 Target: x86_64-apple-darwin18.5.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
@@ -106,17 +106,17 @@ Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-
 configure:3303: $? = 0
 configure:3292: gcc -v >&5
 Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/c++/4.2.1
-Apple LLVM version 10.0.0 (clang-1000.11.45.5)
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
 Target: x86_64-apple-darwin18.5.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 configure:3303: $? = 0
 configure:3292: gcc -V >&5
-clang: error: argument to '-V' is missing (expected 1 value)
+clang: error: unsupported option '-V -Wno-atomic-implicit-seq-cst'
 clang: error: no input files
 configure:3303: $? = 1
 configure:3292: gcc -qversion >&5
-clang: error: unknown argument: '-qversion'
+clang: error: unknown argument '-qversion', did you mean '--version'?
 clang: error: no input files
 configure:3303: $? = 1
 configure:3323: checking whether the C compiler works
@@ -169,7 +169,7 @@ configure:4206: checking for gcc
 configure:4233: result: gcc
 configure:4462: checking for C compiler version
 configure:4471: gcc --version >&5
-Apple LLVM version 10.0.0 (clang-1000.11.45.5)
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
 Target: x86_64-apple-darwin18.5.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
@@ -177,17 +177,17 @@ Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-
 configure:4482: $? = 0
 configure:4471: gcc -v >&5
 Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/c++/4.2.1
-Apple LLVM version 10.0.0 (clang-1000.11.45.5)
+Apple LLVM version 10.0.1 (clang-1001.0.46.4)
 Target: x86_64-apple-darwin18.5.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 configure:4482: $? = 0
 configure:4471: gcc -V >&5
-clang: error: argument to '-V' is missing (expected 1 value)
+clang: error: unsupported option '-V -Wno-atomic-implicit-seq-cst'
 clang: error: no input files
 configure:4482: $? = 1
 configure:4471: gcc -qversion >&5
-clang: error: unknown argument: '-qversion'
+clang: error: unknown argument '-qversion', did you mean '--version'?
 clang: error: no input files
 configure:4482: $? = 1
 configure:4486: checking whether we are using the GNU C compiler
@@ -224,7 +224,7 @@ configure:5643: checking the name lister (/usr/bin/nm -B) interface
 configure:5650: gcc -c -g -O2  conftest.c >&5
 configure:5653: /usr/bin/nm -B "conftest.o"
 configure:5656: output
-00000000000001cc S _some_variable
+00000000000001d4 S _some_variable
 configure:5663: result: BSD nm
 configure:5666: checking whether ln -s works
 configure:5670: result: yes
@@ -449,7 +449,7 @@ configure:12970: checking for fullfsync
 configure:12970: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fullfsync", referenced from:
-      _main in conftest-f52bc0.o
+      _main in conftest-91a3bb.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:12970: $? = 1
@@ -632,7 +632,7 @@ configure:13115: checking for library containing readline
 configure:13146: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_readline", referenced from:
-      _main in conftest-6bb458.o
+      _main in conftest-24ad9b.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13146: $? = 1
@@ -745,7 +745,7 @@ configure:13199: checking for library containing tgetent
 configure:13230: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_tgetent", referenced from:
-      _main in conftest-b5ef52.o
+      _main in conftest-6b6ddf.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13230: $? = 1
@@ -802,7 +802,7 @@ configure:13255: checking for library containing readline
 configure:13286: gcc -o conftest -g -O2   conftest.c -ltermcap  >&5
 Undefined symbols for architecture x86_64:
   "_readline", referenced from:
-      _main in conftest-477576.o
+      _main in conftest-1e7851.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13286: $? = 1
@@ -882,7 +882,7 @@ configure:13674: checking for posix_fallocate
 configure:13674: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_posix_fallocate", referenced from:
-      _main in conftest-20df16.o
+      _main in conftest-0cfd61.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13674: $? = 1
@@ -971,7 +971,7 @@ configure:13691: checking for library containing deflate
 configure:13722: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_deflate", referenced from:
-      _main in conftest-b997eb.o
+      _main in conftest-acfe75.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13722: $? = 1
@@ -1172,7 +1172,7 @@ lt_cv_truncate_bin='/bin/dd bs=4096 count=1'
 ## Output variables. ##
 ## ----------------- ##
 
-ACLOCAL='${SHELL} /Users/atman/code/pylon/sqlite/missing aclocal-1.15'
+ACLOCAL='${SHELL} /Users/atman/Dropbox/br/pylon/sqlite/missing aclocal-1.15'
 AMDEPBACKSLASH='\'
 AMDEP_FALSE='#'
 AMDEP_TRUE=''
@@ -1182,9 +1182,9 @@ AM_DEFAULT_V='$(AM_DEFAULT_VERBOSITY)'
 AM_DEFAULT_VERBOSITY='1'
 AM_V='$(V)'
 AR='ar'
-AUTOCONF='${SHELL} /Users/atman/code/pylon/sqlite/missing autoconf'
-AUTOHEADER='${SHELL} /Users/atman/code/pylon/sqlite/missing autoheader'
-AUTOMAKE='${SHELL} /Users/atman/code/pylon/sqlite/missing automake-1.15'
+AUTOCONF='${SHELL} /Users/atman/Dropbox/br/pylon/sqlite/missing autoconf'
+AUTOHEADER='${SHELL} /Users/atman/Dropbox/br/pylon/sqlite/missing autoheader'
+AUTOMAKE='${SHELL} /Users/atman/Dropbox/br/pylon/sqlite/missing automake-1.15'
 AWK='awk'
 BUILD_CFLAGS=''
 CC='gcc'
@@ -1223,7 +1223,7 @@ LIPO='lipo'
 LN_S='ln -s'
 LTLIBOBJS=''
 LT_SYS_LIBRARY_PATH=''
-MAKEINFO='${SHELL} /Users/atman/code/pylon/sqlite/missing makeinfo'
+MAKEINFO='${SHELL} /Users/atman/Dropbox/br/pylon/sqlite/missing makeinfo'
 MANIFEST_TOOL=':'
 MKDIR_P='./install-sh -c -d'
 NM='/usr/bin/nm -B'
@@ -1284,7 +1284,7 @@ host_vendor='apple'
 htmldir='${docdir}'
 includedir='${prefix}/include'
 infodir='${datarootdir}/info'
-install_sh='${SHELL} /Users/atman/code/pylon/sqlite/install-sh'
+install_sh='${SHELL} /Users/atman/Dropbox/br/pylon/sqlite/install-sh'
 libdir='${exec_prefix}/lib'
 libexecdir='${exec_prefix}/libexec'
 localedir='${datarootdir}/locale'

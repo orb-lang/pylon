@@ -16,10 +16,12 @@ LUALIB_API int luaopen_utf8(lua_State *L);
 #include "sql.h"
 #include "preamble.h"
 #include "load_char.h"
+#include "afterward.h"
 
 const char * SQL_NAME = "@sql";
 const char * PREAMBLE_NAME = "@preamble";
 const char * LOAD_NAME = "@load";
+const char * AFTERWARD_NAME = "@afterward";
 
 // Print an error.
 static int lua_die(lua_State *L, int errno) {
@@ -80,7 +82,8 @@ int main(int argc, char *argv[]) {
     debug_load(L, LUA_SQL, sizeof LUA_SQL, SQL_NAME);
     debug_load(L, LUA_PREAMBLE, sizeof LUA_PREAMBLE, PREAMBLE_NAME);
     debug_load(L, LUA_LOAD, sizeof LUA_LOAD, LOAD_NAME);
-
+    // et voila
+    debug_load(L, LUA_AFTERWARD, sizeof LUA_AFTERWARD, AFTERWARD_NAME);
     lua_close(L); // Close Lua
     return 0;
 }

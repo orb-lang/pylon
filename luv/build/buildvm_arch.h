@@ -2,10 +2,10 @@
 ** This file has been pre-processed with DynASM.
 ** http://luajit.org/dynasm.html
 ** DynASM version 1.3.0, DynASM x64 version 1.3.0
-** DO NOT EDIT! The original file is in "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc".
+** DO NOT EDIT! The original file is in "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc".
 */
 
-#line 1 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|// Low-level VM code for x86 CPUs.
 //|// Bytecode interpreter, fast functions and helper functions.
 //|// Copyright (C) 2005-2017 Mike Pall. See Copyright Notice in luajit.h
@@ -15,7 +15,7 @@
 #if DASM_VERSION != 10300
 #error "Version mismatch between DynASM and included encoding engine"
 #endif
-#line 7 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 7 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.else
 //|.arch x86
 //|.endif
@@ -23,7 +23,7 @@
 #define DASM_SECTION_CODE_OP	0
 #define DASM_SECTION_CODE_SUB	1
 #define DASM_MAXSECTION		2
-#line 11 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 11 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|
 //|.actionlist build_actionlist
 static const unsigned char build_actionlist[14362] = {
@@ -724,7 +724,7 @@ static const unsigned char build_actionlist[14362] = {
   0
 };
 
-#line 13 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 13 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.globals GLOB_
 enum {
   GLOB_vm_returnp,
@@ -892,7 +892,7 @@ enum {
   GLOB_BC_TSETS_Z,
   GLOB__MAX
 };
-#line 14 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 14 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.globalnames globnames
 static const char *const globnames[] = {
   "vm_returnp",
@@ -1060,7 +1060,7 @@ static const char *const globnames[] = {
   "BC_TSETS_Z",
   (const char *)0
 };
-#line 15 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 15 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.externnames extnames
 static const char *const extnames[] = {
   "lj_state_growstack@8",
@@ -1102,7 +1102,7 @@ static const char *const extnames[] = {
   "lj_tab_reasize",
   (const char *)0
 };
-#line 16 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 16 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|
 //|//-----------------------------------------------------------------------
 //|
@@ -1195,43 +1195,43 @@ static const char *const extnames[] = {
 //|// Type definitions. Some of these are only used for documentation.
 //|.type L,		lua_State
 #define Dt1(_V) (int)(ptrdiff_t)&(((lua_State *)0)_V)
-#line 107 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 107 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type GL,		global_State
 #define Dt2(_V) (int)(ptrdiff_t)&(((global_State *)0)_V)
-#line 108 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 108 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type TVALUE,		TValue
 #define Dt3(_V) (int)(ptrdiff_t)&(((TValue *)0)_V)
-#line 109 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 109 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type GCOBJ,		GCobj
 #define Dt4(_V) (int)(ptrdiff_t)&(((GCobj *)0)_V)
-#line 110 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 110 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type STR,		GCstr
 #define Dt5(_V) (int)(ptrdiff_t)&(((GCstr *)0)_V)
-#line 111 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 111 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type TAB,		GCtab
 #define Dt6(_V) (int)(ptrdiff_t)&(((GCtab *)0)_V)
-#line 112 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 112 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type LFUNC,		GCfuncL
 #define Dt7(_V) (int)(ptrdiff_t)&(((GCfuncL *)0)_V)
-#line 113 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 113 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type CFUNC,		GCfuncC
 #define Dt8(_V) (int)(ptrdiff_t)&(((GCfuncC *)0)_V)
-#line 114 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 114 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type PROTO,		GCproto
 #define Dt9(_V) (int)(ptrdiff_t)&(((GCproto *)0)_V)
-#line 115 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 115 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type UPVAL,		GCupval
 #define DtA(_V) (int)(ptrdiff_t)&(((GCupval *)0)_V)
-#line 116 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 116 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type NODE,		Node
 #define DtB(_V) (int)(ptrdiff_t)&(((Node *)0)_V)
-#line 117 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 117 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type NARGS,		int
 #define DtC(_V) (int)(ptrdiff_t)&(((int *)0)_V)
-#line 118 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 118 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|.type TRACE,		GCtrace
 #define DtD(_V) (int)(ptrdiff_t)&(((GCtrace *)0)_V)
-#line 119 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 119 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 //|
 //|// Stack layout while in interpreter. Must match with lj_frame.h.
 //|//-----------------------------------------------------------------------
@@ -1557,7 +1557,7 @@ static void build_subroutines(BuildCtx *ctx)
 {
   //|.code_sub
   dasm_put(Dst, 0);
-#line 443 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 443 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|//-----------------------------------------------------------------------
   //|//-- Return handling ----------------------------------------------------
@@ -1600,7 +1600,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|.if X64
   //|  mov RBa, [BASE+RA]
   dasm_put(Dst, 2, FRAME_P, LJ_TTRUE, FRAME_TYPE, FRAME_C, FRAME_TYPE, DISPATCH_GL(vmstate), ~LJ_VMST_C);
-#line 484 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 484 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  mov [BASE-8], RBa
   //|.else
   //|  mov RB, [BASE+RA]
@@ -1641,7 +1641,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  mov dword [BASE-4], LJ_TNIL
   //|  add BASE, 8
   dasm_put(Dst, 92, Dt1(->base), Dt1(->top), Dt1(->cframe), Dt1(->maxstack), LJ_TNIL);
-#line 523 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 523 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  add RD, 1
   //|  jmp <4
   //|
@@ -1684,7 +1684,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  mov dword GL:RB->vmstate, ~LJ_VMST_C
   //|  jmp ->vm_leave_unw
   dasm_put(Dst, 192, Dt1(->top), Dt1(->top), LUA_YIELD, Dt1(->glref), Dt2(->vmstate), ~LJ_VMST_C);
-#line 564 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 564 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|->vm_unwind_rethrow:
   //|.if X64 and not X64WIN
@@ -1726,7 +1726,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|->vm_growstack_v:			// Grow stack for vararg Lua function.
   //|  sub RD, 8
   dasm_put(Dst, 275, CFRAME_RAWMASK, 1+1, Dt1(->base), Dt1(->glref), GG_G2DISP, LJ_TFALSE, DISPATCH_GL(vmstate), ~LJ_VMST_INTERP, LUA_MINSTACK);
-#line 604 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 604 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  jmp >1
   //|
   //|->vm_growstack_f:			// Grow stack for fixarg Lua function.
@@ -1785,7 +1785,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  // Resume after yield (like a return).
   //|  set_vmstate INTERP
   dasm_put(Dst, 371, -4+PC2PROTO(framesize), Dt1(->base), Dt1(->top), Dt1(->base), Dt1(->top), Dt7(->pc), FRAME_CP, CFRAME_RESUME, Dt1(->glref), GG_G2DISP, Dt1(->cframe), Dt1(->status));
-#line 661 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 661 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  mov byte L:RB->status, RDL
   //|  mov BASE, L:RB->base
   //|  mov RD, L:RB->top
@@ -1836,7 +1836,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|2:  // Entry point for vm_cpcall below (RA = base, RB = L, PC = ftype).
   //|  mov DISPATCH, L:RB->glref		// Setup pointer to dispatch table.
   dasm_put(Dst, 524, DISPATCH_GL(vmstate), ~LJ_VMST_INTERP, Dt1(->status), Dt1(->base), Dt1(->top), FRAME_TYPE, FRAME_CP, FRAME_C, Dt1(->cframe), Dt1(->cframe));
-#line 710 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 710 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  add DISPATCH, GG_G2DISP
   //|
   //|3:  // Entry point for vm_resume above (RA = base, RB = L, PC = ftype).
@@ -1903,7 +1903,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  jz ->vm_leave_cp			// No base? Just remove C frame.
   //|  mov RA, RC
   dasm_put(Dst, 642, Dt1(->glref), GG_G2DISP, DISPATCH_GL(vmstate), ~LJ_VMST_INTERP, Dt1(->base), Dt1(->top), LJ_TFUNC, Dt7(->pc), Dt1(->stack), Dt1(->top), Dt1(->cframe), Dt1(->cframe));
-#line 775 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 775 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  mov PC, FRAME_CP
   //|  jmp <2				// Else continue with the call.
   //|
@@ -1973,7 +1973,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  mov L:CARG1d->base, BASE
   //|  mov CARG3d, RA
   dasm_put(Dst, 788, FRAME_CP, LJ_TNIL, 0, Dt7(->pc), PC2PROTO(k), Dt1(->base));
-#line 843 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 843 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  mov RAa, [RC]
   //|  mov [RB], RAa
   //|  mov CARG2d, RB
@@ -2046,7 +2046,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|->cont_ra:				// BASE = base, RC = result
   //|  movzx RA, PC_RA
   dasm_put(Dst, 913, LJ_TSTR, BC_GGET, DISPATCH_GL(tmptv), LJ_TTAB, Dt1(->base), Dt1(->base));
-#line 914 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 914 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.if X64
   //|  mov RBa, [RC]
   //|  mov [BASE+RA*8], RBa
@@ -2104,7 +2104,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|1:
   //|  movzx RB, PC_RB			// Reload TValue *t from RB.
   dasm_put(Dst, 1053, Dt1(->top), FRAME_CONT, 2+1, LJ_TSTR, BC_GSET, DISPATCH_GL(tmptv), LJ_TTAB);
-#line 970 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 970 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  lea RB, [BASE+RB*8]
   //|2:
   //|.if X64
@@ -2200,7 +2200,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|5:
   //|  movzx RD, PC_RD
   dasm_put(Dst, 1187, Dt1(->base), Dt1(->base), Dt1(->top), FRAME_CONT, 3+1, Dt1(->base), Dt1(->base));
-#line 1064 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1064 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  branchPC RD
   //|6:
   //|  ins_next
@@ -2266,7 +2266,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|->vmeta_arith_vn:
   //|  lea RC, [KBASE+RC*8]
   dasm_put(Dst, 1358, -BCBIAS_J*4, LJ_TISTRUECOND, LJ_TISTRUECOND, Dt1(->base), Dt1(->base));
-#line 1128 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1128 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  jmp >1
   //|
   //|->vmeta_arith_nvo:
@@ -2338,7 +2338,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  mov NARGS:RD, 2+1			// 2 args for func(o1, o2).
   //|  jmp ->vm_call_dispatch
   dasm_put(Dst, 1491, Dt1(->base), Dt1(->base), FRAME_CONT, 2+1);
-#line 1198 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1198 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|->vmeta_len:
   //|  mov L:RB, SAVE_L
@@ -2350,7 +2350,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  // NULL (retry) or TValue * (metamethod) returned in eax (RC).
   //|  mov BASE, L:RB->base
   dasm_put(Dst, 1601, Dt1(->base), Dt1(->base));
-#line 1208 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1208 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #if LJ_52
   //|  test RC, RC
   //|  jne ->vmeta_binop			// Binop call for compatibility.
@@ -2358,11 +2358,11 @@ static void build_subroutines(BuildCtx *ctx)
   //|  mov TAB:FCARG1, [BASE+RD*8]
   //|  jmp ->BC_LEN_Z
   dasm_put(Dst, 1632);
-#line 1214 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1214 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #else
   //|  jmp ->vmeta_binop			// Binop call for compatibility.
   dasm_put(Dst, 1651);
-#line 1216 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1216 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #endif
   //|
   //|//-- Call metamethod ----------------------------------------------------
@@ -2509,7 +2509,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  jz >2
   //|  mov RA, BASE
   dasm_put(Dst, 1656, Dt1(->base), Dt1(->base), Dt7(->pc), Dt1(->base), Dt1(->base), GG_DISP2STATIC, 1+1, LJ_TISTRUECOND);
-#line 1361 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1361 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|1:
   //|  add RA, 8
   //|.if X64
@@ -2551,7 +2551,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  mov RC, ~LJ_TLIGHTUD
   //|  jmp <2
   dasm_put(Dst, 1842, 1+1, ~LJ_TNUMX, ((char *)(&((GCfuncC *)0)->upvalue)), LJ_TSTR, ~LJ_TLIGHTUD);
-#line 1401 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1401 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.endif
   //|
   //|//-- Base library: getters and setters ---------------------------------
@@ -2575,7 +2575,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  imul RA, #NODE
   //|  add NODE:RA, TAB:RB->node
   dasm_put(Dst, 1946, 1+1, LJ_TTAB, Dt6(->metatable), LJ_TNIL, DISPATCH_GL(gcroot)+4*(GCROOT_MMNAME+MM_metatable), LJ_TTAB, Dt6(->hmask), Dt5(->hash), sizeof(Node));
-#line 1423 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1423 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|3:  // Rearranged logic, because we expect _not_ to find the key.
   //|  cmp dword NODE:RA->key.it, LJ_TSTR
   //|  jne >4
@@ -2597,7 +2597,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|6:
   //|  cmp RB, LJ_TUDATA;  je <1
   dasm_put(Dst, 2019, Dt6(->node), DtB(->key.it), LJ_TSTR, DtB(->key.gcr), DtB(->next), LJ_TNIL);
-#line 1443 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1443 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.if X64
   //|  cmp RB, LJ_TNUMX;  ja >8
   //|  cmp RB, LJ_TISNUM;  jbe >7
@@ -2615,7 +2615,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|.ffunc_2 setmetatable
   dasm_put(Dst, 2084, LJ_TUDATA, LJ_TNUMX, LJ_TISNUM, LJ_TLIGHTUD, LJ_TNUMX, DISPATCH_GL(gcroot[GCROOT_BASEMT]), 2+1);
-#line 1459 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1459 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  cmp dword [BASE+4], LJ_TTAB;  jne ->fff_fallback
   //|  // Fast path: no mt for table yet and not clearing the mt.
   //|  mov TAB:RB, [BASE]
@@ -2631,7 +2631,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  // Possible write barrier. Table is black, but skip iswhite(mt) check.
   //|  barrierback TAB:RB, RC
   dasm_put(Dst, 2140, LJ_TTAB, Dt6(->metatable), LJ_TTAB, Dt6(->metatable), LJ_TTAB, Dt6(->marked), LJ_GC_BLACK, Dt6(->marked), (uint8_t)~LJ_GC_BLACK, DISPATCH_GL(gc.grayagain));
-#line 1473 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1473 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|1:
   //|  jmp ->fff_res1
   //|
@@ -2690,7 +2690,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|.if SSE
   //|  movsd xmm0, qword [BASE]; jmp ->fff_resxmm0
   dasm_put(Dst, 2209, DISPATCH_GL(gc.grayagain), Dt6(->gclist), 2+1, LJ_TTAB, 1+1, LJ_TISNUM);
-#line 1530 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1530 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.else
   //|  fld qword [BASE]; jmp ->fff_resn
   //|.endif
@@ -2711,7 +2711,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  jne ->fff_fallback
   //|  ffgccheck				// Caveat: uses label 1.
   dasm_put(Dst, 2295, 1+1, LJ_TSTR, LJ_TSTR, LJ_TISNUM, DISPATCH_GL(gcroot[GCROOT_BASEMT_NUM]));
-#line 1549 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1549 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  mov L:RB, SAVE_L
   //|  mov L:RB->base, BASE		// Add frame since C call can throw.
   //|  mov SAVE_PC, PC			// Redundant (but a defined value).
@@ -2736,7 +2736,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  cmp dword [BASE+4], LJ_TTAB;  jne ->fff_fallback
   //|  mov L:RB, SAVE_L
   dasm_put(Dst, 2365, DISPATCH_GL(gc.total), DISPATCH_GL(gc.threshold), Dt1(->base), Dt1(->base), 1+1, LJ_TTAB);
-#line 1572 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1572 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  mov L:RB->base, BASE		// Add frame since C call can throw.
   //|  mov L:RB->top, BASE		// Dummy frame length is ok.
   //|  mov PC, [BASE-4]
@@ -2789,14 +2789,14 @@ static void build_subroutines(BuildCtx *ctx)
   //|.ffunc_1 pairs
   //|  mov TAB:RB, [BASE]
   dasm_put(Dst, 2435, Dt1(->base), Dt1(->top), Dt1(->base), 1+2, LJ_TNIL, LJ_TNIL, 1+1);
-#line 1623 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1623 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  cmp dword [BASE+4], LJ_TTAB;  jne ->fff_fallback
   dasm_put(Dst, 2530, LJ_TTAB);
-#line 1624 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1624 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #if LJ_52
   //|  cmp dword TAB:RB->metatable, 0; jne ->fff_fallback
   dasm_put(Dst, 2542, Dt6(->metatable));
-#line 1626 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1626 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #endif
   //|  mov CFUNC:RB, [BASE-8]
   //|  mov CFUNC:RD, CFUNC:RB->upvalue[0]
@@ -2839,7 +2839,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  cmp RD, TAB:RB->asize;  jae >2	// Not in array part?
   //|  shl RD, 3
   dasm_put(Dst, 2551, Dt8(->upvalue[0]), LJ_TFUNC, LJ_TNIL, 1+3, 2+1, LJ_TTAB, LJ_TISNUM, (unsigned int)(U64x(3ff00000,00000000)), (unsigned int)((U64x(3ff00000,00000000))>>32), Dt6(->asize));
-#line 1667 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1667 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  add RD, TAB:RB->array
   //|1:
   //|  cmp dword [RD+4], LJ_TNIL;  je ->fff_res0
@@ -2871,14 +2871,14 @@ static void build_subroutines(BuildCtx *ctx)
   //|.ffunc_1 ipairs
   //|  mov TAB:RB, [BASE]
   dasm_put(Dst, 2655, Dt6(->array), LJ_TNIL, Dt6(->hmask), 1+0, 1+1);
-#line 1697 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1697 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  cmp dword [BASE+4], LJ_TTAB;  jne ->fff_fallback
   dasm_put(Dst, 2530, LJ_TTAB);
-#line 1698 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1698 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #if LJ_52
   //|  cmp dword TAB:RB->metatable, 0; jne ->fff_fallback
   dasm_put(Dst, 2542, Dt6(->metatable));
-#line 1700 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1700 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #endif
   //|  mov CFUNC:RB, [BASE-8]
   //|  mov CFUNC:RD, CFUNC:RB->upvalue[0]
@@ -2914,7 +2914,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|.ffunc_2 xpcall
   //|  cmp dword [BASE+12], LJ_TFUNC;  jne ->fff_fallback
   dasm_put(Dst, 2731, Dt8(->upvalue[0]), LJ_TFUNC, 1+3, 1+1, 8+FRAME_PCALL, DISPATCH_GL(hookmask), HOOK_ACTIVE_SHIFT, 2+1, LJ_TFUNC);
-#line 1734 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1734 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  mov RB, [BASE+4]			// Swap function and traceback.
   //|  mov [BASE+12], RB
   //|  mov dword [BASE+4], LJ_TFUNC
@@ -3107,12 +3107,12 @@ static void build_subroutines(BuildCtx *ctx)
   dasm_put(Dst, 2821, LJ_TFUNC, 16+FRAME_PCALL, 1+1, LJ_TTHREAD, Dt1(->cframe), Dt1(->status), LUA_YIELD);
   dasm_put(Dst, 2907, Dt1(->top), Dt1(->base), Dt1(->maxstack), Dt1(->top), Dt1(->base), Dt1(->top));
   dasm_put(Dst, 2996, DISPATCH_GL(vmstate), ~LJ_VMST_INTERP, Dt1(->base), LUA_YIELD, Dt1(->base), Dt1(->top), Dt1(->top), Dt1(->maxstack), LJ_TTRUE);
-#line 1923 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1923 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  coroutine_resume_wrap 0		// coroutine.wrap
   dasm_put(Dst, 3093, FRAME_TYPE, LJ_TFALSE, Dt1(->top), Dt1(->top), 1+2, Dt1(->top), Dt1(->base), Dt8(->upvalue[0].gcr), Dt1(->cframe));
   dasm_put(Dst, 3207, Dt1(->status), LUA_YIELD, Dt1(->top), Dt1(->base), Dt1(->maxstack), Dt1(->top), Dt1(->base), Dt1(->top));
   dasm_put(Dst, 3277, DISPATCH_GL(vmstate), ~LJ_VMST_INTERP, Dt1(->base), LUA_YIELD, Dt1(->base), Dt1(->top), Dt1(->top), Dt1(->maxstack));
-#line 1924 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1924 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|.ffunc coroutine_yield
   //|  mov L:RB, SAVE_L
@@ -3120,7 +3120,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  jz ->fff_fallback
   //|  mov L:RB->base, BASE
   dasm_put(Dst, 3366, FRAME_TYPE, Dt1(->top), Dt1(->base), Dt1(->cframe), CFRAME_RESUME);
-#line 1930 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1930 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  lea RD, [BASE+NARGS:RD*8-8]
   //|  mov L:RB->top, RD
   //|  xor RD, RD
@@ -3169,7 +3169,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  movsd xmm0, qword [BASE]
   //|  sseconst_abs xmm1, RDa
   dasm_put(Dst, 3476, Dt1(->base), Dt1(->top), Dt1(->cframe), LUA_YIELD, Dt1(->status), 1+1, LJ_TISNUM, (unsigned int)(U64x(7fffffff,ffffffff)), (unsigned int)((U64x(7fffffff,ffffffff))>>32));
-#line 1977 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 1977 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  andps xmm0, xmm1
   //|->fff_resxmm0:
   //|  mov PC, [BASE-4]
@@ -3256,13 +3256,13 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|  math_round floor
   dasm_put(Dst, 3547, 1+1, FRAME_TYPE, LJ_TNIL, LJ_TISNUM);
-#line 2062 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2062 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  math_round ceil
   //|
   //|.if SSE
   //|.ffunc_nsse math_sqrt, sqrtsd; jmp ->fff_resxmm0
   dasm_put(Dst, 3670, LJ_TISNUM, 1+1, LJ_TISNUM);
-#line 2066 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2066 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.else
   //|.ffunc_n math_sqrt; fsqrt; jmp ->fff_resn
   //|.endif
@@ -3275,17 +3275,17 @@ static void build_subroutines(BuildCtx *ctx)
   //|.ffunc_n math_log10, fldlg2;	fyl2x;		jmp ->fff_resn
   //|.ffunc_n math_exp;	call ->vm_exp_x87;	jmp ->fff_resn
   dasm_put(Dst, 3729, 1+1, LJ_TISNUM, 1+1, LJ_TISNUM);
-#line 2077 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2077 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|.ffunc_n math_sin;	fsin;			jmp ->fff_resn
   //|.ffunc_n math_cos;	fcos;			jmp ->fff_resn
   dasm_put(Dst, 3803, 1+1, LJ_TISNUM, 1+1, LJ_TISNUM);
-#line 2080 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2080 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.ffunc_n math_tan;	fptan; fpop;		jmp ->fff_resn
   //|
   //|.ffunc_n math_asin
   dasm_put(Dst, 3860, 1+1, LJ_TISNUM, 1+1, LJ_TISNUM, 1+1);
-#line 2083 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2083 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  fdup; fmul st0; fld1; fsubrp st1; fsqrt; fpatan
   //|  jmp ->fff_resn
   //|.ffunc_n math_acos
@@ -3293,7 +3293,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  jmp ->fff_resn
   //|.ffunc_n math_atan;	fld1; fpatan;		jmp ->fff_resn
   dasm_put(Dst, 3927, LJ_TISNUM, 1+1, LJ_TISNUM, 1+1, LJ_TISNUM);
-#line 2089 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2089 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|.macro math_extern, func
   //|.if SSE
@@ -3319,7 +3319,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  math_extern cosh
   //|  math_extern tanh
   dasm_put(Dst, 4017, 1+1, LJ_TISNUM, 1+1, LJ_TISNUM);
-#line 2113 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2113 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|->ff_math_deg:
   //|.if SSE
@@ -3336,10 +3336,10 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|.ffunc_nn math_atan2;	fpatan;		jmp ->fff_resn
   dasm_put(Dst, 4105, 1+1, LJ_TISNUM, 1+1, LJ_TISNUM, Dt8(->upvalue[0]));
-#line 2128 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2128 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.ffunc_nnr math_ldexp;	fscale; fpop1;	jmp ->fff_resn
   dasm_put(Dst, 4183, 2+1, LJ_TISNUM, LJ_TISNUM, 2+1, LJ_TISNUM, LJ_TISNUM);
-#line 2129 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2129 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|.ffunc_1 math_frexp
   //|  mov RB, [BASE+4]
@@ -3374,7 +3374,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|.if SSE
   //|  xorps xmm0, xmm0; jmp <2
   dasm_put(Dst, 4250, 1+1, LJ_TISNUM, 1+2);
-#line 2162 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2162 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.else
   //|  fldz; jmp <2
   //|.endif
@@ -3419,7 +3419,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|2:
   //|  mov RD, 1+2
   dasm_put(Dst, 4387, (unsigned int)(U64x(43500000,00000000)), (unsigned int)((U64x(43500000,00000000))>>32), 1+1, LJ_TISNUM);
-#line 2205 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2205 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  jmp ->fff_res
   //|3:
   //|  xor RB, 0x80000000; mov [BASE+4], RB	// Flip sign of fraction.
@@ -3434,7 +3434,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|.ffunc_nnr math_fmod
   //|1: ; fprem; fnstsw ax; and ax, 0x400; jnz <1
   dasm_put(Dst, 4523, 1+2, 2+1, LJ_TISNUM, LJ_TISNUM);
-#line 2218 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2218 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  fpop1
   //|  jmp ->fff_resn
   //|
@@ -3517,10 +3517,10 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|  math_minmax math_min, cmovg, fcmovnbe, minsd
   dasm_put(Dst, 4590, 2+1, LJ_TISNUM, LJ_TISNUM, LJ_TISNUM);
-#line 2299 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2299 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  math_minmax math_max, cmovl, fcmovbe, maxsd
   dasm_put(Dst, 4668, LJ_TISNUM, LJ_TISNUM, LJ_TISNUM);
-#line 2300 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2300 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.if not SSE
   //|9:
   //|  fpop; jmp ->fff_fallback
@@ -3543,7 +3543,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  cmp NARGS:RD, 1+1;  jne ->fff_fallback
   //|  cmp dword [BASE+4], LJ_TSTR;  jne ->fff_fallback
   dasm_put(Dst, 4757, 1+1, LJ_TSTR, Dt5(->len), 1+1);
-#line 2321 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2321 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  mov STR:RB, [BASE]
   //|  mov PC, [BASE-4]
   //|  cmp dword STR:RB->len, 1
@@ -3562,7 +3562,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  cmp NARGS:RD, 1+1;  jne ->fff_fallback	// *Exactly* 1 arg.
   //|  cmp dword [BASE+4], LJ_TISNUM
   dasm_put(Dst, 4827, LJ_TSTR, Dt5(->len), Dt5([1]), DISPATCH_GL(gc.total), DISPATCH_GL(gc.threshold), 1+1);
-#line 2338 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2338 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.if DUALNUM
   //|  jne ->fff_fallback
   //|  mov RB, dword [BASE]
@@ -3610,7 +3610,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  mov TMP2, -1
   //|  cmp NARGS:RD, 1+2;  jb ->fff_fallback
   dasm_put(Dst, 4891, LJ_TISNUM, Dt1(->base), Dt1(->base), LJ_TSTR, DISPATCH_GL(gc.total), DISPATCH_GL(gc.threshold), 1+2);
-#line 2384 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2384 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  jna >1
   //|  cmp dword [BASE+20], LJ_TISNUM
   //|.if DUALNUM
@@ -3655,7 +3655,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|3:
   //|  mov STR:RB, TMP3
   dasm_put(Dst, 5017, LJ_TISNUM, LJ_TSTR, LJ_TISNUM, Dt5(->len));
-#line 2427 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2427 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  sub RC, RA				// start > end?
   //|  jl ->fff_emptystr
   //|  lea RB, [STR:RB+RA+#STR-1]
@@ -3685,7 +3685,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|8:  // Underflow.
   //|  mov RA, 1				// start = 1
   dasm_put(Dst, 5100, sizeof(GCstr)-1);
-#line 2455 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2455 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  jmp <3
   //|
   //|->fff_emptystr:  // Range underflow.
@@ -3699,7 +3699,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  cmp dword [BASE+12], LJ_TISNUM
   //|  mov STR:RB, [BASE]
   dasm_put(Dst, 5171, DISPATCH_GL(gc.total), DISPATCH_GL(gc.threshold), 2+1, LJ_TSTR, LJ_TISNUM);
-#line 2467 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2467 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.if DUALNUM
   //|  jne ->fff_fallback
   //|  mov RC, dword [BASE+8]
@@ -3735,7 +3735,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|.ffunc_1 string_reverse
   dasm_put(Dst, 5230, Dt5(->len), DISPATCH_GL(tmpbuf.sz), Dt5([1]), DISPATCH_GL(tmpbuf.buf), DISPATCH_GL(tmpbuf.buf));
-#line 2501 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2501 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  ffgccheck
   //|  cmp dword [BASE+4], LJ_TSTR;  jne ->fff_fallback
   //|  mov STR:RB, [BASE]
@@ -3746,7 +3746,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  add RB, #STR
   //|  mov TMP2, PC			// Need another temp register.
   dasm_put(Dst, 5306, 1+1, DISPATCH_GL(gc.total), DISPATCH_GL(gc.threshold), LJ_TSTR, Dt5(->len), DISPATCH_GL(tmpbuf.sz), sizeof(GCstr));
-#line 2510 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2510 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.if X64
   //|  mov TMP3, RC
   //|.else
@@ -3798,11 +3798,11 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|ffstring_case string_lower, 0x41, 0x5a
   dasm_put(Dst, 5363, DISPATCH_GL(tmpbuf.buf), 1+1, DISPATCH_GL(gc.total), DISPATCH_GL(gc.threshold), LJ_TSTR);
-#line 2560 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2560 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|ffstring_case string_upper, 0x61, 0x7a
   dasm_put(Dst, 5441, Dt5(->len), DISPATCH_GL(tmpbuf.sz), sizeof(GCstr), DISPATCH_GL(tmpbuf.buf));
   dasm_put(Dst, 5527, 1+1, DISPATCH_GL(gc.total), DISPATCH_GL(gc.threshold), LJ_TSTR, Dt5(->len), DISPATCH_GL(tmpbuf.sz), sizeof(GCstr), DISPATCH_GL(tmpbuf.buf));
-#line 2561 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2561 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|//-- Table library ------------------------------------------------------
   //|
@@ -3875,7 +3875,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|.ffunc_bit bit_tobit, 0
   dasm_put(Dst, 5596, 1+1, LJ_TTAB);
-#line 2632 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2632 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.if DUALNUM or SSE
   //|.if not SSE
   //|  mov RB, ARG1
@@ -3921,13 +3921,13 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|.ffunc_bit_op bit_band, and
   dasm_put(Dst, 5687, 1+1, LJ_TISNUM, (unsigned int)(U64x(43380000,00000000)), (unsigned int)((U64x(43380000,00000000))>>32), 1+1, (unsigned int)(U64x(43380000,00000000)), (unsigned int)((U64x(43380000,00000000))>>32), LJ_TISNUM);
-#line 2676 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2676 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.ffunc_bit_op bit_bor, or
   dasm_put(Dst, 5762, LJ_TISNUM, 1+1, (unsigned int)(U64x(43380000,00000000)), (unsigned int)((U64x(43380000,00000000))>>32), LJ_TISNUM);
-#line 2677 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2677 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.ffunc_bit_op bit_bxor, xor
   dasm_put(Dst, 5883, LJ_TISNUM, 1+1, (unsigned int)(U64x(43380000,00000000)), (unsigned int)((U64x(43380000,00000000))>>32), LJ_TISNUM);
-#line 2678 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2678 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|.ffunc_bit bit_bswap, 1
   //|  bswap RB
@@ -3935,7 +3935,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|.ffunc_bit bit_bnot, 1
   dasm_put(Dst, 5983, LJ_TISNUM, 1+1, LJ_TISNUM, (unsigned int)(U64x(43380000,00000000)), (unsigned int)((U64x(43380000,00000000))>>32), 1+1);
-#line 2684 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2684 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  not RB
   //|.if DUALNUM
   //|  jmp ->fff_resbit
@@ -3983,14 +3983,14 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|.ffunc_bit_sh bit_lshift, shl
   dasm_put(Dst, 6076, LJ_TISNUM, (unsigned int)(U64x(43380000,00000000)), (unsigned int)((U64x(43380000,00000000))>>32), 2+1, LJ_TISNUM, LJ_TISNUM);
-#line 2730 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2730 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.ffunc_bit_sh bit_rshift, shr
   //|.ffunc_bit_sh bit_arshift, sar
   dasm_put(Dst, 6159, (unsigned int)(U64x(43380000,00000000)), (unsigned int)((U64x(43380000,00000000))>>32), 2+1, LJ_TISNUM, LJ_TISNUM, (unsigned int)(U64x(43380000,00000000)), (unsigned int)((U64x(43380000,00000000))>>32));
-#line 2732 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2732 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.ffunc_bit_sh bit_rol, rol
   dasm_put(Dst, 6283, 2+1, LJ_TISNUM, LJ_TISNUM, (unsigned int)(U64x(43380000,00000000)), (unsigned int)((U64x(43380000,00000000))>>32), 2+1, LJ_TISNUM);
-#line 2733 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2733 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.ffunc_bit_sh bit_ror, ror
   //|
   //|//-----------------------------------------------------------------------
@@ -3998,7 +3998,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|->fff_fallback_2:
   //|  mov NARGS:RD, 1+2			// Other args are ignored, anyway.
   dasm_put(Dst, 6374, LJ_TISNUM, (unsigned int)(U64x(43380000,00000000)), (unsigned int)((U64x(43380000,00000000))>>32), 2+1, LJ_TISNUM, LJ_TISNUM, (unsigned int)(U64x(43380000,00000000)), (unsigned int)((U64x(43380000,00000000))>>32));
-#line 2739 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2739 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  jmp ->fff_fallback
   //|->fff_fallback_1:
   //|  mov NARGS:RD, 1+1			// Other args are ignored, anyway.
@@ -4033,7 +4033,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  jne ->vm_call_tail			// Returned -1?
   //|  ins_callt				// Returned 0: retry fast path.
   dasm_put(Dst, 6502, 1+2, 1+1, Dt1(->base), 8*LUA_MINSTACK, Dt1(->top), Dt1(->maxstack), Dt8(->f), Dt1(->base), Dt1(->top));
-#line 2772 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2772 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|// Reconstruct previous base for vmeta_call during tailcall.
   //|->vm_call_tail:
@@ -4073,7 +4073,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  mov RD, L:RB->top
   //|  sub RD, BASE
   dasm_put(Dst, 6592, Dt7(->pc), FRAME_TYPE, LUA_MINSTACK, Dt1(->base), Dt1(->base), Dt1(->top), Dt1(->base), Dt1(->top));
-#line 2810 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2810 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  shr RD, 3
   //|  add NARGS:RD, 1
   //|  mov RBa, TMPa
@@ -4107,7 +4107,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|->vm_inshook:			// Dispatch target for instr/line hooks.
   //|  movzx RD, byte [DISPATCH+DISPATCH_GL(hookmask)]
   dasm_put(Dst, 6718, DISPATCH_GL(hookmask), HOOK_VMEVENT, HOOK_ACTIVE, LUA_MASKLINE|LUA_MASKCOUNT, DISPATCH_GL(hookcount), DISPATCH_GL(hookmask), HOOK_ACTIVE);
-#line 2842 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2842 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  test RDL, HOOK_ACTIVE		// Hook already active?
   //|  jnz >5
   //|
@@ -4140,7 +4140,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|->cont_hook:				// Continue from hook yield.
   //|  add PC, 4
   dasm_put(Dst, 6787, DISPATCH_GL(hookmask), HOOK_ACTIVE, LUA_MASKLINE|LUA_MASKCOUNT, DISPATCH_GL(hookcount), LUA_MASKLINE, Dt1(->base), Dt1(->base), GG_DISP2STATIC);
-#line 2873 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2873 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  mov RA, [RB-24]
   //|  mov MULTRES, RA			// Restore MULTRES for *M ins.
   //|  jmp <4
@@ -4191,7 +4191,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  mov RD, L:RB->top
   //|  sub RD, BASE
   dasm_put(Dst, 6872, Dt7(->pc), PC2PROTO(framesize), Dt1(->base), Dt1(->top), GG_DISP2J, DISPATCH_J(L), Dt1(->base), Dt1(->top), Dt1(->base), Dt1(->top));
-#line 2922 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 2922 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  mov RBa, RAa
   //|  movzx RA, PC_RA
   //|  shr RD, 3
@@ -4305,7 +4305,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|.else
   //|  add rsp, 16			// Reposition stack to C frame.
   dasm_put(Dst, 7001, DISPATCH_GL(vmstate), DISPATCH_GL(vmstate), ~LJ_VMST_EXIT, DISPATCH_J(exitno), DISPATCH_J(parent), 16*8, DISPATCH_GL(jit_L), DISPATCH_GL(jit_base), DISPATCH_J(L), DISPATCH_GL(jit_L), Dt1(->base), GG_DISP2J, Dt1(->cframe), CFRAME_RAWMASK, CFRAME_OFS_L, Dt1(->base), CFRAME_OFS_PC);
-#line 3034 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3034 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|1:
   //|.endif
   //|  mov r13, TMPa
@@ -4413,11 +4413,11 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|  vm_round vm_floor, 0, 0x0400, 0xf7ff
   dasm_put(Dst, 7263, Dt7(->pc), PC2PROTO(k), DISPATCH_GL(jit_L), DISPATCH_GL(vmstate), ~LJ_VMST_INTERP, BC_FUNCF, (unsigned int)(U64x(7fffffff,ffffffff)), (unsigned int)((U64x(7fffffff,ffffffff))>>32), (unsigned int)(U64x(43300000,00000000)), (unsigned int)((U64x(43300000,00000000))>>32));
-#line 3140 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3140 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  vm_round vm_ceil,  1, 0x0800, 0xfbff
   //|  vm_round vm_trunc, 2, 0x0c00, 0xffff
   dasm_put(Dst, 7400, (unsigned int)(U64x(3ff00000,00000000)), (unsigned int)((U64x(3ff00000,00000000))>>32), (unsigned int)(U64x(7fffffff,ffffffff)), (unsigned int)((U64x(7fffffff,ffffffff))>>32), (unsigned int)(U64x(43300000,00000000)), (unsigned int)((U64x(43300000,00000000))>>32), (unsigned int)(U64x(bff00000,00000000)), (unsigned int)((U64x(bff00000,00000000))>>32), (unsigned int)(U64x(7fffffff,ffffffff)), (unsigned int)((U64x(7fffffff,ffffffff))>>32), (unsigned int)(U64x(43300000,00000000)), (unsigned int)((U64x(43300000,00000000))>>32));
-#line 3142 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3142 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|
   //|// FP modulo x%y. Called by BC_MOD* and vm_arith.
   //|->vm_mod:
@@ -4507,7 +4507,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  cmp expscratch, 0x7f800000; je >1		// Special case: e^+Inf = +Inf
   //|  cmp expscratch, 0xff800000; je >2		// Special case: e^-Inf = 0
   dasm_put(Dst, 7551, (unsigned int)(U64x(3ff00000,00000000)), (unsigned int)((U64x(3ff00000,00000000))>>32), (unsigned int)(U64x(7fffffff,ffffffff)), (unsigned int)((U64x(7fffffff,ffffffff))>>32), (unsigned int)(U64x(43300000,00000000)), (unsigned int)((U64x(43300000,00000000))>>32), (unsigned int)(U64x(3ff00000,00000000)), (unsigned int)((U64x(3ff00000,00000000))>>32));
-#line 3230 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3230 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|->vm_exp2raw:  // Entry point for vm_pow. Without +-Inf check.
   //|  fdup; frndint; fsub st1, st0; fxch		// Split into frac/int part.
   //|  f2xm1; fld1; faddp st1; fscale; fpop1	// ==> (2^frac-1 +1) << int
@@ -4630,7 +4630,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|2:
   //|  shr eax, 1; jz >5
   dasm_put(Dst, 7799);
-#line 3351 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3351 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  movaps xmm1, xmm0
   //|3:  // Handle trailing bits.
   //|  mulsd xmm0, xmm0
@@ -4649,7 +4649,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  call <1
   //|  sseconst_1 xmm1, RDa
   dasm_put(Dst, 7909, (unsigned int)(U64x(3ff00000,00000000)), (unsigned int)((U64x(3ff00000,00000000))>>32));
-#line 3368 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3368 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  divsd xmm1, xmm0
   //|  movaps xmm0, xmm1
   //|  ret
@@ -4715,7 +4715,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  andpd xmm0, xmm2				// |x|
   //|  sseconst_1 xmm2, RDa
   dasm_put(Dst, 7975, (unsigned int)(U64x(3ff00000,00000000)), (unsigned int)((U64x(3ff00000,00000000))>>32), (unsigned int)(U64x(3ff00000,00000000)), (unsigned int)((U64x(3ff00000,00000000))>>32), (unsigned int)(U64x(7fffffff,ffffffff)), (unsigned int)((U64x(7fffffff,ffffffff))>>32), (unsigned int)(U64x(3ff00000,00000000)), (unsigned int)((U64x(3ff00000,00000000))>>32));
-#line 3432 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3432 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  ucomisd xmm0, xmm2; je <1			// +-1^+-Inf ==> 1
   //|  movmskpd eax, xmm1
   //|  xorps xmm0, xmm0
@@ -4747,7 +4747,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  cmp fpmop, 1; jb ->vm_floor; je ->vm_ceil
   //|  cmp fpmop, 3; jb ->vm_trunc; ja >2
   dasm_put(Dst, 8163, (unsigned int)(U64x(7ff00000,00000000)), (unsigned int)((U64x(7ff00000,00000000))>>32));
-#line 3462 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3462 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  sqrtsd xmm0, xmm0; ret
   //|2:
   //|  .if X64WIN
@@ -4770,7 +4770,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|2: ; cmp fpmop, 7; je >1; ja >2
   //|  fldln2; fxch; fyl2x; jmp >7
   dasm_put(Dst, 8261);
-#line 3483 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3483 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|1: ; fld1; fxch; fyl2x; jmp >7
   //|2: ; cmp fpmop, 9; je >1; ja >2
   //|  fldlg2; fxch; fyl2x; jmp >7
@@ -4778,7 +4778,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|2: ; cmp fpmop, 11; je >1; ja >9
   //|   fcos; jmp >7
   dasm_put(Dst, 8329);
-#line 3489 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3489 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|1: ; fptan; fpop
   //|7:
   //|  .if X64WIN
@@ -4856,7 +4856,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|1: ; divsd xmm0, xmm1; ret
   //|2: ; cmp foldop, 5; jb ->vm_mod; je ->vm_pow
   dasm_put(Dst, 8404);
-#line 3565 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3565 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  cmp foldop, 7; je >1; ja >2
   //|  sseconst_sign xmm1, RDa; xorps xmm0, xmm1; ret
   //|1: ; sseconst_abs xmm1, RDa; andps xmm0, xmm1; ret
@@ -4886,7 +4886,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|1: ; fxch; fscale; fpop1; jmp <7
   //|2: ; cmp foldop, 11; je >1; ja >9
   dasm_put(Dst, 8504, (unsigned int)(U64x(80000000,00000000)), (unsigned int)((U64x(80000000,00000000))>>32), (unsigned int)(U64x(7fffffff,ffffffff)), (unsigned int)((U64x(7fffffff,ffffffff))>>32));
-#line 3593 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3593 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  minsd xmm0, xmm1; ret
   //|1: ; maxsd xmm0, xmm1; ret
   //|9: ; int3				// Bad op.
@@ -5001,11 +5001,11 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|->assert_bad_for_arg_type:
   dasm_put(Dst, 8623);
-#line 3706 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3706 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #ifdef LUA_USE_ASSERT
   //|  int3
   dasm_put(Dst, 8676);
-#line 3708 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3708 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #endif
   //|  int3
   //|
@@ -5018,7 +5018,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|.if FFI
   //|.type CTSTATE, CTState, PC
 #define DtE(_V) (int)(ptrdiff_t)&(((CTState *)0)_V)
-#line 3719 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3719 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.if not X64
   //|  sub esp, 16			// Leave room for SAVE_ERRF etc.
   //|.endif
@@ -5050,7 +5050,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  mov CTSTATE->cb.stack, rax
   //|  mov CARG2, rsp
   dasm_put(Dst, 8678, GG_G2DISP, Dt2(->ctype_state), DtE(->cb.slot), DtE(->cb.gpr[0]), DtE(->cb.gpr[1]), DtE(->cb.gpr[2]), DtE(->cb.gpr[3]), DtE(->cb.fpr[0]), DtE(->cb.fpr[1]), DtE(->cb.fpr[2]), DtE(->cb.fpr[3]), CFRAME_SIZE, DtE(->cb.gpr[4]), DtE(->cb.gpr[5]), DtE(->cb.fpr[4]), DtE(->cb.fpr[5]), DtE(->cb.fpr[6]), DtE(->cb.fpr[7]), DtE(->cb.stack));
-#line 3749 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3749 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|.else
   //|  lea eax, [esp+CFRAME_SIZE+16]
   //|  mov CTSTATE->cb.gpr[0], FCARG1
@@ -5120,7 +5120,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|.if X64
   //|  .type CCSTATE, CCallState, rbx
 #define DtF(_V) (int)(ptrdiff_t)&(((CCallState *)0)_V)
-#line 3817 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3817 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  push rbp; mov rbp, rsp; push rbx; mov CCSTATE, CARG1
   //|.else
   //|  .type CCSTATE, CCallState, ebx
@@ -5146,7 +5146,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|.if X64
   //|  mov rax, [CCSTATE+rcx*8+offsetof(CCallState, stack)]
   dasm_put(Dst, 8787, DISPATCH_GL(vmstate), ~LJ_VMST_INTERP, Dt1(->base), Dt1(->top), Dt7(->pc), DISPATCH_GL(ctype_state), DtE(->L), Dt1(->base), Dt1(->top), DtE(->cb.gpr[0]), DtE(->cb.fpr[0]), DtF(->spadj), DtF(->nsp));
-#line 3841 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3841 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  mov [rsp+rcx*8+CCALL_SPS_EXTRA*8], rax
   //|.else
   //|  mov eax, [CCSTATE+ecx*4+offsetof(CCallState, stack)]
@@ -5175,7 +5175,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|  cmp eax, 4; jbe >5
   //|  movaps xmm4, CCSTATE->fpr[4]
   dasm_put(Dst, 8918, offsetof(CCallState, stack), CCALL_SPS_EXTRA*8, DtF(->nfpr), DtF(->gpr[0]), DtF(->gpr[1]), DtF(->gpr[2]), DtF(->gpr[3]), DtF(->gpr[4]), DtF(->gpr[5]), DtF(->fpr[0]), DtF(->fpr[1]), DtF(->fpr[2]), DtF(->fpr[3]));
-#line 3868 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3868 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   //|  movaps xmm5, CCSTATE->fpr[5]
   //|  movaps xmm6, CCSTATE->fpr[6]
   //|  movaps xmm7, CCSTATE->fpr[7]
@@ -5221,7 +5221,7 @@ static void build_subroutines(BuildCtx *ctx)
   //|
   //|//-----------------------------------------------------------------------
   dasm_put(Dst, 8999, DtF(->fpr[4]), DtF(->fpr[5]), DtF(->fpr[6]), DtF(->fpr[7]), DtF(->func), DtF(->gpr[0]), DtF(->fpr[0]), DtF(->gpr[1]), DtF(->fpr[1]));
-#line 3912 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3912 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 }
 
 /* Generate the code for a single instruction. */
@@ -5231,7 +5231,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
   //|// Note: aligning all instructions does not pay off.
   //|=>defop:
   dasm_put(Dst, 522, defop);
-#line 3920 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 3920 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 
   switch (op) {
 
@@ -5344,14 +5344,14 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     break;
     default: break;  /* Shut up GCC. */
     }
-#line 4016 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4016 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  movzx RD, PC_RD
     //|  branchPC RD
     //|1:
     //|  ins_next
     //|.endif
     dasm_put(Dst, 9101, -BCBIAS_J*4);
-#line 4021 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4021 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_ISEQV: case BC_ISNEV:
@@ -5365,7 +5365,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov RB, dword [BASE+RD*8]
     //|  cmp RB, dword [BASE+RA*8]
     dasm_put(Dst, 9134);
-#line 4033 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4033 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (vk) {
       //|  jne >9
     } else {
@@ -5419,18 +5419,18 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  fcomparepp
     //|.endif
     dasm_put(Dst, 9142, LJ_TISNUM, LJ_TISNUM);
-#line 4085 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4085 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   iseqne_fp:
     if (vk) {
       //|  jp >2				// Unordered means not equal.
       //|  jne >2
       dasm_put(Dst, 9178);
-#line 4089 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4089 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  jp >2				// Unordered means not equal.
       //|  je >1
       dasm_put(Dst, 9187);
-#line 4092 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4092 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
   iseqne_end:
     if (vk) {
@@ -5442,7 +5442,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       //|3:
       //|.endif
       dasm_put(Dst, 9196, -BCBIAS_J*4);
-#line 4102 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4102 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|.if not FFI
       //|3:
@@ -5452,17 +5452,17 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       //|  branchPC RD
       //|1:				// EQ: Fallthrough to next instruction.
       dasm_put(Dst, 9211, -BCBIAS_J*4);
-#line 4110 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4110 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     if (LJ_DUALNUM && (op == BC_ISEQV || op == BC_ISNEV ||
 		       op == BC_ISEQN || op == BC_ISNEN)) {
       //|  jmp <9
       dasm_put(Dst, 9226);
-#line 4114 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4114 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  ins_next
       dasm_put(Dst, 9113);
-#line 4116 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4116 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|
     if (op == BC_ISEQV || op == BC_ISNEV) {
@@ -5492,44 +5492,44 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       //|  // Field metatable must be at same offset for GCtab and GCudata!
       //|  mov TAB:RB, TAB:RA->metatable
       dasm_put(Dst, 9231, LJ_TCDATA, LJ_TCDATA, LJ_TISPRI, LJ_TISTABUD, LJ_TUDATA);
-#line 4144 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4144 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       //|  test TAB:RB, TAB:RB
       //|  jz <2				// No metatable?
       //|  test byte TAB:RB->nomm, 1<<MM_eq
       //|  jnz <2				// Or 'no __eq' flag set?
       dasm_put(Dst, 9296, Dt6(->metatable), Dt6(->nomm), 1<<MM_eq);
-#line 4148 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4148 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       if (vk) {
 	//|  xor RB, RB			// ne = 0
 	dasm_put(Dst, 9316);
-#line 4150 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4150 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       } else {
 	//|  mov RB, 1			// ne = 1
 	dasm_put(Dst, 9320);
-#line 4152 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4152 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       }
       //|  jmp ->vmeta_equal		// Handle __eq metamethod.
       dasm_put(Dst, 9326);
-#line 4154 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4154 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|.if FFI
       //|3:
       //|  cmp RB, LJ_TCDATA
       dasm_put(Dst, 9331, LJ_TCDATA);
-#line 4158 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4158 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       if (LJ_DUALNUM && vk) {
 	//|  jne <9
 	dasm_put(Dst, 9338);
-#line 4160 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4160 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       } else {
 	//|  jne <2
 	dasm_put(Dst, 9311);
-#line 4162 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4162 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       }
       //|  jmp ->vmeta_equal_cd
       //|.endif
       dasm_put(Dst, 9343);
-#line 4165 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4165 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     break;
   case BC_ISEQS: case BC_ISNES:
@@ -5541,16 +5541,16 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov RA, [BASE+RA*8]
     //|  cmp RA, [KBASE+RD*4]
     dasm_put(Dst, 9348, LJ_TSTR);
-#line 4175 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4175 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   iseqne_test:
     if (vk) {
       //|  jne >2
       dasm_put(Dst, 9182);
-#line 4178 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4178 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  je >1
       dasm_put(Dst, 7794);
-#line 4180 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4180 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     goto iseqne_end;
   case BC_ISEQN: case BC_ISNEN:
@@ -5564,7 +5564,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov RB, dword [KBASE+RD*8]
     //|  cmp RB, dword [BASE+RA*8]
     dasm_put(Dst, 9375);
-#line 4192 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4192 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (vk) {
       //|  jne >9
     } else {
@@ -5614,7 +5614,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  fcomparepp
     //|.endif
     dasm_put(Dst, 9383, LJ_TISNUM);
-#line 4240 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4240 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     goto iseqne_fp;
   case BC_ISEQP: case BC_ISNEP:
     vk = op == BC_ISEQP;
@@ -5623,7 +5623,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  add PC, 4
     //|  cmp RB, RD
     dasm_put(Dst, 9410);
-#line 4247 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4247 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (!LJ_HASFFI) goto iseqne_test;
     if (vk) {
       //|  jne >3
@@ -5635,7 +5635,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       //|  cmp RB, LJ_TCDATA; jne <2
       //|  jmp ->vmeta_equal_cd
       dasm_put(Dst, 9424, -BCBIAS_J*4, LJ_TCDATA);
-#line 4257 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4257 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  je >2
       //|  cmp RB, LJ_TCDATA; je ->vmeta_equal_cd
@@ -5644,7 +5644,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       //|2:
       //|  ins_next
       dasm_put(Dst, 9475, LJ_TCDATA, -BCBIAS_J*4);
-#line 4264 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4264 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     break;
 
@@ -5656,29 +5656,29 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  add PC, 4
     //|  cmp RB, LJ_TISTRUECOND
     dasm_put(Dst, 9520, LJ_TISTRUECOND);
-#line 4274 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4274 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (op == BC_IST || op == BC_ISTC) {
       //|  jae >1
       dasm_put(Dst, 9096);
-#line 4276 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4276 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  jb >1
       dasm_put(Dst, 9091);
-#line 4278 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4278 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     if (op == BC_ISTC || op == BC_ISFC) {
       //|  mov [BASE+RA*8+4], RB
       //|  mov RB, [BASE+RD*8]
       //|  mov [BASE+RA*8], RB
       dasm_put(Dst, 9532);
-#line 4283 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4283 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|  movzx RD, PC_RD
     //|  branchPC RD
     //|1:					// Fallthrough to the next instruction.
     //|  ins_next
     dasm_put(Dst, 9101, -BCBIAS_J*4);
-#line 4288 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4288 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   /* -- Unary ops --------------------------------------------------------- */
@@ -5696,7 +5696,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|.endif
     //|  ins_next_
     dasm_put(Dst, 9543);
-#line 4304 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4304 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_NOT:
     //|  ins_AD	// RA = dst, RD = src
@@ -5706,7 +5706,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov [BASE+RA*8+4], RB
     //|  ins_next
     dasm_put(Dst, 9572, LJ_TISTRUECOND, LJ_TTRUE);
-#line 4312 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4312 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_UNM:
     //|  ins_AD	// RA = dst, RD = src
@@ -5744,7 +5744,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  ins_next
     //|.endif
     dasm_put(Dst, 9609, LJ_TISNUM, (unsigned int)(U64x(80000000,00000000)), (unsigned int)((U64x(80000000,00000000))>>32));
-#line 4348 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4348 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_LEN:
     //|  ins_AD	// RA = dst, RD = src
@@ -5770,14 +5770,14 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  checktab RD, ->vmeta_len
     //|  mov TAB:FCARG1, [BASE+RD*8]
     dasm_put(Dst, 9664, LJ_TSTR, Dt5(->len), LJ_TTAB);
-#line 4372 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4372 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #if LJ_52
     //|  mov TAB:RB, TAB:FCARG1->metatable
     //|  cmp TAB:RB, 0
     //|  jnz >9
     //|3:
     dasm_put(Dst, 9730, Dt6(->metatable));
-#line 4377 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4377 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #endif
     //|->BC_LEN_Z:
     //|  mov RB, BASE			// Save BASE.
@@ -5795,14 +5795,14 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  movzx RA, PC_RA
     //|  jmp <1
     dasm_put(Dst, 9744);
-#line 4393 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4393 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #if LJ_52
     //|9:  // Check for __len.
     //|  test byte TAB:RB->nomm, 1<<MM_len
     //|  jnz <3
     //|  jmp ->vmeta_len			// 'no __len' flag NOT set: check.
     dasm_put(Dst, 9770, Dt6(->nomm), 1<<MM_len);
-#line 4398 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4398 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #endif
     break;
 
@@ -5923,7 +5923,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       break;
     }
     dasm_put(Dst, 9637);
-#line 4504 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4504 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_SUBVN: case BC_SUBNV: case BC_SUBVV:
     //|  ins_arith sub, fsub, subsd
@@ -5941,7 +5941,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       break;
     }
     dasm_put(Dst, 9637);
-#line 4507 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4507 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_MULVN: case BC_MULNV: case BC_MULVV:
     //|  ins_arith imul, fmul, mulsd
@@ -5959,7 +5959,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       break;
     }
     dasm_put(Dst, 9637);
-#line 4510 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4510 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_DIVVN: case BC_DIVNV: case BC_DIVVV:
     //|  ins_arith fdiv, divsd
@@ -5977,7 +5977,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       break;
     }
     dasm_put(Dst, 9637);
-#line 4513 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4513 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_MODVN:
     //|  ins_arithpre fld, movsd, xmm1
@@ -5994,13 +5994,13 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     dasm_put(Dst, 10194, LJ_TISNUM, LJ_TISNUM);
       break;
     }
-#line 4516 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4516 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|->BC_MODVN_Z:
     //|  call ->vm_mod
     //|  ins_arithpost
     //|  ins_next
     dasm_put(Dst, 10229);
-#line 4520 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4520 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_MODNV: case BC_MODVV:
     //|  ins_arithpre fld, movsd, xmm1
@@ -6017,10 +6017,10 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     dasm_put(Dst, 10194, LJ_TISNUM, LJ_TISNUM);
       break;
     }
-#line 4523 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4523 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  jmp ->BC_MODVN_Z			// Avoid 3 copies. It's slow anyway.
     dasm_put(Dst, 10261);
-#line 4524 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4524 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_POW:
     //|  ins_arithpre fld, movsd, xmm1
@@ -6037,12 +6037,12 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     dasm_put(Dst, 10194, LJ_TISNUM, LJ_TISNUM);
       break;
     }
-#line 4527 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4527 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  call ->vm_pow
     //|  ins_arithpost
     //|  ins_next
     dasm_put(Dst, 10266);
-#line 4530 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4530 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_CAT:
@@ -6084,7 +6084,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|.endif
     //|  ins_next
     dasm_put(Dst, 10296, Dt1(->base), Dt1(->base));
-#line 4570 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4570 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   /* -- Constant ops ------------------------------------------------------ */
@@ -6096,7 +6096,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov [BASE+RA*8], RD
     //|  ins_next
     dasm_put(Dst, 10380, LJ_TSTR);
-#line 4580 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4580 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_KCDATA:
     //|.if FFI
@@ -6107,7 +6107,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  ins_next
     //|.endif
     dasm_put(Dst, 10380, LJ_TCDATA);
-#line 4589 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4589 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_KSHORT:
     //|  ins_AD	// RA = dst, RD = signed int16 literal
@@ -6125,7 +6125,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|.endif
     //|  ins_next
     dasm_put(Dst, 10417);
-#line 4605 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4605 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_KNUM:
     //|  ins_AD	// RA = dst, RD = num const
@@ -6138,14 +6138,14 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|.endif
     //|  ins_next
     dasm_put(Dst, 10452);
-#line 4616 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4616 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_KPRI:
     //|  ins_AND	// RA = dst, RD = primitive type (~)
     //|  mov [BASE+RA*8+4], RD
     //|  ins_next
     dasm_put(Dst, 10486);
-#line 4621 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4621 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_KNIL:
     //|  ins_AD	// RA = dst_start, RD = dst_end
@@ -6160,7 +6160,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  jbe <1
     //|  ins_next
     dasm_put(Dst, 10515, LJ_TNIL);
-#line 4634 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4634 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   /* -- Upvalue and function ops ------------------------------------------ */
@@ -6181,7 +6181,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|.endif
     //|  ins_next
     dasm_put(Dst, 10563, offsetof(GCfuncL, uvptr), DtA(->v));
-#line 4653 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4653 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_USETV:
 #define TV2MARKOFS \
@@ -6218,11 +6218,11 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  lea GL:FCARG1, [DISPATCH+GG_DISP2G]
     //|  call extern lj_gc_barrieruv@8	// (global_State *g, TValue *tv)
     dasm_put(Dst, 10604, offsetof(GCfuncL, uvptr), DtA(->closed), DtA(->v), TV2MARKOFS, LJ_GC_BLACK, LJ_TISGCV, LJ_TNUMX - LJ_TISGCV, Dt4(->gch.marked), LJ_GC_WHITES, GG_DISP2G);
-#line 4688 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4688 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  mov BASE, RB			// Restore BASE.
     //|  jmp <1
     dasm_put(Dst, 10700);
-#line 4690 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4690 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 #undef TV2MARKOFS
   case BC_USETS:
@@ -6251,7 +6251,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov BASE, RB			// Restore BASE.
     //|  jmp <1
     dasm_put(Dst, 10712, offsetof(GCfuncL, uvptr), DtA(->v), LJ_TSTR, DtA(->marked), LJ_GC_BLACK, Dt4(->gch.marked), LJ_GC_WHITES, DtA(->closed), GG_DISP2G);
-#line 4717 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4717 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_USETN:
     //|  ins_AD	// RA = upvalue #, RD = num const
@@ -6270,7 +6270,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|.endif
     //|  ins_next
     dasm_put(Dst, 10808, offsetof(GCfuncL, uvptr), DtA(->v));
-#line 4734 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4734 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_USETP:
     //|  ins_AND	// RA = upvalue #, RD = primitive type (~)
@@ -6280,7 +6280,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov [RA+4], RD
     //|  ins_next
     dasm_put(Dst, 10853, offsetof(GCfuncL, uvptr), DtA(->v));
-#line 4742 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4742 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_UCLO:
     //|  ins_AD	// RA = level, RD = target
@@ -6296,7 +6296,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|1:
     //|  ins_next
     dasm_put(Dst, 10893, -BCBIAS_J*4, Dt1(->openupval), Dt1(->base), Dt1(->base));
-#line 4756 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4756 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_FNEW:
@@ -6326,7 +6326,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov dword [BASE+RA*8+4], LJ_TFUNC
     //|  ins_next
     dasm_put(Dst, 10949, Dt1(->base), Dt1(->base), LJ_TFUNC);
-#line 4784 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4784 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   /* -- Table ops --------------------------------------------------------- */
@@ -6376,7 +6376,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  movzx RD, PC_RD
     //|  jmp <1
     dasm_put(Dst, 11016, Dt1(->base), DISPATCH_GL(gc.total), DISPATCH_GL(gc.threshold), Dt1(->base), LJ_TTAB);
-#line 4832 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4832 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_TDUP:
     //|  ins_AND	// RA = dst, RD = table const (~) (holding template table)
@@ -6403,7 +6403,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  not RDa
     //|  jmp <2
     dasm_put(Dst, 11140, DISPATCH_GL(gc.total), DISPATCH_GL(gc.threshold), Dt1(->base), Dt1(->base), LJ_TTAB);
-#line 4857 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4857 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_GGET:
@@ -6413,7 +6413,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov STR:RC, [KBASE+RD*4]
     //|  jmp ->BC_TGETS_Z
     dasm_put(Dst, 11239, Dt7(->env));
-#line 4865 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4865 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_GSET:
     //|  ins_AND	// RA = src, RD = str const (~)
@@ -6422,7 +6422,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov STR:RC, [KBASE+RD*4]
     //|  jmp ->BC_TSETS_Z
     dasm_put(Dst, 11259, Dt7(->env));
-#line 4872 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4872 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_TGETV:
@@ -6475,7 +6475,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  jz >3
     //|  mov TAB:RA, TAB:RB->metatable
     dasm_put(Dst, 11279, LJ_TTAB, LJ_TISNUM, Dt6(->asize), Dt6(->array), LJ_TNIL, Dt6(->metatable));
-#line 4923 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4923 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  test byte TAB:RA->nomm, 1<<MM_index
     //|  jz ->vmeta_tgetv			// 'no __index' flag NOT set: check.
     //|  movzx RA, PC_RA			// Restore RA.
@@ -6488,7 +6488,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov STR:RC, [BASE+RC*8]
     //|  jmp ->BC_TGETS_Z
     dasm_put(Dst, 11397, Dt6(->metatable), Dt6(->nomm), 1<<MM_index, LJ_TNIL, LJ_TSTR);
-#line 4934 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4934 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_TGETS:
     //|  ins_ABC	// RA = dst, RB = table, RC = str const (~)
@@ -6523,7 +6523,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|2:
     //|  ins_next
     dasm_put(Dst, 11445, LJ_TTAB, Dt6(->hmask), Dt5(->hash), sizeof(Node), Dt6(->node), DtB(->key.it), LJ_TSTR, DtB(->key.gcr), LJ_TNIL);
-#line 4967 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4967 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|
     //|3:
     //|  movzx RC, PC_RA
@@ -6544,7 +6544,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  jnz <3				// 'no __index' flag set: done.
     //|  jmp ->vmeta_tgets		// Caveat: preserve STR:RC.
     dasm_put(Dst, 11530, LJ_TNIL, DtB(->next), Dt6(->metatable), Dt6(->nomm), 1<<MM_index);
-#line 4986 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 4986 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_TGETB:
     //|  ins_ABC	// RA = dst, RB = table, RC = byte literal
@@ -6577,12 +6577,12 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  jz ->vmeta_tgetb			// 'no __index' flag NOT set: check.
     //|  movzx RA, PC_RA			// Restore RA.
     dasm_put(Dst, 11602, LJ_TTAB, Dt6(->asize), Dt6(->array), LJ_TNIL, Dt6(->metatable), Dt6(->metatable), Dt6(->nomm), 1<<MM_index);
-#line 5017 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5017 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|3:
     //|  mov dword [BASE+RA*8+4], LJ_TNIL
     //|  jmp <1
     dasm_put(Dst, 11698, LJ_TNIL);
-#line 5020 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5020 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_TSETV:
@@ -6624,7 +6624,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|.if X64
     //|  mov RBa, [BASE+RA*8]
     dasm_put(Dst, 11715, LJ_TTAB, LJ_TISNUM, Dt6(->asize), Dt6(->array), LJ_TNIL, Dt6(->marked), LJ_GC_BLACK);
-#line 5060 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5060 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  mov [RC], RBa
     //|.else
     //|  mov RB, [BASE+RA*8+4]
@@ -6651,11 +6651,11 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|7:  // Possible table write barrier for the value. Skip valiswhite check.
     //|  barrierback TAB:RB, RA
     dasm_put(Dst, 11807, Dt6(->metatable), Dt6(->metatable), Dt6(->nomm), 1<<MM_newindex, LJ_TSTR, Dt6(->marked), (uint8_t)~LJ_GC_BLACK);
-#line 5085 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5085 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  movzx RA, PC_RA			// Restore RA.
     //|  jmp <2
     dasm_put(Dst, 11891, DISPATCH_GL(gc.grayagain), DISPATCH_GL(gc.grayagain), Dt6(->gclist));
-#line 5087 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5087 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_TSETS:
     //|  ins_ABC	// RA = src, RB = table, RC = str const (~)
@@ -6680,7 +6680,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|2:
     //|  test byte TAB:RB->marked, LJ_GC_BLACK	// isblack(table)
     dasm_put(Dst, 11912, LJ_TTAB, Dt6(->hmask), Dt5(->hash), sizeof(Node), Dt6(->nomm), Dt6(->node), DtB(->key.it), LJ_TSTR, DtB(->key.gcr), LJ_TNIL);
-#line 5110 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5110 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  jnz >7
     //|3:  // Set node value.
     //|  movzx RC, PC_RA
@@ -6714,7 +6714,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  // But check for __newindex first.
     //|  mov TAB:RA, TAB:RB->metatable
     dasm_put(Dst, 11989, Dt6(->marked), LJ_GC_BLACK, Dt6(->metatable), Dt6(->metatable), Dt6(->nomm), 1<<MM_newindex, DtB(->next));
-#line 5142 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5142 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  test TAB:RA, TAB:RA
     //|  jz >6				// No metatable: continue.
     //|  test byte TAB:RA->nomm, 1<<MM_newindex
@@ -6749,7 +6749,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  barrierback TAB:RB, RC		// Destroys STR:RC.
     //|  jmp <3
     dasm_put(Dst, 12076, Dt6(->metatable), Dt6(->nomm), 1<<MM_newindex, LJ_TSTR, Dt1(->base), Dt1(->base), Dt6(->marked), (uint8_t)~LJ_GC_BLACK, DISPATCH_GL(gc.grayagain), DISPATCH_GL(gc.grayagain), Dt6(->gclist));
-#line 5175 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5175 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_TSETB:
     //|  ins_ABC	// RA = src, RB = table, RC = byte literal
@@ -6781,7 +6781,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  jz <1
     //|  mov TAB:RA, TAB:RB->metatable
     dasm_put(Dst, 12168, LJ_TTAB, Dt6(->asize), Dt6(->array), LJ_TNIL, Dt6(->marked), LJ_GC_BLACK, Dt6(->metatable));
-#line 5205 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5205 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  test byte TAB:RA->nomm, 1<<MM_newindex
     //|  jz ->vmeta_tsetb			// 'no __newindex' flag NOT set: check.
     //|  movzx RA, PC_RA			// Restore RA.
@@ -6792,7 +6792,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  movzx RA, PC_RA			// Restore RA.
     //|  jmp <2
     dasm_put(Dst, 12263, Dt6(->metatable), Dt6(->nomm), 1<<MM_newindex, Dt6(->marked), (uint8_t)~LJ_GC_BLACK, DISPATCH_GL(gc.grayagain), DISPATCH_GL(gc.grayagain), Dt6(->gclist));
-#line 5214 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5214 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_TSETM:
@@ -6856,10 +6856,10 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|7:  // Possible table write barrier for any value. Skip valiswhite check.
     //|  barrierback TAB:RB, RD
     dasm_put(Dst, 12311, Dt6(->marked), LJ_GC_BLACK, Dt6(->asize), Dt6(->array), Dt1(->base), Dt1(->base));
-#line 5276 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5276 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  jmp <2
     dasm_put(Dst, 12461, Dt6(->marked), (uint8_t)~LJ_GC_BLACK, DISPATCH_GL(gc.grayagain), DISPATCH_GL(gc.grayagain), Dt6(->gclist));
-#line 5277 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5277 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   /* -- Calls and vararg handling ----------------------------------------- */
@@ -6867,11 +6867,11 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
   case BC_CALL: case BC_CALLM:
     //|  ins_A_C	// RA = base, (RB = nresults+1,) RC = nargs+1 | extra_nargs
     dasm_put(Dst, 9790);
-#line 5283 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5283 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (op == BC_CALLM) {
       //|  add NARGS:RD, MULTRES
       dasm_put(Dst, 12481);
-#line 5285 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5285 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|  cmp dword [BASE+RA*8+4], LJ_TFUNC
     //|  mov LFUNC:RB, [BASE+RA*8]
@@ -6879,7 +6879,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  lea BASE, [BASE+RA*8+8]
     //|  ins_call
     dasm_put(Dst, 12486, LJ_TFUNC, Dt7(->pc));
-#line 5291 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5291 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_CALLMT:
@@ -6887,7 +6887,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  add NARGS:RD, MULTRES
     //|  // Fall through. Assumes BC_CALLT follows and ins_AD is a no-op.
     dasm_put(Dst, 12481);
-#line 5297 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5297 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
   case BC_CALLT:
     //|  ins_AD	// RA = base, RD = nargs+1
@@ -6932,7 +6932,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|5:  // Tailcall to a fast function.
     //|  test PC, FRAME_TYPE		// Lua frame below?
     dasm_put(Dst, 12529, LJ_TFUNC, FRAME_TYPE, Dt7(->ffid), Dt7(->pc));
-#line 5340 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5340 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  jnz <4
     //|  movzx RA, PC_RA
     //|  not RAa
@@ -6953,7 +6953,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  add PC, FRAME_VARG
     //|  jmp <1
     dasm_put(Dst, 12647, FRAME_TYPE, Dt7(->pc), PC2PROTO(k), FRAME_VARG, FRAME_TYPEP, FRAME_VARG);
-#line 5359 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5359 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_ITERC:
@@ -6984,7 +6984,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov BASE, RA
     //|  ins_call
     dasm_put(Dst, 12719, LJ_TFUNC, 2+1, Dt7(->pc));
-#line 5388 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5388 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_ITERN:
@@ -7052,7 +7052,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  imul KBASE, RC, #NODE
     //|  add NODE:KBASE, TAB:RB->node
     dasm_put(Dst, 12791, Dt6(->asize), Dt6(->array), LJ_TNIL, -BCBIAS_J*4, Dt6(->hmask), sizeof(Node));
-#line 5454 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5454 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  cmp dword NODE:KBASE->val.it, LJ_TNIL; je >7
     //|  lea DISPATCH, [RC+DISPATCH+1]
     //|  // Copy key and value from hash slot.
@@ -7078,7 +7078,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  add RC, 1
     //|  jmp <6
     dasm_put(Dst, 12943, Dt6(->node), DtB(->val.it), LJ_TNIL, DtB(->key), DtB(->val));
-#line 5478 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5478 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_ISNEXT:
@@ -7099,7 +7099,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov byte [PC], BC_ITERC
     //|  jmp <1
     dasm_put(Dst, 12998, LJ_TFUNC, LJ_TTAB, LJ_TNIL, Dt8(->ffid), FF_next_N, -BCBIAS_J*4, BC_JMP, -BCBIAS_J*4, BC_ITERC);
-#line 5497 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5497 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_VARG:
@@ -7157,7 +7157,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|.if X64
     //|  mov RCa, [KBASE-8]
     dasm_put(Dst, 13111, (8+FRAME_VARG), LJ_TNIL, Dt1(->maxstack));
-#line 5553 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5553 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     //|  add KBASE, 8
     //|  mov [RA], RCa
     //|.else
@@ -7186,7 +7186,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  add KBASE, BASE
     //|  jmp <6
     dasm_put(Dst, 13278, Dt1(->base), Dt1(->top), Dt1(->base), Dt1(->top));
-#line 5580 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5580 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   /* -- Returns ----------------------------------------------------------- */
@@ -7196,7 +7196,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  add RD, MULTRES			// MULTRES >=1, so RD >=1.
     //|  // Fall through. Assumes BC_RET follows and ins_AD is a no-op.
     dasm_put(Dst, 12481);
-#line 5588 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5588 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_RET: case BC_RET0: case BC_RET1:
@@ -7204,7 +7204,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     if (op != BC_RET0) {
       //|  shl RA, 3
       dasm_put(Dst, 13348);
-#line 5594 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5594 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|1:
     //|  mov PC, [BASE-4]
@@ -7212,7 +7212,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  test PC, FRAME_TYPE		// Check frame type marker.
     //|  jnz >7				// Not returning to a fixarg Lua func?
     dasm_put(Dst, 13352, FRAME_TYPE);
-#line 5600 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5600 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     switch (op) {
     case BC_RET:
       //|->BC_RET_Z:
@@ -7239,7 +7239,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       //|  cmp RB, RD			// More results expected?
       //|  ja >6
       dasm_put(Dst, 13371);
-#line 5625 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5625 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       break;
     case BC_RET1:
       //|.if X64
@@ -7252,14 +7252,14 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       //|  mov [BASE-8], RB
       //|.endif
       dasm_put(Dst, 13425);
-#line 5636 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5636 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       /* fallthrough */
     case BC_RET0:
       //|5:
       //|  cmp PC_RB, RDL			// More results expected?
       //|  ja >6
       dasm_put(Dst, 13435);
-#line 5641 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5641 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     default:
       break;
     }
@@ -7273,16 +7273,16 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|
     //|6:  // Fill up results with nil.
     dasm_put(Dst, 13446, Dt7(->pc), PC2PROTO(k));
-#line 5653 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5653 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (op == BC_RET) {
       //|  mov dword [KBASE-4], LJ_TNIL	// Note: relies on shifted base.
       //|  add KBASE, 8
       dasm_put(Dst, 13494, LJ_TNIL);
-#line 5656 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5656 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  mov dword [BASE+RD*8-12], LJ_TNIL
       dasm_put(Dst, 13505, LJ_TNIL);
-#line 5658 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5658 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|  add RD, 1
     //|  jmp <5
@@ -7294,15 +7294,15 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  // Return from vararg function: relocate BASE down and RA up.
     //|  sub BASE, RB
     dasm_put(Dst, 13512, -FRAME_VARG, FRAME_TYPEP);
-#line 5668 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5668 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (op != BC_RET0) {
       //|  add RA, RB
       dasm_put(Dst, 13536);
-#line 5670 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5670 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|  jmp <1
     dasm_put(Dst, 9765);
-#line 5672 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5672 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   /* -- Loops and branches ------------------------------------------------ */
@@ -7318,7 +7318,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|.endif
     //| // Fall through. Assumes BC_IFORL follows and ins_AJ is a no-op.
     dasm_put(Dst, 13540, HOTCOUNT_PCMASK, GG_DISP2HOT, HOTCOUNT_LOOP);
-#line 5686 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5686 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_JFORI:
@@ -7332,44 +7332,44 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  ins_AJ	// RA = base, RD = target (after end of loop or start of loop)
     //|  lea RA, [BASE+RA*8]
     dasm_put(Dst, 13561);
-#line 5698 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5698 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (LJ_DUALNUM) {
       //|  cmp FOR_TIDX, LJ_TISNUM; jne >9
       dasm_put(Dst, 13565, LJ_TISNUM);
-#line 5700 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5700 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       if (!vk) {
 	//|  cmp FOR_TSTOP, LJ_TISNUM; jne ->vmeta_for
 	//|  cmp FOR_TSTEP, LJ_TISNUM; jne ->vmeta_for
 	//|  mov RB, dword FOR_IDX
 	//|  cmp dword FOR_STEP, 0; jl >5
 	dasm_put(Dst, 13575, LJ_TISNUM, LJ_TISNUM);
-#line 5705 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5705 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       } else {
 #ifdef LUA_USE_ASSERT
 	//|  cmp FOR_TSTOP, LJ_TISNUM; jne ->assert_bad_for_arg_type
 	//|  cmp FOR_TSTEP, LJ_TISNUM; jne ->assert_bad_for_arg_type
 	dasm_put(Dst, 13604, LJ_TISNUM, LJ_TISNUM);
-#line 5709 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5709 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #endif
 	//|  mov RB, dword FOR_STEP
 	//|  test RB, RB; js >5
 	//|  add RB, dword FOR_IDX; jo >1
 	//|  mov dword FOR_IDX, RB
 	dasm_put(Dst, 13623);
-#line 5714 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5714 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       }
       //|  cmp RB, dword FOR_STOP
       //|  mov FOR_TEXT, LJ_TISNUM
       //|  mov dword FOR_EXT, RB
       dasm_put(Dst, 13642, LJ_TISNUM);
-#line 5718 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5718 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       if (op == BC_FORI) {
 	//|  jle >7
 	//|1:
 	//|6:
 	//|  branchPC RD
 	dasm_put(Dst, 13653, -BCBIAS_J*4);
-#line 5723 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5723 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       } else if (op == BC_JFORI) {
 	//|  branchPC RD
 	//|  movzx RD, PC_RD
@@ -7377,102 +7377,102 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
 	//|1:
 	//|6:
 	dasm_put(Dst, 13667, -BCBIAS_J*4, BC_JLOOP);
-#line 5729 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5729 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       } else if (op == BC_IFORL) {
 	//|  jg >7
 	//|6:
 	//|  branchPC RD
 	//|1:
 	dasm_put(Dst, 13685, -BCBIAS_J*4);
-#line 5734 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5734 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       } else {
 	//|  jle =>BC_JLOOP
 	//|1:
 	//|6:
 	dasm_put(Dst, 13677, BC_JLOOP);
-#line 5738 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5738 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       }
       //|7:
       //|  ins_next
       //|
       //|5:  // Invert check for negative step.
       dasm_put(Dst, 13699);
-#line 5743 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5743 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       if (vk) {
 	//|  add RB, dword FOR_IDX; jo <1
 	//|  mov dword FOR_IDX, RB
 	dasm_put(Dst, 13724);
-#line 5746 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5746 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       }
       //|  cmp RB, dword FOR_STOP
       //|  mov FOR_TEXT, LJ_TISNUM
       //|  mov dword FOR_EXT, RB
       dasm_put(Dst, 13642, LJ_TISNUM);
-#line 5750 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5750 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       if (op == BC_FORI) {
 	//|  jge <7
 	dasm_put(Dst, 13733);
-#line 5752 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5752 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       } else if (op == BC_JFORI) {
 	//|  branchPC RD
 	//|  movzx RD, PC_RD
 	//|  jge =>BC_JLOOP
 	dasm_put(Dst, 13738, -BCBIAS_J*4, BC_JLOOP);
-#line 5756 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5756 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       } else if (op == BC_IFORL) {
 	//|  jl <7
 	dasm_put(Dst, 13752);
-#line 5758 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5758 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       } else {
 	//|  jge =>BC_JLOOP
 	dasm_put(Dst, 13748, BC_JLOOP);
-#line 5760 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5760 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
       }
       //|  jmp <6
       //|9:  // Fallback to FP variant.
       dasm_put(Dst, 13757);
-#line 5763 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5763 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else if (!vk) {
       //|  cmp FOR_TIDX, LJ_TISNUM
       dasm_put(Dst, 13764, LJ_TISNUM);
-#line 5765 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5765 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     if (!vk) {
       //|  jae ->vmeta_for
       //|  cmp FOR_TSTOP, LJ_TISNUM; jae ->vmeta_for
       dasm_put(Dst, 13770, LJ_TISNUM);
-#line 5769 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5769 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
 #ifdef LUA_USE_ASSERT
       //|  cmp FOR_TSTOP, LJ_TISNUM; jae ->assert_bad_for_arg_type
       //|  cmp FOR_TSTEP, LJ_TISNUM; jae ->assert_bad_for_arg_type
       dasm_put(Dst, 13784, LJ_TISNUM, LJ_TISNUM);
-#line 5773 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5773 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
 #endif
     }
     //|  mov RB, FOR_TSTEP		// Load type/hiword of for step.
     dasm_put(Dst, 13803);
-#line 5776 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5776 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (!vk) {
       //|  cmp RB, LJ_TISNUM; jae ->vmeta_for
       dasm_put(Dst, 13807, LJ_TISNUM);
-#line 5778 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5778 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|.if SSE
     //|  movsd xmm0, qword FOR_IDX
     //|  movsd xmm1, qword FOR_STOP
     dasm_put(Dst, 13816);
-#line 5782 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5782 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (vk) {
       //|  addsd xmm0, qword FOR_STEP
       //|  movsd qword FOR_IDX, xmm0
       //|  test RB, RB; js >3
       dasm_put(Dst, 13828);
-#line 5786 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5786 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  jl >3
       dasm_put(Dst, 13847);
-#line 5788 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5788 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|  ucomisd xmm1, xmm0
     //|1:
@@ -7481,7 +7481,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  fld qword FOR_STOP
     //|  fld qword FOR_IDX
     dasm_put(Dst, 13852);
-#line 5795 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5795 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (vk) {
       //|  fadd qword FOR_STEP		// nidx = idx + step
       //|  fst qword FOR_IDX
@@ -7503,13 +7503,13 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       //|  branchPC RD
       //|.endif
       dasm_put(Dst, 13865, -BCBIAS_J*4);
-#line 5815 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5815 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else if (op == BC_JFORI) {
       //|  branchPC RD
       //|  movzx RD, PC_RD
       //|  jnb =>BC_JLOOP
       dasm_put(Dst, 13875, -BCBIAS_J*4, BC_JLOOP);
-#line 5819 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5819 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else if (op == BC_IFORL) {
       //|.if DUALNUM
       //|  jb <7
@@ -7518,11 +7518,11 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       //|  branchPC RD
       //|.endif
       dasm_put(Dst, 13889, -BCBIAS_J*4);
-#line 5826 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5826 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  jnb =>BC_JLOOP
       dasm_put(Dst, 13885, BC_JLOOP);
-#line 5828 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5828 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|.if DUALNUM
     //|  jmp <6
@@ -7536,7 +7536,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  jmp <1
     //|.endif
     dasm_put(Dst, 13899);
-#line 5840 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5840 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_ITERL:
@@ -7545,7 +7545,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|.endif
     //| // Fall through. Assumes BC_IITERL follows and ins_AJ is a no-op.
     dasm_put(Dst, 13540, HOTCOUNT_PCMASK, GG_DISP2HOT, HOTCOUNT_LOOP);
-#line 5847 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5847 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_JITERL:
@@ -7558,26 +7558,26 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov RB, [RA+4]
     //|  cmp RB, LJ_TNIL; je >1		// Stop if iterator returned nil.
     dasm_put(Dst, 13932, LJ_TNIL);
-#line 5858 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5858 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (op == BC_JITERL) {
       //|  mov [RA-4], RB
       //|  mov RB, [RA]
       //|  mov [RA-8], RB
       //|  jmp =>BC_JLOOP
       dasm_put(Dst, 13947, BC_JLOOP);
-#line 5863 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5863 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  branchPC RD			// Otherwise save control var + branch.
       //|  mov RD, [RA]
       //|  mov [RA-4], RB
       //|  mov [RA-8], RD
       dasm_put(Dst, 13961, -BCBIAS_J*4);
-#line 5868 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5868 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|1:
     //|  ins_next
     dasm_put(Dst, 9111);
-#line 5871 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5871 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_LOOP:
@@ -7589,14 +7589,14 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|.endif
     //| // Fall through. Assumes BC_ILOOP follows and ins_A is a no-op.
     dasm_put(Dst, 13540, HOTCOUNT_PCMASK, GG_DISP2HOT, HOTCOUNT_LOOP);
-#line 5881 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5881 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_ILOOP:
     //|  ins_A	// RA = base, RD = target (loop extent)
     //|  ins_next
     dasm_put(Dst, 9113);
-#line 5886 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5886 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_JLOOP:
@@ -7634,7 +7634,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  jmp RDa
     //|.endif
     dasm_put(Dst, 13977, DISPATCH_J(trace), DtD(->mcode), DISPATCH_GL(jit_base), DISPATCH_GL(jit_L));
-#line 5922 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5922 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_JMP:
@@ -7642,7 +7642,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  branchPC RD
     //|  ins_next
     dasm_put(Dst, 14018, -BCBIAS_J*4);
-#line 5928 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5928 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   /* -- Function headers -------------------------------------------------- */
@@ -7659,7 +7659,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  hotcall RB
     //|.endif
     dasm_put(Dst, 14044, HOTCOUNT_PCMASK, GG_DISP2HOT, HOTCOUNT_CALL);
-#line 5943 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5943 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   case BC_FUNCV:  /* NYI: compiled vararg functions. */
     //| // Fall through. Assumes BC_IFUNCF/BC_IFUNCV follow and ins_AD is a no-op.
     break;
@@ -7680,16 +7680,16 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  jbe >3
     //|2:
     dasm_put(Dst, 14065, -4+PC2PROTO(k), Dt1(->maxstack), -4+PC2PROTO(numparams));
-#line 5962 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5962 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (op == BC_JFUNCF) {
       //|  movzx RD, PC_RD
       //|  jmp =>BC_JLOOP
       dasm_put(Dst, 14096, BC_JLOOP);
-#line 5965 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5965 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  ins_next
       dasm_put(Dst, 9113);
-#line 5967 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5967 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|
     //|3:  // Clear missing parameters.
@@ -7699,7 +7699,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  jbe <3
     //|  jmp <2
     dasm_put(Dst, 14105, LJ_TNIL);
-#line 5975 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5975 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_JFUNCV:
@@ -7708,7 +7708,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
 #endif
     //| int3  // NYI: compiled vararg functions
     dasm_put(Dst, 8676);
-#line 5982 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 5982 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;  /* NYI: compiled vararg functions. */
 
   case BC_IFUNCV:
@@ -7741,17 +7741,17 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  jnz <1
     //|2:
     dasm_put(Dst, 14127, FRAME_VARG, Dt1(->maxstack), -4+PC2PROTO(numparams), LJ_TNIL);
-#line 6013 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6013 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (op == BC_JFUNCV) {
       //|  movzx RD, PC_RD
       //|  jmp =>BC_JLOOP
       dasm_put(Dst, 14096, BC_JLOOP);
-#line 6016 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6016 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  mov KBASE, [PC-4+PC2PROTO(k)]
       //|  ins_next
       dasm_put(Dst, 14224, -4+PC2PROTO(k));
-#line 6019 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6019 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|
     //|3:  // Clear missing parameters.
@@ -7761,7 +7761,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  jnz <3
     //|  jmp <2
     dasm_put(Dst, 14249, LJ_TNIL);
-#line 6027 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6027 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   case BC_FUNCC:
@@ -7776,7 +7776,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  cmp RA, L:RB->maxstack
     //|  mov L:RB->top, RD
     dasm_put(Dst, 14271, Dt8(->f), Dt1(->base), 8*LUA_MINSTACK, Dt1(->maxstack), Dt1(->top));
-#line 6040 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6040 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (op == BC_FUNCC) {
       //|.if X64
       //|  mov CARG1d, L:RB			// Caveat: CARG1d may be RA.
@@ -7784,7 +7784,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       //|  mov ARG1, L:RB
       //|.endif
       dasm_put(Dst, 14301);
-#line 6046 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6046 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|.if X64
       //|  mov CARG2, KBASEa
@@ -7794,21 +7794,21 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
       //|  mov ARG1, L:RB
       //|.endif
       dasm_put(Dst, 14305);
-#line 6054 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6054 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|  ja ->vm_growstack_c		// Need to grow stack.
     //|  set_vmstate C
     dasm_put(Dst, 14313, DISPATCH_GL(vmstate), ~LJ_VMST_C);
-#line 6057 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6057 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     if (op == BC_FUNCC) {
       //|  call KBASEa			// (lua_State *L)
       dasm_put(Dst, 14323);
-#line 6059 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6059 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     } else {
       //|  // (lua_State *L, lua_CFunction f)
       //|  call aword [DISPATCH+DISPATCH_GL(wrapf)]
       dasm_put(Dst, 14328, DISPATCH_GL(wrapf));
-#line 6062 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6062 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     }
     //|  set_vmstate INTERP
     //|  // nresults returned in eax (RD).
@@ -7819,7 +7819,7 @@ static void build_ins(BuildCtx *ctx, BCOp op, int defop)
     //|  mov PC, [BASE-4]			// Fetch PC of caller.
     //|  jmp ->vm_returnc
     dasm_put(Dst, 14334, DISPATCH_GL(vmstate), ~LJ_VMST_INTERP, Dt1(->base), Dt1(->top));
-#line 6071 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6071 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
     break;
 
   /* ---------------------------------------------------------------------- */
@@ -7838,7 +7838,7 @@ static int build_backend(BuildCtx *ctx)
   build_subroutines(ctx);
   //|.code_op
   dasm_put(Dst, 14360);
-#line 6088 "/Users/atman/code/pylon/luv/deps/luajit/src/vm_x86.dasc"
+#line 6088 "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/vm_x86.dasc"
   for (op = 0; op < BC__MAX; op++)
     build_ins(ctx, (BCOp)op, op);
   return BC__MAX;
