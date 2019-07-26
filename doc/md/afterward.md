@@ -1,10 +1,12 @@
 # Afterward
 
-Performs cleanup. Let's begin with the ``package.loaders`` conn.
+Performs cleanup. Does a no-op now to keep the loader clean.
 
 
 ### Close package.conn
 
 ```lua
-package.conn:close()
+do
+   local three = 1 + 2
+end
 ```

@@ -3,13 +3,13 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 230"]
+doc_0 [label="doc - 254"]
 
 
 doc_0 -> { section_1}
 {rank=same; section_1}
 
-section_1 [label="section: 1-197"]
+section_1 [label="section: 1-229"]
 
 
 // END RANK doc_0
@@ -23,13 +23,13 @@ prose_3 [label="prose"]
 
 section_4 [label="section: 7-14"]
 
-section_5 [label="section: 15-49"]
+section_5 [label="section: 15-56"]
 
-section_6 [label="section: 50-86"]
+section_6 [label="section: 57-93"]
 
-section_7 [label="section: 87-197"]
+section_7 [label="section: 94-229"]
 
-section_8 [label="section: 198-223"]
+section_8 [label="section: 230-247"]
 
 
 // END RANK section_1
@@ -133,7 +133,7 @@ header_31 [label="3 : SQL statements"]
 
 prose_32 [label="prose"]
 
-codeblock_33 [label="code block 17-47"]
+codeblock_33 [label="code block 17-54"]
 
 
 // END RANK section_5
@@ -181,6 +181,13 @@ WHERE module.name = %s
 ORDER BY module.time DESC;
 ]]
 
+local get_latest_module_code_id = [[
+SELECT CAST (module.code AS REAL)
+FROM module
+WHERE module.name = %s
+ORDER BY module.time DESC LIMIT 1;
+]]
+
 local get_latest_module_bytecode = [[
 SELECT code.binary FROM code
 WHERE code.code_id = %d ;
@@ -198,11 +205,11 @@ prose_40 [label="prose"]
 
 prose_41 [label="prose"]
 
-codeblock_42 [label="code block 61-73"]
+codeblock_42 [label="code block 68-80"]
 
 prose_43 [label="prose"]
 
-codeblock_44 [label="code block 77-85"]
+codeblock_44 [label="code block 84-92"]
 
 
 // END RANK section_6
@@ -403,8 +410,8 @@ leaf_91  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local br_mod
    end"]
 // END RANK codeblock_44
 
-section_7 -> { header_92 prose_93 structure_94 codeblock_95}
-{rank=same; header_92 prose_93 structure_94 codeblock_95}
+section_7 -> { header_92 prose_93 structure_94 structure_95 prose_96 codeblock_97}
+{rank=same; header_92 prose_93 structure_94 structure_95 prose_96 codeblock_97}
 
 header_92 [label="3 : _loadModule(conn, mod_name)"]
 
@@ -412,52 +419,126 @@ prose_93 [label="prose"]
 
 structure_94 [label="structure"]
 
-codeblock_95 [label="code block 96-195"]
+structure_95 [label="structure"]
+
+prose_96 [label="prose"]
+
+codeblock_97 [label="code block 108-227"]
 
 
 // END RANK section_7
 
-header_92 -> leaf_96
-leaf_96  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** _loadModule(conn, mod_name)"]
+header_92 -> leaf_98
+leaf_98  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** _loadModule(conn, mod_name)"]
 // END RANK header_92
 
-prose_93 -> { raw_97}
-{rank=same; raw_97}
+prose_93 -> { raw_99}
+{rank=same; raw_99}
 
-raw_97 [label="raw"]
+raw_99 [label="raw"]
 
 
 // END RANK prose_93
 
-raw_97 -> leaf_98
-leaf_98  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_99 -> leaf_100
+leaf_100  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 
 Load a module given its name and a given database conn.
 "]
-// END RANK raw_97
+// END RANK raw_99
 
-structure_94 -> { hashline_99}
-{rank=same; hashline_99}
+structure_94 -> { hashline_101}
+{rank=same; hashline_101}
 
-hashline_99 [label="hashline"]
+hashline_101 [label="hashline"]
 
 
 // END RANK structure_94
 
-hashline_99 -> { hashtag_100}
-{rank=same; hashtag_100}
+hashline_101 -> { hashtag_102}
+{rank=same; hashtag_102}
 
-hashtag_100 [label="hashtag"]
+hashtag_102 [label="hashtag"]
 
 
-// END RANK hashline_99
+// END RANK hashline_101
 
-hashtag_100 -> leaf_101
-leaf_101  [color=Gray,shape=rectangle,fontname=Inconsolata,label="NB"]
-// END RANK hashtag_100
+hashtag_102 -> leaf_103
+leaf_103  [color=Gray,shape=rectangle,fontname=Inconsolata,label="NB"]
+// END RANK hashtag_102
 
-codeblock_95 -> leaf_102
-leaf_102  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local function _unwrapForeignKey(result)
+structure_95 -> { hashline_104}
+{rank=same; hashline_104}
+
+hashline_104 [label="hashline"]
+
+
+// END RANK structure_95
+
+hashline_104 -> { hashtag_105}
+{rank=same; hashtag_105}
+
+hashtag_105 [label="hashtag"]
+
+
+// END RANK hashline_104
+
+hashtag_105 -> leaf_106
+leaf_106  [color=Gray,shape=rectangle,fontname=Inconsolata,label="Todo"]
+// END RANK hashtag_105
+
+prose_96 -> { raw_107 prespace_108 literal_109 raw_110 prespace_111 literal_112 raw_113}
+{rank=same; raw_107 prespace_108 literal_109 raw_110 prespace_111 literal_112 raw_113}
+
+raw_107 [label="raw"]
+
+prespace_108 [label="prespace"]
+
+literal_109 [label="literal"]
+
+raw_110 [label="raw"]
+
+prespace_111 [label="prespace"]
+
+literal_112 [label="literal"]
+
+raw_113 [label="raw"]
+
+
+// END RANK prose_96
+
+raw_107 -> leaf_114
+leaf_114  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+names look like"]
+// END RANK raw_107
+
+prespace_108 -> leaf_115
+leaf_115  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_108
+
+literal_109 -> leaf_116
+leaf_116  [color=Gray,shape=rectangle,fontname=Inconsolata,label="orb/src/Orbit/handleline.orb"]
+// END RANK literal_109
+
+raw_110 -> leaf_117
+leaf_117  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" instead of"]
+// END RANK raw_110
+
+prespace_111 -> leaf_118
+leaf_118  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_111
+
+literal_112 -> leaf_119
+leaf_119  [color=Gray,shape=rectangle,fontname=Inconsolata,label="Orbit/handleline"]
+// END RANK literal_112
+
+raw_113 -> leaf_120
+leaf_120  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+"]
+// END RANK raw_113
+
+codeblock_97 -> leaf_121
+leaf_121  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local function _unwrapForeignKey(result)
       if result and result[1] and result[1][1] then
          return result[1][1]
       else
@@ -467,8 +548,9 @@ leaf_102  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local funct
 
    local function _loadModule(mod_name)
       assert(type(mod_name) == \"string\", \"mod_name must be a string\")
+      print (\"attempting to load \" .. mod_name)
       local conn = sql.open(bridge_modules)
-   if not conn then print \"conn fail\" ; return nil end
+      if not conn then print \"conn fail\" ; return nil end
       package.bridge_loaded = package.bridge_loaded or {}
       -- split the module into project and modname
       local project, mod = string.match(mod_name, \"(.*):(.*)\")
@@ -476,7 +558,7 @@ leaf_102  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local funct
          mod = mod_name
       end
       local proj_name = project or \"\"
-      print (\"loading \" .. proj_name .. \" \" .. mod)
+      --print (\"loading \" .. proj_name .. \" \" .. mod)
       -- might be \"module/module\":
       local mod_double = mod .. \"/\" .. mod
       -- might be \"project:module\" -> \"project/module\"
@@ -491,34 +573,51 @@ leaf_102  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local funct
                                conn:exec(
                                sql.format(get_project_id, project)))
          if not project_id then
+            --print \"no project id\"
             return nil
          end
          code_id = _unwrapForeignKey(
                             conn:exec(
                             sql.format(get_latest_module_code,
                                        project_id, mod)))
+         if code_id then
+            --print \"project id + mod worked\"
+         end
          if not code_id then
             -- try mod_double
+            --print (\"trying mod_double \" .. mod_double)
             code_id = _unwrapForeignKey(
                             conn:exec(
                             sql.format(get_latest_module_code,
                                        project_id, mod_double)))
+            if code_id then
+               --print \"mod_double succeeded\"
+            end
          end
          if not code_id then
             -- try proj_double
             code_id = _unwrapForeignKey(
                             conn:exec(
-                            sql.format(get_latest_module_code,
+                            sql.format(get_latest_module_bytecode,
                                        project_id, proj_double)))
          end
       else
          -- retrieve by bare module name
-         local foreign_keys = conn:exec(sql.format(get_all_module_ids, mod)
+         code_id = _unwrapForeignKey(
+                                 conn:exec(
+                                 sql.format(get_latest_module_id,
+                                            mod)))
+         if code_id then
+            print \"code_id acquired\"
+         end
+         -- Think this logic is dodgy...
+         --[[
+         local foreign_keys = conn:exec(sql.format(get_all_module_ids, mod))
          if foreign_keys == nil then
             foreign_keys = conn:exec(sql.format(get_all_module_ids,
                                                 mod_double))
             if foreign_keys == nil then
-               print 'no foreign key'
+               --print ('no foreign key')
                return nil
             end
          else
@@ -536,8 +635,10 @@ leaf_102  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local funct
             end
             code_id = foreign_keys[1][1]
          end
+         --]]
       end
       if not code_id then
+         print \"no code_id\"
          conn:close()
          return nil
       end
@@ -555,112 +656,104 @@ leaf_102  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local funct
          return nil
       end
    end"]
-// END RANK codeblock_95
+// END RANK codeblock_97
 
-section_8 -> { header_103 prose_104 codeblock_105 section_106}
-{rank=same; header_103 prose_104 codeblock_105 section_106}
+section_8 -> { header_122 prose_123 codeblock_124 section_125}
+{rank=same; header_122 prose_123 codeblock_124 section_125}
 
-header_103 [label="3 : Add to package.loaders"]
+header_122 [label="3 : Add to package.loaders"]
 
-prose_104 [label="prose"]
+prose_123 [label="prose"]
 
-codeblock_105 [label="code block 204-221"]
+codeblock_124 [label="code block 236-245"]
 
-section_106 [label="section: 224-230"]
+section_125 [label="section: 248-254"]
 
 
 // END RANK section_8
 
-header_103 -> leaf_107
-leaf_107  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** Add to package.loaders"]
-// END RANK header_103
+header_122 -> leaf_126
+leaf_126  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** Add to package.loaders"]
+// END RANK header_122
 
-prose_104 -> { raw_108 prespace_109 literal_110 raw_111}
-{rank=same; raw_108 prespace_109 literal_110 raw_111}
+prose_123 -> { raw_127 prespace_128 literal_129 raw_130}
+{rank=same; raw_127 prespace_128 literal_129 raw_130}
 
-raw_108 [label="raw"]
+raw_127 [label="raw"]
 
-prespace_109 [label="prespace"]
+prespace_128 [label="prespace"]
 
-literal_110 [label="literal"]
+literal_129 [label="literal"]
 
-raw_111 [label="raw"]
+raw_130 [label="raw"]
 
 
-// END RANK prose_104
+// END RANK prose_123
 
-raw_108 -> leaf_112
-leaf_112  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+raw_127 -> leaf_131
+leaf_131  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 
 If"]
-// END RANK raw_108
+// END RANK raw_127
 
-prespace_109 -> leaf_113
-leaf_113  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
-// END RANK prespace_109
+prespace_128 -> leaf_132
+leaf_132  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_128
 
-literal_110 -> leaf_114
-leaf_114  [color=Gray,shape=rectangle,fontname=Inconsolata,label="bridge.modules"]
-// END RANK literal_110
+literal_129 -> leaf_133
+leaf_133  [color=Gray,shape=rectangle,fontname=Inconsolata,label="bridge.modules"]
+// END RANK literal_129
 
-raw_111 -> leaf_115
-leaf_115  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" exists!
+raw_130 -> leaf_134
+leaf_134  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" exists!
 "]
-// END RANK raw_111
+// END RANK raw_130
 
-codeblock_105 -> leaf_116
-leaf_116  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   if br_mod then
+codeblock_124 -> leaf_135
+leaf_135  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   if br_mod then
       print \"loading bridge.modules\"
       local insert = assert(table.insert)
-      local function _loaderGen()
-         print \"calling _loaderGen()\"
-         return function(mod_name)
-            print (\"attempt to load \" .. mod_name)
-            return _loadModule(mod_name)
-         end
-      end
-
-      _G.packload = _loaderGen()
+      _G.packload = _loadModule
       insert(package.loaders, 1, _G.packload)
    else
       print \"no bridge.modules\"
    end"]
-// END RANK codeblock_105
+// END RANK codeblock_124
 
-section_106 -> { header_117 prose_118 codeblock_119}
-{rank=same; header_117 prose_118 codeblock_119}
+section_125 -> { header_136 prose_137 codeblock_138}
+{rank=same; header_136 prose_137 codeblock_138}
 
-header_117 [label="4 : end do block"]
+header_136 [label="4 : end do block"]
 
-prose_118 [label="prose"]
+prose_137 [label="prose"]
 
-codeblock_119 [label="code block 228-230"]
-
-
-// END RANK section_106
-
-header_117 -> leaf_120
-leaf_120  [color=Gray,shape=rectangle,fontname=Inconsolata,label="**** end do block"]
-// END RANK header_117
-
-prose_118 -> { raw_121}
-{rank=same; raw_121}
-
-raw_121 [label="raw"]
+codeblock_138 [label="code block 252-254"]
 
 
-// END RANK prose_118
+// END RANK section_125
 
-raw_121 -> leaf_122
-leaf_122  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+header_136 -> leaf_139
+leaf_139  [color=Gray,shape=rectangle,fontname=Inconsolata,label="**** end do block"]
+// END RANK header_136
+
+prose_137 -> { raw_140}
+{rank=same; raw_140}
+
+raw_140 [label="raw"]
+
+
+// END RANK prose_137
+
+raw_140 -> leaf_141
+leaf_141  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
 
 This makes everything in the block into garbage if a loader isn't generated.
 "]
-// END RANK raw_121
+// END RANK raw_140
 
-codeblock_119 -> leaf_123
-leaf_123  [color=Gray,shape=rectangle,fontname=Inconsolata,label="end"]
-// END RANK codeblock_119
+codeblock_138 -> leaf_142
+leaf_142  [color=Gray,shape=rectangle,fontname=Inconsolata,label="end"]
+// END RANK codeblock_138
 
 
 }

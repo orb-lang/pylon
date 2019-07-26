@@ -39,6 +39,13 @@ WHERE module.name = %s
 ORDER BY module.time DESC;
 ]]
 
+local get_latest_module_code_id = [[
+SELECT CAST (module.code AS REAL)
+FROM module
+WHERE module.name = %s
+ORDER BY module.time DESC LIMIT 1;
+]]
+
 local get_latest_module_bytecode = [[
 SELECT code.binary FROM code
 WHERE code.code_id = %d ;
@@ -86,7 +93,11 @@ Then, since SQL will happily make something that doesn't exist, let's check:
 
 Load a module given its name and a given database conn.
 
-#NB Bug in logic of _loadModule causing failure to load in```lua
+#NB Bug in logic of _loadModule causing failure to load in#Todo [ ] find edge case.
+names look like ``orb/src/Orbit/handleline.orb`` instead of
+``Orbit/handleline``
+
+```lua
    local function _unwrapForeignKey(result)
       if result and result[1] and result[1][1] then
          return result[1][1]
@@ -97,8 +108,9 @@ Load a module given its name and a given database conn.
 
    local function _loadModule(mod_name)
       assert(type(mod_name) == "string", "mod_name must be a string")
+      print ("attempting to load " .. mod_name)
       local conn = sql.open(bridge_modules)
-   if not conn then print "conn fail" ; return nil end
+      if not conn then print "conn fail" ; return nil end
       package.bridge_loaded = package.bridge_loaded or {}
       -- split the module into project and modname
       local project, mod = string.match(mod_name, "(.*):(.*)")
@@ -106,7 +118,7 @@ Load a module given its name and a given database conn.
          mod = mod_name
       end
       local proj_name = project or ""
-      print ("loading " .. proj_name .. " " .. mod)
+      --print ("loading " .. proj_name .. " " .. mod)
       -- might be "module/module":
       local mod_double = mod .. "/" .. mod
       -- might be "project:module" -> "project/module"
@@ -121,34 +133,51 @@ Load a module given its name and a given database conn.
                                conn:exec(
                                sql.format(get_project_id, project)))
          if not project_id then
+            --print "no project id"
             return nil
          end
          code_id = _unwrapForeignKey(
                             conn:exec(
                             sql.format(get_latest_module_code,
                                        project_id, mod)))
+         if code_id then
+            --print "project id + mod worked"
+         end
          if not code_id then
             -- try mod_double
+            --print ("trying mod_double " .. mod_double)
             code_id = _unwrapForeignKey(
                             conn:exec(
                             sql.format(get_latest_module_code,
                                        project_id, mod_double)))
+            if code_id then
+               --print "mod_double succeeded"
+            end
          end
          if not code_id then
             -- try proj_double
             code_id = _unwrapForeignKey(
                             conn:exec(
-                            sql.format(get_latest_module_code,
+                            sql.format(get_latest_module_bytecode,
                                        project_id, proj_double)))
          end
       else
          -- retrieve by bare module name
-         local foreign_keys = conn:exec(sql.format(get_all_module_ids, mod)
+         code_id = _unwrapForeignKey(
+                                 conn:exec(
+                                 sql.format(get_latest_module_id,
+                                            mod)))
+         if code_id then
+            print "code_id acquired"
+         end
+         -- Think this logic is dodgy...
+         --[[
+         local foreign_keys = conn:exec(sql.format(get_all_module_ids, mod))
          if foreign_keys == nil then
             foreign_keys = conn:exec(sql.format(get_all_module_ids,
                                                 mod_double))
             if foreign_keys == nil then
-               print 'no foreign key'
+               --print ('no foreign key')
                return nil
             end
          else
@@ -166,8 +195,10 @@ Load a module given its name and a given database conn.
             end
             code_id = foreign_keys[1][1]
          end
+         --]]
       end
       if not code_id then
+         print "no code_id"
          conn:close()
          return nil
       end
@@ -194,15 +225,7 @@ If ``bridge.modules`` exists!
    if br_mod then
       print "loading bridge.modules"
       local insert = assert(table.insert)
-      local function _loaderGen()
-         print "calling _loaderGen()"
-         return function(mod_name)
-            print ("attempt to load " .. mod_name)
-            return _loadModule(mod_name)
-         end
-      end
-
-      _G.packload = _loaderGen()
+      _G.packload = _loadModule
       insert(package.loaders, 1, _G.packload)
    else
       print "no bridge.modules"
