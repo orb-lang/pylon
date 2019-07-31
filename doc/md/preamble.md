@@ -11,6 +11,11 @@ Since we're loading it straight from the binary, wrap it in a ``do`` block.
 ```lua
 do
 ```
+#### bridge_modules
+
+```lua
+package.bridge_modules = { }
+```
 ### SQL statements
 
 ```lua
@@ -165,13 +170,13 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
          -- retrieve by bare module name
          code_id = _unwrapForeignKey(
                                  conn:exec(
-                                 sql.format(get_latest_module_id,
+                                 sql.format(get_latest_module_code_id,
                                             mod)))
          if code_id then
             print "code_id acquired"
          end
          -- Think this logic is dodgy...
-         --[[
+         ---[[
          local foreign_keys = conn:exec(sql.format(get_all_module_ids, mod))
          if foreign_keys == nil then
             foreign_keys = conn:exec(sql.format(get_all_module_ids,
@@ -200,20 +205,30 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
       if not code_id then
          print "no code_id"
          conn:close()
-         return nil
+         return "no"
       end
       local bytecode = _unwrapForeignKey(
                               conn:exec(
                               sql.format(get_latest_module_bytecode, code_id)))
       if bytecode then
-         package.bridge_loaded[#package.bridge_loaded + 1] = "@" .. mod_name
+         table.insert(package.bridge_modules, "@" .. mod_name)
          print ("loaded " .. mod_name .. " from bridge.modules")
          conn:close()
-         return load(bytecode, "@" .. mod_name)
+         local loadFn, errmsg = load(bytecode, "@" .. mod_name)
+         if loadFn then
+            local works, err = pcall(loadFn)
+            if works then
+               return load(bytecode, "@" .. mod_name)
+            else
+               return err
+            end
+         else
+            return errmsg
+         end
       else
          print ("unable to load: " .. mod_name)
          conn:close()
-         return nil
+         return ("unable to load: " .. mod_name)
       end
    end
 ```
@@ -226,7 +241,8 @@ If ``bridge.modules`` exists!
       print "loading bridge.modules"
       local insert = assert(table.insert)
       _G.packload = _loadModule
-      insert(package.loaders, 1, _G.packload)
+      --insert(package.loaders, 1, _G.packload)
+      package.loaders[#package.loaders + 1] = _loadModule
    else
       print "no bridge.modules"
    end

@@ -15,6 +15,12 @@ do
 
 
 
+package.bridge_modules = { }
+
+
+
+
+
    local get_project_id = [[
 SELECT CAST (project.project_id AS REAL) FROM project
 WHERE project.name = %s;
@@ -179,7 +185,7 @@ WHERE code.code_id = %d ;
             print "code_id acquired"
          end
          -- Think this logic is dodgy...
-         --[[
+         ---[[
          local foreign_keys = conn:exec(sql.format(get_all_module_ids, mod))
          if foreign_keys == nil then
             foreign_keys = conn:exec(sql.format(get_all_module_ids,
@@ -208,20 +214,30 @@ WHERE code.code_id = %d ;
       if not code_id then
          print "no code_id"
          conn:close()
-         return nil
+         return "no"
       end
       local bytecode = _unwrapForeignKey(
                               conn:exec(
                               sql.format(get_latest_module_bytecode, code_id)))
       if bytecode then
-         package.bridge_loaded[#package.bridge_loaded + 1] = "@" .. mod_name
+         table.insert(package.bridge_modules, "@" .. mod_name)
          print ("loaded " .. mod_name .. " from bridge.modules")
          conn:close()
-         return function() load(bytecode, "@" .. mod_name) end
+         local loadFn, errmsg = load(bytecode, "@" .. mod_name)
+         if loadFn then
+            local works, err = pcall(loadFn)
+            if works then
+               return load(bytecode, "@" .. mod_name)
+            else
+               return err
+            end
+         else
+            return errmsg
+         end
       else
          print ("unable to load: " .. mod_name)
          conn:close()
-         return nil
+         return ("unable to load: " .. mod_name)
       end
    end
 
@@ -238,7 +254,8 @@ WHERE code.code_id = %d ;
       print "loading bridge.modules"
       local insert = assert(table.insert)
       _G.packload = _loadModule
-      insert(package.loaders, 1, _G.packload)
+      --insert(package.loaders, 1, _G.packload)
+      package.loaders[#package.loaders + 1] = _loadModule
    else
       print "no bridge.modules"
    end
