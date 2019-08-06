@@ -1691,15 +1691,34 @@ brParse
    : args("?")
 -- this will fetch us our REPL using the usual frippery,
 -- we've put a stub block around it as deprecation
---[[
+---[[
+local function _strip(argument)
+   -- a dimwitted thing which removes a magic argument
+   for i = 0, #argument do
+      if i == 0 then
+         argument[i] = nil
+      else
+         argument[i-1] = argument[i]
+      end
+   end
+   argument[#argument] = nil
+   return argument
+end
+
 if rawget(_G, "arg") ~= nil then
-    if string.sub(arg[0], -4) == ".lua" then
-        loadfile(arg[0])()
-    elseif string.sub(arg[0], -4) == ".raw" then
-       loadfile(arg[0])()
-    else
-       loadfile(arg[0] .. ".lua")()
+    -- time for an ugly hack:
+    if arg[0] == "OLD" then
+        _strip(arg)
+        -- do old boot sequence
+        if string.sub(arg[0], -4) == ".lua" then
+            loadfile(arg[0])()
+        elseif string.sub(arg[0], -4) == ".raw" then
+           loadfile(arg[0])()
+        else
+           loadfile(arg[0] .. ".lua")()
+        end
     end
+
 end
 --]]
 ```

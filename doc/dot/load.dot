@@ -3,7 +3,7 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 1729"]
+doc_0 [label="doc - 1748"]
 
 
 doc_0 -> { section_1}
@@ -33,7 +33,7 @@ section_8 [label="section: 34-39"]
 
 section_9 [label="section: 1588-1675"]
 
-section_10 [label="section: 1687-1729"]
+section_10 [label="section: 1687-1748"]
 
 
 // END RANK section_1
@@ -2152,7 +2152,7 @@ prose_133 [label="prose"]
 
 prose_134 [label="prose"]
 
-codeblock_135 [label="code block 1693-1716"]
+codeblock_135 [label="code block 1693-1735"]
 
 
 // END RANK section_10
@@ -2238,15 +2238,34 @@ brParse
    : args(\"?\")
 -- this will fetch us our REPL using the usual frippery,
 -- we've put a stub block around it as deprecation
---[[
+---[[
+local function _strip(argument)
+   -- a dimwitted thing which removes a magic argument
+   for i = 0, #argument do
+      if i == 0 then
+         argument[i] = nil
+      else
+         argument[i-1] = argument[i]
+      end
+   end
+   argument[#argument] = nil
+   return argument
+end
+
 if rawget(_G, \"arg\") ~= nil then
-    if string.sub(arg[0], -4) == \".lua\" then
-        loadfile(arg[0])()
-    elseif string.sub(arg[0], -4) == \".raw\" then
-       loadfile(arg[0])()
-    else
-       loadfile(arg[0] .. \".lua\")()
+    -- time for an ugly hack:
+    if arg[0] == \"OLD\" then
+        _strip(arg)
+        -- do old boot sequence
+        if string.sub(arg[0], -4) == \".lua\" then
+            loadfile(arg[0])()
+        elseif string.sub(arg[0], -4) == \".raw\" then
+           loadfile(arg[0])()
+        else
+           loadfile(arg[0] .. \".lua\")()
+        end
     end
+
 end
 --]]"]
 // END RANK codeblock_135
