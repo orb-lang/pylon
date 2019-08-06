@@ -1694,6 +1694,12 @@ collectgarbage()
 -- we're going to run in parallel while we build the parser:
 
 rawset(_G, "brParse", package.argparse())
+brParse
+   : name "bridge"
+   : description "An lua, howth castle & environs."
+   : epilog "For more info, see https://specialcircumstanc.es"
+   : argument ("verb", "the entry module")
+   : args("?")
 -- this will fetch us our REPL using the usual frippery,
 -- we've put a stub block around it as deprecation
 ---[[

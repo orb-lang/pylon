@@ -3,7 +3,7 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 1723"]
+doc_0 [label="doc - 1729"]
 
 
 doc_0 -> { section_1}
@@ -33,7 +33,7 @@ section_8 [label="section: 34-39"]
 
 section_9 [label="section: 1588-1675"]
 
-section_10 [label="section: 1687-1723"]
+section_10 [label="section: 1687-1729"]
 
 
 // END RANK section_1
@@ -2152,7 +2152,7 @@ prose_133 [label="prose"]
 
 prose_134 [label="prose"]
 
-codeblock_135 [label="code block 1693-1710"]
+codeblock_135 [label="code block 1693-1716"]
 
 
 // END RANK section_10
@@ -2229,10 +2229,16 @@ leaf_152  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" it's time to 
 codeblock_135 -> leaf_153
 leaf_153  [color=Gray,shape=rectangle,fontname=Inconsolata,label="-- we're going to run in parallel while we build the parser:
 
-brParse = package.argparse()
+rawset(_G, \"brParse\", package.argparse())
+brParse
+   : name \"bridge\"
+   : description \"An lua, howth castle & environs.\"
+   : epilog \"For more info, see https://specialcircumstanc.es\"
+   : argument (\"verb\", \"the entry module\")
+   : args(\"?\")
 -- this will fetch us our REPL using the usual frippery,
 -- we've put a stub block around it as deprecation
----[[
+--[[
 if rawget(_G, \"arg\") ~= nil then
     if string.sub(arg[0], -4) == \".lua\" then
         loadfile(arg[0])()
