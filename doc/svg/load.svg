@@ -13,7 +13,7 @@
 <g id="node1" class="node">
 <title>doc_0</title>
 <ellipse fill="none" stroke="#000000" cx="1097.5" cy="-25418.6405" rx="51.795" ry="18"/>
-<text text-anchor="middle" x="1097.5" y="-25414.4405" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000">doc &#45; 1748</text>
+<text text-anchor="middle" x="1097.5" y="-25414.4405" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000">doc &#45; 1757</text>
 </g>
 <!-- section_1 -->
 <g id="node2" class="node">
@@ -127,7 +127,7 @@
 <g id="node11" class="node">
 <title>section_10</title>
 <ellipse fill="none" stroke="#000000" cx="7372.5" cy="-25274.6405" rx="85.1652" ry="18"/>
-<text text-anchor="middle" x="7372.5" y="-25270.4405" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000">section: 1687&#45;1748</text>
+<text text-anchor="middle" x="7372.5" y="-25270.4405" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000">section: 1687&#45;1757</text>
 </g>
 <!-- section_1&#45;&gt;section_10 -->
 <g id="edge10" class="edge">
@@ -427,7 +427,7 @@
 <g id="node136" class="node">
 <title>codeblock_135</title>
 <ellipse fill="none" stroke="#000000" cx="8019.5" cy="-25202.6405" rx="97.2677" ry="18"/>
-<text text-anchor="middle" x="8019.5" y="-25198.4405" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000">code block 1693&#45;1735</text>
+<text text-anchor="middle" x="8019.5" y="-25198.4405" font-family="Helvetica,sans-Serif" font-size="14.00" fill="#000000">code block 1693&#45;1744</text>
 </g>
 <!-- section_10&#45;&gt;codeblock_135 -->
 <g id="edge135" class="edge">
@@ -3042,51 +3042,60 @@
 <!-- leaf_153 -->
 <g id="node154" class="node">
 <title>leaf_153</title>
-<polygon fill="none" stroke="#c0c0c0" points="8392.5,-24856.1406 7942.5,-24856.1406 7942.5,-24214.7381 8392.5,-24214.7381 8392.5,-24856.1406"/>
-<text text-anchor="middle" x="8167.5" y="-24840.8399" font-family="Inconsolata" font-size="14.00" fill="#000000">&#45;&#45; we&#39;re going to run in parallel while we build the parser:</text>
-<text text-anchor="middle" x="8167.5" y="-24809.4399" font-family="Inconsolata" font-size="14.00" fill="#000000">rawset(_G, &quot;brParse&quot;, package.argparse())</text>
-<text text-anchor="middle" x="8167.5" y="-24794.0399" font-family="Inconsolata" font-size="14.00" fill="#000000">brParse</text>
-<text text-anchor="middle" x="8167.5" y="-24778.6399" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;: name &quot;bridge&quot;</text>
-<text text-anchor="middle" x="8167.5" y="-24763.2398" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;: description &quot;An lua, howth castle &amp; environs.&quot;</text>
-<text text-anchor="middle" x="8167.5" y="-24747.8398" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;: epilog &quot;For more info, see https://specialcircumstanc.es&quot;</text>
-<text text-anchor="middle" x="8167.5" y="-24732.4398" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;: argument (&quot;verb&quot;, &quot;the entry module&quot;)</text>
-<text text-anchor="middle" x="8167.5" y="-24717.0397" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;: args(&quot;?&quot;)</text>
-<text text-anchor="middle" x="8167.5" y="-24701.6397" font-family="Inconsolata" font-size="14.00" fill="#000000">&#45;&#45; this will fetch us our REPL using the usual frippery,</text>
-<text text-anchor="middle" x="8167.5" y="-24686.2397" font-family="Inconsolata" font-size="14.00" fill="#000000">&#45;&#45; we&#39;ve put a stub block around it as deprecation</text>
-<text text-anchor="middle" x="8167.5" y="-24670.8396" font-family="Inconsolata" font-size="14.00" fill="#000000">&#45;&#45;&#45;[[</text>
-<text text-anchor="middle" x="8167.5" y="-24655.4396" font-family="Inconsolata" font-size="14.00" fill="#000000">local function _strip(argument)</text>
-<text text-anchor="middle" x="8167.5" y="-24640.0396" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#45;&#45; a dimwitted thing which removes a magic argument</text>
-<text text-anchor="middle" x="8167.5" y="-24624.6395" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;for i = 0, #argument do</text>
-<text text-anchor="middle" x="8167.5" y="-24609.2395" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;if i == 0 then</text>
-<text text-anchor="middle" x="8167.5" y="-24593.8395" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;argument[i] = nil</text>
-<text text-anchor="middle" x="8167.5" y="-24578.4394" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;else</text>
-<text text-anchor="middle" x="8167.5" y="-24563.0394" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;argument[i&#45;1] = argument[i]</text>
-<text text-anchor="middle" x="8167.5" y="-24547.6394" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;end</text>
-<text text-anchor="middle" x="8167.5" y="-24532.2394" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;end</text>
-<text text-anchor="middle" x="8167.5" y="-24516.8393" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;argument[#argument] = nil</text>
-<text text-anchor="middle" x="8167.5" y="-24501.4393" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;return argument</text>
-<text text-anchor="middle" x="8167.5" y="-24486.0393" font-family="Inconsolata" font-size="14.00" fill="#000000">end</text>
-<text text-anchor="middle" x="8167.5" y="-24454.6392" font-family="Inconsolata" font-size="14.00" fill="#000000">if rawget(_G, &quot;arg&quot;) ~= nil then</text>
-<text text-anchor="middle" x="8167.5" y="-24439.2392" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#45;&#45; time for an ugly hack:</text>
-<text text-anchor="middle" x="8167.5" y="-24423.8392" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;if arg[0] == &quot;OLD&quot; then</text>
-<text text-anchor="middle" x="8167.5" y="-24408.4391" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;_strip(arg)</text>
-<text text-anchor="middle" x="8167.5" y="-24393.0391" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#45;&#45; do old boot sequence</text>
-<text text-anchor="middle" x="8167.5" y="-24377.6391" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;if string.sub(arg[0], &#45;4) == &quot;.lua&quot; then</text>
-<text text-anchor="middle" x="8167.5" y="-24362.239" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;loadfile(arg[0])()</text>
-<text text-anchor="middle" x="8167.5" y="-24346.839" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;elseif string.sub(arg[0], &#45;4) == &quot;.raw&quot; then</text>
-<text text-anchor="middle" x="8167.5" y="-24331.439" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;loadfile(arg[0])()</text>
-<text text-anchor="middle" x="8167.5" y="-24316.0389" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;else</text>
-<text text-anchor="middle" x="8167.5" y="-24300.6389" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;loadfile(arg[0] .. &quot;.lua&quot;)()</text>
-<text text-anchor="middle" x="8167.5" y="-24285.2389" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;end</text>
-<text text-anchor="middle" x="8167.5" y="-24269.8389" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;end</text>
-<text text-anchor="middle" x="8167.5" y="-24238.4388" font-family="Inconsolata" font-size="14.00" fill="#000000">end</text>
-<text text-anchor="middle" x="8167.5" y="-24223.0388" font-family="Inconsolata" font-size="14.00" fill="#000000">&#45;&#45;]]</text>
+<polygon fill="none" stroke="#c0c0c0" points="8392.5,-24925.2408 7942.5,-24925.2408 7942.5,-24145.6379 8392.5,-24145.6379 8392.5,-24925.2408"/>
+<text text-anchor="middle" x="8167.5" y="-24910.1401" font-family="Inconsolata" font-size="14.00" fill="#000000">&#45;&#45; we&#39;re going to run in parallel while we build the parser:</text>
+<text text-anchor="middle" x="8167.5" y="-24878.7401" font-family="Inconsolata" font-size="14.00" fill="#000000">rawset(_G, &quot;brParse&quot;, package.argparse())</text>
+<text text-anchor="middle" x="8167.5" y="-24863.34" font-family="Inconsolata" font-size="14.00" fill="#000000">brParse</text>
+<text text-anchor="middle" x="8167.5" y="-24847.94" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;: name &quot;bridge&quot;</text>
+<text text-anchor="middle" x="8167.5" y="-24832.54" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;: description &quot;An lua, howth castle &amp; environs.&quot;</text>
+<text text-anchor="middle" x="8167.5" y="-24817.1399" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;: epilog &quot;For more info, see https://specialcircumstanc.es&quot;</text>
+<text text-anchor="middle" x="8167.5" y="-24801.7399" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;: argument (&quot;verb&quot;, &quot;the entry module&quot;)</text>
+<text text-anchor="middle" x="8167.5" y="-24786.3399" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;: args(&quot;?&quot;)</text>
+<text text-anchor="middle" x="8167.5" y="-24770.9398" font-family="Inconsolata" font-size="14.00" fill="#000000">&#45;&#45; this will fetch us our REPL using the usual frippery,</text>
+<text text-anchor="middle" x="8167.5" y="-24755.5398" font-family="Inconsolata" font-size="14.00" fill="#000000">&#45;&#45; we&#39;ve put a stub block around it as deprecation</text>
+<text text-anchor="middle" x="8167.5" y="-24740.1398" font-family="Inconsolata" font-size="14.00" fill="#000000">&#45;&#45;&#45;[[</text>
+<text text-anchor="middle" x="8167.5" y="-24724.7397" font-family="Inconsolata" font-size="14.00" fill="#000000">local function _strip(argument)</text>
+<text text-anchor="middle" x="8167.5" y="-24709.3397" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#45;&#45; a dimwitted thing which removes a magic argument</text>
+<text text-anchor="middle" x="8167.5" y="-24693.9397" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;for i = 0, #argument do</text>
+<text text-anchor="middle" x="8167.5" y="-24678.5397" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;if i == 0 then</text>
+<text text-anchor="middle" x="8167.5" y="-24663.1396" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;argument[i] = nil</text>
+<text text-anchor="middle" x="8167.5" y="-24647.7396" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;else</text>
+<text text-anchor="middle" x="8167.5" y="-24632.3396" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;argument[i&#45;1] = argument[i]</text>
+<text text-anchor="middle" x="8167.5" y="-24616.9395" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;end</text>
+<text text-anchor="middle" x="8167.5" y="-24601.5395" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;end</text>
+<text text-anchor="middle" x="8167.5" y="-24586.1395" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;argument[#argument] = nil</text>
+<text text-anchor="middle" x="8167.5" y="-24570.7394" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;return argument</text>
+<text text-anchor="middle" x="8167.5" y="-24555.3394" font-family="Inconsolata" font-size="14.00" fill="#000000">end</text>
+<text text-anchor="middle" x="8167.5" y="-24523.9394" font-family="Inconsolata" font-size="14.00" fill="#000000">local _makeParsyHappen()</text>
+<text text-anchor="middle" x="8167.5" y="-24508.5393" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#45;&#45; stop trying to make Parsy happen.</text>
+<text text-anchor="middle" x="8167.5" y="-24493.1393" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;local parsed, msg = brParse:pparse()</text>
+<text text-anchor="middle" x="8167.5" y="-24477.7393" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;rawset(_G, &quot;_isParsed&quot;, parsed)</text>
+<text text-anchor="middle" x="8167.5" y="-24462.3392" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;rawset(_G, &quot;_argResult&quot;, msg)</text>
+<text text-anchor="middle" x="8167.5" y="-24446.9392" font-family="Inconsolata" font-size="14.00" fill="#000000">end</text>
+<text text-anchor="middle" x="8167.5" y="-24415.5392" font-family="Inconsolata" font-size="14.00" fill="#000000">if rawget(_G, &quot;arg&quot;) ~= nil then</text>
+<text text-anchor="middle" x="8167.5" y="-24400.1392" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#45;&#45; time for an ugly hack:</text>
+<text text-anchor="middle" x="8167.5" y="-24384.7391" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;if arg[0] == &quot;OLD&quot; then</text>
+<text text-anchor="middle" x="8167.5" y="-24369.3391" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;_strip(arg)</text>
+<text text-anchor="middle" x="8167.5" y="-24353.9391" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;_makeParsyHappen()</text>
+<text text-anchor="middle" x="8167.5" y="-24338.539" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#45;&#45; do old boot sequence</text>
+<text text-anchor="middle" x="8167.5" y="-24323.139" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;if string.sub(arg[0], &#45;4) == &quot;.lua&quot; then</text>
+<text text-anchor="middle" x="8167.5" y="-24307.739" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;loadfile(arg[0])()</text>
+<text text-anchor="middle" x="8167.5" y="-24292.3389" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;elseif string.sub(arg[0], &#45;4) == &quot;.raw&quot; then</text>
+<text text-anchor="middle" x="8167.5" y="-24276.9389" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;loadfile(arg[0])()</text>
+<text text-anchor="middle" x="8167.5" y="-24261.5389" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;else</text>
+<text text-anchor="middle" x="8167.5" y="-24246.1388" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;loadfile(arg[0] .. &quot;.lua&quot;)()</text>
+<text text-anchor="middle" x="8167.5" y="-24230.7388" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;end</text>
+<text text-anchor="middle" x="8167.5" y="-24215.3388" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;else</text>
+<text text-anchor="middle" x="8167.5" y="-24199.9387" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;_makeParsyHappen()</text>
+<text text-anchor="middle" x="8167.5" y="-24184.5387" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#160;end</text>
+<text text-anchor="middle" x="8167.5" y="-24169.1387" font-family="Inconsolata" font-size="14.00" fill="#000000">end</text>
+<text text-anchor="middle" x="8167.5" y="-24153.7387" font-family="Inconsolata" font-size="14.00" fill="#000000">&#45;&#45;]]</text>
 </g>
 <!-- codeblock_135&#45;&gt;leaf_153 -->
 <g id="edge153" class="edge">
 <title>codeblock_135&#45;&gt;leaf_153</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M8023.5354,-25184.4485C8034.1681,-25136.5152 8064.1956,-25001.1475 8094.0939,-24866.3626"/>
-<polygon fill="#000000" stroke="#000000" points="8097.5892,-24866.7668 8096.338,-24856.2461 8090.7554,-24865.2508 8097.5892,-24866.7668"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M8023.5354,-25184.4485C8032.3385,-25144.7632 8054.4361,-25045.1445 8078.748,-24935.5437"/>
+<polygon fill="#000000" stroke="#000000" points="8082.2063,-24936.1149 8080.955,-24925.5942 8075.3724,-24934.5989 8082.2063,-24936.1149"/>
 </g>
 <!-- leaf_141 -->
 <g id="node142" class="node">

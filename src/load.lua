@@ -1716,10 +1716,18 @@ local function _strip(argument)
    return argument
 end
 
+local function _makeParsyHappen()
+   -- stop trying to make Parsy happen.
+   local parsed, msg = brParse:pparse()
+   rawset(_G, "_isParsed", parsed)
+   rawset(_G, "_argResult", msg)
+end
+
 if rawget(_G, "arg") ~= nil then
     -- time for an ugly hack:
     if arg[0] == "OLD" then
         _strip(arg)
+        _makeParsyHappen()
         -- do old boot sequence
         if string.sub(arg[0], -4) == ".lua" then
             loadfile(arg[0])()
@@ -1728,7 +1736,8 @@ if rawget(_G, "arg") ~= nil then
         else
            loadfile(arg[0] .. ".lua")()
         end
+    else
+        _makeParsyHappen()
     end
-
 end
 --]]

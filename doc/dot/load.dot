@@ -3,7 +3,7 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 1748"]
+doc_0 [label="doc - 1757"]
 
 
 doc_0 -> { section_1}
@@ -33,7 +33,7 @@ section_8 [label="section: 34-39"]
 
 section_9 [label="section: 1588-1675"]
 
-section_10 [label="section: 1687-1748"]
+section_10 [label="section: 1687-1757"]
 
 
 // END RANK section_1
@@ -2152,7 +2152,7 @@ prose_133 [label="prose"]
 
 prose_134 [label="prose"]
 
-codeblock_135 [label="code block 1693-1735"]
+codeblock_135 [label="code block 1693-1744"]
 
 
 // END RANK section_10
@@ -2252,10 +2252,18 @@ local function _strip(argument)
    return argument
 end
 
+local _makeParsyHappen()
+   -- stop trying to make Parsy happen.
+   local parsed, msg = brParse:pparse()
+   rawset(_G, \"_isParsed\", parsed)
+   rawset(_G, \"_argResult\", msg)
+end
+
 if rawget(_G, \"arg\") ~= nil then
     -- time for an ugly hack:
     if arg[0] == \"OLD\" then
         _strip(arg)
+        _makeParsyHappen()
         -- do old boot sequence
         if string.sub(arg[0], -4) == \".lua\" then
             loadfile(arg[0])()
@@ -2264,8 +2272,9 @@ if rawget(_G, \"arg\") ~= nil then
         else
            loadfile(arg[0] .. \".lua\")()
         end
+    else
+        _makeParsyHappen()
     end
-
 end
 --]]"]
 // END RANK codeblock_135
