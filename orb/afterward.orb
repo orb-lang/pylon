@@ -3,6 +3,16 @@
 Performs cleanup. Does a no-op now to keep the loader clean.
 
 
+** br.argparse
+
+This is where we're going to write a proper arg parser for the =br= command
+line.
+
+An important assumption I'm making is that =argparse= is non-destructive of
+the command line invocating, such that I can pop a module-level invocation
+such as =fm= or =orb= and then call the particular argument parser distinct
+to that submodule.
+
 *** Close package.conn
 
 #!lua

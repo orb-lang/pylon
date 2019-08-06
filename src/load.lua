@@ -1590,6 +1590,7 @@ end) ( )
 
 
 
+
 do
     local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget
     local strict = {}
@@ -1684,6 +1685,18 @@ collectgarbage()
 
 
 
+
+
+
+
+
+
+-- we're going to run in parallel while we build the parser:
+
+rawset(_G, "brParse", package.argparse())
+-- this will fetch us our REPL using the usual frippery,
+-- we've put a stub block around it as deprecation
+---[[
 if rawget(_G, "arg") ~= nil then
     if string.sub(arg[0], -4) == ".lua" then
         loadfile(arg[0])()
@@ -1693,3 +1706,4 @@ if rawget(_G, "arg") ~= nil then
        loadfile(arg[0] .. ".lua")()
     end
 end
+--]]

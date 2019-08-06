@@ -1579,7 +1579,8 @@ end) ( )
 ```
 ## Stricture
 
-Lifted straight from penlight.
+Lifted straight from [[penlight]
+[https://stevedonovan.github.io/Penlight/api/index.html].
 
 ```lua
 do
@@ -1671,7 +1672,20 @@ collect them.
 ```lua
 collectgarbage()
 ```
+## Parse
+
+Currently we are doing the dumbest possible thing to parse ``br`` invocations.
+
+
+Now that we have ``argparse`` it's time to do it right.
+
 ```lua
+-- we're going to run in parallel while we build the parser:
+
+brParse = package.argparse()
+-- this will fetch us our REPL using the usual frippery,
+-- we've put a stub block around it as deprecation
+---[[
 if rawget(_G, "arg") ~= nil then
     if string.sub(arg[0], -4) == ".lua" then
         loadfile(arg[0])()
@@ -1681,4 +1695,5 @@ if rawget(_G, "arg") ~= nil then
        loadfile(arg[0] .. ".lua")()
     end
 end
+--]]
 ```
