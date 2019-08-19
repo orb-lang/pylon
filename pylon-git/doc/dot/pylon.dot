@@ -1,0 +1,1157 @@
+digraph lpegNode {
+
+node [fontname=Helvetica]
+edge [style=dashed]
+
+doc_0 [label="doc - 133"]
+
+
+doc_0 -> { section_1}
+{rank=same; section_1}
+
+section_1 [label="section: 1-14"]
+
+
+// END RANK doc_0
+
+section_1 -> { header_2 prose_3 prose_4 prose_5 prose_6 section_7}
+{rank=same; header_2 prose_3 prose_4 prose_5 prose_6 section_7}
+
+header_2 [label="1 : Pylon"]
+
+prose_3 [label="prose"]
+
+prose_4 [label="prose"]
+
+prose_5 [label="prose"]
+
+prose_6 [label="prose"]
+
+section_7 [label="section: 15-87"]
+
+
+// END RANK section_1
+
+header_2 -> leaf_8
+leaf_8  [color=Gray,shape=rectangle,fontname=Inconsolata,label="* Pylon"]
+// END RANK header_2
+
+prose_3 -> { raw_9 prespace_10 literal_11 raw_12}
+{rank=same; raw_9 prespace_10 literal_11 raw_12}
+
+raw_9 [label="raw"]
+
+prespace_10 [label="prespace"]
+
+literal_11 [label="literal"]
+
+raw_12 [label="raw"]
+
+
+// END RANK prose_3
+
+raw_9 -> leaf_13
+leaf_13  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+"]
+// END RANK raw_9
+
+prespace_10 -> leaf_14
+leaf_14  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_10
+
+literal_11 -> leaf_15
+leaf_15  [color=Gray,shape=rectangle,fontname=Inconsolata,label="pylon"]
+// END RANK literal_11
+
+raw_12 -> leaf_16
+leaf_16  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" is our userspace kernel.
+"]
+// END RANK raw_12
+
+prose_4 -> { raw_17}
+{rank=same; raw_17}
+
+raw_17 [label="raw"]
+
+
+// END RANK prose_4
+
+raw_17 -> leaf_18
+leaf_18  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+After some thought, I've decided to pull in nanomsg as a shared library.
+"]
+// END RANK raw_17
+
+prose_5 -> { raw_19 prespace_20 literal_21 raw_22}
+{rank=same; raw_19 prespace_20 literal_21 raw_22}
+
+raw_19 [label="raw"]
+
+prespace_20 [label="prespace"]
+
+literal_21 [label="literal"]
+
+raw_22 [label="raw"]
+
+
+// END RANK prose_5
+
+raw_19 -> leaf_23
+leaf_23  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+I may change my mind, but"]
+// END RANK raw_19
+
+prespace_20 -> leaf_24
+leaf_24  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_20
+
+literal_21 -> leaf_25
+leaf_25  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
+// END RANK literal_21
+
+raw_22 -> leaf_26
+leaf_26  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" contains the network primitives to pull a
+codex off the Internet, and using a properly-rebased shared library is
+actually cleaner LuaJIT since you don't have to explicitly build a vtable.
+"]
+// END RANK raw_22
+
+prose_6 -> { raw_27}
+{rank=same; raw_27}
+
+raw_27 [label="raw"]
+
+
+// END RANK prose_6
+
+raw_27 -> leaf_28
+leaf_28  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Though I believe that's exactly what LJ is doing under the hood.
+
+"]
+// END RANK raw_27
+
+section_7 -> { header_29 prose_30 prose_31 prose_32 prose_33 prose_34 prose_35 section_36 section_37}
+{rank=same; header_29 prose_30 prose_31 prose_32 prose_33 prose_34 prose_35 section_36 section_37}
+
+header_29 [label="2 : Next"]
+
+prose_30 [label="prose"]
+
+prose_31 [label="prose"]
+
+prose_32 [label="prose"]
+
+prose_33 [label="prose"]
+
+prose_34 [label="prose"]
+
+prose_35 [label="prose"]
+
+section_36 [label="section: 40-87"]
+
+section_37 [label="section: 88-133"]
+
+
+// END RANK section_7
+
+header_29 -> leaf_38
+leaf_38  [color=Gray,shape=rectangle,fontname=Inconsolata,label="** Next"]
+// END RANK header_29
+
+prose_30 -> { raw_39 prespace_40 literal_41 raw_42}
+{rank=same; raw_39 prespace_40 literal_41 raw_42}
+
+raw_39 [label="raw"]
+
+prespace_40 [label="prespace"]
+
+literal_41 [label="literal"]
+
+raw_42 [label="raw"]
+
+
+// END RANK prose_30
+
+raw_39 -> leaf_43
+leaf_43  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+I've got"]
+// END RANK raw_39
+
+prespace_40 -> leaf_44
+leaf_44  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_40
+
+literal_41 -> leaf_45
+leaf_45  [color=Gray,shape=rectangle,fontname=Inconsolata,label="femto"]
+// END RANK literal_41
+
+raw_42 -> leaf_46
+leaf_46  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" booting with the main event loop in Lua.
+"]
+// END RANK raw_42
+
+prose_31 -> { raw_47}
+{rank=same; raw_47}
+
+raw_47 [label="raw"]
+
+
+// END RANK prose_31
+
+raw_47 -> leaf_48
+leaf_48  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+It can call a shared sqlite and luv.  I do intend to statically link them,
+but that's a brisk afternoon's work porting the interface.
+"]
+// END RANK raw_47
+
+prose_32 -> { raw_49 prespace_50 literal_51 raw_52 prespace_53 literal_54 raw_55}
+{rank=same; raw_49 prespace_50 literal_51 raw_52 prespace_53 literal_54 raw_55}
+
+raw_49 [label="raw"]
+
+prespace_50 [label="prespace"]
+
+literal_51 [label="literal"]
+
+raw_52 [label="raw"]
+
+prespace_53 [label="prespace"]
+
+literal_54 [label="literal"]
+
+raw_55 [label="raw"]
+
+
+// END RANK prose_32
+
+raw_49 -> leaf_56
+leaf_56  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+That's worthwhile work, and I can and should break them out into their own
+repos.  I don't know if the"]
+// END RANK raw_49
+
+prespace_50 -> leaf_57
+leaf_57  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_50
+
+literal_51 -> leaf_58
+leaf_58  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
+// END RANK literal_51
+
+raw_52 -> leaf_59
+leaf_59  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" one will get used by anyone else, but"]
+// END RANK raw_52
+
+prespace_53 -> leaf_60
+leaf_60  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_53
+
+literal_54 -> leaf_61
+leaf_61  [color=Gray,shape=rectangle,fontname=Inconsolata,label="sqlite"]
+// END RANK literal_54
+
+raw_55 -> leaf_62
+leaf_62  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" is a common include in binaries, as is LuaJIT, and I'd bet money
+that what I'm about to do has been done a few times.
+"]
+// END RANK raw_55
+
+prose_33 -> { raw_63 prespace_64 literal_65 raw_66 prespace_67 literal_68 raw_69}
+{rank=same; raw_63 prespace_64 literal_65 raw_66 prespace_67 literal_68 raw_69}
+
+raw_63 [label="raw"]
+
+prespace_64 [label="prespace"]
+
+literal_65 [label="literal"]
+
+raw_66 [label="raw"]
+
+prespace_67 [label="prespace"]
+
+literal_68 [label="literal"]
+
+raw_69 [label="raw"]
+
+
+// END RANK prose_33
+
+raw_63 -> leaf_70
+leaf_70  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+It turns out"]
+// END RANK raw_63
+
+prespace_64 -> leaf_71
+leaf_71  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_64
+
+literal_65 -> leaf_72
+leaf_72  [color=Gray,shape=rectangle,fontname=Inconsolata,label="uv"]
+// END RANK literal_65
+
+raw_66 -> leaf_73
+leaf_73  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" has a whole tty module, because of course it does.  Wiring"]
+// END RANK raw_66
+
+prespace_67 -> leaf_74
+leaf_74  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_67
+
+literal_68 -> leaf_75
+leaf_75  [color=Gray,shape=rectangle,fontname=Inconsolata,label="femto"]
+// END RANK literal_68
+
+raw_69 -> leaf_76
+leaf_76  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" up to luaJIT was an essential learning experience, and I'm going to
+make some blog posts about it, but it became clear that the surface area isn't
+right.
+"]
+// END RANK raw_69
+
+prose_34 -> { raw_77 prespace_78 literal_79 raw_80 prespace_81 literal_82 raw_83}
+{rank=same; raw_77 prespace_78 literal_79 raw_80 prespace_81 literal_82 raw_83}
+
+raw_77 [label="raw"]
+
+prespace_78 [label="prespace"]
+
+literal_79 [label="literal"]
+
+raw_80 [label="raw"]
+
+prespace_81 [label="prespace"]
+
+literal_82 [label="literal"]
+
+raw_83 [label="raw"]
+
+
+// END RANK prose_34
+
+raw_77 -> leaf_84
+leaf_84  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Which is good for the blog post!  The only thing I won't end up using is"]
+// END RANK raw_77
+
+prespace_78 -> leaf_85
+leaf_85  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_78
+
+literal_79 -> leaf_86
+leaf_86  [color=Gray,shape=rectangle,fontname=Inconsolata,label="femto"]
+// END RANK literal_79
+
+raw_80 -> leaf_87
+leaf_87  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" itself and the main event loop I ported from C.  All the tools will
+be essential for building femto proper and internalizing"]
+// END RANK raw_80
+
+prespace_81 -> leaf_88
+leaf_88  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_81
+
+literal_82 -> leaf_89
+leaf_89  [color=Gray,shape=rectangle,fontname=Inconsolata,label="uv"]
+// END RANK literal_82
+
+raw_83 -> leaf_90
+leaf_90  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".
+"]
+// END RANK raw_83
+
+prose_35 -> { raw_91 prespace_92 literal_93 raw_94}
+{rank=same; raw_91 prespace_92 literal_93 raw_94}
+
+raw_91 [label="raw"]
+
+prespace_92 [label="prespace"]
+
+literal_93 [label="literal"]
+
+raw_94 [label="raw"]
+
+
+// END RANK prose_35
+
+raw_91 -> leaf_95
+leaf_95  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+In the meantime, my next step is to build my own repl on"]
+// END RANK raw_91
+
+prespace_92 -> leaf_96
+leaf_96  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_92
+
+literal_93 -> leaf_97
+leaf_97  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
+// END RANK literal_93
+
+raw_94 -> leaf_98
+leaf_98  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" and start
+persisting things!
+
+"]
+// END RANK raw_94
+
+section_36 -> { header_99 prose_100 prose_101 prose_102 prose_103 prose_104 prose_105 prose_106 prose_107 prose_108 prose_109 prose_110 prose_111 prose_112}
+{rank=same; header_99 prose_100 prose_101 prose_102 prose_103 prose_104 prose_105 prose_106 prose_107 prose_108 prose_109 prose_110 prose_111 prose_112}
+
+header_99 [label="3 : wiring and plumbing"]
+
+prose_100 [label="prose"]
+
+prose_101 [label="prose"]
+
+prose_102 [label="prose"]
+
+prose_103 [label="prose"]
+
+prose_104 [label="prose"]
+
+prose_105 [label="prose"]
+
+prose_106 [label="prose"]
+
+prose_107 [label="prose"]
+
+prose_108 [label="prose"]
+
+prose_109 [label="prose"]
+
+prose_110 [label="prose"]
+
+prose_111 [label="prose"]
+
+prose_112 [label="prose"]
+
+
+// END RANK section_36
+
+header_99 -> leaf_113
+leaf_113  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** wiring and plumbing"]
+// END RANK header_99
+
+prose_100 -> { raw_114}
+{rank=same; raw_114}
+
+raw_114 [label="raw"]
+
+
+// END RANK prose_100
+
+raw_114 -> leaf_115
+leaf_115  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+At this point I have lpeg, libuv, and libluv all linking statically to the
+bridge binary.
+"]
+// END RANK raw_114
+
+prose_101 -> { raw_116 prespace_117 literal_118 raw_119 prespace_120 italic_121 raw_122}
+{rank=same; raw_116 prespace_117 literal_118 raw_119 prespace_120 italic_121 raw_122}
+
+raw_116 [label="raw"]
+
+prespace_117 [label="prespace"]
+
+literal_118 [label="literal"]
+
+raw_119 [label="raw"]
+
+prespace_120 [label="prespace"]
+
+italic_121 [label="italic"]
+
+raw_122 [label="raw"]
+
+
+// END RANK prose_101
+
+raw_116 -> leaf_123
+leaf_123  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+NB: LuaJIT has two ways to interface with C, its"]
+// END RANK raw_116
+
+prespace_117 -> leaf_124
+leaf_124  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_117
+
+literal_118 -> leaf_125
+leaf_125  [color=Gray,shape=rectangle,fontname=Inconsolata,label="ffi"]
+// END RANK literal_118
+
+raw_119 -> leaf_126
+leaf_126  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" module and the stack
+interface it has in common with PUC Lua.  For this discussion I will call the
+former"]
+// END RANK raw_119
+
+prespace_120 -> leaf_127
+leaf_127  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_120
+
+italic_121 -> leaf_128
+leaf_128  [color=Gray,shape=rectangle,fontname=Inconsolata,label="the"]
+// END RANK italic_121
+
+raw_122 -> leaf_129
+leaf_129  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" FFI and the latter the stack.
+"]
+// END RANK raw_122
+
+prose_102 -> { raw_130 prespace_131 literal_132 raw_133 prespace_134 literal_135 raw_136}
+{rank=same; raw_130 prespace_131 literal_132 raw_133 prespace_134 literal_135 raw_136}
+
+raw_130 [label="raw"]
+
+prespace_131 [label="prespace"]
+
+literal_132 [label="literal"]
+
+raw_133 [label="raw"]
+
+prespace_134 [label="prespace"]
+
+literal_135 [label="literal"]
+
+raw_136 [label="raw"]
+
+
+// END RANK prose_102
+
+raw_130 -> leaf_137
+leaf_137  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+I also have"]
+// END RANK raw_130
+
+prespace_131 -> leaf_138
+leaf_138  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_131
+
+literal_132 -> leaf_139
+leaf_139  [color=Gray,shape=rectangle,fontname=Inconsolata,label="femto"]
+// END RANK literal_132
+
+raw_133 -> leaf_140
+leaf_140  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" linked in statically and marshalled via the FFI. I have"]
+// END RANK raw_133
+
+prespace_134 -> leaf_141
+leaf_141  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_134
+
+literal_135 -> leaf_142
+leaf_142  [color=Gray,shape=rectangle,fontname=Inconsolata,label="lfs"]
+// END RANK literal_135
+
+raw_136 -> leaf_143
+leaf_143  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" in there, because everything pre-pylon needs it, but I found a pure-FFI
+edition.
+"]
+// END RANK raw_136
+
+prose_103 -> { raw_144 prespace_145 literal_146 raw_147}
+{rank=same; raw_144 prespace_145 literal_146 raw_147}
+
+raw_144 [label="raw"]
+
+prespace_145 [label="prespace"]
+
+literal_146 [label="literal"]
+
+raw_147 [label="raw"]
+
+
+// END RANK prose_103
+
+raw_144 -> leaf_148
+leaf_148  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+In the process discovering that"]
+// END RANK raw_144
+
+prespace_145 -> leaf_149
+leaf_149  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_145
+
+literal_146 -> leaf_150
+leaf_150  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
+// END RANK literal_146
+
+raw_147 -> leaf_151
+leaf_151  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" uses the Lua stack and a bunch of custom
+C functions to marshall resources.
+"]
+// END RANK raw_147
+
+prose_104 -> { raw_152}
+{rank=same; raw_152}
+
+raw_152 [label="raw"]
+
+
+// END RANK prose_104
+
+raw_152 -> leaf_153
+leaf_153  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+I was a little confused by this, and need to solidify my understanding of the
+difference between them from LuaJIT's perspective.
+"]
+// END RANK raw_152
+
+prose_105 -> { prespace_154 literal_155 raw_156}
+{rank=same; prespace_154 literal_155 raw_156}
+
+prespace_154 [label="prespace"]
+
+literal_155 [label="literal"]
+
+raw_156 [label="raw"]
+
+
+// END RANK prose_105
+
+prespace_154 -> leaf_157
+leaf_157  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_154
+
+literal_155 -> leaf_158
+leaf_158  [color=Gray,shape=rectangle,fontname=Inconsolata,label="lpeg"]
+// END RANK literal_155
+
+raw_156 -> leaf_159
+leaf_159  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" can't be improved by using the FFI.  Pattern synthesis happens at
+compile time, if you compile and dump modules, which we always will.
+"]
+// END RANK raw_156
+
+prose_106 -> { prespace_160 literal_161 raw_162}
+{rank=same; prespace_160 literal_161 raw_162}
+
+prespace_160 [label="prespace"]
+
+literal_161 [label="literal"]
+
+raw_162 [label="raw"]
+
+
+// END RANK prose_106
+
+prespace_160 -> leaf_163
+leaf_163  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_160
+
+literal_161 -> leaf_164
+leaf_164  [color=Gray,shape=rectangle,fontname=Inconsolata,label="uv"]
+// END RANK literal_161
+
+raw_162 -> leaf_165
+leaf_165  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" though?  We're going to spend a lot of energy tossing stuff across the
+lua-uv bounary layer.  My understanding is that the JIT of course understands
+the stack, it's the same stack the VM uses, but also that normal use of the
+stack interface will cause the trace to spill/
+"]
+// END RANK raw_162
+
+prose_107 -> { raw_166}
+{rank=same; raw_166}
+
+raw_166 [label="raw"]
+
+
+// END RANK prose_107
+
+raw_166 -> leaf_167
+leaf_167  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Fortunately, as the official dynamic language of obsessive code bums, LuaJIT
+has a built-in profiler, so my priority is to set up shop and turn on the
+lights.
+"]
+// END RANK raw_166
+
+prose_108 -> { prespace_168 literal_169 raw_170}
+{rank=same; prespace_168 literal_169 raw_170}
+
+prespace_168 [label="prespace"]
+
+literal_169 [label="literal"]
+
+raw_170 [label="raw"]
+
+
+// END RANK prose_108
+
+prespace_168 -> leaf_171
+leaf_171  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_168
+
+literal_169 -> leaf_172
+leaf_172  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
+// END RANK literal_169
+
+raw_170 -> leaf_173
+leaf_173  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" has a worse problem, namely, callbacks.  Somewhere in Tim Caldwell's
+stack are some examples of how to build those into proper coroutines that
+register a handler and yield, resuming on events.
+"]
+// END RANK raw_170
+
+prose_109 -> { raw_174}
+{rank=same; raw_174}
+
+raw_174 [label="raw"]
+
+
+// END RANK prose_109
+
+raw_174 -> leaf_175
+leaf_175  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+I'm just going to use those, tempting though it is to spend a couple months
+finely crafting the joints between uv and lua to be arbitrarily perfect.
+"]
+// END RANK raw_174
+
+prose_110 -> { prespace_176 literal_177 raw_178 prespace_179 italic_180 raw_181}
+{rank=same; prespace_176 literal_177 raw_178 prespace_179 italic_180 raw_181}
+
+prespace_176 [label="prespace"]
+
+literal_177 [label="literal"]
+
+raw_178 [label="raw"]
+
+prespace_179 [label="prespace"]
+
+italic_180 [label="italic"]
+
+raw_181 [label="raw"]
+
+
+// END RANK prose_110
+
+prespace_176 -> leaf_182
+leaf_182  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_176
+
+literal_177 -> leaf_183
+leaf_183  [color=Gray,shape=rectangle,fontname=Inconsolata,label="uv"]
+// END RANK literal_177
+
+raw_178 -> leaf_184
+leaf_184  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" is"]
+// END RANK raw_178
+
+prespace_179 -> leaf_185
+leaf_185  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_179
+
+italic_180 -> leaf_186
+leaf_186  [color=Gray,shape=rectangle,fontname=Inconsolata,label="tiny"]
+// END RANK italic_180
+
+raw_181 -> leaf_187
+leaf_187  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" and already statically loaded, so perf testing the FFI against
+the stack is tractable once there's any point in doing so.
+"]
+// END RANK raw_181
+
+prose_111 -> { raw_188 prespace_189 literal_190 raw_191}
+{rank=same; raw_188 prespace_189 literal_190 raw_191}
+
+raw_188 [label="raw"]
+
+prespace_189 [label="prespace"]
+
+literal_190 [label="literal"]
+
+raw_191 [label="raw"]
+
+
+// END RANK prose_111
+
+raw_188 -> leaf_192
+leaf_192  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+What I'm saying is: do this early, before making commitments to the"]
+// END RANK raw_188
+
+prespace_189 -> leaf_193
+leaf_193  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_189
+
+literal_190 -> leaf_194
+leaf_194  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
+// END RANK literal_190
+
+raw_191 -> leaf_195
+leaf_195  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+bindings.
+"]
+// END RANK raw_191
+
+prose_112 -> { raw_196}
+{rank=same; raw_196}
+
+raw_196 [label="raw"]
+
+
+// END RANK prose_112
+
+raw_196 -> leaf_197
+leaf_197  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Which are admittedly paper-thin.  The bindings that is.  I don't expect
+migrating code over to the FFI will be traumatic if it proves useful.
+
+"]
+// END RANK raw_196
+
+section_37 -> { header_198 prose_199 prose_200 prose_201 prose_202 prose_203 prose_204 prose_205 prose_206 prose_207 prose_208 prose_209 prose_210 prose_211}
+{rank=same; header_198 prose_199 prose_200 prose_201 prose_202 prose_203 prose_204 prose_205 prose_206 prose_207 prose_208 prose_209 prose_210 prose_211}
+
+header_198 [label="3 : Priorities"]
+
+prose_199 [label="prose"]
+
+prose_200 [label="prose"]
+
+prose_201 [label="prose"]
+
+prose_202 [label="prose"]
+
+prose_203 [label="prose"]
+
+prose_204 [label="prose"]
+
+prose_205 [label="prose"]
+
+prose_206 [label="prose"]
+
+prose_207 [label="prose"]
+
+prose_208 [label="prose"]
+
+prose_209 [label="prose"]
+
+prose_210 [label="prose"]
+
+prose_211 [label="prose"]
+
+
+// END RANK section_37
+
+header_198 -> leaf_212
+leaf_212  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** Priorities"]
+// END RANK header_198
+
+prose_199 -> { raw_213 prespace_214 literal_215 raw_216}
+{rank=same; raw_213 prespace_214 literal_215 raw_216}
+
+raw_213 [label="raw"]
+
+prespace_214 [label="prespace"]
+
+literal_215 [label="literal"]
+
+raw_216 [label="raw"]
+
+
+// END RANK prose_199
+
+raw_213 -> leaf_217
+leaf_217  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+At this point I have the main project building with"]
+// END RANK raw_213
+
+prespace_214 -> leaf_218
+leaf_218  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_214
+
+literal_215 -> leaf_219
+leaf_219  [color=Gray,shape=rectangle,fontname=Inconsolata,label="make"]
+// END RANK literal_215
+
+raw_216 -> leaf_220
+leaf_220  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" and the
+dependencies I can clean and rebuild.
+"]
+// END RANK raw_216
+
+prose_200 -> { raw_221}
+{rank=same; raw_221}
+
+raw_221 [label="raw"]
+
+
+// END RANK prose_200
+
+raw_221 -> leaf_222
+leaf_222  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+I will need to tinker with this substantially, and soon.  The minimum is
+detecting a few custom flags based on flavor of operating system.  Gitlab
+makes it at least tractable to test builds against most of the flavors, and I
+of course have a Mac and Ubuntu distro to work with at home.
+"]
+// END RANK raw_221
+
+prose_201 -> { raw_223}
+{rank=same; raw_223}
+
+raw_223 [label="raw"]
+
+
+// END RANK prose_201
+
+raw_223 -> leaf_224
+leaf_224  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+I do need to focus through this stretch.  It's going to be littered with
+opportunities to 'really get it right'.  At least I recognize that the
+sensibilities which have lead me to wiring up low-level libraries into
+something called 'pylon' are the kind that can also get stuck at that base
+level forever.
+"]
+// END RANK raw_223
+
+prose_202 -> { raw_225}
+{rank=same; raw_225}
+
+raw_225 [label="raw"]
+
+
+// END RANK prose_202
+
+raw_225 -> leaf_226
+leaf_226  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Here's a hit list:
+"]
+// END RANK raw_225
+
+prose_203 -> { raw_227 prespace_228 literal_229 raw_230}
+{rank=same; raw_227 prespace_228 literal_229 raw_230}
+
+raw_227 [label="raw"]
+
+prespace_228 [label="prespace"]
+
+literal_229 [label="literal"]
+
+raw_230 [label="raw"]
+
+
+// END RANK prose_203
+
+raw_227 -> leaf_231
+leaf_231  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+- [X]  Summon the raw terminal from"]
+// END RANK raw_227
+
+prespace_228 -> leaf_232
+leaf_232  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_228
+
+literal_229 -> leaf_233
+leaf_233  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
+// END RANK literal_229
+
+raw_230 -> leaf_234
+leaf_234  [color=Gray,shape=rectangle,fontname=Inconsolata,label="!
+"]
+// END RANK raw_230
+
+prose_204 -> { raw_235}
+{rank=same; raw_235}
+
+raw_235 [label="raw"]
+
+
+// END RANK prose_204
+
+raw_235 -> leaf_236
+leaf_236  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+- [X]  Write an evented REPL.
+"]
+// END RANK raw_235
+
+prose_205 -> { raw_237}
+{rank=same; raw_237}
+
+raw_237 [label="raw"]
+
+
+// END RANK prose_205
+
+raw_237 -> leaf_238
+leaf_238  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+- [X]  Add persistence of history in a SQLite database called ~/.bridge
+
+"]
+// END RANK raw_237
+
+prose_206 -> { raw_239}
+{rank=same; raw_239}
+
+raw_239 [label="raw"]
+
+
+// END RANK prose_206
+
+raw_239 -> leaf_240
+leaf_240  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+The hardest part of all of this will be keeping the event loop from
+contaminating my libraries.  I'm keeping certain compacts with the Lua
+community, which amount to respecting bytecode-compatibility with both VMs.
+"]
+// END RANK raw_239
+
+prose_207 -> { raw_241}
+{rank=same; raw_241}
+
+raw_241 [label="raw"]
+
+
+// END RANK prose_207
+
+raw_241 -> leaf_242
+leaf_242  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+The rule is that LuaJIT is the tie breaker: I will do things in the fast and
+natural way for LuaJIT and provide shims to Lua.  Lua's minimalism means that
+everything is exposed through the same sort of interface, this is entirely
+practical.
+"]
+// END RANK raw_241
+
+prose_208 -> { raw_243 prespace_244 literal_245 raw_246}
+{rank=same; raw_243 prespace_244 literal_245 raw_246}
+
+raw_243 [label="raw"]
+
+prespace_244 [label="prespace"]
+
+literal_245 [label="literal"]
+
+raw_246 [label="raw"]
+
+
+// END RANK prose_208
+
+raw_243 -> leaf_247
+leaf_247  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Indeed"]
+// END RANK raw_243
+
+prespace_244 -> leaf_248
+leaf_248  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_244
+
+literal_245 -> leaf_249
+leaf_249  [color=Gray,shape=rectangle,fontname=Inconsolata,label="luv"]
+// END RANK literal_245
+
+raw_246 -> leaf_250
+leaf_250  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" can build against 5.3.  So there's that. The problem is
+callbacks, which spread osmotically across everything they touch.
+"]
+// END RANK raw_246
+
+prose_209 -> { raw_251 prespace_252 literal_253 raw_254 prespace_255 literal_256 raw_257}
+{rank=same; raw_251 prespace_252 literal_253 raw_254 prespace_255 literal_256 raw_257}
+
+raw_251 [label="raw"]
+
+prespace_252 [label="prespace"]
+
+literal_253 [label="literal"]
+
+raw_254 [label="raw"]
+
+prespace_255 [label="prespace"]
+
+literal_256 [label="literal"]
+
+raw_257 [label="raw"]
+
+
+// END RANK prose_209
+
+raw_251 -> leaf_258
+leaf_258  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+I'll need to make"]
+// END RANK raw_251
+
+prespace_252 -> leaf_259
+leaf_259  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_252
+
+literal_253 -> leaf_260
+leaf_260  [color=Gray,shape=rectangle,fontname=Inconsolata,label="orb"]
+// END RANK literal_253
+
+raw_254 -> leaf_261
+leaf_261  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" evented in the presence of"]
+// END RANK raw_254
+
+prespace_255 -> leaf_262
+leaf_262  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_255
+
+literal_256 -> leaf_263
+leaf_263  [color=Gray,shape=rectangle,fontname=Inconsolata,label="bridge"]
+// END RANK literal_256
+
+raw_257 -> leaf_264
+leaf_264  [color=Gray,shape=rectangle,fontname=Inconsolata,label=", and that needs to
+be as simple as using coroutines internally to yield between operations on
+files.
+"]
+// END RANK raw_257
+
+prose_210 -> { raw_265 prespace_266 literal_267 raw_268}
+{rank=same; raw_265 prespace_266 literal_267 raw_268}
+
+raw_265 [label="raw"]
+
+prespace_266 [label="prespace"]
+
+literal_267 [label="literal"]
+
+raw_268 [label="raw"]
+
+
+// END RANK prose_210
+
+raw_265 -> leaf_269
+leaf_269  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Which means the"]
+// END RANK raw_265
+
+prespace_266 -> leaf_270
+leaf_270  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_266
+
+literal_267 -> leaf_271
+leaf_271  [color=Gray,shape=rectangle,fontname=Inconsolata,label="bridge"]
+// END RANK literal_267
+
+raw_268 -> leaf_272
+leaf_272  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" callside must read as simple method calls. I'm
+still not quite sure how to do this.
+"]
+// END RANK raw_268
+
+prose_211 -> { raw_273}
+{rank=same; raw_273}
+
+raw_273 [label="raw"]
+
+
+// END RANK prose_211
+
+raw_273 -> leaf_274
+leaf_274  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+There's only one way to find out. In the meantime, registering a callback is
+no big."]
+// END RANK raw_273
+
+
+}

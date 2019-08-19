@@ -1,0 +1,17 @@
+build/libluajit.a
+build/libluv.a
+build/lua-utf8.a
+luv/build/CMakeFiles/3.13.0/CMakeSystem.cmake
+luv/build/CMakeFiles/CMakeError.log
+luv/build/CMakeFiles/CMakeOutput.log
+luv/build/deps/libuv/libuv_a.a
+luv/build/libluajit.a
+luv/build/libluv.a
+luv/deps/libuv/build/XCBuildData/BuildDescriptionCacheIndex-7dd198846c3263c30c8f30d22e2d7017
+luv/deps/libuv/build/XCBuildData/build.db
+luv/deps/luajit/src/libluajit.a
+sqlite/Makefile
+sqlite/config.log
+sqlite/config.status
+sqlite/libtool
+sqlite/sqlite3

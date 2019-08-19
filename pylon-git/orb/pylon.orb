@@ -1,0 +1,133 @@
+* Pylon
+
+
+=pylon= is our userspace kernel.
+
+After some thought, I've decided to pull in nanomsg as a shared library.
+
+I may change my mind, but =luv= contains the network primitives to pull a
+codex off the Internet, and using a properly-rebased shared library is
+actually cleaner LuaJIT since you don't have to explicitly build a vtable.
+
+Though I believe that's exactly what LJ is doing under the hood.
+
+
+** Next
+
+I've got =femto= booting with the main event loop in Lua.
+
+It can call a shared sqlite and luv.  I do intend to statically link them,
+but that's a brisk afternoon's work porting the interface.
+
+That's worthwhile work, and I can and should break them out into their own
+repos.  I don't know if the =luv= one will get used by anyone else, but
+=sqlite= is a common include in binaries, as is LuaJIT, and I'd bet money
+that what I'm about to do has been done a few times.
+
+It turns out =uv= has a whole tty module, because of course it does.  Wiring
+=femto= up to luaJIT was an essential learning experience, and I'm going to
+make some blog posts about it, but it became clear that the surface area isn't
+right.
+
+Which is good for the blog post!  The only thing I won't end up using is
+=femto= itself and the main event loop I ported from C.  All the tools will
+be essential for building femto proper and internalizing =uv=.
+
+In the meantime, my next step is to build my own repl on =luv= and start
+persisting things!
+
+
+*** wiring and plumbing
+
+At this point I have lpeg, libuv, and libluv all linking statically to the
+bridge binary.
+
+NB: LuaJIT has two ways to interface with C, its =ffi= module and the stack
+interface it has in common with PUC Lua.  For this discussion I will call the
+former /the/ FFI and the latter the stack.
+
+I also have =femto= linked in statically and marshalled via the FFI. I have
+=lfs= in there, because everything pre-pylon needs it, but I found a pure-FFI
+edition.
+
+In the process discovering that =luv= uses the Lua stack and a bunch of custom
+C functions to marshall resources.
+
+I was a little confused by this, and need to solidify my understanding of the
+difference between them from LuaJIT's perspective.
+
+=lpeg= can't be improved by using the FFI.  Pattern synthesis happens at
+compile time, if you compile and dump modules, which we always will.
+
+=uv= though?  We're going to spend a lot of energy tossing stuff across the
+lua-uv bounary layer.  My understanding is that the JIT of course understands
+the stack, it's the same stack the VM uses, but also that normal use of the
+stack interface will cause the trace to spill/
+
+Fortunately, as the official dynamic language of obsessive code bums, LuaJIT
+has a built-in profiler, so my priority is to set up shop and turn on the
+lights.
+
+=luv= has a worse problem, namely, callbacks.  Somewhere in Tim Caldwell's
+stack are some examples of how to build those into proper coroutines that
+register a handler and yield, resuming on events.
+
+I'm just going to use those, tempting though it is to spend a couple months
+finely crafting the joints between uv and lua to be arbitrarily perfect.
+
+=uv= is /tiny/ and already statically loaded, so perf testing the FFI against
+the stack is tractable once there's any point in doing so.
+
+What I'm saying is: do this early, before making commitments to the =luv=
+bindings.
+
+Which are admittedly paper-thin.  The bindings that is.  I don't expect
+migrating code over to the FFI will be traumatic if it proves useful.
+
+
+*** Priorities
+
+At this point I have the main project building with =make= and the
+dependencies I can clean and rebuild.
+
+I will need to tinker with this substantially, and soon.  The minimum is
+detecting a few custom flags based on flavor of operating system.  Gitlab
+makes it at least tractable to test builds against most of the flavors, and I
+of course have a Mac and Ubuntu distro to work with at home.
+
+I do need to focus through this stretch.  It's going to be littered with
+opportunities to 'really get it right'.  At least I recognize that the
+sensibilities which have lead me to wiring up low-level libraries into
+something called 'pylon' are the kind that can also get stuck at that base
+level forever.
+
+Here's a hit list:
+
+- [X]  Summon the raw terminal from =luv=!
+
+- [X]  Write an evented REPL.
+
+- [X]  Add persistence of history in a SQLite database called ~/.bridge
+
+
+The hardest part of all of this will be keeping the event loop from
+contaminating my libraries.  I'm keeping certain compacts with the Lua
+community, which amount to respecting bytecode-compatibility with both VMs.
+
+The rule is that LuaJIT is the tie breaker: I will do things in the fast and
+natural way for LuaJIT and provide shims to Lua.  Lua's minimalism means that
+everything is exposed through the same sort of interface, this is entirely
+practical.
+
+Indeed =luv= can build against 5.3.  So there's that. The problem is
+callbacks, which spread osmotically across everything they touch.
+
+I'll need to make =orb= evented in the presence of =bridge=, and that needs to
+be as simple as using coroutines internally to yield between operations on
+files.
+
+Which means the =bridge= callside must read as simple method calls. I'm
+still not quite sure how to do this.
+
+There's only one way to find out. In the meantime, registering a callback is
+no big.
