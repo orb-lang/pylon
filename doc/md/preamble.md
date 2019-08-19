@@ -211,7 +211,7 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
                               conn:exec(
                               sql.format(get_latest_module_bytecode, code_id)))
       if bytecode then
-         table.insert(package.bridge_modules, "@" .. mod_name)
+         package.bridge_modules["@" .. mod_name] = true
          print ("loaded " .. mod_name .. " from bridge.modules")
          conn:close()
          local loadFn, errmsg = load(bytecode, "@" .. mod_name)
@@ -220,9 +220,11 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
             if works then
                return load(bytecode, "@" .. mod_name)
             else
+               package.bridge_modules["@" .. mod_name] = err
                return err
             end
          else
+            package.bridge_modules["@" .. mod_name] = errmsg
             return errmsg
          end
       else

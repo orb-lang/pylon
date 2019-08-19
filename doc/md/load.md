@@ -1705,7 +1705,7 @@ local function _strip(argument)
    return argument
 end
 
-local _makeParsyHappen()
+local function _makeParsyHappen()
    -- stop trying to make Parsy happen.
    local parsed, msg = brParse:pparse()
    rawset(_G, "_isParsed", parsed)

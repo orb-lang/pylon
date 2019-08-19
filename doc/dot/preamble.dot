@@ -3,13 +3,13 @@ digraph lpegNode {
 node [fontname=Helvetica]
 edge [style=dashed]
 
-doc_0 [label="doc - 271"]
+doc_0 [label="doc - 273"]
 
 
 doc_0 -> { section_1}
 {rank=same; section_1}
 
-section_1 [label="section: 1-245"]
+section_1 [label="section: 1-247"]
 
 
 // END RANK doc_0
@@ -29,9 +29,9 @@ section_6 [label="section: 21-62"]
 
 section_7 [label="section: 63-99"]
 
-section_8 [label="section: 100-245"]
+section_8 [label="section: 100-247"]
 
-section_9 [label="section: 246-264"]
+section_9 [label="section: 248-266"]
 
 
 // END RANK section_1
@@ -458,7 +458,7 @@ structure_103 [label="structure"]
 
 prose_104 [label="prose"]
 
-codeblock_105 [label="code block 114-243"]
+codeblock_105 [label="code block 114-245"]
 
 
 // END RANK section_8
@@ -681,7 +681,7 @@ leaf_129  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local funct
                               conn:exec(
                               sql.format(get_latest_module_bytecode, code_id)))
       if bytecode then
-         table.insert(package.bridge_modules, \"@\" .. mod_name)
+         package.bridge_modules[\"@\" .. mod_name] = true
          print (\"loaded \" .. mod_name .. \" from bridge.modules\")
          conn:close()
          local loadFn, errmsg = load(bytecode, \"@\" .. mod_name)
@@ -690,9 +690,11 @@ leaf_129  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local funct
             if works then
                return load(bytecode, \"@\" .. mod_name)
             else
+               package.bridge_modules[\"@\" .. mod_name] = err
                return err
             end
          else
+            package.bridge_modules[\"@\" .. mod_name] = errmsg
             return errmsg
          end
       else
@@ -710,9 +712,9 @@ header_130 [label="3 : Add to package.loaders"]
 
 prose_131 [label="prose"]
 
-codeblock_132 [label="code block 252-262"]
+codeblock_132 [label="code block 254-264"]
 
-section_133 [label="section: 265-271"]
+section_133 [label="section: 267-273"]
 
 
 // END RANK section_9
@@ -773,7 +775,7 @@ header_144 [label="4 : end do block"]
 
 prose_145 [label="prose"]
 
-codeblock_146 [label="code block 269-271"]
+codeblock_146 [label="code block 271-273"]
 
 
 // END RANK section_133

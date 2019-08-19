@@ -50,6 +50,11 @@ build/preamble.h: src/preamble.lua src/compileToHeader.lua
 	- colordiff build/preamble.h build/~preamble.h
 	mv build/~preamble.h build/preamble.h
 
+build/argparse.h: src/argparse.lua src/compileToHeader.lua
+	build/luajit src/compileToHeader.lua LUA_ARGPARSE src/argparse.lua build/~argparse.h
+	- colordiff build/argparse.h build/~argparse.h
+	mv build/~argparse.h build/argparse.h
+
 build/afterward.h: src/afterward.lua src/compileToHeader.lua
 	build/luajit src/compileToHeader.lua LUA_AFTERWARD src/afterward.lua build/~afterward.h
 	- colordiff build/afterward.h build/~afterward.h
@@ -63,4 +68,6 @@ src/load.lua: orb/load.orb
 src/preamble.lua: orb/preamble.orb
 	orb
 src/afterward.lua: orb/afterward.orb
+	orb
+src/argparse.lua: orb/argparse.orb
 	orb

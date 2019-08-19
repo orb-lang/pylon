@@ -3066,7 +3066,7 @@
 <text text-anchor="middle" x="8167.5" y="-24586.1395" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;argument[#argument] = nil</text>
 <text text-anchor="middle" x="8167.5" y="-24570.7394" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;return argument</text>
 <text text-anchor="middle" x="8167.5" y="-24555.3394" font-family="Inconsolata" font-size="14.00" fill="#000000">end</text>
-<text text-anchor="middle" x="8167.5" y="-24523.9394" font-family="Inconsolata" font-size="14.00" fill="#000000">local _makeParsyHappen()</text>
+<text text-anchor="middle" x="8167.5" y="-24523.9394" font-family="Inconsolata" font-size="14.00" fill="#000000">local function _makeParsyHappen()</text>
 <text text-anchor="middle" x="8167.5" y="-24508.5393" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;&#45;&#45; stop trying to make Parsy happen.</text>
 <text text-anchor="middle" x="8167.5" y="-24493.1393" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;local parsed, msg = brParse:pparse()</text>
 <text text-anchor="middle" x="8167.5" y="-24477.7393" font-family="Inconsolata" font-size="14.00" fill="#000000"> &#160;&#160;rawset(_G, &quot;_isParsed&quot;, parsed)</text>

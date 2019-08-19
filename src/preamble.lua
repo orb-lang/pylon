@@ -220,7 +220,7 @@ WHERE code.code_id = %d ;
                               conn:exec(
                               sql.format(get_latest_module_bytecode, code_id)))
       if bytecode then
-         table.insert(package.bridge_modules, "@" .. mod_name)
+         package.bridge_modules["@" .. mod_name] = true
          print ("loaded " .. mod_name .. " from bridge.modules")
          conn:close()
          local loadFn, errmsg = load(bytecode, "@" .. mod_name)
@@ -229,9 +229,11 @@ WHERE code.code_id = %d ;
             if works then
                return load(bytecode, "@" .. mod_name)
             else
+               package.bridge_modules["@" .. mod_name] = err
                return err
             end
          else
+            package.bridge_modules["@" .. mod_name] = errmsg
             return errmsg
          end
       else
@@ -240,6 +242,8 @@ WHERE code.code_id = %d ;
          return ("unable to load: " .. mod_name)
       end
    end
+
+
 
 
 
