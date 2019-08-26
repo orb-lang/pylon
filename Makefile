@@ -32,7 +32,7 @@ uninstall:
 br: build/boot.o build/libluv.a
 	$(CC) -o br $(CWARNS) build/boot.o $(BRLIBS) -Ibuild/ -Ilib/ -lm -pagezero_size 10000 -image_base 100000000
 
-build/boot.o: src/boot.c build/load_char.h build/sql.h build/preamble.h build/afterward.h
+build/boot.o: src/boot.c build/load_char.h build/sql.h build/preamble.h build/afterward.h build/argparse.h
 	$(CC) -c -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/boot.c -o build/boot.o -Wall -Wextra -pedantic -std=c99
 
 build/load_char.h: src/load.lua src/compileToHeader.lua

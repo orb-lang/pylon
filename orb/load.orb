@@ -139,13 +139,16 @@ Now that we have =argparse= it's time to do it right.
 #!lua
 -- we're going to run in parallel while we build the parser:
 
-rawset(_G, "brParse", package.argparse())
+rawset(_G, "brParse", package.argparse()
+   : require_command (false))
+
 brParse
    : name "bridge"
    : description "An lua, howth castle & environs."
    : epilog "For more info, see https://specialcircumstanc.es"
    : command ("orb o", "orb compiler", "orb subcommands")
-   --: args("?")
+   --: default "bridge"
+
 -- this will fetch us our REPL using the usual frippery,
 -- we've put a stub block around it as deprecation
 ---[[
@@ -166,8 +169,12 @@ local function _makeParsyHappen()
    -- stop trying to make Parsy happen.
    local parsed, msg = brParse:parse()
    rawset(_G, "_isParsed", parsed)
-   rawset(_G, "_argResult", msg)
-   print(_G._isParsed)
+
+   if msg then
+      rawset(_G, "_argResult", msg)
+   else
+      rawset(_G, "_argResult", parsed)
+   end
 end
 
 if rawget(_G, "arg") ~= nil then

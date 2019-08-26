@@ -10,6 +10,7 @@ Since we're loading it straight from the binary, wrap it in a ``do`` block.
 
 ```lua
 do
+
 ```
 #### bridge_modules
 
@@ -113,7 +114,7 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
 
    local function _loadModule(mod_name)
       assert(type(mod_name) == "string", "mod_name must be a string")
-      print ("attempting to load " .. mod_name)
+      --print ("attempting to load " .. mod_name)
       local conn = sql.open(bridge_modules)
       if not conn then print "conn fail" ; return nil end
       package.bridge_loaded = package.bridge_loaded or {}
@@ -172,9 +173,6 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
                                  conn:exec(
                                  sql.format(get_latest_module_code_id,
                                             mod)))
-         if code_id then
-            print "code_id acquired"
-         end
          -- Think this logic is dodgy...
          ---[[
          local foreign_keys = conn:exec(sql.format(get_all_module_ids, mod))
@@ -203,7 +201,7 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
          --]]
       end
       if not code_id then
-         print "no code_id"
+         -- print "no code_id"
          conn:close()
          return "no"
       end
@@ -212,7 +210,7 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
                               sql.format(get_latest_module_bytecode, code_id)))
       if bytecode then
          package.bridge_modules["@" .. mod_name] = true
-         print ("loaded " .. mod_name .. " from bridge.modules")
+         --print ("loaded " .. mod_name .. " from bridge.modules")
          conn:close()
          local loadFn, errmsg = load(bytecode, "@" .. mod_name)
          if loadFn then
@@ -228,7 +226,7 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
             return errmsg
          end
       else
-         print ("unable to load: " .. mod_name)
+         -- print ("unable to load: " .. mod_name)
          conn:close()
          return ("unable to load: " .. mod_name)
       end
@@ -238,13 +236,18 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
 
 If ``bridge.modules`` exists!
 
+
+Currently we build a new conn for each package we load; this is inefficient
+but absent a finalizer (no __gc metamethod in 2.1 LuaJIT) it's the best we
+can do.
+
 ```lua
    if br_mod then
-      print "loading bridge.modules"
+      -- print "loading bridge.modules"
       local insert = assert(table.insert)
       _G.packload = _loadModule
-      --insert(package.loaders, 1, _G.packload)
-      package.loaders[#package.loaders + 1] = _loadModule
+      insert(package.loaders, 1, _G.packload)
+      --package.loaders[#package.loaders + 1] = _loadModule
    else
       print "no bridge.modules"
    end
