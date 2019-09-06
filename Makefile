@@ -64,10 +64,10 @@ build/afterward.h: src/afterward.lua src/compileToHeader.lua
 #  is not installed
 
 src/load.lua: orb/load.orb
-	orb
+	grym
 src/preamble.lua: orb/preamble.orb
-	orb
+	grym
 src/afterward.lua: orb/afterward.orb
-	orb
+	grym
 src/argparse.lua: orb/argparse.orb
-	orb
+	grym

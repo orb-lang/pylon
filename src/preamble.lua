@@ -269,4 +269,13 @@ WHERE code.code_id = %d ;
 
 
 
+_Bridge = {}
+
+
+
+
+
+
+
+
 end

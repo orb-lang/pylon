@@ -139,10 +139,10 @@ collectgarbage()
 
 -- we're going to run in parallel while we build the parser:
 
-rawset(_G, "brParse", package.argparse()
-   : require_command (false))
+rawset(_G, "brParse", package.argparse())
 
 brParse
+   : require_command (false)
    : name "bridge"
    : description "An lua, howth castle & environs."
    : epilog "For more info, see https://specialcircumstanc.es"
@@ -192,6 +192,13 @@ if rawget(_G, "arg") ~= nil then
         end
     else
         _makeParsyHappen()
+        if _argResult then
+            local orb = require "orb"
+            local uv = require "luv"
+            orb.runner(uv.cwd())
+        else
+            print "not an argument"
+        end
     end
 end
 --]]

@@ -252,6 +252,13 @@ can do.
       print "no bridge.modules"
    end
 ```
+## _Bridge table
+
+This is in our global environment indicating the ``bridge`` runtime.
+
+```lua
+_Bridge = {}
+```
 #### end do block
 
 This makes everything in the block into garbage if a loader isn't generated.

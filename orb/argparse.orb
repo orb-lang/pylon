@@ -11,11 +11,10 @@ Now on [[0.7]].
 This is lightly modified by wrapping it in an anonymous function and assigning
 it to =package.argparse=, but is otherwise exactly as
 [[found here]
-[https://raw.githubusercontent.com/mpeterv/argparse/master/src/argparse.lua]].
+[https://github.com/luarocks/argparse/blob/6f28a24ed320107867ee2c81003dab60984b9be8/src/argparse.lua]].
 
 #!lua
 package.argparse = (function ()
-
 -- The MIT License (MIT)
 
 -- Copyright (c) 2013 - 2018 Peter Melnichenko
@@ -2095,5 +2094,5 @@ end})
 
 return argparse
 
-end ) ()
+end)()
 #/lua
