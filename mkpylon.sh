@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright 2018 Sam Putman.
+# Copyright 2019 Sam Putman.
 
 # MIT LICENSE:
 
@@ -134,4 +134,4 @@ cd ..
 
 # Make br and install.
 
-make install
+make
