@@ -1,7 +1,5 @@
-<<<<<<< HEAD
+.codex
 vmdef.lua
-||||||| merged common ancestors
-=======
 build/libluajit.a
 build/libluv.a
 build/lua-utf8.a
@@ -19,4 +17,3 @@ sqlite/config.log
 sqlite/config.status
 sqlite/libtool
 sqlite/sqlite3
->>>>>>> a663343
