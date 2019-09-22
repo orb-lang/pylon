@@ -146,8 +146,42 @@ brParse
    : name "bridge"
    : description "An lua, howth castle & environs."
    : epilog "For more info, see https://specialcircumstanc.es"
-   : command ("orb o", "orb compiler", "orb subcommands")
-   --: default "bridge"
+
+local orb_c = brParse : command ("orb o")
+
+local helm_c = brParse
+                  : command ("helm i")
+                  : description "launch helm, the 'i'nteractive REPL."
+
+orb_c
+   : require_command (false)
+   : description "Literate compiler for Orb format."
+
+orb_c
+   : command "serve"
+   : description "Launch the Orb server."
+
+orb_c
+   : command "knit"
+   : description "Knit the codex."
+
+orb_c
+   : command "weave"
+   : description "Weave the codex."
+
+orb_c
+   : command "compile"
+   : description "Knits the codex and compiles the resulting sorcery files."
+
+helm_c
+   : option "-s --session"
+     : description "Start the repl with a given, named session."
+     : args(1)
+
+helm_c
+   : option "-n --new-session"
+     : description "Begin a new, named session."
+     : args(1)
 
 -- this will fetch us our REPL using the usual frippery,
 -- we've put a stub block around it as deprecation
@@ -167,18 +201,21 @@ end
 
 local function _makeParsyHappen()
    -- stop trying to make Parsy happen.
-   local parsed, msg = brParse:parse()
-   rawset(_G, "_isParsed", parsed)
+   --
+   -- it will never happen.
+   --
+   -- hack to get around the fact that argparse was written assuming a
+   -- script name as the first argument
+   table.insert(arg, 0, "")
+   _Bridge.args = brParse:parse()
 
-   if msg then
-      rawset(_G, "_argResult", msg)
-   else
-      rawset(_G, "_argResult", parsed)
-   end
 end
 
 if rawget(_G, "arg") ~= nil then
     -- time for an ugly hack:
+    for i = 0, #arg do
+      print(arg[i])
+    end
     if arg[0] == "OLD" then
         _strip(arg)
         _makeParsyHappen()
@@ -192,12 +229,13 @@ if rawget(_G, "arg") ~= nil then
         end
     else
         _makeParsyHappen()
-        if _argResult then
-            local orb = require "orb"
-            local uv = require "luv"
-            orb.runner(uv.cwd())
+        if _Bridge.args["orb"] == true then
+          print "orb"
+          local orb = require "orb"
+          local uv = require "luv"
+          orb.run(uv.cwd())
         else
-            print "not an argument"
+          print "not orb"
         end
     end
 end
