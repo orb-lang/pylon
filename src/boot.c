@@ -14,11 +14,13 @@ LUALIB_API int luaopen_utf8(lua_State *L);
 // Constant arrays of compiled bytecode
 
 #include "sql.h"
+#include "lfs.h"
 #include "preamble.h"
 #include "load_char.h"
 #include "argparse.h"
 #include "afterward.h"
 
+const char * LFS_NAME = "@lfs";
 const char * SQL_NAME = "@sql";
 const char * PREAMBLE_NAME = "@preamble";
 const char * ARGPARSE_NAME = "@argparse";
@@ -82,6 +84,7 @@ int main(int argc, char *argv[]) {
     lua_pushcfunction(L, luaopen_utf8);
     lua_setfield(L, -2, "lua-utf8");
     debug_load(L, LUA_SQL, sizeof LUA_SQL, SQL_NAME);
+    debug_load(L, LUA_LFS, sizeof LUA_LFS, LFS_NAME);
     debug_load(L, LUA_PREAMBLE, sizeof LUA_PREAMBLE, PREAMBLE_NAME);
     debug_load(L, LUA_ARGPARSE, sizeof LUA_ARGPARSE, ARGPARSE_NAME);
     debug_load(L, LUA_LOAD, sizeof LUA_LOAD, LOAD_NAME);
