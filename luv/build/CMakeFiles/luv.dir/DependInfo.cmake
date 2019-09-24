@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/atman/code/pylon/luv/src/luv.c" "/Users/atman/code/pylon/luv/build/CMakeFiles/luv.dir/src/luv.c.o"
+  "/Users/atman/Dropbox/br/pylon/luv/src/luv.c" "/Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/luv.dir/src/luv.c.o"
   )
 set(CMAKE_C_COMPILER_ID "Clang")
 
@@ -18,9 +18,7 @@ set(CMAKE_TARGET_DEFINITIONS_C
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "../deps/libuv/src"
   "../deps/libuv/include"
-  "../deps/libuv/src/unix"
   "../deps/luajit/dynasm"
   "../deps/luajit/src"
   "."
@@ -29,7 +27,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/atman/code/pylon/luv/build/CMakeFiles/uv.dir/DependInfo.cmake"
+  "/Users/atman/Dropbox/br/pylon/luv/build/deps/libuv/CMakeFiles/uv_a.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

@@ -328,9 +328,9 @@ static int runcmdopt(lua_State *L, const char *opt)
       narg++;
       if (!p) break;
       if (p == opt)
-	      lua_pushnil(L);
+	lua_pushnil(L);
       else
-	      lua_pushlstring(L, opt, (size_t)(p - opt));
+	lua_pushlstring(L, opt, (size_t)(p - opt));
       opt = p + 1;
     }
     if (*opt)

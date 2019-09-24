@@ -130,9 +130,6 @@ Here's a hit list:
 - [X]  Summon the raw terminal from ``luv``!
 
 
-- [ ]  Write a minimum-viable pure-lua readline.
-
-
 - [X]  Write an evented REPL.
 
 

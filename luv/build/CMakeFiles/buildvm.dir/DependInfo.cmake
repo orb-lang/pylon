@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/atman/code/pylon/luv/deps/luajit/src/host/buildvm.c" "/Users/atman/code/pylon/luv/build/CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm.c.o"
-  "/Users/atman/code/pylon/luv/deps/luajit/src/host/buildvm_asm.c" "/Users/atman/code/pylon/luv/build/CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_asm.c.o"
-  "/Users/atman/code/pylon/luv/deps/luajit/src/host/buildvm_fold.c" "/Users/atman/code/pylon/luv/build/CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_fold.c.o"
-  "/Users/atman/code/pylon/luv/deps/luajit/src/host/buildvm_lib.c" "/Users/atman/code/pylon/luv/build/CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_lib.c.o"
-  "/Users/atman/code/pylon/luv/deps/luajit/src/host/buildvm_peobj.c" "/Users/atman/code/pylon/luv/build/CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_peobj.c.o"
+  "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm.c" "/Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm.c.o"
+  "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm_asm.c" "/Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_asm.c.o"
+  "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm_fold.c" "/Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_fold.c.o"
+  "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm_lib.c" "/Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_lib.c.o"
+  "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm_peobj.c" "/Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_peobj.c.o"
   )
 set(CMAKE_C_COMPILER_ID "Clang")
 
@@ -25,9 +25,7 @@ set(CMAKE_TARGET_DEFINITIONS_C
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "../deps/libuv/src"
   "../deps/libuv/include"
-  "../deps/libuv/src/unix"
   "../deps/luajit/dynasm"
   "../deps/luajit/src"
   "."

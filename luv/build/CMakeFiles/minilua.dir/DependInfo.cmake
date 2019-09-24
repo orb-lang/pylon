@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/atman/code/pylon/luv/deps/luajit/src/host/minilua.c" "/Users/atman/code/pylon/luv/build/CMakeFiles/minilua.dir/deps/luajit/src/host/minilua.c.o"
+  "/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/minilua.c" "/Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/minilua.dir/deps/luajit/src/host/minilua.c.o"
   )
 set(CMAKE_C_COMPILER_ID "Clang")
 
@@ -21,9 +21,7 @@ set(CMAKE_TARGET_DEFINITIONS_C
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "../deps/libuv/src"
   "../deps/libuv/include"
-  "../deps/libuv/src/unix"
   "../deps/luajit/dynasm"
   "../deps/luajit/src"
   "."

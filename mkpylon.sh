@@ -1,6 +1,6 @@
-   #!/usr/bin/sh
+#!/bin/bash
 
-# Copyright 2018 Sam Putman.
+# Copyright 2019 Sam Putman.
 
 # MIT LICENSE:
 
@@ -27,7 +27,7 @@
 
 # They also come with their own build systems, which we use:
 
-cd luv
+cd luv || exit
 make reset
 
 # For the static binary use this:
@@ -36,37 +36,61 @@ BUILD_MODULE=OFF make
 
 # make
 
-# Move our artifacts over to pylon/lib
+# Move our artifact over to pylon/build
 
-cd build
-cp libuv.a ../../build/
+cd build || exit
 cp libluv.a ../../build/
 
 cd ../..
+
+# Somehow we're losing libuv.a after a luv update, so build that:
+
+cd luv/deps/libuv
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  ./gyp_uv.py -f xcode
+  xcodebuild -ARCHS="x86_64" -project out/uv.xcodeproj -configuration Release -alltargets
+elif [[ "$OSTYPE" == "linux-gnu" ]]; then
+   ./gyp_uv.py -f make
+   BUILDTYPE=Release make -C out
+fi
+# elif [[ "$OSTYPE" == "cygwin" ]]; then
+        # POSIX compatibility layer and Linux environment emulation for Windows
+# elif [[ "$OSTYPE" == "msys" ]]; then
+        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
+# elif [[ "$OSTYPE" == "win32" ]]; then
+        # I'm not sure this can happen.
+# elif [[ "$OSTYPE" == "freebsd"* ]]; then
+        # ...
+# else
+        # Unknown.
+cp build/Release/libuv.a ../../../build/
+cd ../../../
 
 # This builds luajit and uv and a luv binary to call from the Lua side.
 # luv's build process doesn't use the amalgamated LuaJIT build, which we
 # want, so we make this separately:
 
-# Note: the next release of 'luv' will build the amalgamation directly
-
-cd luv/deps/luajit
-git checkout v2.1
+cd luv/deps/luajit || exit
+git checkout master # 2.1 just dies too much. :/
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  export MACOSX_DEPLOYMENT_TARGET=10.14
+fi
 make amalg
 
 # Copy headers and objects to own the libs
 
-cp src/lua.h ../../../lib/
-cp src/lualib.h ../../../lib/
-cp src/luajit.h ../../../lib/
-cp src/luaconf.h ../../../lib/
-cp src/lauxlib.h ../../../lib/
+cp src/lua.h ../../../build/
+cp src/lualib.h ../../../build/
+cp src/luajit.h ../../../build/
+cp src/luaconf.h ../../../build/
+cp src/lauxlib.h ../../../build/
 cp src/libluajit.a ../../../build/
+cp src/luajit ../../../build/
 cd ../../..
 
 # Next we make sqlite, which has the amalgamated build as the short path:
 
-cd sqlite
+cd sqlite || exit
 ./configure
 make
 cp sqlite3.h ../lib/
@@ -84,8 +108,12 @@ cd ..
 
 # Annnnd lpeg
 
-cd lpeg-1.0.1
-make macosx
+cd lpeg-1.0.1 || exit
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  make macosx
+else
+  make linux
+fi
 cp liblpeg.a ../build/
 cd ..
 
@@ -96,9 +124,10 @@ cp luafilesystem/lfs-ffi.lua lib/lfs.lua
 # Now lua-utf8
 # Note that this is full-on macOS only right now and we need to fix that ASAP
 
-cd luautf8
-env MACOSX_DEPLOYMENT_TARGET=10.8 gcc -O2 \
--I../lib/ -I../luv/deps/luajit  -c lutf8lib.c -o lutf8lib.o
+
+cd luautf8 || exit
+echo "BUILDING lua-utf8"
+gcc -O2 -I../lib/ -I ../build -I../luv/deps/luajit  -c lutf8lib.c -o lutf8lib.o
 ar rcs lua-utf8.a lutf8lib.o
 mv lua-utf8.a ../build/
 cd ..
@@ -106,5 +135,4 @@ cd ..
 
 # Make br and install.
 
-make install
-
+make

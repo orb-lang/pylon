@@ -1,5 +1,4 @@
-BRLIBS = build/libfemto.o   \
-         build/libluv.a   \
+BRLIBS = build/libluv.a   \
          build/libuv.a    \
          build/liblpeg.a  \
          build/libluajit.a \
@@ -30,56 +29,54 @@ install: br
 uninstall:
 	rm ~/scripture/br
 
-br: build/boot.o src/libfemto.o build/libluv.a
+br: build/boot.o build/libluv.a
 	$(CC) -o br $(CWARNS) build/boot.o $(BRLIBS) -Ibuild/ -Ilib/ -lm -pagezero_size 10000 -image_base 100000000
 
-build/boot.o: src/boot.lua src/boot.c src/libfemto.o \
-              src/femto_instance.h src/femto_struct.h \
-              src/boot_string.h src/load_string.h
+build/boot.o: src/boot.c build/load_char.h build/lfs.h build/sql.h build/preamble.h build/afterward.h build/argparse.h
 	$(CC) -c -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/boot.c -o build/boot.o -Wall -Wextra -pedantic -std=c99
 
-src/boot_string.h: src/boot.lua src/femto_struct.h src/interpol.lua
-	lua src/interpol.lua src/boot.lua LUA_BOOT > build/~boot_string.h
-	- colordiff build/boot_string.h build/~boot_string.h
-	mv build/~boot_string.h build/boot_string.h
+build/load_char.h: src/load.lua src/compileToHeader.lua
+	build/luajit src/compileToHeader.lua LUA_LOAD src/load.lua build/~load_char.h
+	- colordiff build/load_char.h build/~load_char.h
+	mv build/~load_char.h build/load_char.h
 
-src/load_string.h: src/load.lua
-	lua src/interpol.lua src/load.lua LUA_LOAD > build/~load_string.h
-	- colordiff build/load_string.h build/~load_string.h
-	mv build/~load_string.h build/load_string.h
+build/lfs.h: src/lfs.lua src/compileToHeader.lua
+	build/luajit src/compileToHeader.lua LUA_LFS src/lfs.lua build/~lfs.h
+	- colordiff build/lfs.h build/~lfs.h
+	mv build/~lfs.h build/lfs.h
 
-#  This step should be pre-baked in an install so we - the call in case orb
+build/sql.h: src/sql.lua src/compileToHeader.lua
+	build/luajit src/compileToHeader.lua LUA_SQL src/sql.lua build/~sql.h
+	- colordiff build/sql.h build/~sql.h
+	mv build/~sql.h build/sql.h
+
+build/preamble.h: src/preamble.lua src/compileToHeader.lua
+	build/luajit src/compileToHeader.lua LUA_PREAMBLE src/preamble.lua build/~preamble.h
+	- colordiff build/preamble.h build/~preamble.h
+	mv build/~preamble.h build/preamble.h
+
+build/argparse.h: src/argparse.lua src/compileToHeader.lua
+	build/luajit src/compileToHeader.lua LUA_ARGPARSE src/argparse.lua build/~argparse.h
+	- colordiff build/argparse.h build/~argparse.h
+	mv build/~argparse.h build/argparse.h
+
+build/afterward.h: src/afterward.lua src/compileToHeader.lua
+	build/luajit src/compileToHeader.lua LUA_AFTERWARD src/afterward.lua build/~afterward.h
+	- colordiff build/afterward.h build/~afterward.h
+	mv build/~afterward.h build/afterward.h
+
+#  These steps should be pre-baked in an install so we - the call in case orb
 #  is not installed
 
-src/boot.lua: orb/boot.orb
-	- orb
-
+src/sql.lua: orb/sql.orb
+	grym
+src/lfs.lua: orb/lfs.orb
+	grym
 src/load.lua: orb/load.orb
-	- orb
-
-#  I am not currently using any of this.
-
-#  It will serve as a template for static binding SQLite.
-
-#  It might not be this repo though.  Harmless for now.
-
-src/libfemto.o: src/femto.c src/femto_class.h
-	$(CC) -c src/femto.c -o build/libfemto.o -Ilib/ -Ibuild/ -Wall -Wextra -pedantic -std=c99
-
-src/femto.h: src/femto.c
-	mv src/femto.h src/~femto.h
-	makeheaders src/femto.c
-	tail -n +2 < src/femto.h | uniq | sed '/extern/d' | sed '$d' | sed 's/()/(void)/' > src/femto.h_strip
-	- colordiff src/~femto.h src/femto.h_strip
-	rm src/~femto.h
-	mv src/femto.h_strip src/femto.h
-
-src/femto_instance.h: src/femto.h src/pop.awk
-	awk -f src/pop.awk -v class=femto_struct -v Instance=Femto src/femto.h > build/~femto_instance.h
-	- colordiff build/femto_instance.h build/~femto_instance.h
-	mv build/~femto_instance.h build/femto_instance.h
-
-src/femto_struct.h: src/femto.h src/decl.awk
-	sed -e "s/(/ (/" < src/femto.h | awk -f src/decl.awk -v name=femto_struct > build/~femto_struct.h
-	- colordiff build/femto_struct.h build/~femto_struct.h
-	mv build/~femto_struct.h build/femto_struct.h
+	grym
+src/preamble.lua: orb/preamble.orb
+	grym
+src/afterward.lua: orb/afterward.orb
+	grym
+src/argparse.lua: orb/argparse.orb
+	grym

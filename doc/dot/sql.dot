@@ -1,0 +1,1982 @@
+digraph lpegNode {
+
+node [fontname=Helvetica]
+edge [style=dashed]
+
+doc_0 [label="doc - 898"]
+
+
+doc_0 -> { section_1}
+{rank=same; section_1}
+
+section_1 [label="section: 1-711"]
+
+
+// END RANK doc_0
+
+section_1 -> { header_2 prose_3 prose_4 section_5 section_6 section_7 section_8}
+{rank=same; header_2 prose_3 prose_4 section_5 section_6 section_7 section_8}
+
+header_2 [label="1 : SQLite"]
+
+prose_3 [label="prose"]
+
+prose_4 [label="prose"]
+
+section_5 [label="section: 11-22"]
+
+section_6 [label="section: 23-39"]
+
+section_7 [label="section: 78-711"]
+
+section_8 [label="section: 712-800"]
+
+
+// END RANK section_1
+
+header_2 -> leaf_9
+leaf_9  [color=Gray,shape=rectangle,fontname=Inconsolata,label="* SQLite"]
+// END RANK header_2
+
+prose_3 -> { raw_10 prespace_11 literal_12 raw_13}
+{rank=same; raw_10 prespace_11 literal_12 raw_13}
+
+raw_10 [label="raw"]
+
+prespace_11 [label="prespace"]
+
+literal_12 [label="literal"]
+
+raw_13 [label="raw"]
+
+
+// END RANK prose_3
+
+raw_10 -> leaf_14
+leaf_14  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+
+This needs to load first, so that we can add a"]
+// END RANK raw_10
+
+prespace_11 -> leaf_15
+leaf_15  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_11
+
+literal_12 -> leaf_16
+leaf_16  [color=Gray,shape=rectangle,fontname=Inconsolata,label="package.loaders"]
+// END RANK literal_12
+
+raw_13 -> leaf_17
+leaf_17  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" which draws
+from the module database.
+"]
+// END RANK raw_13
+
+prose_4 -> { raw_18 prespace_19 literal_20 raw_21}
+{rank=same; raw_18 prespace_19 literal_20 raw_21}
+
+raw_18 [label="raw"]
+
+prespace_19 [label="prespace"]
+
+literal_20 [label="literal"]
+
+raw_21 [label="raw"]
+
+
+// END RANK prose_4
+
+raw_18 -> leaf_22
+leaf_22  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+I wanted to keep the"]
+// END RANK raw_18
+
+prespace_19 -> leaf_23
+leaf_23  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_19
+
+literal_20 -> leaf_24
+leaf_24  [color=Gray,shape=rectangle,fontname=Inconsolata,label="ljsqlite"]
+// END RANK literal_20
+
+raw_21 -> leaf_25
+leaf_25  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" code in its own file for as long as practical,
+this step entails changing that.
+
+"]
+// END RANK raw_21
+
+section_5 -> { header_26 prose_27 prose_28 prose_29 prose_30}
+{rank=same; header_26 prose_27 prose_28 prose_29 prose_30}
+
+header_26 [label="4 : Original licensing"]
+
+prose_27 [label="prose"]
+
+prose_28 [label="prose"]
+
+prose_29 [label="prose"]
+
+prose_30 [label="prose"]
+
+
+// END RANK section_5
+
+header_26 -> leaf_31
+leaf_31  [color=Gray,shape=rectangle,fontname=Inconsolata,label="**** Original licensing"]
+// END RANK header_26
+
+prose_27 -> { raw_32}
+{rank=same; raw_32}
+
+raw_32 [label="raw"]
+
+
+// END RANK prose_27
+
+raw_32 -> leaf_33
+leaf_33  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+A library for interfacing with SQLite3 databases.
+"]
+// END RANK raw_32
+
+prose_28 -> { raw_34}
+{rank=same; raw_34}
+
+raw_34 [label="raw"]
+
+
+// END RANK prose_28
+
+raw_34 -> leaf_35
+leaf_35  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Copyright (C) 2011-2016 Stefano Peluchetti. All rights reserved.
+"]
+// END RANK raw_34
+
+prose_29 -> { raw_36}
+{rank=same; raw_36}
+
+raw_36 [label="raw"]
+
+
+// END RANK prose_29
+
+raw_36 -> leaf_37
+leaf_37  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Features, documentation and more: http://www.scilua.org .
+"]
+// END RANK raw_36
+
+prose_30 -> { raw_38}
+{rank=same; raw_38}
+
+raw_38 [label="raw"]
+
+
+// END RANK prose_30
+
+raw_38 -> leaf_39
+leaf_39  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+This file is part of the LJSQLite3 library, which is released under the MIT
+license: full text in file LICENSE.TXT in the library's root folder.
+
+"]
+// END RANK raw_38
+
+section_6 -> { header_40 prose_41 prose_42 codeblock_43 section_44}
+{rank=same; header_40 prose_41 prose_42 codeblock_43 section_44}
+
+header_40 [label="3 : imports"]
+
+prose_41 [label="prose"]
+
+prose_42 [label="prose"]
+
+codeblock_43 [label="code block 31-37"]
+
+section_44 [label="section: 40-77"]
+
+
+// END RANK section_6
+
+header_40 -> leaf_45
+leaf_45  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** imports"]
+// END RANK header_40
+
+prose_41 -> { raw_46 prespace_47 literal_48 raw_49}
+{rank=same; raw_46 prespace_47 literal_48 raw_49}
+
+raw_46 [label="raw"]
+
+prespace_47 [label="prespace"]
+
+literal_48 [label="literal"]
+
+raw_49 [label="raw"]
+
+
+// END RANK prose_41
+
+raw_46 -> leaf_50
+leaf_50  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+We'll wrap this whole thing in a"]
+// END RANK raw_46
+
+prespace_47 -> leaf_51
+leaf_51  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_47
+
+literal_48 -> leaf_52
+leaf_52  [color=Gray,shape=rectangle,fontname=Inconsolata,label="do"]
+// END RANK literal_48
+
+raw_49 -> leaf_53
+leaf_53  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" block so local upvalues disappear.
+"]
+// END RANK raw_49
+
+prose_42 -> { raw_54 prespace_55 literal_56 raw_57 prespace_58 literal_59 raw_60 prespace_61 literal_62 raw_63 prespace_64 literal_65 raw_66}
+{rank=same; raw_54 prespace_55 literal_56 raw_57 prespace_58 literal_59 raw_60 prespace_61 literal_62 raw_63 prespace_64 literal_65 raw_66}
+
+raw_54 [label="raw"]
+
+prespace_55 [label="prespace"]
+
+literal_56 [label="literal"]
+
+raw_57 [label="raw"]
+
+prespace_58 [label="prespace"]
+
+literal_59 [label="literal"]
+
+raw_60 [label="raw"]
+
+prespace_61 [label="prespace"]
+
+literal_62 [label="literal"]
+
+raw_63 [label="raw"]
+
+prespace_64 [label="prespace"]
+
+literal_65 [label="literal"]
+
+raw_66 [label="raw"]
+
+
+// END RANK prose_42
+
+raw_54 -> leaf_67
+leaf_67  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Instead of"]
+// END RANK raw_54
+
+prespace_55 -> leaf_68
+leaf_68  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_55
+
+literal_56 -> leaf_69
+leaf_69  [color=Gray,shape=rectangle,fontname=Inconsolata,label="return"]
+// END RANK literal_56
+
+raw_57 -> leaf_70
+leaf_70  [color=Gray,shape=rectangle,fontname=Inconsolata,label="ing a module, we'll bind everything to a local variable"]
+// END RANK raw_57
+
+prespace_58 -> leaf_71
+leaf_71  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_58
+
+literal_59 -> leaf_72
+leaf_72  [color=Gray,shape=rectangle,fontname=Inconsolata,label="sqlayer"]
+// END RANK literal_59
+
+raw_60 -> leaf_73
+leaf_73  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".  Once everything is constructed, we will assign it the global name"]
+// END RANK raw_60
+
+prespace_61 -> leaf_74
+leaf_74  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_61
+
+literal_62 -> leaf_75
+leaf_75  [color=Gray,shape=rectangle,fontname=Inconsolata,label="sql"]
+// END RANK literal_62
+
+raw_63 -> leaf_76
+leaf_76  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" and set"]
+// END RANK raw_63
+
+prespace_64 -> leaf_77
+leaf_77  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_64
+
+literal_65 -> leaf_78
+leaf_78  [color=Gray,shape=rectangle,fontname=Inconsolata,label="sqlayer"]
+// END RANK literal_65
+
+raw_66 -> leaf_79
+leaf_79  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" to nil.
+"]
+// END RANK raw_66
+
+codeblock_43 -> leaf_80
+leaf_80  [color=Gray,shape=rectangle,fontname=Inconsolata,label="local sqlayer = {}
+do
+   local ffi  = require \"ffi\"
+   local bit  = require \"bit\"
+"]
+// END RANK codeblock_43
+
+section_44 -> { header_81 prose_82 codeblock_83}
+{rank=same; header_81 prose_82 codeblock_83}
+
+header_81 [label="4 : helper functions"]
+
+prose_82 [label="prose"]
+
+codeblock_83 [label="code block 42-75"]
+
+
+// END RANK section_44
+
+header_81 -> leaf_84
+leaf_84  [color=Gray,shape=rectangle,fontname=Inconsolata,label="**** helper functions"]
+// END RANK header_81
+
+prose_82 -> { raw_85}
+{rank=same; raw_85}
+
+raw_85 [label="raw"]
+
+
+// END RANK prose_82
+
+raw_85 -> leaf_86
+leaf_86  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+"]
+// END RANK raw_85
+
+codeblock_83 -> leaf_87
+leaf_87  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local insert = table.insert
+
+   -- CREDIT: Steve Dovan snippet.
+   local function split(s, re)
+     local i1, ls = 1, { }
+     if not re then re = '%s+' end
+     if re == '' then return { s } end
+     while true do
+       local i2, i3 = s:find(re, i1)
+       if not i2 then
+         local last = s:sub(i1)
+         if last ~= '' then insert(ls, last) end
+         if #ls == 1 and ls[1] == '' then
+           return  { }
+         else
+           return ls
+         end
+       end
+       insert(ls, s:sub(i1, i2 - 1))
+       i1 = i3 + 1
+     end
+   end
+
+   local function trim(s)
+     return (s:gsub(\"^%s*(.-)%s*$\", \"%1\"))
+   end
+
+   local function err(code, msg)
+     io.write(debug.traceback())
+     error(\"ljsqlite3[\"..code..\"] \"..msg)
+
+   end"]
+// END RANK codeblock_83
+
+section_7 -> { header_88 prose_89 prose_90 codeblock_91 codeblock_92}
+{rank=same; header_88 prose_89 prose_90 codeblock_91 codeblock_92}
+
+header_88 [label="3 : SQLite FFI"]
+
+prose_89 [label="prose"]
+
+prose_90 [label="prose"]
+
+codeblock_91 [label="code block 88-704"]
+
+codeblock_92 [label="code block 706-709"]
+
+
+// END RANK section_7
+
+header_88 -> leaf_93
+leaf_93  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** SQLite FFI"]
+// END RANK header_88
+
+prose_89 -> { raw_94 prespace_95 literal_96 raw_97}
+{rank=same; raw_94 prespace_95 literal_96 raw_97}
+
+raw_94 [label="raw"]
+
+prespace_95 [label="prespace"]
+
+literal_96 [label="literal"]
+
+raw_97 [label="raw"]
+
+
+// END RANK prose_89
+
+raw_94 -> leaf_98
+leaf_98  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+Some of this should eventually be replaced with a statically linked struct, as
+we were doing with"]
+// END RANK raw_94
+
+prespace_95 -> leaf_99
+leaf_99  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_95
+
+literal_96 -> leaf_100
+leaf_100  [color=Gray,shape=rectangle,fontname=Inconsolata,label="femto"]
+// END RANK literal_96
+
+raw_97 -> leaf_101
+leaf_101  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".  This will cause our SQLite binary to be
+statically linked to the binary, which I'm pretty sure doesn't currently
+happen.
+"]
+// END RANK raw_97
+
+prose_90 -> { raw_102}
+{rank=same; raw_102}
+
+raw_102 [label="raw"]
+
+
+// END RANK prose_90
+
+raw_102 -> leaf_103
+leaf_103  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Low priority, since we aren't really out there flogging brand-new features of
+SQLite, so the system library is likely to be just fine.
+"]
+// END RANK raw_102
+
+codeblock_91 -> leaf_104
+leaf_104  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   -- Codes -----------------------------------------------------------------------
+   local sqlconstants = {} -- SQLITE_* and OPEN_* declarations.
+   local codes = {
+     [0] = \"OK\", \"ERROR\", \"INTERNAL\", \"PERM\", \"ABORT\", \"BUSY\", \"LOCKED\", \"NOMEM\",
+     \"READONLY\", \"INTERRUPT\", \"IOERR\", \"CORRUPT\", \"NOTFOUND\", \"FULL\", \"CANTOPEN\",
+     \"PROTOCOL\", \"EMPTY\", \"SCHEMA\", \"TOOBIG\", \"CONSTRAINT\", \"MISMATCH\", \"MISUSE\",
+     \"NOLFS\", \"AUTH\", \"FORMAT\", \"RANGE\", \"NOTADB\", [100] = \"ROW\", [101] = \"DONE\"
+   } -- From 0 to 26.
+
+   do
+     local types = { \"INTEGER\", \"FLOAT\", \"TEXT\", \"BLOB\", \"NULL\" } -- From 1 to 5.
+
+     local opens = {
+       READONLY =        0x00000001;
+       READWRITE =       0x00000002;
+       CREATE =          0x00000004;
+       DELETEONCLOSE =   0x00000008;
+       EXCLUSIVE =       0x00000010;
+       AUTOPROXY =       0x00000020;
+       URI =             0x00000040;
+       MAIN_DB =         0x00000100;
+       TEMP_DB =         0x00000200;
+       TRANSIENT_DB =    0x00000400;
+       MAIN_JOURNAL =    0x00000800;
+       TEMP_JOURNAL =    0x00001000;
+       SUBJOURNAL =      0x00002000;
+       MASTER_JOURNAL =  0x00004000;
+       NOMUTEX =         0x00008000;
+       FULLMUTEX =       0x00010000;
+       SHAREDCACHE =     0x00020000;
+       PRIVATECACHE =    0x00040000;
+       WAL =             0x00080000;
+     }
+
+     local t = sqlconstants
+     local pre = \"static const int32_t SQLITE_\"
+     for i=0,26    do t[#t+1] = pre..codes[i]..\"=\"..i..\";\\n\" end
+     for i=100,101 do t[#t+1] = pre..codes[i]..\"=\"..i..\";\\n\" end
+     for i=1,5     do t[#t+1] = pre..types[i]..\"=\"..i..\";\\n\" end
+     pre = pre..\"OPEN_\"
+     for k,v in pairs(opens) do
+       t[#t+1] = pre..k..\"=\"..bit.tobit(v)..\";\\n\"
+     end
+   end
+
+   -- Cdef ------------------------------------------------------------------------
+   -- SQLITE_*, OPEN_*
+
+   ffi.cdef(table.concat(sqlconstants))
+
+   -- sqlite3*, ljsqlite3_*
+   ffi.cdef[[
+   // Typedefs.
+   typedef struct sqlite3 sqlite3;
+   typedef struct sqlite3_stmt sqlite3_stmt;
+   typedef void (*sqlite3_destructor_type)(void*);
+   typedef struct sqlite3_context sqlite3_context;
+   typedef struct Mem sqlite3_value;
+
+   // Get informative error message.
+   const char *sqlite3_errmsg(sqlite3*);
+
+   // Connection.
+   int sqlite3_open_v2(const char *filename, sqlite3 **ppDb, int flags,
+     const char *zVfs);
+   int sqlite3_close(sqlite3*);
+   int sqlite3_busy_timeout(sqlite3*, int ms);
+
+   // Statement.
+   int sqlite3_prepare_v2(sqlite3 *conn, const char *zSql, int nByte,
+     sqlite3_stmt **ppStmt, const char **pzTail);
+   int sqlite3_step(sqlite3_stmt*);
+   int sqlite3_reset(sqlite3_stmt *pStmt);
+   int sqlite3_finalize(sqlite3_stmt *pStmt);
+
+   // Extra functions for SELECT.
+   int sqlite3_column_count(sqlite3_stmt *pStmt);
+   const char *sqlite3_column_name(sqlite3_stmt*, int N);
+   int sqlite3_column_type(sqlite3_stmt*, int iCol);
+
+   // Get value from SELECT.
+   int64_t sqlite3_column_int64(sqlite3_stmt*, int iCol);
+   double sqlite3_column_double(sqlite3_stmt*, int iCol);
+   int sqlite3_column_bytes(sqlite3_stmt*, int iCol);
+   const unsigned char *sqlite3_column_text(sqlite3_stmt*, int iCol);
+   const void *sqlite3_column_blob(sqlite3_stmt*, int iCol);
+
+   // Set value in bind.
+   int sqlite3_bind_int64(sqlite3_stmt*, int, int64_t);
+   int sqlite3_bind_double(sqlite3_stmt*, int, double);
+   int sqlite3_bind_null(sqlite3_stmt*, int);
+   int sqlite3_bind_text(sqlite3_stmt*, int, const char*, int n, void(*)(void*));
+   int sqlite3_bind_blob(sqlite3_stmt*, int, const void*, int n, void(*)(void*));
+
+   int sqlite3_bind_parameter_index(sqlite3_stmt *stmt, const char *name);
+
+   // Clear bindings.
+   int sqlite3_clear_bindings(sqlite3_stmt*);
+
+   // Get value in callbacks.
+   int sqlite3_value_type(sqlite3_value*);
+   int64_t sqlite3_value_int64(sqlite3_value*);
+   double sqlite3_value_double(sqlite3_value*);
+   int sqlite3_value_bytes(sqlite3_value*);
+   const unsigned char *sqlite3_value_text(sqlite3_value*); //Not used.
+   const void *sqlite3_value_blob(sqlite3_value*);
+
+   // Set value in callbacks.
+   void sqlite3_result_error(sqlite3_context*, const char*, int);
+   void sqlite3_result_int64(sqlite3_context*, int64_t);
+   void sqlite3_result_double(sqlite3_context*, double);
+   void sqlite3_result_null(sqlite3_context*);
+   void sqlite3_result_text(sqlite3_context*, const char*, int, void(*)(void*));
+   void sqlite3_result_blob(sqlite3_context*, const void*, int, void(*)(void*));
+
+   // Persistency of data in callbacks (here just a pointer for tagging).
+   void *sqlite3_aggregate_context(sqlite3_context*, int nBytes);
+
+   // Typedefs for callbacks.
+   typedef void (*ljsqlite3_cbstep)(sqlite3_context*,int,sqlite3_value**);
+   typedef void (*ljsqlite3_cbfinal)(sqlite3_context*);
+
+   // Register callbacks.
+   int sqlite3_create_function(
+     sqlite3 *conn,
+     const char *zFunctionName,
+     int nArg,
+     int eTextRep,
+     void *pApp,
+     void (*xFunc)(sqlite3_context*,int,sqlite3_value**),
+     void (*xStep)(sqlite3_context*,int,sqlite3_value**),
+     void (*xFinal)(sqlite3_context*)
+   );
+   ]]
+
+   --------------------------------------------------------------------------------
+   local sql = ffi.load(\"sqlite3\")
+
+   local transient = ffi.cast(\"sqlite3_destructor_type\", -1)
+   local int64_ct = ffi.typeof(\"int64_t\")
+
+   local blob_mt = {} -- For tagging only.
+
+   local function blob(str)
+     return setmetatable({ str }, blob_mt)
+   end
+
+   local connstmt = {} -- Statements for a conn.
+   local conncb = {} -- Callbacks for a conn.
+   local aggregatestate = {} -- Aggregate states.
+
+   local stmt_step
+
+   local stmt_mt, stmt_ct = {}
+   stmt_mt.__index = stmt_mt
+
+   local conn_mt, conn_ct = {}
+   conn_mt.__index = conn_mt
+
+   -- Checks ----------------------------------------------------------------------
+
+   -- Helper function to get error msg and code from sqlite.
+   local function codemsg(pconn, code)
+     return codes[code]:lower(), ffi.string(sql.sqlite3_errmsg(pconn))
+   end
+
+   -- Throw error for a given connection.
+   local function E_conn(pconn, code)
+     local code, msg = codemsg(pconn, code)
+     err(code, msg)
+   end
+
+   -- Test code is OK or throw error for a given connection.
+   local function T_okcode(pconn, code)
+     if code ~= sql.SQLITE_OK then
+       E_conn(pconn, code)
+     end
+   end
+
+   local function T_open(x)
+     if x._closed then
+       err(\"misuse\", \"object is closed\")
+     end
+   end
+
+   -- Getters / Setters to minimize code duplication ------------------------------
+   local sql_get_code = [=[
+   return function(stmt_or_value <opt_i>)
+     local t = sql.sqlite3_<variant>_type(stmt_or_value <opt_i>)
+     if t == sql.SQLITE_INTEGER then
+       return sql.sqlite3_<variant>_int64(stmt_or_value <opt_i>)
+     elseif t == sql.SQLITE_FLOAT then
+       return sql.sqlite3_<variant>_double(stmt_or_value <opt_i>)
+     elseif t == sql.SQLITE_TEXT then
+       local nb = sql.sqlite3_<variant>_bytes(stmt_or_value <opt_i>)
+       return ffi.string(sql.sqlite3_<variant>_text(stmt_or_value <opt_i>), nb)
+     elseif t == sql.SQLITE_BLOB then
+       local nb = sql.sqlite3_<variant>_bytes(stmt_or_value <opt_i>)
+       return ffi.string(sql.sqlite3_<variant>_blob(stmt_or_value <opt_i>), nb)
+     elseif t == sql.SQLITE_NULL then
+       return nil
+     else
+       err(\"constraint\", \"unexpected SQLite3 type\")
+     end
+   end
+   ]=]
+
+   local sql_set_code = [=[
+   return function(stmt_or_value, v <opt_i>)
+     local t = type(v)
+     if ffi.istype(int64_ct, v) then
+       return sql.sqlite3_<variant>_int64(stmt_or_value <opt_i>, v)
+     elseif t == \"number\" then
+       return sql.sqlite3_<variant>_double(stmt_or_value <opt_i>, v)
+     elseif t == \"string\" then
+       return sql.sqlite3_<variant>_text(stmt_or_value <opt_i>, v, #v,
+         transient)
+     elseif t == \"table\" and getmetatable(v) == blob_mt then
+       v = v[1]
+       return sql.sqlite3_<variant>_blob(stmt_or_value <opt_i>, v, #v,
+         transient)
+     elseif t == \"nil\" then
+       return sql.sqlite3_<variant>_null(stmt_or_value <opt_i>)
+     else
+       err(\"constraint\", \"unexpected Lua type\")
+     end
+   end
+   ]=]
+
+   -- Environment for setters/getters.
+   local sql_env = {
+     sql          = sql,
+     transient    = transient,
+     ffi          = ffi,
+     int64_ct     = int64_ct,
+     blob_mt      = blob_mt,
+     getmetatable = getmetatable,
+     err          = err,
+     type         = type
+   }
+
+   local function sql_format(s, variant, index)
+     return s:gsub(\"<variant>\", variant):gsub(\"<opt_i>\", index)
+   end
+
+   local function loadcode(s, env)
+     local ret = assert(loadstring(s))
+     if env then setfenv(ret, env) end
+     return ret()
+   end
+
+   -- Must always be called from *:_* function due to error level 4.
+   local get_column = loadcode(sql_format(sql_get_code, \"column\", \",i\"),   sql_env)
+   local get_value  = loadcode(sql_format(sql_get_code, \"value\" , \"  \"),   sql_env)
+   local set_column = loadcode(sql_format(sql_set_code, \"bind\"  , \",i\"),   sql_env)
+   local set_value  = loadcode(sql_format(sql_set_code, \"result\", \"  \"),   sql_env)
+
+   -- Connection ------------------------------------------------------------------
+   local open_modes = {
+     ro = sql.SQLITE_OPEN_READONLY,
+     rw = sql.SQLITE_OPEN_READWRITE,
+     rwc = bit.bor(sql.SQLITE_OPEN_READWRITE, sql.SQLITE_OPEN_CREATE)
+   }
+
+   local function open(str, mode)
+     mode = mode or \"rwc\"
+     mode = open_modes[mode]
+     if not mode then
+       err(\"constraint\", \"argument #2 to open must be ro, rw, or rwc\")
+     end
+     local aptr = ffi.new(\"sqlite3*[1]\")
+     -- Usually aptr is set even if error code, so conn always needs to be closed.
+     local code = sql.sqlite3_open_v2(str, aptr, mode, nil)
+     local conn = conn_ct(aptr[0], false)
+     -- Must create this anyway due to conn:close() function.
+     connstmt[conn] = setmetatable({}, { __mode = \"k\" })
+     conncb[conn] = { scalar = {}, step = {}, final = {} }
+     if code ~= sql.SQLITE_OK then
+       local code, msg = codemsg(conn._ptr, code) -- Before closing!
+       conn:close() -- Free resources, should not fail here in this case!
+       err(code, msg)
+     end
+     return conn
+   end
+
+   function conn_mt:close() T_open(self)
+      -- Close all stmt linked to conn.
+     for k,_ in pairs(connstmt[self]) do if not k._closed then k:close() end end
+      -- Close all callbacks linked to conn.
+     for _,v in pairs(conncb[self].scalar) do v:free() end
+     for _,v in pairs(conncb[self].step)   do v:free() end
+     for _,v in pairs(conncb[self].final)  do v:free() end
+     local code = sql.sqlite3_close(self._ptr)
+     T_okcode(self._ptr, code)
+     connstmt[self] = nil -- Table connstmt is not weak, need to clear manually.
+     conncb[self] = nil
+     self._closed = true -- Set only if close succeded.
+   end
+
+   function conn_mt:__gc()
+     if not self._closed then self:close() end
+   end
+
+   function conn_mt:prepare(stmtstr) T_open(self)
+     local aptr = ffi.new(\"sqlite3_stmt*[1]\")
+     -- If error code aptr NULL, so no need to close anything.
+     local code = sql.sqlite3_prepare_v2(self._ptr, stmtstr, #stmtstr, aptr, nil)
+     T_okcode(self._ptr, code)
+     local stmt = stmt_ct(aptr[0], false, self._ptr, code)
+     connstmt[self][stmt] = true
+     return stmt
+   end
+
+   -- Connection exec, __call, rowexec --------------------------------------------
+   function conn_mt:exec(commands, get) T_open(self)
+     local cmd1 = split(commands, \";\")
+     local res, n
+     for i=1,#cmd1 do
+       local cmd = trim(cmd1[i])
+       if #cmd > 0 then
+         local stmt = self:prepare(cmd)
+         res, n = stmt:resultset(get)
+         stmt:close()
+       end
+     end
+     return res, n -- Only last record is returned.
+   end
+
+   function conn_mt:rowexec(command) T_open(self)
+     local stmt = self:prepare(command)
+     local res = stmt:_step()
+     if stmt:_step() then
+       err(\"misuse\", \"multiple records returned, 1 expected\")
+     end
+     stmt:close()
+     if res then
+       return unpack(res)
+     else
+       return nil
+     end
+   end
+
+   function conn_mt:__call(commands, out) T_open(self)
+     out = out or print
+     local cmd1 = split(commands, \";\")
+     for c=1,#cmd1 do
+       local cmd = trim(cmd1[c])
+       if #cmd > 0 then
+         local stmt = self:prepare(cmd)
+         local ret, n = stmt:resultset()
+         if ret then -- All the results get handled, not only last one.
+           out(unpack(ret[0])) -- Headers are printed.
+           for i=1,n do
+             local o = {}
+             for j=1,#ret[0] do
+               local v = ret[j][i]
+               if type(v) == \"nil\" then v = \"\" end -- Empty strings for NULLs.
+               o[#o+1] = tostring(v)
+             end
+             out(unpack(o))
+           end
+         end
+         stmt:close()
+       end
+     end
+   end
+
+   -- Callbacks -------------------------------------------------------------------
+   -- Update (one of) callbacks registry for sqlite functions.
+   local function updatecb(self, where, name, f)
+     local cbs = conncb[self][where]
+     if cbs[name] then -- Callback already present, free old one.
+       cbs[name]:free()
+     end
+     cbs[name] = f -- Could be nil and that's fine.
+   end
+
+   -- Return manually casted callback that sqlite expects, scalar.
+   local function scalarcb(name, f)
+     local values = {} -- Conversion buffer.
+     local function sqlf(context, nvalues, pvalues)
+       -- Indexing 0,N-1.
+       for i=1,nvalues do values[i] = get_value(pvalues[i - 1]) end
+       -- Throw error via sqlite function if necessary.
+       local ok, result = pcall(f, unpack(values, 1, nvalues))
+       if not ok then
+         local msg = \"Lua registered scalar function \"..name..\" error: \"..result
+         sql.sqlite3_result_error(context, msg, #msg)
+       else
+         set_value(context, result)
+       end
+     end
+     return ffi.cast(\"ljsqlite3_cbstep\", sqlf)
+   end
+
+   -- Return the state for aggregate case (created via initstate()). We use the ptr
+   -- returned from aggregate_context() for tagging only, all the state data is
+   -- handled from Lua side.
+   local function getstate(context, initstate, size)
+     -- Only pointer address relevant for indexing, size irrelevant.
+     local ptr = sql.sqlite3_aggregate_context(context, size)
+     local pid = tonumber(ffi.cast(\"intptr_t\",ptr))
+     local state = aggregatestate[pid]
+     if type(state) == \"nil\" then
+       state = initstate()
+       aggregatestate[pid] = state
+     end
+     return state, pid
+   end
+
+   -- Return manually casted callback that sqlite expects, stepper for aggregate.
+   local function stepcb(name, f, initstate)
+     local values = {} -- Conversion buffer.
+     local function sqlf(context, nvalues, pvalues)
+       -- Indexing 0,N-1.
+       for i=1,nvalues do values[i] = get_value(pvalues[i - 1]) end
+       local state = getstate(context, initstate, 1)
+       -- Throw error via sqlite function if necessary.
+       local ok, result = pcall(f, state, unpack(values, 1, nvalues))
+       if not ok then
+         local msg = \"Lua registered step function \"..name..\" error: \"..result
+         sql.sqlite3_result_error(context, msg, #msg)
+       end
+     end
+     return ffi.cast(\"ljsqlite3_cbstep\", sqlf)
+   end
+
+   -- Return manually casted callback that sqlite expects, finalizer for aggregate.
+   local function finalcb(name, f, initstate)
+     local function sqlf(context)
+       local state, pid = getstate(context, initstate, 0)
+       aggregatestate[pid] = nil -- Clear the state.
+       local ok, result = pcall(f, state)
+       -- Throw error via sqlite function if necessary.
+       if not ok then
+         local msg = \"Lua registered final function \"..name..\" error: \"..result
+         sql.sqlite3_result_error(context, msg, #msg)
+       else
+         set_value(context, result)
+       end
+     end
+     return ffi.cast(\"ljsqlite3_cbfinal\", sqlf)
+   end
+
+   function conn_mt:setscalar(name, f) T_open(self)
+     jit.off(stmt_step) -- Necessary to avoid bad calloc in some use cases.
+     local cbf = f and scalarcb(name, f) or nil
+     local code = sql.sqlite3_create_function(self._ptr, name, -1, 5, nil,
+       cbf, nil, nil) -- If cbf nil this clears the function is sqlite.
+     T_okcode(self._ptr, code)
+     updatecb(self, \"scalar\", name, cbf) -- Update and clear old.
+   end
+
+   function conn_mt:setaggregate(name, initstate, step, final) T_open(self)
+     jit.off(stmt_step) -- Necessary to avoid bad calloc in some use cases.
+     local cbs = step  and stepcb (name, step,  initstate) or nil
+     local cbf = final and finalcb(name, final, initstate) or nil
+     local code = sql.sqlite3_create_function(self._ptr, name, -1, 5, nil,
+       nil, cbs, cbf) -- If cbs, cbf nil this clears the function is sqlite.
+     T_okcode(self._ptr, code)
+     updatecb(self, \"step\", name, cbs) -- Update and clear old.
+     updatecb(self, \"final\", name, cbf) -- Update and clear old.
+   end
+
+   conn_ct = ffi.metatype(\"struct { sqlite3* _ptr; bool _closed; }\", conn_mt)
+
+   -- Statement -------------------------------------------------------------------
+   function stmt_mt:reset() T_open(self)
+     -- Ignore possible error code, it would be repetition of error raised during
+     -- most recent evaluation of statement which would have been raised already.
+     sql.sqlite3_reset(self._ptr)
+     self._code = sql.SQLITE_OK -- Always succeds.
+     return self
+   end
+
+   function stmt_mt:close() T_open(self)
+     -- Ignore possible error code, it would be repetition of error raised during
+     -- most recent evaluation of statement which would have been raised already.
+     sql.sqlite3_finalize(self._ptr)
+     self._code = sql.SQLITE_OK -- Always succeds.
+     self._closed = true -- Must be called exaclty once.
+   end
+
+   function stmt_mt:__gc()
+     if not self._closed then self:close() end
+   end
+
+   -- Statement step, resultset ---------------------------------------------------
+   function stmt_mt:_ncol()
+     return sql.sqlite3_column_count(self._ptr)
+   end
+
+   function stmt_mt:_header(h)
+     for i=1,self:_ncol() do -- Here indexing 0,N-1.
+       h[i] = ffi.string(sql.sqlite3_column_name(self._ptr, i - 1))
+     end
+   end
+
+   stmt_step = function(self, row, header)
+     -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
+     if self._code == sql.SQLITE_DONE then return nil end -- Already finished.
+     self._code = sql.sqlite3_step(self._ptr)
+     if self._code == sql.SQLITE_ROW then
+       -- All the sql.* functions called never errors here.
+       row = row or {}
+       for i=1,self:_ncol() do
+         row[i] = get_column(self._ptr, i - 1)
+       end
+       if header then self:_header(header) end
+       return row, header
+     elseif self._code == sql.SQLITE_DONE then -- Have finished now.
+       return nil
+     else -- If code not DONE or ROW then it's error.
+       E_conn(self._conn, self._code)
+     end
+   end
+   stmt_mt._step = stmt_step
+
+   function stmt_mt:step(row, header) T_open(self)
+     return self:_step(row, header)
+   end
+
+
+   -- iterator for rows
+   function stmt_mt:rows() T_open(self)
+     return function()
+       local row = self:step()
+       if row then
+         return row
+       else
+         self:clearbind():reset()
+         return nil
+       end
+     end
+   end
+
+   function stmt_mt:resultset(get, maxrecords) T_open(self)
+     get = get or \"hik\"
+     maxrecords = maxrecords or math.huge
+     if maxrecords < 1 then
+       err(\"constraint\", \"agument #1 to resultset must be >= 1\")
+     end
+     local hash, hasi, hask = get:find(\"h\"), get:find(\"i\"), get:find(\"k\")
+     local r, h = self:_step({}, {})
+     if not r then return nil, 0 end -- No records case.
+     -- First record, o is a temporary table used to get records.
+     local o = hash and { [0] = h } or {}
+     for i=1,#h do o[i] = { r[i] } end
+     -- Other records.
+     local n = 1
+     while n < maxrecords and self:_step(r) do
+       n = n + 1
+       for i=1,#h do o[i][n] = r[i] end
+     end
+
+     local out = { [0] = o[0] } -- Eventually copy colnames.
+     if hasi then -- Use numeric indexes.
+       for i=1,#h do out[i] = o[i] end
+     end
+     if hask then -- Use colnames indexes.
+       for i=1,#h do out[h[i]] = o[i] end
+     end
+     return out, n
+   end
+
+   -- Statement bind --------------------------------------------------------------
+   function stmt_mt:_bind1(i, v)
+     local code = set_column(self._ptr, v, i) -- Here indexing 1,N.
+     T_okcode(self._conn, code)
+     return self
+   end
+
+   function stmt_mt:bind1(i, v) T_open(self)
+     return self:_bind1(i, v)
+   end
+
+   function stmt_mt:bind(...) T_open(self)
+     for i=1,select(\"#\", ...) do self:_bind1(i, select(i, ...)) end
+     return self
+   end
+
+   -- note: after some thought, I've decided to let this method only handle string
+   -- values.  It would be possible to bind against numeric indices as well, but this
+   -- would do the wrong thing if given a table with the correct named keys as well as
+   -- indexed values.
+   --
+   -- Worse, it would *unpredictably* do the wrong thing, since stmts silently accept
+   -- rebinding, and `pair` offers no ordering guarantees.
+   --
+
+   function stmt_mt:bindkv(t, pre) T_open(self)
+     pre = pre or \":\"
+     for k,v in pairs(t) do
+       if type(k) == \"string\" then
+         local param = sql.sqlite3_bind_parameter_index(self._ptr, pre..k)
+         if param ~= 0 then
+           self:_bind1(param, v)
+         end
+       end
+     end
+     return self
+   end
+
+   function stmt_mt:clearbind() T_open(self)
+     local code = sql.sqlite3_clear_bindings(self._ptr)
+     T_okcode(self._conn, code)
+     return self
+   end
+
+   stmt_ct = ffi.metatype([[struct {
+     sqlite3_stmt* _ptr;
+     bool          _closed;
+     sqlite3*      _conn;
+     int32_t       _code;
+   }]], stmt_mt)"]
+// END RANK codeblock_91
+
+codeblock_92 -> leaf_105
+leaf_105  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   sqlayer.open = open
+   sqlayer.blob = blob"]
+// END RANK codeblock_92
+
+section_8 -> { header_106 prose_107 prose_108 codeblock_109 section_110 section_111 section_112 section_113}
+{rank=same; header_106 prose_107 prose_108 codeblock_109 section_110 section_111 section_112 section_113}
+
+header_106 [label="2 : Additional SQL layer"]
+
+prose_107 [label="prose"]
+
+prose_108 [label="prose"]
+
+codeblock_109 [label="code block 718-722"]
+
+section_110 [label="section: 724-736"]
+
+section_111 [label="section: 737-780"]
+
+section_112 [label="section: 781-800"]
+
+section_113 [label="section: 801-891"]
+
+
+// END RANK section_8
+
+header_106 -> leaf_114
+leaf_114  [color=Gray,shape=rectangle,fontname=Inconsolata,label="** Additional SQL layer"]
+// END RANK header_106
+
+prose_107 -> { raw_115}
+{rank=same; raw_115}
+
+raw_115 [label="raw"]
+
+
+// END RANK prose_107
+
+raw_115 -> leaf_116
+leaf_116  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+This is all code I wrote to make the library more useable.
+"]
+// END RANK raw_115
+
+prose_108 -> { raw_117}
+{rank=same; raw_117}
+
+raw_117 [label="raw"]
+
+
+// END RANK prose_108
+
+raw_117 -> leaf_118
+leaf_118  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+© 2019 Sam Putman, MIT license.
+"]
+// END RANK raw_117
+
+codeblock_109 -> leaf_119
+leaf_119  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local pcall = assert (pcall)
+   local gsub = assert(string.gsub)
+   local format = assert(string.format)"]
+// END RANK codeblock_109
+
+section_110 -> { header_120 prose_121 codeblock_122}
+{rank=same; header_120 prose_121 codeblock_122}
+
+header_120 [label="3 : sql.san(str)"]
+
+prose_121 [label="prose"]
+
+codeblock_122 [label="code block 728-734"]
+
+
+// END RANK section_110
+
+header_120 -> leaf_123
+leaf_123  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** sql.san(str)"]
+// END RANK header_120
+
+prose_121 -> { raw_124}
+{rank=same; raw_124}
+
+raw_124 [label="raw"]
+
+
+// END RANK prose_121
+
+raw_124 -> leaf_125
+leaf_125  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+Sanitizes a string for SQL(ite) quoting.
+"]
+// END RANK raw_124
+
+codeblock_122 -> leaf_126
+leaf_126  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local function san(str)
+      return gsub(str, \"'\", \"''\")
+   end
+
+   sqlayer.san = san"]
+// END RANK codeblock_122
+
+section_111 -> { header_127 prose_128 prose_129 prose_130 prose_131 prose_132 codeblock_133}
+{rank=same; header_127 prose_128 prose_129 prose_130 prose_131 prose_132 codeblock_133}
+
+header_127 [label="3 : sql.format(str)"]
+
+prose_128 [label="prose"]
+
+prose_129 [label="prose"]
+
+prose_130 [label="prose"]
+
+prose_131 [label="prose"]
+
+prose_132 [label="prose"]
+
+codeblock_133 [label="code block 758-779"]
+
+
+// END RANK section_111
+
+header_127 -> leaf_134
+leaf_134  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** sql.format(str)"]
+// END RANK header_127
+
+prose_128 -> { raw_135}
+{rank=same; raw_135}
+
+raw_135 [label="raw"]
+
+
+// END RANK prose_128
+
+raw_135 -> leaf_136
+leaf_136  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+The SQLite bindings I'm using support only an impoverished subset of the
+SQLite binds.  In the meantime we're going to use format strings, which at
+least typecheck parameters.
+"]
+// END RANK raw_135
+
+prose_129 -> { prespace_137 bold_138 raw_139 prespace_140 literal_141 raw_142}
+{rank=same; prespace_137 bold_138 raw_139 prespace_140 literal_141 raw_142}
+
+prespace_137 [label="prespace"]
+
+bold_138 [label="bold"]
+
+raw_139 [label="raw"]
+
+prespace_140 [label="prespace"]
+
+literal_141 [label="literal"]
+
+raw_142 [label="raw"]
+
+
+// END RANK prose_129
+
+prespace_137 -> leaf_143
+leaf_143  [color=Gray,shape=rectangle,fontname=Inconsolata,label=""]
+// END RANK prespace_137
+
+bold_138 -> leaf_144
+leaf_144  [color=Gray,shape=rectangle,fontname=Inconsolata,label="Update"]
+// END RANK bold_138
+
+raw_139 -> leaf_145
+leaf_145  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" I've added"]
+// END RANK raw_139
+
+prespace_140 -> leaf_146
+leaf_146  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_140
+
+literal_141 -> leaf_147
+leaf_147  [color=Gray,shape=rectangle,fontname=Inconsolata,label="bindkv"]
+// END RANK literal_141
+
+raw_142 -> leaf_148
+leaf_148  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" which helps.
+"]
+// END RANK raw_142
+
+prose_130 -> { raw_149 prespace_150 literal_151 raw_152 prespace_153 literal_154 raw_155 prespace_156 literal_157 raw_158 prespace_159 literal_160 raw_161}
+{rank=same; raw_149 prespace_150 literal_151 raw_152 prespace_153 literal_154 raw_155 prespace_156 literal_157 raw_158 prespace_159 literal_160 raw_161}
+
+raw_149 [label="raw"]
+
+prespace_150 [label="prespace"]
+
+literal_151 [label="literal"]
+
+raw_152 [label="raw"]
+
+prespace_153 [label="prespace"]
+
+literal_154 [label="literal"]
+
+raw_155 [label="raw"]
+
+prespace_156 [label="prespace"]
+
+literal_157 [label="literal"]
+
+raw_158 [label="raw"]
+
+prespace_159 [label="prespace"]
+
+literal_160 [label="literal"]
+
+raw_161 [label="raw"]
+
+
+// END RANK prose_130
+
+raw_149 -> leaf_162
+leaf_162  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+This"]
+// END RANK raw_149
+
+prespace_150 -> leaf_163
+leaf_163  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_150
+
+literal_151 -> leaf_164
+leaf_164  [color=Gray,shape=rectangle,fontname=Inconsolata,label="format"]
+// END RANK literal_151
+
+raw_152 -> leaf_165
+leaf_165  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" command sanitizes string inputs, and also replaces any"]
+// END RANK raw_152
+
+prespace_153 -> leaf_166
+leaf_166  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_153
+
+literal_154 -> leaf_167
+leaf_167  [color=Gray,shape=rectangle,fontname=Inconsolata,label="%s"]
+// END RANK literal_154
+
+raw_155 -> leaf_168
+leaf_168  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+with"]
+// END RANK raw_155
+
+prespace_156 -> leaf_169
+leaf_169  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_156
+
+literal_157 -> leaf_170
+leaf_170  [color=Gray,shape=rectangle,fontname=Inconsolata,label="'%s'"]
+// END RANK literal_157
+
+raw_158 -> leaf_171
+leaf_171  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" without making any"]
+// END RANK raw_158
+
+prespace_159 -> leaf_172
+leaf_172  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_159
+
+literal_160 -> leaf_173
+leaf_173  [color=Gray,shape=rectangle,fontname=Inconsolata,label="''%s''"]
+// END RANK literal_160
+
+raw_161 -> leaf_174
+leaf_174  [color=Gray,shape=rectangle,fontname=Inconsolata,label=", or more accurately trimming them
+if it creates them.
+"]
+// END RANK raw_161
+
+prose_131 -> { raw_175 prespace_176 literal_177 raw_178 prespace_179 literal_180 raw_181 prespace_182 literal_183 raw_184}
+{rank=same; raw_175 prespace_176 literal_177 raw_178 prespace_179 literal_180 raw_181 prespace_182 literal_183 raw_184}
+
+raw_175 [label="raw"]
+
+prespace_176 [label="prespace"]
+
+literal_177 [label="literal"]
+
+raw_178 [label="raw"]
+
+prespace_179 [label="prespace"]
+
+literal_180 [label="literal"]
+
+raw_181 [label="raw"]
+
+prespace_182 [label="prespace"]
+
+literal_183 [label="literal"]
+
+raw_184 [label="raw"]
+
+
+// END RANK prose_131
+
+raw_175 -> leaf_185
+leaf_185  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+So"]
+// END RANK raw_175
+
+prespace_176 -> leaf_186
+leaf_186  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_176
+
+literal_177 -> leaf_187
+leaf_187  [color=Gray,shape=rectangle,fontname=Inconsolata,label="sql.format(\"it's %s!\", \"it's\")"]
+// END RANK literal_177
+
+raw_178 -> leaf_188
+leaf_188  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" and"]
+// END RANK raw_178
+
+prespace_179 -> leaf_189
+leaf_189  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_179
+
+literal_180 -> leaf_190
+leaf_190  [color=Gray,shape=rectangle,fontname=Inconsolata,label="sql.format(\"it's '%s'!\", \"it's\")"]
+// END RANK literal_180
+
+raw_181 -> leaf_191
+leaf_191  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+both yield"]
+// END RANK raw_181
+
+prespace_182 -> leaf_192
+leaf_192  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_182
+
+literal_183 -> leaf_193
+leaf_193  [color=Gray,shape=rectangle,fontname=Inconsolata,label="\"it's 'it''s\""]
+// END RANK literal_183
+
+raw_184 -> leaf_194
+leaf_194  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".  I figure any apostrophes in the format string
+belong there.
+"]
+// END RANK raw_184
+
+prose_132 -> { raw_195 prespace_196 literal_197 raw_198}
+{rank=same; raw_195 prespace_196 literal_197 raw_198}
+
+raw_195 [label="raw"]
+
+prespace_196 [label="prespace"]
+
+literal_197 [label="literal"]
+
+raw_198 [label="raw"]
+
+
+// END RANK prose_132
+
+raw_195 -> leaf_199
+leaf_199  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Failure to format returns"]
+// END RANK raw_195
+
+prespace_196 -> leaf_200
+leaf_200  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_196
+
+literal_197 -> leaf_201
+leaf_201  [color=Gray,shape=rectangle,fontname=Inconsolata,label="false, err"]
+// END RANK literal_197
+
+raw_198 -> leaf_202
+leaf_202  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".
+"]
+// END RANK raw_198
+
+codeblock_133 -> leaf_203
+leaf_203  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   function sqlayer.format(str, ...)
+      local argv = {...}
+      str = gsub(str, \"%%s\", \"'%%s'\"):gsub(\"''%%s''\", \"'%%s'\")
+      for i, v in ipairs(argv) do
+         if type(v) == \"string\" then
+            argv[i] = san(v)
+         elseif type(v) == \"cdata\" then
+            -- assume this is a number of some kind
+            argv[i] = tonumber(v)
+         else
+            argv[i] = v
+         end
+      end
+      local success, ret = pcall(format, str, unpack(argv))
+      if success then
+         return ret
+      else
+         return success, ret
+      end
+   end"]
+// END RANK codeblock_133
+
+section_112 -> { header_204 prose_205 prose_206 codeblock_207}
+{rank=same; header_204 prose_205 prose_206 codeblock_207}
+
+header_204 [label="3 : sql.pexec(conn, stmt)"]
+
+prose_205 [label="prose"]
+
+prose_206 [label="prose"]
+
+codeblock_207 [label="code block 787-798"]
+
+
+// END RANK section_112
+
+header_204 -> leaf_208
+leaf_208  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** sql.pexec(conn, stmt)"]
+// END RANK header_204
+
+prose_205 -> { raw_209}
+{rank=same; raw_209}
+
+raw_209 [label="raw"]
+
+
+// END RANK prose_205
+
+raw_209 -> leaf_210
+leaf_210  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+Executes the statement on conn in protected mode.
+"]
+// END RANK raw_209
+
+prose_206 -> { raw_211 prespace_212 literal_213 raw_214}
+{rank=same; raw_211 prespace_212 literal_213 raw_214}
+
+raw_211 [label="raw"]
+
+prespace_212 [label="prespace"]
+
+literal_213 [label="literal"]
+
+raw_214 [label="raw"]
+
+
+// END RANK prose_206
+
+raw_211 -> leaf_215
+leaf_215  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Unwraps and returns success, or"]
+// END RANK raw_211
+
+prespace_212 -> leaf_216
+leaf_216  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_212
+
+literal_213 -> leaf_217
+leaf_217  [color=Gray,shape=rectangle,fontname=Inconsolata,label="false"]
+// END RANK literal_213
+
+raw_214 -> leaf_218
+leaf_218  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" and error.
+"]
+// END RANK raw_214
+
+codeblock_207 -> leaf_219
+leaf_219  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   function sqlayer.pexec(conn, stmt, col_str)
+      -- conn:exec(stmt)
+      col_str = col_str or \"hik\"
+      local success, result, nrow = pcall(conn.exec, conn, stmt, col_str)
+      if success then
+         return result, nrow
+      else
+         return false, result
+      end
+   end"]
+// END RANK codeblock_207
+
+section_113 -> { header_220 prose_221 prose_222 codeblock_223 section_224 section_225}
+{rank=same; header_220 prose_221 prose_222 codeblock_223 section_224 section_225}
+
+header_220 [label="3 : sql.lastid(conn)"]
+
+prose_221 [label="prose"]
+
+prose_222 [label="prose"]
+
+codeblock_223 [label="code block 807-812"]
+
+section_224 [label="section: 815-891"]
+
+section_225 [label="section: 892-898"]
+
+
+// END RANK section_113
+
+header_220 -> leaf_226
+leaf_226  [color=Gray,shape=rectangle,fontname=Inconsolata,label="*** sql.lastid(conn)"]
+// END RANK header_220
+
+prose_221 -> { raw_227 prespace_228 literal_229 raw_230}
+{rank=same; raw_227 prespace_228 literal_229 raw_230}
+
+raw_227 [label="raw"]
+
+prespace_228 [label="prespace"]
+
+literal_229 [label="literal"]
+
+raw_230 [label="raw"]
+
+
+// END RANK prose_221
+
+raw_227 -> leaf_231
+leaf_231  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+This could be improved by natively handling uint64_t"]
+// END RANK raw_227
+
+prespace_228 -> leaf_232
+leaf_232  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_228
+
+literal_229 -> leaf_233
+leaf_233  [color=Gray,shape=rectangle,fontname=Inconsolata,label="cdata"]
+// END RANK literal_229
+
+raw_230 -> leaf_234
+leaf_234  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".
+"]
+// END RANK raw_230
+
+prose_222 -> { raw_235}
+{rank=same; raw_235}
+
+raw_235 [label="raw"]
+
+
+// END RANK prose_222
+
+raw_235 -> leaf_236
+leaf_236  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Y'know, if we ever keep more than 53 bits width of rows in uhhhhh SQLite.
+"]
+// END RANK raw_235
+
+codeblock_223 -> leaf_237
+leaf_237  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   function sqlayer.lastRowId(conn)
+      local result = conn:rowexec \"SELECT CAST(last_insert_rowid() AS REAL)\"
+      return result
+   end"]
+// END RANK codeblock_223
+
+section_224 -> { header_238 prose_239 prose_240 prose_241 prose_242 prose_243 codeblock_244 prose_245 codeblock_246}
+{rank=same; header_238 prose_239 prose_240 prose_241 prose_242 prose_243 codeblock_244 prose_245 codeblock_246}
+
+header_238 [label="4 : conn.pragma.etc(bool)"]
+
+prose_239 [label="prose"]
+
+prose_240 [label="prose"]
+
+prose_241 [label="prose"]
+
+prose_242 [label="prose"]
+
+prose_243 [label="prose"]
+
+codeblock_244 [label="code block 829-871"]
+
+prose_245 [label="prose"]
+
+codeblock_246 [label="code block 876-889"]
+
+
+// END RANK section_224
+
+header_238 -> leaf_247
+leaf_247  [color=Gray,shape=rectangle,fontname=Inconsolata,label="**** conn.pragma.etc(bool)"]
+// END RANK header_238
+
+prose_239 -> { raw_248}
+{rank=same; raw_248}
+
+raw_248 [label="raw"]
+
+
+// END RANK prose_239
+
+raw_248 -> leaf_249
+leaf_249  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+
+A convenience wrapper over the SQL pragma commands.
+"]
+// END RANK raw_248
+
+prose_240 -> { raw_250 prespace_251 literal_252 raw_253}
+{rank=same; raw_250 prespace_251 literal_252 raw_253}
+
+raw_250 [label="raw"]
+
+prespace_251 [label="prespace"]
+
+literal_252 [label="literal"]
+
+raw_253 [label="raw"]
+
+
+// END RANK prose_240
+
+raw_250 -> leaf_254
+leaf_254  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+We can use the same interface for setting Lua-specific values, the one I need
+is"]
+// END RANK raw_250
+
+prespace_251 -> leaf_255
+leaf_255  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_251
+
+literal_252 -> leaf_256
+leaf_256  [color=Gray,shape=rectangle,fontname=Inconsolata,label="conn.pragma.nulls_are_nil(false)"]
+// END RANK literal_252
+
+raw_253 -> leaf_257
+leaf_257  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".
+"]
+// END RANK raw_253
+
+prose_241 -> { raw_258}
+{rank=same; raw_258}
+
+raw_258 [label="raw"]
+
+
+// END RANK prose_241
+
+raw_258 -> leaf_259
+leaf_259  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+This is a subtle bit of function composition with a nice result.
+"]
+// END RANK raw_258
+
+prose_242 -> { raw_260 prespace_261 literal_262 raw_263 prespace_264 literal_265 raw_266 prespace_267 literal_268 raw_269}
+{rank=same; raw_260 prespace_261 literal_262 raw_263 prespace_264 literal_265 raw_266 prespace_267 literal_268 raw_269}
+
+raw_260 [label="raw"]
+
+prespace_261 [label="prespace"]
+
+literal_262 [label="literal"]
+
+raw_263 [label="raw"]
+
+prespace_264 [label="prespace"]
+
+literal_265 [label="literal"]
+
+raw_266 [label="raw"]
+
+prespace_267 [label="prespace"]
+
+literal_268 [label="literal"]
+
+raw_269 [label="raw"]
+
+
+// END RANK prose_242
+
+raw_260 -> leaf_270
+leaf_270  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+I might be able to use this technique in"]
+// END RANK raw_260
+
+prespace_261 -> leaf_271
+leaf_271  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_261
+
+literal_262 -> leaf_272
+leaf_272  [color=Gray,shape=rectangle,fontname=Inconsolata,label="check"]
+// END RANK literal_262
+
+raw_263 -> leaf_273
+leaf_273  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" to favor"]
+// END RANK raw_263
+
+prespace_264 -> leaf_274
+leaf_274  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_264
+
+literal_265 -> leaf_275
+leaf_275  [color=Gray,shape=rectangle,fontname=Inconsolata,label="."]
+// END RANK literal_265
+
+raw_266 -> leaf_276
+leaf_276  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" over"]
+// END RANK raw_266
+
+prespace_267 -> leaf_277
+leaf_277  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_267
+
+literal_268 -> leaf_278
+leaf_278  [color=Gray,shape=rectangle,fontname=Inconsolata,label=":"]
+// END RANK literal_268
+
+raw_269 -> leaf_279
+leaf_279  [color=Gray,shape=rectangle,fontname=Inconsolata,label=".
+"]
+// END RANK raw_269
+
+prose_243 -> { raw_280 prespace_281 literal_282 raw_283 prespace_284 literal_285 raw_286}
+{rank=same; raw_280 prespace_281 literal_282 raw_283 prespace_284 literal_285 raw_286}
+
+raw_280 [label="raw"]
+
+prespace_281 [label="prespace"]
+
+literal_282 [label="literal"]
+
+raw_283 [label="raw"]
+
+prespace_284 [label="prespace"]
+
+literal_285 [label="literal"]
+
+raw_286 [label="raw"]
+
+
+// END RANK prose_243
+
+raw_280 -> leaf_287
+leaf_287  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+Note:"]
+// END RANK raw_280
+
+prespace_281 -> leaf_288
+leaf_288  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_281
+
+literal_282 -> leaf_289
+leaf_289  [color=Gray,shape=rectangle,fontname=Inconsolata,label="_prag_index"]
+// END RANK literal_282
+
+raw_283 -> leaf_290
+leaf_290  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" closes over"]
+// END RANK raw_283
+
+prespace_284 -> leaf_291
+leaf_291  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_284
+
+literal_285 -> leaf_292
+leaf_292  [color=Gray,shape=rectangle,fontname=Inconsolata,label="conn"]
+// END RANK literal_285
+
+raw_286 -> leaf_293
+leaf_293  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" and thus does have to be generated
+fresh each time.
+"]
+// END RANK raw_286
+
+codeblock_244 -> leaf_294
+leaf_294  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local pragma_pre = \"PRAGMA \"
+
+   -- Builds and returns a pragma string
+   local function __pragma(prag, value)
+      local val
+      if value == nil then
+         return pragma_pre .. prag .. \";\"
+      end
+      if type(value) == \"boolean\" then
+         val = value and \" = 1\" or \" = 0\"
+      elseif type(value) == \"string\" then
+         val = \"('\" .. san(value) .. \"')\"
+      elseif type(value) == \"number\" then
+         val = \" = \" .. tostring(value)
+      else
+         error(false, \"value of type \"
+               .. type(value) .. \", \"
+               .. tostring(value))
+      end
+      return pragma_pre .. prag .. val .. \";\"
+   end
+
+   -- Sets a pragma and checks its new value
+   local function _prag_set(conn, prag)
+      return function(value)
+         local prag_str = __pragma(prag, value)
+         conn:exec(prag_str)
+         -- check for a boolean
+         -- #todo make sure this gives sane results for a method-call pragma
+         local answer = conn:exec(pragma_pre .. prag .. \";\")
+         if answer[1] and answer[1][1] then
+            if answer[1][1] == 1 then
+               return true
+            elseif answer[1][1] == 0 then
+               return false
+            else
+               return nil
+            end
+         end
+      end
+   end"]
+// END RANK codeblock_244
+
+prose_245 -> { raw_295 prespace_296 literal_297 raw_298}
+{rank=same; raw_295 prespace_296 literal_297 raw_298}
+
+raw_295 [label="raw"]
+
+prespace_296 [label="prespace"]
+
+literal_297 [label="literal"]
+
+raw_298 [label="raw"]
+
+
+// END RANK prose_245
+
+raw_295 -> leaf_299
+leaf_299  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+This is the fun part: we swap the old metatable for a function which closes
+over our"]
+// END RANK raw_295
+
+prespace_296 -> leaf_300
+leaf_300  [color=Gray,shape=rectangle,fontname=Inconsolata,label=" "]
+// END RANK prespace_296
+
+literal_297 -> leaf_301
+leaf_301  [color=Gray,shape=rectangle,fontname=Inconsolata,label="conn"]
+// END RANK literal_297
+
+raw_298 -> leaf_302
+leaf_302  [color=Gray,shape=rectangle,fontname=Inconsolata,label=", passing it along to the pragma.
+"]
+// END RANK raw_298
+
+codeblock_246 -> leaf_303
+leaf_303  [color=Gray,shape=rectangle,fontname=Inconsolata,label="   local function new_conn_index(conn, key)
+      local function _prag_index(_, prag)
+         return _prag_set(conn, prag)
+      end
+      if key == \"pragma\" then
+         return setmetatable({}, {__index = _prag_index})
+      else
+         return conn_mt[key]
+      end
+   end
+
+   conn_mt.__index = new_conn_index"]
+// END RANK codeblock_246
+
+section_225 -> { header_304 prose_305 codeblock_306}
+{rank=same; header_304 prose_305 codeblock_306}
+
+header_304 [label="4 : End Closure and Add =sql= to _G"]
+
+prose_305 [label="prose"]
+
+codeblock_306 [label="code block 894-898"]
+
+
+// END RANK section_225
+
+header_304 -> leaf_307
+leaf_307  [color=Gray,shape=rectangle,fontname=Inconsolata,label="**** End Closure and Add =sql= to _G"]
+// END RANK header_304
+
+prose_305 -> { raw_308}
+{rank=same; raw_308}
+
+raw_308 [label="raw"]
+
+
+// END RANK prose_305
+
+raw_308 -> leaf_309
+leaf_309  [color=Gray,shape=rectangle,fontname=Inconsolata,label="
+"]
+// END RANK raw_308
+
+codeblock_306 -> leaf_310
+leaf_310  [color=Gray,shape=rectangle,fontname=Inconsolata,label="end
+sql = sqlayer
+sqlayer = nil"]
+// END RANK codeblock_306
+
+
+}

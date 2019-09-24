@@ -1,40 +1,54 @@
 #include <stdio.h>
+#include <string.h>
 #include <lua.h>
 #include <lualib.h>
 #include <lauxlib.h>
 #include "luajit.h"
 #include "sqlite3.h"
 
-#include "femto_class.h"
-#include "femto.h"
-
 // declaration for registries of static object libraries
 LUALIB_API int luaopen_luv (lua_State *L);
 LUALIB_API int luaopen_lpeg (lua_State *L);
 LUALIB_API int luaopen_utf8(lua_State *L);
 
-// Set up a struct to hold the femto library
+// Constant arrays of compiled bytecode
 
-#include "femto_struct.h"
+#include "sql.h"
+#include "lfs.h"
+#include "preamble.h"
+#include "load_char.h"
+#include "argparse.h"
+#include "afterward.h"
 
-// Populate the instance
-
-#include "femto_instance.h"
-
-// Big ol' static string.
-
-#include "boot_string.h"
-
-// And another. This we can make into bytecode, it's pure Lua.
-
-
-
-#include "load_string.h"
+const char * LFS_NAME = "@lfs";
+const char * SQL_NAME = "@sql";
+const char * PREAMBLE_NAME = "@preamble";
+const char * ARGPARSE_NAME = "@argparse";
+const char * LOAD_NAME = "@load";
+const char * AFTERWARD_NAME = "@afterward";
 
 // Print an error.
 static int lua_die(lua_State *L, int errno) {
-    fprintf(stderr, "%d: %s\n", errno, lua_tostring(L, -1));
+    fprintf(stderr, "err #%d: %s\n", errno, lua_tostring(L, -1));
     return errno;
+}
+
+// debug-load a string (or bytecode)
+
+static int debug_load(lua_State *L, const char bytecode[], int byte_len, const char * name) {
+    lua_getglobal(L, "debug");
+    lua_getfield(L, -1, "traceback");
+    lua_replace(L, -2);
+    int status = luaL_loadbuffer(L, bytecode, byte_len, name);
+    if (status != 0) {
+       return lua_die(L, status);
+    }
+    int ret = lua_pcall(L, 0, 0, -2);
+    if (ret != 0) {
+        return lua_die(L, ret);
+    }
+    lua_pop(L, 1);
+    return ret;
 }
 
 //  main()
@@ -42,8 +56,6 @@ static int lua_die(lua_State *L, int errno) {
 //  We do the minimum necessary and hand control to Lua.
 
 int main(int argc, char *argv[]) {
-    int status;
-
     //  Start a VM
     lua_State *L = luaL_newstate();
 
@@ -71,43 +83,13 @@ int main(int argc, char *argv[]) {
     lua_setfield(L, -2, "lpeg");
     lua_pushcfunction(L, luaopen_utf8);
     lua_setfield(L, -2, "lua-utf8");
-
-    lua_pop(L, 2); /* pop 'package' and 'preload' tables */
-    // constant strings, the poor man's bytecode!
-    status = luaL_loadstring(L, LUA_BOOT);
-    if (status != 0) {
-        return lua_die(L, status);
-    }
-    int ret = lua_pcall(L, 0, 0, 0);
-    if (ret != 0) {
-        return lua_die(L, ret);
-    }
-    // This prelude draws the FFI into memory, now to
-    // pass in our jump table
-    lua_getfield(L, LUA_GLOBALSINDEX, "__mkfemto");
-    lua_pushlightuserdata(L, (void *) &Femto);
-    ret = lua_pcall(L, 1, 0, 0);
-    if (ret != 0) {
-        return lua_die(L, ret);
-    }
-    //  Remove __mkfemto from the namespace, freeing it
-    lua_pushnil(L);
-    lua_setglobal(L, "__mkfemto");
-    printf("femto\n");
-    if (argc > 1) {
-        // load.lua is interned here
-        // This one can probably be bytecode
-
-        status = luaL_loadstring(L, LUA_LOAD);
-        if (status != 0) {
-            return lua_die(L, status);
-        }
-        ret = lua_pcall(L, 0, 0, 0);
-        if (ret != 0) {
-            return lua_die(L, ret);
-        }
-    }
-
+    debug_load(L, LUA_SQL, sizeof LUA_SQL, SQL_NAME);
+    debug_load(L, LUA_LFS, sizeof LUA_LFS, LFS_NAME);
+    debug_load(L, LUA_PREAMBLE, sizeof LUA_PREAMBLE, PREAMBLE_NAME);
+    debug_load(L, LUA_ARGPARSE, sizeof LUA_ARGPARSE, ARGPARSE_NAME);
+    debug_load(L, LUA_LOAD, sizeof LUA_LOAD, LOAD_NAME);
+    // et voila
+    debug_load(L, LUA_AFTERWARD, sizeof LUA_AFTERWARD, AFTERWARD_NAME);
     lua_close(L); // Close Lua
     return 0;
 }

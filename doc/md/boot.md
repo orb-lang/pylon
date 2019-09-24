@@ -19,10 +19,12 @@ have no need for an ``#!c`` block in this file.
 _BRIDGE = true
 
 -- For now let's stay clear of LUA_PATH and friends.
-
-package.path = "./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;"
-               .. "./lib/?.lua;./lib/?/?.lua;"
-               .. "./lib/?/src/?.lua;./lib/?/src/?/?.lua"
+-- update: how dumb can I fucking be
+--[[
+--package.path = "./?.lua;./?/?.lua;./src/?.lua;./src/?/?.lua;"
+--               .. "./lib/?.lua;./lib/?/?.lua;"
+--               .. "./lib/?/src/?.lua;./lib/?/src/?/?.lua"
+--]]
 
 ffi = require "ffi"
 ```
