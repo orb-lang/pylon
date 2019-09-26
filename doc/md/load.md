@@ -212,7 +212,7 @@ if rawget(_G, "arg") ~= nil then
     end
     if arg[0] == "OLD" then
         _strip(arg)
-        _makeParsyHappen()
+        --_makeParsyHappen()
         -- do old boot sequence
         if string.sub(arg[0], -4) == ".lua" then
             loadfile(arg[0])()
