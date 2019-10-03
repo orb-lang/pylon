@@ -253,11 +253,7 @@ can do.
 
 #!lua
    if br_mod then
-      -- print "loading bridge.modules"
-      local insert = assert(table.insert)
-      _G.packload = _loadModule
-      insert(package.loaders, 1, _G.packload)
-      --package.loaders[#package.loaders + 1] = _loadModule
+      table.insert(package.loaders, 1, _loadModule)
    else
       print "no bridge.modules"
    end

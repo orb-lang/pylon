@@ -213,9 +213,6 @@ end
 
 if rawget(_G, "arg") ~= nil then
     -- time for an ugly hack:
-    for i = 0, #arg do
-      print(arg[i])
-    end
     if arg[0] == "OLD" then
         _strip(arg)
         -- do old boot sequence
