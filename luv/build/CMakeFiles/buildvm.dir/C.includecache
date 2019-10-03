@@ -220,8 +220,6 @@ lj_def.h
 lj_arch.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/lj_arch.h
 
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm_arch.h
-
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm_asm.c
 buildvm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm.h
@@ -249,4 +247,6 @@ buildvm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm.h
 lj_bc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/lj_bc.h
+
+buildvm_arch.h
 

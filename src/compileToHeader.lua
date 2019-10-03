@@ -38,7 +38,7 @@ end
 local infile = arg[2] and io.open(arg[2]) or io.stdin
 local outfile = arg[3] and io.open(arg[3], "w+") or io.stdout
 
-local bytes, err = load(infile:read("*a"))
+local bytes, err = loadstring(infile:read("*a"))
 if not bytes then
    print(err)
    os.exit(1)

@@ -71,7 +71,7 @@ cd ../../../
 # want, so we make this separately:
 
 cd luv/deps/luajit || exit
-git checkout master # 2.1 just dies too much. :/
+git checkout v2.1
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export MACOSX_DEPLOYMENT_TARGET=10.14
 fi

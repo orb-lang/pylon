@@ -212,7 +212,6 @@ if rawget(_G, "arg") ~= nil then
     end
     if arg[0] == "OLD" then
         _strip(arg)
-        --_makeParsyHappen()
         -- do old boot sequence
         if string.sub(arg[0], -4) == ".lua" then
             loadfile(arg[0])()
@@ -228,8 +227,10 @@ if rawget(_G, "arg") ~= nil then
           local orb = require "orb"
           local uv = require "luv"
           orb.run(uv.cwd())
-        else
-          print "not orb"
+        elseif _Bridge.args["helm"] == true then
+          print "helm"
+          local helm = require "helm"
+          helm()
         end
     end
 end
