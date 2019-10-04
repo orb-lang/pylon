@@ -357,9 +357,11 @@ sys/types.h
 -
 sys/wait.h
 -
-mach-o/dyld.h
--
 sys/filio.h
+-
+crt_externs.h
+-
+mach-o/dyld.h
 -
 sys/sysctl.h
 -
@@ -370,6 +372,8 @@ sys/wait.h
 dlfcn.h
 -
 sys/ioctl.h
+-
+sys/syscall.h
 -
 
 /Users/atman/Dropbox/br/pylon/luv/deps/libuv/src/unix/darwin-proctitle.c
@@ -471,6 +475,14 @@ sys/ioctl.h
 -
 utime.h
 -
+sys/param.h
+-
+sys/mount.h
+-
+sys/statvfs.h
+-
+sys/statfs.h
+-
 
 /Users/atman/Dropbox/br/pylon/luv/deps/libuv/src/unix/fsevents.c
 uv.h
@@ -528,6 +540,8 @@ internal.h
 uv-common.h
 /Users/atman/Dropbox/br/pylon/luv/deps/libuv/src/unix/uv-common.h
 assert.h
+-
+limits.h
 -
 stdlib.h
 -

@@ -11,16 +11,16 @@ InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault
 Performing C SOURCE FILE Test LJ_DUALNUM_1 failed with the following output:
 Change Dir: /Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ecbf3/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ecbf3.dir/build.make CMakeFiles/cmTC_ecbf3.dir/build
-Building C object CMakeFiles/cmTC_ecbf3.dir/src.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/Dropbox/br/pylon/luv/deps/luajit -I/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src -I/Users/atman/Dropbox/br/pylon/luv/build  -DLJ_DUALNUM_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_ecbf3.dir/src.c.o   -c /Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
+Run Build Command:"/usr/bin/make" "cmTC_46c70/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_46c70.dir/build.make CMakeFiles/cmTC_46c70.dir/build
+Building C object CMakeFiles/cmTC_46c70.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/Dropbox/br/pylon/luv/deps/luajit -I/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src -I/Users/atman/Dropbox/br/pylon/luv/build  -DLJ_DUALNUM_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_46c70.dir/src.c.o   -c /Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
 /Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/CMakeTmp/src.c:7:2: error: "not defined"
 #error "not defined"
  ^
 1 error generated.
-make[2]: *** [CMakeFiles/cmTC_ecbf3.dir/src.c.o] Error 1
-make[1]: *** [cmTC_ecbf3/fast] Error 2
+make[2]: *** [CMakeFiles/cmTC_46c70.dir/src.c.o] Error 1
+make[1]: *** [cmTC_46c70/fast] Error 2
 
 Source file was:
 
@@ -35,16 +35,16 @@ int main() { return 0; }
 Performing C SOURCE FILE Test LJ_ABI_SOFTFP_1 failed with the following output:
 Change Dir: /Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_01e91/fast"
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_01e91.dir/build.make CMakeFiles/cmTC_01e91.dir/build
-Building C object CMakeFiles/cmTC_01e91.dir/src.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/Dropbox/br/pylon/luv/deps/luajit -I/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src -I/Users/atman/Dropbox/br/pylon/luv/build  -DLJ_ABI_SOFTFP_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_01e91.dir/src.c.o   -c /Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
+Run Build Command:"/usr/bin/make" "cmTC_66b26/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_66b26.dir/build.make CMakeFiles/cmTC_66b26.dir/build
+Building C object CMakeFiles/cmTC_66b26.dir/src.c.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc  -I/Users/atman/Dropbox/br/pylon/luv/deps/luajit -I/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src -I/Users/atman/Dropbox/br/pylon/luv/build  -DLJ_ABI_SOFTFP_1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk   -o CMakeFiles/cmTC_66b26.dir/src.c.o   -c /Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/CMakeTmp/src.c
 /Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles/CMakeTmp/src.c:7:2: error: "not defined"
 #error "not defined"
  ^
 1 error generated.
-make[2]: *** [CMakeFiles/cmTC_01e91.dir/src.c.o] Error 1
-make[1]: *** [cmTC_01e91/fast] Error 2
+make[2]: *** [CMakeFiles/cmTC_66b26.dir/src.c.o] Error 1
+make[1]: *** [cmTC_66b26/fast] Error 2
 
 Source file was:
 

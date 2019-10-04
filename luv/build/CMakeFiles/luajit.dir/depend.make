@@ -24,6 +24,7 @@ CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_arch.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_asm.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_asm.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_asm_arm.h
+CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_asm_arm64.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_asm_mips.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_asm_ppc.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_asm_x86.h
@@ -32,6 +33,8 @@ CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_bc.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_bcdump.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_bcread.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_bcwrite.c
+CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_buf.c
+CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_buf.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_carith.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_carith.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_ccall.c
@@ -58,6 +61,7 @@ CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_def.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_dispatch.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_dispatch.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_emit_arm.h
+CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_emit_arm64.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_emit_mips.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_emit_ppc.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_emit_x86.h
@@ -99,6 +103,8 @@ CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_opt_sin
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_opt_split.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_parse.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_parse.h
+CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_profile.c
+CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_profile.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_record.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_record.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_snap.c
@@ -107,12 +113,16 @@ CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_state.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_state.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_str.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_str.h
+CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_strfmt.c
+CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_strfmt.h
+CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_strfmt_num.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_strscan.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_strscan.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_tab.c
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_tab.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_target.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_target_arm.h
+CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_target_arm64.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_target_mips.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_target_ppc.h
 CMakeFiles/luajit.dir/deps/luajit/src/ljamalg.c.o: ../deps/luajit/src/lj_target_x86.h

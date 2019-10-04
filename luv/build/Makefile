@@ -222,17 +222,173 @@ minilua/fast:
 .PHONY : minilua/fast
 
 #=============================================================================
-# Target rules for targets named uv_a
+# Target rules for targets named uv_run_tests
 
 # Build rule for target.
-uv_a: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 uv_a
-.PHONY : uv_a
+uv_run_tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 uv_run_tests
+.PHONY : uv_run_tests
 
 # fast build rule for target.
-uv_a/fast:
-	$(MAKE) -f deps/libuv/CMakeFiles/uv_a.dir/build.make deps/libuv/CMakeFiles/uv_a.dir/build
-.PHONY : uv_a/fast
+uv_run_tests/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/uv_run_tests.dir/build.make deps/libuv/CMakeFiles/uv_run_tests.dir/build
+.PHONY : uv_run_tests/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousCoverage
+
+# Build rule for target.
+ContinuousCoverage: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousCoverage
+.PHONY : ContinuousCoverage
+
+# fast build rule for target.
+ContinuousCoverage/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ContinuousCoverage.dir/build.make deps/libuv/CMakeFiles/ContinuousCoverage.dir/build
+.PHONY : ContinuousCoverage/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousTest
+
+# Build rule for target.
+ContinuousTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousTest
+.PHONY : ContinuousTest
+
+# fast build rule for target.
+ContinuousTest/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ContinuousTest.dir/build.make deps/libuv/CMakeFiles/ContinuousTest.dir/build
+.PHONY : ContinuousTest/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousBuild
+
+# Build rule for target.
+ContinuousBuild: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousBuild
+.PHONY : ContinuousBuild
+
+# fast build rule for target.
+ContinuousBuild/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ContinuousBuild.dir/build.make deps/libuv/CMakeFiles/ContinuousBuild.dir/build
+.PHONY : ContinuousBuild/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousUpdate
+
+# Build rule for target.
+ContinuousUpdate: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousUpdate
+.PHONY : ContinuousUpdate
+
+# fast build rule for target.
+ContinuousUpdate/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ContinuousUpdate.dir/build.make deps/libuv/CMakeFiles/ContinuousUpdate.dir/build
+.PHONY : ContinuousUpdate/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousStart
+
+# Build rule for target.
+ContinuousStart: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousStart
+.PHONY : ContinuousStart
+
+# fast build rule for target.
+ContinuousStart/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ContinuousStart.dir/build.make deps/libuv/CMakeFiles/ContinuousStart.dir/build
+.PHONY : ContinuousStart/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalBuild
+
+# Build rule for target.
+ExperimentalBuild: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalBuild
+.PHONY : ExperimentalBuild
+
+# fast build rule for target.
+ExperimentalBuild/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ExperimentalBuild.dir/build.make deps/libuv/CMakeFiles/ExperimentalBuild.dir/build
+.PHONY : ExperimentalBuild/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalSubmit
+
+# Build rule for target.
+ExperimentalSubmit: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalSubmit
+.PHONY : ExperimentalSubmit
+
+# fast build rule for target.
+ExperimentalSubmit/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ExperimentalSubmit.dir/build.make deps/libuv/CMakeFiles/ExperimentalSubmit.dir/build
+.PHONY : ExperimentalSubmit/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalCoverage
+
+# Build rule for target.
+ExperimentalCoverage: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalCoverage
+.PHONY : ExperimentalCoverage
+
+# fast build rule for target.
+ExperimentalCoverage/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ExperimentalCoverage.dir/build.make deps/libuv/CMakeFiles/ExperimentalCoverage.dir/build
+.PHONY : ExperimentalCoverage/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalUpdate
+
+# Build rule for target.
+ExperimentalUpdate: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalUpdate
+.PHONY : ExperimentalUpdate
+
+# fast build rule for target.
+ExperimentalUpdate/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ExperimentalUpdate.dir/build.make deps/libuv/CMakeFiles/ExperimentalUpdate.dir/build
+.PHONY : ExperimentalUpdate/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalStart
+
+# Build rule for target.
+ExperimentalStart: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalStart
+.PHONY : ExperimentalStart
+
+# fast build rule for target.
+ExperimentalStart/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ExperimentalStart.dir/build.make deps/libuv/CMakeFiles/ExperimentalStart.dir/build
+.PHONY : ExperimentalStart/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousSubmit
+
+# Build rule for target.
+ContinuousSubmit: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousSubmit
+.PHONY : ContinuousSubmit
+
+# fast build rule for target.
+ContinuousSubmit/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ContinuousSubmit.dir/build.make deps/libuv/CMakeFiles/ContinuousSubmit.dir/build
+.PHONY : ContinuousSubmit/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalTest
+
+# Build rule for target.
+ExperimentalTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalTest
+.PHONY : ExperimentalTest
+
+# fast build rule for target.
+ExperimentalTest/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ExperimentalTest.dir/build.make deps/libuv/CMakeFiles/ExperimentalTest.dir/build
+.PHONY : ExperimentalTest/fast
 
 #=============================================================================
 # Target rules for targets named uv
@@ -246,6 +402,240 @@ uv: cmake_check_build_system
 uv/fast:
 	$(MAKE) -f deps/libuv/CMakeFiles/uv.dir/build.make deps/libuv/CMakeFiles/uv.dir/build
 .PHONY : uv/fast
+
+#=============================================================================
+# Target rules for targets named NightlySubmit
+
+# Build rule for target.
+NightlySubmit: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlySubmit
+.PHONY : NightlySubmit
+
+# fast build rule for target.
+NightlySubmit/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/NightlySubmit.dir/build.make deps/libuv/CMakeFiles/NightlySubmit.dir/build
+.PHONY : NightlySubmit/fast
+
+#=============================================================================
+# Target rules for targets named NightlyMemCheck
+
+# Build rule for target.
+NightlyMemCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyMemCheck
+.PHONY : NightlyMemCheck
+
+# fast build rule for target.
+NightlyMemCheck/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/NightlyMemCheck.dir/build.make deps/libuv/CMakeFiles/NightlyMemCheck.dir/build
+.PHONY : NightlyMemCheck/fast
+
+#=============================================================================
+# Target rules for targets named uv_run_tests_a
+
+# Build rule for target.
+uv_run_tests_a: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 uv_run_tests_a
+.PHONY : uv_run_tests_a
+
+# fast build rule for target.
+uv_run_tests_a/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/uv_run_tests_a.dir/build.make deps/libuv/CMakeFiles/uv_run_tests_a.dir/build
+.PHONY : uv_run_tests_a/fast
+
+#=============================================================================
+# Target rules for targets named uv_a
+
+# Build rule for target.
+uv_a: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 uv_a
+.PHONY : uv_a
+
+# fast build rule for target.
+uv_a/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/uv_a.dir/build.make deps/libuv/CMakeFiles/uv_a.dir/build
+.PHONY : uv_a/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalConfigure
+
+# Build rule for target.
+ExperimentalConfigure: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalConfigure
+.PHONY : ExperimentalConfigure
+
+# fast build rule for target.
+ExperimentalConfigure/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ExperimentalConfigure.dir/build.make deps/libuv/CMakeFiles/ExperimentalConfigure.dir/build
+.PHONY : ExperimentalConfigure/fast
+
+#=============================================================================
+# Target rules for targets named NightlyCoverage
+
+# Build rule for target.
+NightlyCoverage: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyCoverage
+.PHONY : NightlyCoverage
+
+# fast build rule for target.
+NightlyCoverage/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/NightlyCoverage.dir/build.make deps/libuv/CMakeFiles/NightlyCoverage.dir/build
+.PHONY : NightlyCoverage/fast
+
+#=============================================================================
+# Target rules for targets named NightlyTest
+
+# Build rule for target.
+NightlyTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyTest
+.PHONY : NightlyTest
+
+# fast build rule for target.
+NightlyTest/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/NightlyTest.dir/build.make deps/libuv/CMakeFiles/NightlyTest.dir/build
+.PHONY : NightlyTest/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousMemCheck
+
+# Build rule for target.
+ContinuousMemCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousMemCheck
+.PHONY : ContinuousMemCheck
+
+# fast build rule for target.
+ContinuousMemCheck/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ContinuousMemCheck.dir/build.make deps/libuv/CMakeFiles/ContinuousMemCheck.dir/build
+.PHONY : ContinuousMemCheck/fast
+
+#=============================================================================
+# Target rules for targets named NightlyBuild
+
+# Build rule for target.
+NightlyBuild: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyBuild
+.PHONY : NightlyBuild
+
+# fast build rule for target.
+NightlyBuild/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/NightlyBuild.dir/build.make deps/libuv/CMakeFiles/NightlyBuild.dir/build
+.PHONY : NightlyBuild/fast
+
+#=============================================================================
+# Target rules for targets named NightlyConfigure
+
+# Build rule for target.
+NightlyConfigure: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyConfigure
+.PHONY : NightlyConfigure
+
+# fast build rule for target.
+NightlyConfigure/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/NightlyConfigure.dir/build.make deps/libuv/CMakeFiles/NightlyConfigure.dir/build
+.PHONY : NightlyConfigure/fast
+
+#=============================================================================
+# Target rules for targets named NightlyUpdate
+
+# Build rule for target.
+NightlyUpdate: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyUpdate
+.PHONY : NightlyUpdate
+
+# fast build rule for target.
+NightlyUpdate/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/NightlyUpdate.dir/build.make deps/libuv/CMakeFiles/NightlyUpdate.dir/build
+.PHONY : NightlyUpdate/fast
+
+#=============================================================================
+# Target rules for targets named NightlyStart
+
+# Build rule for target.
+NightlyStart: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyStart
+.PHONY : NightlyStart
+
+# fast build rule for target.
+NightlyStart/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/NightlyStart.dir/build.make deps/libuv/CMakeFiles/NightlyStart.dir/build
+.PHONY : NightlyStart/fast
+
+#=============================================================================
+# Target rules for targets named Nightly
+
+# Build rule for target.
+Nightly: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Nightly
+.PHONY : Nightly
+
+# fast build rule for target.
+Nightly/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/Nightly.dir/build.make deps/libuv/CMakeFiles/Nightly.dir/build
+.PHONY : Nightly/fast
+
+#=============================================================================
+# Target rules for targets named Continuous
+
+# Build rule for target.
+Continuous: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Continuous
+.PHONY : Continuous
+
+# fast build rule for target.
+Continuous/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/Continuous.dir/build.make deps/libuv/CMakeFiles/Continuous.dir/build
+.PHONY : Continuous/fast
+
+#=============================================================================
+# Target rules for targets named Experimental
+
+# Build rule for target.
+Experimental: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Experimental
+.PHONY : Experimental
+
+# fast build rule for target.
+Experimental/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/Experimental.dir/build.make deps/libuv/CMakeFiles/Experimental.dir/build
+.PHONY : Experimental/fast
+
+#=============================================================================
+# Target rules for targets named ExperimentalMemCheck
+
+# Build rule for target.
+ExperimentalMemCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ExperimentalMemCheck
+.PHONY : ExperimentalMemCheck
+
+# fast build rule for target.
+ExperimentalMemCheck/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ExperimentalMemCheck.dir/build.make deps/libuv/CMakeFiles/ExperimentalMemCheck.dir/build
+.PHONY : ExperimentalMemCheck/fast
+
+#=============================================================================
+# Target rules for targets named ContinuousConfigure
+
+# Build rule for target.
+ContinuousConfigure: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ContinuousConfigure
+.PHONY : ContinuousConfigure
+
+# fast build rule for target.
+ContinuousConfigure/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/ContinuousConfigure.dir/build.make deps/libuv/CMakeFiles/ContinuousConfigure.dir/build
+.PHONY : ContinuousConfigure/fast
+
+#=============================================================================
+# Target rules for targets named NightlyMemoryCheck
+
+# Build rule for target.
+NightlyMemoryCheck: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 NightlyMemoryCheck
+.PHONY : NightlyMemoryCheck
+
+# fast build rule for target.
+NightlyMemoryCheck/fast:
+	$(MAKE) -f deps/libuv/CMakeFiles/NightlyMemoryCheck.dir/build.make deps/libuv/CMakeFiles/NightlyMemoryCheck.dir/build
+.PHONY : NightlyMemoryCheck/fast
 
 deps/luajit/src/host/buildvm.o: deps/luajit/src/host/buildvm.c.o
 
@@ -520,8 +910,38 @@ help:
 	@echo "... buildvm"
 	@echo "... edit_cache"
 	@echo "... minilua"
-	@echo "... uv_a"
+	@echo "... uv_run_tests"
+	@echo "... ContinuousCoverage"
+	@echo "... ContinuousTest"
+	@echo "... ContinuousBuild"
+	@echo "... ContinuousUpdate"
+	@echo "... ContinuousStart"
+	@echo "... ExperimentalBuild"
+	@echo "... ExperimentalSubmit"
+	@echo "... ExperimentalCoverage"
+	@echo "... ExperimentalUpdate"
+	@echo "... ExperimentalStart"
+	@echo "... ContinuousSubmit"
+	@echo "... ExperimentalTest"
 	@echo "... uv"
+	@echo "... NightlySubmit"
+	@echo "... NightlyMemCheck"
+	@echo "... uv_run_tests_a"
+	@echo "... uv_a"
+	@echo "... ExperimentalConfigure"
+	@echo "... NightlyCoverage"
+	@echo "... NightlyTest"
+	@echo "... ContinuousMemCheck"
+	@echo "... NightlyBuild"
+	@echo "... NightlyConfigure"
+	@echo "... NightlyUpdate"
+	@echo "... NightlyStart"
+	@echo "... Nightly"
+	@echo "... Continuous"
+	@echo "... Experimental"
+	@echo "... ExperimentalMemCheck"
+	@echo "... ContinuousConfigure"
+	@echo "... NightlyMemoryCheck"
 	@echo "... deps/luajit/src/host/buildvm.o"
 	@echo "... deps/luajit/src/host/buildvm.i"
 	@echo "... deps/luajit/src/host/buildvm.s"

@@ -511,42 +511,49 @@ uv_OBJECTS = \
 # External object files for target uv
 uv_EXTERNAL_OBJECTS =
 
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/fs-poll.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/idna.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/inet.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/strscpy.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/threadpool.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/timer.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/uv-common.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/uv-data-getter-setters.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/version.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/async.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/core.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/dl.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/fs.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/getaddrinfo.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/getnameinfo.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/loop-watcher.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/loop.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/pipe.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/poll.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/process.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/signal.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/stream.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/tcp.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/thread.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/tty.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/udp.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/proctitle.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/bsd-ifaddrs.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/kqueue.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/darwin-proctitle.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/darwin.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/fsevents.c.o
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/build.make
-deps/libuv/libuv.dylib: deps/libuv/CMakeFiles/uv.dir/link.txt
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/fs-poll.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/idna.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/inet.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/strscpy.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/threadpool.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/timer.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/uv-common.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/uv-data-getter-setters.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/version.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/async.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/core.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/dl.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/fs.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/getaddrinfo.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/getnameinfo.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/loop-watcher.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/loop.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/pipe.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/poll.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/process.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/signal.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/stream.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/tcp.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/thread.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/tty.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/udp.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/proctitle.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/bsd-ifaddrs.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/kqueue.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/darwin-proctitle.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/darwin.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/src/unix/fsevents.c.o
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/build.make
+deps/libuv/libuv.1.0.0.dylib: deps/libuv/CMakeFiles/uv.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/atman/Dropbox/br/pylon/luv/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Linking C shared library libuv.dylib"
 	cd /Users/atman/Dropbox/br/pylon/luv/build/deps/libuv && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/uv.dir/link.txt --verbose=$(VERBOSE)
+	cd /Users/atman/Dropbox/br/pylon/luv/build/deps/libuv && $(CMAKE_COMMAND) -E cmake_symlink_library libuv.1.0.0.dylib libuv.1.dylib libuv.dylib
+
+deps/libuv/libuv.1.dylib: deps/libuv/libuv.1.0.0.dylib
+	@$(CMAKE_COMMAND) -E touch_nocreate deps/libuv/libuv.1.dylib
+
+deps/libuv/libuv.dylib: deps/libuv/libuv.1.0.0.dylib
+	@$(CMAKE_COMMAND) -E touch_nocreate deps/libuv/libuv.dylib
 
 # Rule to build all files generated by this target.
 deps/libuv/CMakeFiles/uv.dir/build: deps/libuv/libuv.dylib

@@ -300,6 +300,13 @@ static int luv_os_get_passwd(lua_State* L) {
   return 1;
 }
 
+#if LUV_UV_VERSION_GEQ(1, 29, 0)
+static int luv_get_constrained_memory(lua_State* L) {
+  lua_pushnumber(L, uv_get_constrained_memory());
+  return 1;
+}
+#endif
+
 static int luv_get_total_memory(lua_State* L) {
   lua_pushnumber(L, uv_get_total_memory());
   return 1;
@@ -353,12 +360,14 @@ static int luv_setgid(lua_State* L){
 }
 
 static int luv_print_all_handles(lua_State* L){
-  uv_print_all_handles(luv_loop(L), stderr);
+  luv_ctx_t* ctx = luv_context(L);
+  uv_print_all_handles(ctx->loop, stderr);
   return 0;
 }
 
 static int luv_print_active_handles(lua_State* L){
-  uv_print_active_handles(luv_loop(L), stderr);
+  luv_ctx_t* ctx = luv_context(L);
+  uv_print_active_handles(ctx->loop, stderr);
   return 0;
 }
 #endif
@@ -534,6 +543,25 @@ static int luv_gettimeofday(lua_State* L) {
   else
     ret = luv_error(L, ret);
   return ret;
+}
+#endif
+
+#if LUV_UV_VERSION_GEQ(1, 31, 0)
+static int luv_os_environ(lua_State* L) {
+  int i, ret, envcount;
+  uv_env_item_t* envitems;
+  ret = uv_os_environ(&envitems, &envcount);
+  if (ret==0) {
+    lua_newtable(L);
+    for(i=0; i<envcount; i++) {
+      lua_pushstring(L, envitems[i].name);
+      lua_pushstring(L, envitems[i].value);
+      lua_rawset(L, -3);
+    }
+    uv_os_free_environ(envitems, envcount);
+    return 1;
+  }
+  return luv_error(L, ret);
 }
 #endif
 

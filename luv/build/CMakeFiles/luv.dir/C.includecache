@@ -279,6 +279,8 @@ luv.h
 /Users/atman/Dropbox/br/pylon/luv/src/luv.h
 
 /Users/atman/Dropbox/br/pylon/luv/src/luv.c
+lua.h
+-
 c-api/compat-5.3.h
 /Users/atman/Dropbox/br/pylon/luv/src/c-api/compat-5.3.h
 luv.h

@@ -32,7 +32,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/uv.dir/src/unix/darwin.c.o"
   "CMakeFiles/uv.dir/src/unix/fsevents.c.o"
   "libuv.pdb"
+  "libuv.1.0.0.dylib"
   "libuv.dylib"
+  "libuv.1.dylib"
 )
 
 # Per-language clean rules from dependency scanning.

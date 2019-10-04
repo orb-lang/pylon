@@ -65,6 +65,8 @@ lj_meta.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_meta.h
 lj_state.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_state.h
+lj_frame.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_frame.h
 lj_ctype.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ctype.h
 lj_cconv.h
@@ -79,6 +81,8 @@ lj_char.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_char.h
 lj_strscan.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_lib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lib.h
 lj_libdef.h
@@ -97,8 +101,22 @@ lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
-lj_str.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
+lj_strscan.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
+lj_ctype.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ctype.h
+lj_cdata.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_cdata.h
+lj_cconv.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_cconv.h
+lj_carith.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_carith.h
+lj_ff.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ff.h
 lj_lib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lib.h
 lj_libdef.h
@@ -161,6 +179,8 @@ lj_ccallback.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ccallback.h
 lj_clib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_clib.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_ff.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ff.h
 lj_lib.h
@@ -201,10 +221,14 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_state.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_state.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_ff.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ff.h
 lj_lib.h
@@ -221,10 +245,10 @@ lauxlib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lauxlib.h
 lualib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lualib.h
-lj_arch.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_arch.h
 lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
+lj_gc.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
 lj_debug.h
@@ -233,8 +257,12 @@ lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_tab.h
+lj_state.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_state.h
 lj_bc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bc.h
+lj_ctype.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ctype.h
 lj_ir.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ir.h
 lj_jit.h
@@ -245,6 +273,8 @@ lj_iropt.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_iropt.h
 lj_target.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_target.h
+lj_trace.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_trace.h
 lj_dispatch.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_dispatch.h
 lj_vm.h
@@ -255,6 +285,8 @@ lj_lib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lib.h
 luajit.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/luajit.h
+lj_libdef.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_libdef.h
 lj_libdef.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_libdef.h
 lj_libdef.h
@@ -295,8 +327,14 @@ lualib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lualib.h
 lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
+lj_gc.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
+lj_str.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_lib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lib.h
 unistd.h
@@ -327,8 +365,6 @@ windows.h
 -
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lib_string.c
-stdio.h
--
 lua.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lua.h
 lauxlib.h
@@ -341,6 +377,8 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
@@ -355,6 +393,8 @@ lj_bcdump.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bcdump.h
 lj_char.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_char.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_lib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lib.h
 lj_libdef.h
@@ -373,8 +413,12 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_tab.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_tab.h
+lj_ff.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ff.h
 lj_lib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lib.h
 lj_libdef.h
@@ -392,6 +436,10 @@ windows.h
 errno.h
 -
 sys/mman.h
+-
+fcntl.h
+-
+unistd.h
 -
 sys/resource.h
 -
@@ -431,6 +479,8 @@ lj_vm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vm.h
 lj_strscan.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_arch.h
 lua.h
@@ -479,6 +529,8 @@ lj_emit_x86.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_emit_x86.h
 lj_emit_arm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_emit_arm.h
+lj_emit_arm64.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_emit_arm64.h
 lj_emit_ppc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_emit_ppc.h
 lj_emit_mips.h
@@ -491,6 +543,8 @@ lj_asm_x86.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_asm_x86.h
 lj_asm_arm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_asm_arm.h
+lj_asm_arm64.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_asm_arm64.h
 lj_asm_ppc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_asm_ppc.h
 lj_asm_mips.h
@@ -501,6 +555,8 @@ lj_jit.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_jit.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_asm_arm.h
+
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_asm_arm64.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_asm_mips.h
 
@@ -535,6 +591,8 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
@@ -553,14 +611,16 @@ lj_bcdump.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bcdump.h
 lj_state.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_state.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bcwrite.c
 lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
 lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
-lj_str.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_bc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bc.h
 lj_ctype.h
@@ -569,10 +629,36 @@ lj_dispatch.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_dispatch.h
 lj_jit.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_jit.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_bcdump.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bcdump.h
 lj_vm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vm.h
+
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.c
+lj_obj.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
+lj_gc.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
+lj_err.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
+lj_str.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
+lj_tab.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_tab.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
+
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
+lj_obj.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
+lj_gc.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
+lj_str.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_carith.c
 lj_obj.h
@@ -585,6 +671,8 @@ lj_tab.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_tab.h
 lj_meta.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_meta.h
+lj_ir.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ir.h
 lj_ctype.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ctype.h
 lj_cconv.h
@@ -593,6 +681,8 @@ lj_cdata.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_cdata.h
 lj_carith.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_carith.h
+lj_strscan.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_carith.h
 lj_obj.h
@@ -605,8 +695,6 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
-lj_str.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_tab.h
 lj_ctype.h
@@ -695,8 +783,6 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
-lj_str.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_tab.h
 lj_ctype.h
@@ -743,6 +829,8 @@ lj_cdata.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_cdata.h
 lj_clib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_clib.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 dlfcn.h
 -
 stdio.h
@@ -761,8 +849,8 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
-lj_str.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_ctype.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ctype.h
 lj_cparse.h
@@ -775,6 +863,8 @@ lj_char.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_char.h
 lj_strscan.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_cparse.h
 lj_obj.h
@@ -787,8 +877,6 @@ lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
-lj_str.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_tab.h
 lj_frame.h
@@ -801,6 +889,8 @@ lj_cparse.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_cparse.h
 lj_cconv.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_cconv.h
+lj_carith.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_carith.h
 lj_clib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_clib.h
 lj_ccall.h
@@ -827,6 +917,8 @@ lj_crecord.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_crecord.h
 lj_dispatch.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_dispatch.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_crecord.h
 lj_obj.h
@@ -847,10 +939,14 @@ lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_tab.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_ctype.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ctype.h
 lj_ccallback.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ccallback.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ctype.h
 lj_obj.h
@@ -865,8 +961,8 @@ lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
 lj_debug.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_debug.h
-lj_str.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_tab.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_tab.h
 lj_state.h
@@ -875,8 +971,8 @@ lj_frame.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_frame.h
 lj_bc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bc.h
-lj_vm.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vm.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_jit.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_jit.h
 
@@ -899,6 +995,8 @@ lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_func.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_func.h
 lj_str.h
@@ -917,6 +1015,8 @@ lj_bc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bc.h
 lj_ff.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ff.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_jit.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_jit.h
 lj_ccallback.h
@@ -925,6 +1025,8 @@ lj_trace.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_trace.h
 lj_dispatch.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_dispatch.h
+lj_profile.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_profile.h
 lj_vm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vm.h
 luajit.h
@@ -945,6 +1047,8 @@ windows.h
 -
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_emit_arm.h
+
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_emit_arm64.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_emit_mips.h
 
@@ -973,6 +1077,8 @@ lj_trace.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_trace.h
 lj_vm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vm.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_errmsg.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_errmsg.h
 windows.h
@@ -1029,6 +1135,8 @@ lj_vm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vm.h
 lj_strscan.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_recdef.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_recdef.h
 
@@ -1067,6 +1175,8 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
@@ -1105,6 +1215,10 @@ lj_debug.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_debug.h
 lj_frame.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_frame.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_jit.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_jit.h
 lj_dispatch.h
@@ -1125,6 +1239,8 @@ lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
 lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
@@ -1149,6 +1265,8 @@ lj_vm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vm.h
 lj_strscan.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_lib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lib.h
 
@@ -1185,6 +1303,8 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
@@ -1205,6 +1325,8 @@ lj_char.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_char.h
 lj_strscan.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lex.h
 stdarg.h
@@ -1237,6 +1359,12 @@ lj_vm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vm.h
 lj_strscan.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
+lj_lex.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lex.h
+lj_bcdump.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bcdump.h
 lj_lib.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lib.h
 
@@ -1259,8 +1387,8 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
-lj_str.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_func.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_func.h
 lj_frame.h
@@ -1311,6 +1439,8 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
@@ -1325,6 +1455,10 @@ lj_vm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vm.h
 lj_strscan.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
+lj_lib.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lib.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_meta.h
 lj_obj.h
@@ -1359,6 +1493,8 @@ math.h
 -
 lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
@@ -1367,6 +1503,8 @@ lj_ir.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ir.h
 lj_jit.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_jit.h
+lj_ircall.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ircall.h
 lj_iropt.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_iropt.h
 lj_trace.h
@@ -1379,6 +1517,8 @@ lj_vm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vm.h
 lj_strscan.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_folddef.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_folddef.h
 
@@ -1387,8 +1527,8 @@ lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
-lj_str.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_ir.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ir.h
 lj_jit.h
@@ -1413,6 +1553,8 @@ lj_jit.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_jit.h
 lj_iropt.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_iropt.h
+lj_ircall.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ircall.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_opt_narrow.c
 lj_obj.h
@@ -1449,8 +1591,8 @@ lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
-lj_str.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_ir.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ir.h
 lj_jit.h
@@ -1459,6 +1601,8 @@ lj_ircall.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ircall.h
 lj_iropt.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_iropt.h
+lj_dispatch.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_dispatch.h
 lj_vm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vm.h
 
@@ -1471,6 +1615,8 @@ lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
 lj_debug.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_debug.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
@@ -1483,6 +1629,8 @@ lj_bc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bc.h
 lj_ctype.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ctype.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 lj_lex.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lex.h
 lj_parse.h
@@ -1497,6 +1645,46 @@ lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
 lj_lex.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lex.h
+
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_profile.c
+lj_obj.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
+lj_frame.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_frame.h
+lj_debug.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_debug.h
+lj_dispatch.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_dispatch.h
+lj_jit.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_jit.h
+lj_trace.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_trace.h
+lj_profile.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_profile.h
+luajit.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/luajit.h
+sys/time.h
+-
+signal.h
+-
+pthread.h
+-
+time.h
+-
+sys/timer.h
+-
+xtl.h
+-
+xbox.h
+-
+windows.h
+-
+
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_profile.h
+lj_obj.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_record.c
 lj_obj.h
@@ -1517,6 +1705,8 @@ lj_bc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bc.h
 lj_ff.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ff.h
+lj_debug.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_debug.h
 lj_ir.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_ir.h
 lj_jit.h
@@ -1587,6 +1777,8 @@ lj_gc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_gc.h
 lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
 lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
 lj_tab.h
@@ -1611,14 +1803,14 @@ lj_lex.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lex.h
 lj_alloc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_alloc.h
+luajit.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/luajit.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_state.h
 lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.c
-stdio.h
--
 lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
 lj_gc.h
@@ -1627,8 +1819,6 @@ lj_err.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_err.h
 lj_str.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
-lj_state.h
-/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_state.h
 lj_char.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_char.h
 
@@ -1637,6 +1827,38 @@ stdarg.h
 -
 lj_obj.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
+
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.c
+stdio.h
+-
+lj_obj.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
+lj_str.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
+lj_state.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_state.h
+lj_char.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_char.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
+
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
+lj_obj.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
+
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt_num.c
+stdio.h
+-
+lj_obj.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.h
+lj_buf.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.h
+lj_str.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.h
+lj_strfmt.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.c
 math.h
@@ -1675,12 +1897,16 @@ lj_target_x86.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_target_x86.h
 lj_target_arm.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_target_arm.h
+lj_target_arm64.h
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_target_arm64.h
 lj_target_ppc.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_target_ppc.h
 lj_target_mips.h
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_target_mips.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_target_arm.h
+
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_target_arm64.h
 
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_target_mips.h
 
@@ -1813,6 +2039,8 @@ lj_bc.c
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_bc.c
 lj_obj.c
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_obj.c
+lj_buf.c
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_buf.c
 lj_str.c
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_str.c
 lj_tab.c
@@ -1835,8 +2063,14 @@ lj_vmmath.c
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_vmmath.c
 lj_strscan.c
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strscan.c
+lj_strfmt.c
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt.c
+lj_strfmt_num.c
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_strfmt_num.c
 lj_api.c
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_api.c
+lj_profile.c
+/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_profile.c
 lj_lex.c
 /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/lj_lex.c
 lj_parse.c

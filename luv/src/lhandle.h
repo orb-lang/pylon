@@ -37,22 +37,22 @@
 #define LUV_RECV 1
 #define LUV_FS_EVENT 1
 #define LUV_FS_POLL 1
+#define LUV_RESET 1
 
 /* Ref for userdata and event callbacks */
 typedef struct {
   int ref;
   int callbacks[2];
+  luv_ctx_t* ctx;
   void* extra;
 } luv_handle_t;
 
+#ifdef LUV_SOURCE
+/* Traceback for lua_pcall */
+static int luv_traceback (lua_State *L);
+
 /* Setup the handle at the top of the stack */
-static luv_handle_t* luv_setup_handle(lua_State* L);
-
-/* Return true if the object is a function or a callable table */
-static int luv_is_callable(lua_State* L, int index);
-
-/* Check if the argument is callable and throw an error if it's not */
-static void luv_check_callable(lua_State* L, int index);
+static luv_handle_t* luv_setup_handle(lua_State* L, luv_ctx_t* ctx);
 
 /* Store a lua callback in a luv_handle for future callbacks.
    Either replace an existing callback by id or append a new one at the end.
@@ -69,5 +69,6 @@ static void luv_find_handle(lua_State* L, luv_handle_t* data);
 
 /* Unref the handle from the lua world, allowing it to GC */
 static void luv_unref_handle(lua_State* L, luv_handle_t* data);
+#endif
 
 #endif

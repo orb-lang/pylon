@@ -20,8 +20,12 @@ return require('lib/tap')(function (test)
   test("memory size", function (print, p, expect, uv)
     local rss = uv.resident_set_memory()
     local total = uv.get_total_memory()
+    local constrained = nil
+    if uv.get_constrained_memory then
+      constrained = uv.get_constrained_memory()
+    end
     local free = uv.get_free_memory()
-    p{rss=rss,total=total,free=free}
+    p{rss=rss,total=total,free=free, constrained=constrained}
     assert(rss < total)
   end)
 
@@ -109,12 +113,23 @@ return require('lib/tap')(function (test)
       local sec, usec = assert(uv.gettimeofday())
       print('        os.time', now)
       print('uv.gettimeofday',string.format("%f",sec+usec/10^9))
-      assert(sec >= now)
       assert(type(sec)=='number')
       assert(type(usec)=='number')
     else
       print("skipped")
     end
+  end)
+
+  test("uv.os_environ", function(print, p, expect, uv)
+    local name, name2 = "LUV_TEST_FOO", "LUV_TEST_FOO2";
+    local value, value2 = "123456789", ""
+
+    uv.os_setenv(name, value)
+    uv.os_setenv(name2, value2)
+
+    local env = uv.os_environ();
+    assert(env[name]==value)
+    assert(env[name2]==value2)
   end)
 
 end)

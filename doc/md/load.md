@@ -226,8 +226,7 @@ if rawget(_G, "arg") ~= nil then
           orb.run(uv.cwd())
         elseif _Bridge.args["helm"] == true then
           print "helm"
-          local helm = require "helm"
-          helm()
+          require "helm"
         end
     end
 end

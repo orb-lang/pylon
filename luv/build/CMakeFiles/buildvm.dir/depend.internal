@@ -3,6 +3,7 @@
 
 CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm.c.o
  ../deps/luajit/dynasm/dasm_arm.h
+ ../deps/luajit/dynasm/dasm_arm64.h
  ../deps/luajit/dynasm/dasm_mips.h
  ../deps/luajit/dynasm/dasm_ppc.h
  ../deps/luajit/dynasm/dasm_proto.h
@@ -46,6 +47,7 @@ CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_fold.c.o
  /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm_fold.c
 CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_lib.c.o
  ../deps/luajit/src/lj_arch.h
+ ../deps/luajit/src/lj_bc.h
  ../deps/luajit/src/lj_def.h
  ../deps/luajit/src/lj_gc.h
  ../deps/luajit/src/lj_lib.h
@@ -54,6 +56,7 @@ CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_lib.c.o
  ../deps/luajit/src/luaconf.h
  /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm.h
  /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm_lib.c
+ /Users/atman/Dropbox/br/pylon/luv/deps/luajit/src/host/buildvm_libbc.h
 CMakeFiles/buildvm.dir/deps/luajit/src/host/buildvm_peobj.c.o
  ../deps/luajit/src/lj_arch.h
  ../deps/luajit/src/lj_bc.h
