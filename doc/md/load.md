@@ -206,29 +206,17 @@ local function _makeParsyHappen()
 end
 
 if rawget(_G, "arg") ~= nil then
-    -- time for an ugly hack:
-    if arg[0] == "OLD" then
-        _strip(arg)
-        -- do old boot sequence
-        if string.sub(arg[0], -4) == ".lua" then
-            loadfile(arg[0])()
-        elseif string.sub(arg[0], -4) == ".raw" then
-           loadfile(arg[0])()
-        else
-           loadfile(arg[0] .. ".lua")()
-        end
-    else
-        _makeParsyHappen()
-        if _Bridge.args["orb"] == true then
-          print "orb"
-          local orb = require "orb"
-          local uv = require "luv"
-          orb.run(uv.cwd())
-        elseif _Bridge.args["helm"] == true then
-          print "helm"
-          require "helm"
-        end
-    end
+   _makeParsyHappen()
+   if _Bridge.args["orb"] == true then
+     print "orb"
+     local orb = require "orb"
+     local uv = require "luv"
+     orb.run(uv.cwd())
+   elseif _Bridge.args["helm"] == true then
+     print "helm"
+     -- pass control to helm module
+     require "helm"
+   end
 end
 --]]
 ```
