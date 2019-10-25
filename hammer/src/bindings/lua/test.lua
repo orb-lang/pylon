@@ -9,7 +9,7 @@ describe("Combinator tests", function()
   teardown(function()
     hammer = nil
   end)
-  
+
   describe("Token tests", function()
     local parser = hammer.token("95" .. string.char(0xa2))
     it("parses a token", function()
@@ -270,7 +270,7 @@ describe("Combinator tests", function()
       end
       return ffi.new("HParsedToken", {hammer.TT_BYTES, ret})
     end
-    local parser = hammer.action(hammer.sequence(hammer.choice(hammer.ch("a"), hammer.ch("A")), hammer.choice(hammer.ch("b"), hammer.ch("B"))), upcase, nil)
+    local parser = hammer.action(hammer.sequence(hammer.choice(hammer.ch("a"), hammer.ch("A")), hammer.choice(hammer.ch("b"), hammer.ch("B"))), upcase)
     it("converts a lowercase 'ab' to uppercase", function()
       local ret = parser:parse("ab")
       assert.are.same("AB", ret.ast())

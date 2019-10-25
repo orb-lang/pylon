@@ -202,7 +202,6 @@ local function _makeParsyHappen()
    -- script name as the first argument
    table.insert(arg, 0, "")
    _Bridge.args = brParse:parse()
-
 end
 
 if rawget(_G, "arg") ~= nil then
@@ -213,9 +212,12 @@ if rawget(_G, "arg") ~= nil then
      local uv = require "luv"
      orb.run(uv.cwd())
    elseif _Bridge.args["helm"] == true then
-     print "helm"
-     -- pass control to helm module
-     require "helm"
+      print "helm"
+      local helm = require "helm:helm"
+      setfenv(0, __G)
+      helm(__G)
+      setfenv(0, _G)
+      print "kthxbye"
    end
 end
 --]]

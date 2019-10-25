@@ -140,11 +140,51 @@ local function append(a, ...)
   return helper(a, select('#', ...), ...)
 end
 
+-- Exponents do a lot of heavy lifting in Lpeg,
+-- which is the overloading template we're going to follow
+local function __exp(rule, power)
+  assert(type(power) == "number")
+  if power == 0 then
+    return h.h_many(rule)
+  elseif power == 1 then
+    return h.h_many1(rule)
+  elseif power == -1 then
+    return h.h_optional(rule)
+  end
+end
+
+
 local mt = {
   __index = {
     parse = function(p, str) return h.h_parse(p, str, #str) end,
   },
+  __add = function(left, right)
+    return h.h_choice(left, right)
+  end,
+  __mul = function(left, right)
+    return h.h_sequence(left, right)
+  end,
+  __exp = __exp,
+  __len = function(rule)
+    return h.h_and(rule)
+  end,
+  __unm = function(rule)
+    return h.h_not(rule)
+  end,
+  __sub = function(left, right)
+    return h.h_sequence(left, h.h_not(right))
+  end,
+  -- Lpeg doesn't use modulus, let's use it for n number of
+  -- repetitions
+  __mod = function(rule, reps)
+    assert(type(reps) == "number")
+    return h.h_repeat_n(rule, reps)
+  end,
+  __div = function(rule, cb)
+    return hammer.action(rule, cb)
+  end
 }
+
 local hammer = {}
 hammer.parser = ffi.metatype("HParser", mt)
 
