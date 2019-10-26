@@ -20,17 +20,24 @@ CWARNS = -Wall -Wextra -pedantic \
 			-Wnested-externs \
 			-Wstrict-prototypes \
 
+BR = build/br
 
-all: br
+all: $(BR)
 
-install: br
-	cp br ~/scripture/
+install: $(BR)
+	cp $(BR) ~/scripture/
 
 uninstall:
 	rm ~/scripture/br
 
-br: build/boot.o build/libluv.a
-	$(CC) -o br $(CWARNS) build/boot.o $(BRLIBS) -Ibuild/ -Ilib/ -lm -pagezero_size 10000 -image_base 100000000
+OS_BUILDOPTS ?= $(error "either make $$PLAT or manually set OS_BUILDOPTS")
+$(BR): build/boot.o build/libluv.a
+	$(CC) -o $@ $(CWARNS) build/boot.o $(BRLIBS) -Ibuild/ -Ilib/ $(OS_BUILDOPTS)
+
+linux:
+	$(MAKE) OS_BUILDOPTS="-lm -ldl -lpthread"
+macosx:
+	$(MAKE) OS_BUILDOPTS="-pagezero_size 10000 -image_base 100000000"
 
 build/boot.o: src/boot.c build/load_char.h build/lfs.h build/sql.h build/preamble.h build/afterward.h build/argparse.h
 	$(CC) -c -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/boot.c -o build/boot.o -Wall -Wextra -pedantic -std=c99
