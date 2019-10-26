@@ -1,2 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libluajit.a  CMakeFiles/luajit-5.1.dir/deps/luajit/src/ljamalg.c.o CMakeFiles/luajit-5.1.dir/lj_vm.S.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libluajit.a
