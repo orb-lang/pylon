@@ -1,3 +1,6 @@
 [submodule "deps/luv"]
 	path = deps/luv
 	url = https://github.com/luvit/luv.git
+[submodule "deps/luafilesystem_ffi"]
+	path = deps/luafilesystem_ffi
+	url = https://github.com/spacewander/luafilesystem.git
