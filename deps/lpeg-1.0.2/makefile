@@ -1,5 +1,5 @@
 LIBNAME = lpeg
-LUADIR = ../lua/
+LUADIR ?= ../lua/
 
 COPT = -O2 -DNDEBUG
 # COPT = -g
@@ -38,13 +38,16 @@ macosx:
 lpeg.so: $(FILES)
 	env $(CC) $(DLLFLAGS) $(FILES) -o lpeg.so
 
+liblpeg.a: $(FILES)
+	ar rcs $@ $^
+
 $(FILES): makefile
 
 test: test.lua re.lua lpeg.so
 	./test.lua
 
 clean:
-	rm -f $(FILES) lpeg.so
+	rm -f $(FILES) lpeg.so liblpeg.a
 
 
 lpcap.o: lpcap.c lpcap.h lptypes.h
