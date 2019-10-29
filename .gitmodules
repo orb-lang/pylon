@@ -4,3 +4,6 @@
 [submodule "deps/luafilesystem_ffi"]
 	path = deps/luafilesystem_ffi
 	url = https://github.com/spacewander/luafilesystem.git
+[submodule "deps/luautf8"]
+	path = deps/luautf8
+	url = https://github.com/starwing/luautf8.git
