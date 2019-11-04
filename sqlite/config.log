@@ -30,8 +30,8 @@ Kernel configured for up to 4 processors.
 Processor type: x86_64h (Intel x86-64h Haswell)
 Processors active: 0 1 2 3
 Primary memory available: 8.00 gigabytes
-Default processor set: 515 tasks, 2404 threads, 4 processors
-Load average: 2.77, Mach factor: 1.49
+Default processor set: 464 tasks, 2465 threads, 4 processors
+Load average: 4.33, Mach factor: 1.20
 /bin/machine           = unknown
 /usr/bin/oslevel       = unknown
 /bin/universe          = unknown
@@ -98,21 +98,21 @@ configure:3043: found /usr/bin/gcc
 configure:3054: result: gcc
 configure:3283: checking for C compiler version
 configure:3292: gcc --version >&5
-Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Apple clang version 11.0.0 (clang-1100.0.33.12)
 Target: x86_64-apple-darwin18.7.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/c++/4.2.1
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/4.2.1
 configure:3303: $? = 0
 configure:3292: gcc -v >&5
-Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/c++/4.2.1
-Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/4.2.1
+Apple clang version 11.0.0 (clang-1100.0.33.12)
 Target: x86_64-apple-darwin18.7.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 configure:3303: $? = 0
 configure:3292: gcc -V >&5
-clang: error: unsupported option '-V -Wno-atomic-implicit-seq-cst'
+clang: error: unsupported option '-V -Wno-framework-include-private-from-public'
 clang: error: no input files
 configure:3303: $? = 1
 configure:3292: gcc -qversion >&5
@@ -169,21 +169,21 @@ configure:4206: checking for gcc
 configure:4233: result: gcc
 configure:4462: checking for C compiler version
 configure:4471: gcc --version >&5
-Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Apple clang version 11.0.0 (clang-1100.0.33.12)
 Target: x86_64-apple-darwin18.7.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/c++/4.2.1
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/4.2.1
 configure:4482: $? = 0
 configure:4471: gcc -v >&5
-Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/usr/include/c++/4.2.1
-Apple LLVM version 10.0.1 (clang-1001.0.46.4)
+Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/4.2.1
+Apple clang version 11.0.0 (clang-1100.0.33.12)
 Target: x86_64-apple-darwin18.7.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 configure:4482: $? = 0
 configure:4471: gcc -V >&5
-clang: error: unsupported option '-V -Wno-atomic-implicit-seq-cst'
+clang: error: unsupported option '-V -Wno-framework-include-private-from-public'
 clang: error: no input files
 configure:4482: $? = 1
 configure:4471: gcc -qversion >&5
@@ -224,7 +224,7 @@ configure:5643: checking the name lister (/usr/bin/nm -B) interface
 configure:5650: gcc -c -g -O2  conftest.c >&5
 configure:5653: /usr/bin/nm -B "conftest.o"
 configure:5656: output
-00000000000001d4 S _some_variable
+0000000000000218 S _some_variable
 configure:5663: result: BSD nm
 configure:5666: checking whether ln -s works
 configure:5670: result: yes
@@ -449,7 +449,7 @@ configure:12970: checking for fullfsync
 configure:12970: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_fullfsync", referenced from:
-      _main in conftest-71976c.o
+      _main in conftest-d601b5.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:12970: $? = 1
@@ -632,7 +632,7 @@ configure:13115: checking for library containing readline
 configure:13146: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_readline", referenced from:
-      _main in conftest-683da6.o
+      _main in conftest-b8338d.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13146: $? = 1
@@ -745,7 +745,7 @@ configure:13199: checking for library containing tgetent
 configure:13230: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_tgetent", referenced from:
-      _main in conftest-d10c24.o
+      _main in conftest-cce85b.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13230: $? = 1
@@ -802,7 +802,7 @@ configure:13255: checking for library containing readline
 configure:13286: gcc -o conftest -g -O2   conftest.c -ltermcap  >&5
 Undefined symbols for architecture x86_64:
   "_readline", referenced from:
-      _main in conftest-ee1457.o
+      _main in conftest-e8d358.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13286: $? = 1
@@ -882,7 +882,7 @@ configure:13674: checking for posix_fallocate
 configure:13674: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_posix_fallocate", referenced from:
-      _main in conftest-4fe0f9.o
+      _main in conftest-92307f.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13674: $? = 1
@@ -971,7 +971,7 @@ configure:13691: checking for library containing deflate
 configure:13722: gcc -o conftest -g -O2   conftest.c  >&5
 Undefined symbols for architecture x86_64:
   "_deflate", referenced from:
-      _main in conftest-99ab7b.o
+      _main in conftest-0f2275.o
 ld: symbol(s) not found for architecture x86_64
 clang: error: linker command failed with exit code 1 (use -v to see invocation)
 configure:13722: $? = 1

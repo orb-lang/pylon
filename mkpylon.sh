@@ -75,7 +75,7 @@ git checkout v2.1
 if [[ "$OSTYPE" == "darwin"* ]]; then
   export MACOSX_DEPLOYMENT_TARGET=10.14
 fi
-make amalg
+make amalg XCFLAGS=-DLUAJIT_ENABLE_LUA52COMPAT
 
 # Copy headers and objects to own the libs
 

@@ -9,7 +9,7 @@ ASM_DEFINES = -DLUAJIT_CPU_SSE2 -DLUAJIT_ENABLE_LUA52COMPAT -D_FILE_OFFSET_BITS=
 
 ASM_INCLUDES = -I/Users/atman/Dropbox/br/pylon/luv/deps/libuv/include -I/Users/atman/Dropbox/br/pylon/luv/deps/luajit/dynasm -I/Users/atman/Dropbox/br/pylon/luv/deps/luajit/src -I/Users/atman/Dropbox/br/pylon/luv/build -I/Users/atman/Dropbox/br/pylon/luv/deps/lua-compat-5.3 
 
-C_FLAGS =  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk  
+C_FLAGS =  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -mmacosx-version-min=10.14  
 
 C_DEFINES = -DLUAJIT_CPU_SSE2 -DLUAJIT_ENABLE_LUA52COMPAT -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Dluajit_EXPORTS
 
