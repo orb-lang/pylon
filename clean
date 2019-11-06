@@ -29,10 +29,5 @@ if cd deps/lpeg ; then
   cd ../..
 fi
 
-#cd nano
-#rm -rf build
-#mkdir build
-#cd ..
-
 rm -rf build/*
 

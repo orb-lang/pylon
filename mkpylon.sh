@@ -121,16 +121,6 @@ leave
 mv deps/luautf8/lua-utf8.a build/
 
 
-# "nano" is going to jump from nanomsg to nng when the latter is fully baked.
-#
-# This require cmake.
-
-#cd nano/build
-#cmake -DCMAKE_INSTALL_PREFIX=../../lib/ -DNN_STATIC_LIB=ON ..
-#make install
-#cd ../..
-
-
 ## N. finally, build `br`
 make "$PLAT"
 
