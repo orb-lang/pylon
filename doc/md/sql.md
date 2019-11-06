@@ -71,9 +71,7 @@ do
    end
 
    local function err(code, msg)
-     io.write(debug.traceback())
-     error("ljsqlite3["..code.."] "..msg)
-
+     error("ljsqlite3["..code.."] "..msg .. "\n" .. debug.traceback())
    end
 ```
 ### SQLite FFI
