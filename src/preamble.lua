@@ -9,6 +9,15 @@
 
 
 
+_Bridge = {}
+
+
+
+
+
+
+
+
 do
 
 
@@ -16,7 +25,9 @@ do
 
 
 
-package.bridge_modules = { }
+
+
+_Bridge.bridge_modules = { }
 
 
 
@@ -148,8 +159,8 @@ WHERE code.code_id = %d ;
                                conn:exec(
                                sql.format(get_project_id, project)))
          if not project_id then
-            --print "no project id"
-            return nil
+
+            return nil , "no project id for " .. mod_name
          end
          code_id = _unwrapForeignKey(
                             conn:exec(
@@ -212,13 +223,13 @@ WHERE code.code_id = %d ;
       if not code_id then
          -- print "no code_id"
          conn:close()
-         return "no"
+         return nil, "no code_id for " .. mod_name
       end
       local bytecode = _unwrapForeignKey(
                               conn:exec(
                               sql.format(get_latest_module_bytecode, code_id)))
       if bytecode then
-         package.bridge_modules["@" .. mod_name] = true
+         _Bridge.bridge_modules["@" .. mod_name] = true
          --print ("loaded " .. mod_name .. " from bridge.modules")
          conn:close()
          local loadFn, errmsg = load(bytecode, "@" .. mod_name)
@@ -227,17 +238,17 @@ WHERE code.code_id = %d ;
             if works then
                return load(bytecode, "@" .. mod_name)
             else
-               package.bridge_modules["@" .. mod_name] = err
-               return err
+               _Bridge.bridge_modules["@" .. mod_name] = err
+               return nil, err
             end
          else
-            package.bridge_modules["@" .. mod_name] = errmsg
-            return errmsg
+            _Bridge.bridge_modules["@" .. mod_name] = errmsg
+            return nil, errmsg
          end
       else
          -- print ("unable to load: " .. mod_name)
          conn:close()
-         return ("unable to load: " .. mod_name)
+         return nil, ("unable to load: " .. mod_name)
       end
    end
 
@@ -258,14 +269,6 @@ WHERE code.code_id = %d ;
       print "no bridge.modules"
    end
 
-
-
-
-
-
-
-
-_Bridge = {}
 
 
 

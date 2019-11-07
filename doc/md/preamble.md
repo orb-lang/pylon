@@ -3,7 +3,14 @@
 This adds the package loader, and will eventually contain the ``core`` standard
 library.
 
+## _Bridge table
 
+This is what we test for to see if we're inside ``bridge``, and where we put
+things that we'll need later.
+
+```lua
+_Bridge = {}
+```
 #### do block
 
 Since we're loading it straight from the binary, wrap it in a ``do`` block.
@@ -14,8 +21,9 @@ do
 ```
 #### bridge_modules
 
+
 ```lua
-package.bridge_modules = { }
+_Bridge.bridge_modules = { }
 ```
 ### SQL statements
 
@@ -139,8 +147,8 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
                                conn:exec(
                                sql.format(get_project_id, project)))
          if not project_id then
-            --print "no project id"
-            return nil
+
+            return nil , "no project id for " .. mod_name
          end
          code_id = _unwrapForeignKey(
                             conn:exec(
@@ -203,13 +211,13 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
       if not code_id then
          -- print "no code_id"
          conn:close()
-         return "no"
+         return nil, "no code_id for " .. mod_name
       end
       local bytecode = _unwrapForeignKey(
                               conn:exec(
                               sql.format(get_latest_module_bytecode, code_id)))
       if bytecode then
-         package.bridge_modules["@" .. mod_name] = true
+         _Bridge.bridge_modules["@" .. mod_name] = true
          --print ("loaded " .. mod_name .. " from bridge.modules")
          conn:close()
          local loadFn, errmsg = load(bytecode, "@" .. mod_name)
@@ -218,17 +226,17 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
             if works then
                return load(bytecode, "@" .. mod_name)
             else
-               package.bridge_modules["@" .. mod_name] = err
-               return err
+               _Bridge.bridge_modules["@" .. mod_name] = err
+               return nil, err
             end
          else
-            package.bridge_modules["@" .. mod_name] = errmsg
-            return errmsg
+            _Bridge.bridge_modules["@" .. mod_name] = errmsg
+            return nil, errmsg
          end
       else
          -- print ("unable to load: " .. mod_name)
          conn:close()
-         return ("unable to load: " .. mod_name)
+         return nil, ("unable to load: " .. mod_name)
       end
    end
 ```
@@ -247,13 +255,6 @@ can do.
    else
       print "no bridge.modules"
    end
-```
-## _Bridge table
-
-This is in our global environment indicating the ``bridge`` runtime.
-
-```lua
-_Bridge = {}
 ```
 #### end do block
 

@@ -11,9 +11,6 @@
 
 
 
-
-
-
 -- local utf8 = require "lua-utf8"
 -- assert(utf8, "no utf8")
 
@@ -148,6 +145,7 @@ brParse
    : epilog "For more info, see https://specialcircumstanc.es"
 
 local orb_c = brParse : command ("orb o")
+                      : description "Literate compiler for Orb format."
 
 local helm_c = brParse
                   : command ("helm i")
@@ -155,7 +153,6 @@ local helm_c = brParse
 
 orb_c
    : require_command (false)
-   : description "Literate compiler for Orb format."
 
 orb_c
    : command "serve"
@@ -183,35 +180,9 @@ helm_c
      : description "Begin a new, named session."
      : args(1)
 
--- this will fetch us our REPL using the usual frippery,
--- we've put a stub block around it as deprecation
----[[
-local function _strip(argument)
-   -- a dimwitted thing which removes a magic argument
-   for i = 0, #argument do
-      if i == 0 then
-         argument[i] = nil
-      else
-         argument[i-1] = argument[i]
-      end
-   end
-   argument[#argument] = nil
-   return argument
-end
-
-local function _makeParsyHappen()
-   -- stop trying to make Parsy happen.
-   --
-   -- it will never happen.
-   --
-   -- hack to get around the fact that argparse was written assuming a
-   -- script name as the first argument
+if rawget(_G, "arg") ~= nil then
    table.insert(arg, 0, "")
    _Bridge.args = brParse:parse()
-end
-
-if rawget(_G, "arg") ~= nil then
-   _makeParsyHappen()
    if _Bridge.args["orb"] == true then
      print "orb"
      local orb = require "orb"
