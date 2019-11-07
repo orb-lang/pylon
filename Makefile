@@ -69,14 +69,14 @@ build/afterward.h: src/afterward.lua src/compileToHeader.lua
 #  is not installed
 
 src/sql.lua: orb/sql.orb
-	grym
+	br o
 src/lfs.lua: orb/lfs.orb
-	grym
+	br o
 src/load.lua: orb/load.orb
-	grym
+	br o
 src/preamble.lua: orb/preamble.orb
-	grym
+	br o
 src/afterward.lua: orb/afterward.orb
-	grym
+	br o
 src/argparse.lua: orb/argparse.orb
-	grym
+	br o
