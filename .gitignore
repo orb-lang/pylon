@@ -1,5 +1,7 @@
 /build
 /deps/sqlite*/build
+# even when building in a subdirectory, the sqlite build modifies/adds stuff
+/deps/sqlite*/autom4te.cache
 *.a
 *.dylib
 *.so
