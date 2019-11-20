@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Copyright 2019 Sam Putman.
 
@@ -22,117 +22,105 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# The subdirectories luv, sqlite, and nano contain code not governed by this
-# copyright and included by license as indicated.
+# Subdirectories in /deps contain code written by others that is not
+# governed by this license.  Look in the respective directories for
+# information on their copyright / license.
+# Same for `/nano`, `/hammer` (which still have to move…)
 
-# They also come with their own build systems, which we use:
+# abort on error
+set -e
 
-cd luv || exit
-make reset
 
-# For the static binary use this:
+# slightly more readable paths (no more cd ../../..(/..?) )
+basedir="$PWD"
+enter() {
+  cd "$1"
+}
+leave() {
+  cd "$basedir"
+}
 
-BUILD_MODULE=OFF make
 
-# make
+# platform identification (using same names as luajit, lpeg, … Makefile)
+case "$(uname)" in
+  Linux|linux)  PLAT="linux" ;;
+  Darwin|macos|macosx) PLAT="macosx" ;;
+esac
+[ -n "$PLAT" ] # bail out if unknown
 
-# Move our artifact over to pylon/build
-
-cd build || exit
-cp libluv.a ../../build/
-
-cd ../..
-
-# Somehow we're losing libuv.a after a luv update, so build that:
-
-cd luv/deps/libuv
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  ./gyp_uv.py -f xcode
-  xcodebuild -ARCHS="x86_64" -project out/uv.xcodeproj -configuration Release -alltargets
-elif [[ "$OSTYPE" == "linux-gnu" ]]; then
-   ./gyp_uv.py -f make
-   BUILDTYPE=Release make -C out
-fi
-# elif [[ "$OSTYPE" == "cygwin" ]]; then
-        # POSIX compatibility layer and Linux environment emulation for Windows
-# elif [[ "$OSTYPE" == "msys" ]]; then
-        # Lightweight shell and GNU utilities compiled for Windows (part of MinGW)
-# elif [[ "$OSTYPE" == "win32" ]]; then
-        # I'm not sure this can happen.
-# elif [[ "$OSTYPE" == "freebsd"* ]]; then
-        # ...
-# else
-        # Unknown.
-cp build/Release/libuv.a ../../../build/
-cd ../../../
-
-# This builds luajit and uv and a luv binary to call from the Lua side.
-# luv's build process doesn't use the amalgamated LuaJIT build, which we
-# want, so we make this separately:
-
-cd luv/deps/luajit || exit
-git checkout v2.1
-if [[ "$OSTYPE" == "darwin"* ]]; then
+## 0. environment variables
+if [ "$PLAT" = "macosx" ] ; then
   export MACOSX_DEPLOYMENT_TARGET=10.14
 fi
-make amalg XCFLAGS=-DLUAJIT_ENABLE_LUA52COMPAT
+# clear Lua environment variables that may break the build
+unset LUA_INIT LUA_INIT_5_1 LUA_PATH LUA_PATH_5_1
 
-# Copy headers and objects to own the libs
+## 1. fetch submodules, check out correct versions
+git submodule update --init --recursive
 
-cp src/lua.h ../../../build/
-cp src/lualib.h ../../../build/
-cp src/luajit.h ../../../build/
-cp src/luaconf.h ../../../build/
-cp src/lauxlib.h ../../../build/
-cp src/libluajit.a ../../../build/
-cp src/luajit ../../../build/
-cd ../../..
-
-# Next we make sqlite, which has the amalgamated build as the short path:
-
-cd sqlite || exit
-./configure
-make
-cp sqlite3.h ../lib/
-cp sqlite3.o ../build/
-cd ..
-
-# "nano" is going to jump from nanomsg to nng when the latter is fully baked.
-#
-# This require cmake.
-
-#cd nano/build
-#cmake -DCMAKE_INSTALL_PREFIX=../../lib/ -DNN_STATIC_LIB=ON ..
-#make install
-#cd ../..
-
-# Annnnd lpeg
-
-cd lpeg-1.0.1 || exit
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  make macosx
-else
-  make linux
-fi
-cp liblpeg.a ../build/
-cd ..
-
-# Toss in lfs, this is a no-op and we're going to use luv eventually so
-
-cp luafilesystem/lfs-ffi.lua lib/lfs.lua
-
-# Now lua-utf8
-# Note that this is full-on macOS only right now and we need to fix that ASAP
+enter deps/luajit/ # symlink into luv's deps
+  git checkout v2.1
+leave
 
 
-cd luautf8 || exit
-echo "BUILDING lua-utf8"
-gcc -O2 -I../lib/ -I ../build -I../luv/deps/luajit  -c lutf8lib.c -o lutf8lib.o
-ar rcs lua-utf8.a lutf8lib.o
-mv lua-utf8.a ../build/
-cd ..
+## 1. build luv
+enter deps/luv
+  # updates submodules & resets tree
+  make reset
+  # builds static library
+  BUILD_MODULE=OFF make
+leave
+# move our artifacts over to pylon/build
+cp deps/luv/build/libluv.a build/
+cp deps/luv/build/deps/libuv/libuv_a.a build/libuv.a
 
 
-# Make br and install.
+## 2. (re)compile LuaJIT in amalgam (all-in-one-file) mode
+enter deps/luajit
+  make amalg XCFLAGS=-DLUAJIT_ENABLE_LUA52COMPAT
+leave
+# move our artifacts over to pylon/build
+lj=deps/luajit/src
+cp $lj/lua.h $lj/lualib.h $lj/luajit.h $lj/luaconf.h $lj/lauxlib.h build/
+cp $lj/libluajit.a $lj/luajit build/
+unset lj
 
-make
+
+## 3. build sqlite
+enter deps/sqlite
+  mkdir -p build
+  cd build
+  ../configure
+  make
+leave
+# move our artifacts over to pylon/build
+cp deps/sqlite/build/sqlite3.o build/
+cp deps/sqlite/sqlite3.h build/ # NOTE sqlite3.h went to lib initially
+
+
+## 4. build lpeg
+enter deps/lpeg
+  make "LUADIR=../luajit/src" "$PLAT" liblpeg.a
+leave
+# move our artifacts over to pylon/build
+cp deps/lpeg/liblpeg.a build/
+
+
+## 5. lfs_ffi is a single file
+cp deps/luafilesystem_ffi/lfs_ffi.lua build/lfs.lua
+
+
+## 6. luautf8
+enter deps/luautf8
+  gcc -O2 -I../../build -I../luajit/src -c lutf8lib.c -o lutf8lib.o
+  ar rcs lua-utf8.a lutf8lib.o
+leave
+# move our artifacts over to pylon/build
+# (mv not cp here because lua-utf8.a is not in luautf8's .gitignore and we
+# neither want to edit that nor get the warning that there are changes…)
+mv deps/luautf8/lua-utf8.a build/
+
+
+## N. finally, build `br`
+make "$PLAT"
+
