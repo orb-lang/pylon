@@ -107,10 +107,6 @@ Then, since SQL will happily make something that doesn't exist, let's check:
 
 Load a module given its name and a given database conn.
 
-#NB Bug in logic of _loadModule causing failure to load in#Todo [ ] find edge case.
-names look like ``orb/src/Orbit/handleline.orb`` instead of
-``Orbit/handleline``
-
 ```lua
    local function _unwrapForeignKey(result)
       if result and result[1] and result[1][1] then
@@ -218,20 +214,12 @@ names look like ``orb/src/Orbit/handleline.orb`` instead of
                               sql.format(get_latest_module_bytecode, code_id)))
       if bytecode then
          _Bridge.bridge_modules["@" .. mod_name] = true
-         --print ("loaded " .. mod_name .. " from bridge.modules")
          conn:close()
          local loadFn, errmsg = load(bytecode, "@" .. mod_name)
          if loadFn then
-            local works, err = pcall(loadFn)
-            if works then
-               return load(bytecode, "@" .. mod_name)
-            else
-               _Bridge.bridge_modules["@" .. mod_name] = err
-               return nil, err
-            end
+            return loadFn
          else
-            _Bridge.bridge_modules["@" .. mod_name] = errmsg
-            return nil, errmsg
+             error(errmsg)
          end
       else
          -- print ("unable to load: " .. mod_name)

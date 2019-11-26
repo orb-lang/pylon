@@ -114,16 +114,6 @@ WHERE code.code_id = %d ;
 
 
 
-
-
-
-
-
-
-
-
-
-
    local function _unwrapForeignKey(result)
       if result and result[1] and result[1][1] then
          return result[1][1]
@@ -230,20 +220,12 @@ WHERE code.code_id = %d ;
                               sql.format(get_latest_module_bytecode, code_id)))
       if bytecode then
          _Bridge.bridge_modules["@" .. mod_name] = true
-         --print ("loaded " .. mod_name .. " from bridge.modules")
          conn:close()
          local loadFn, errmsg = load(bytecode, "@" .. mod_name)
          if loadFn then
-            local works, err = pcall(loadFn)
-            if works then
-               return load(bytecode, "@" .. mod_name)
-            else
-               _Bridge.bridge_modules["@" .. mod_name] = err
-               return nil, err
-            end
+            return loadFn
          else
-            _Bridge.bridge_modules["@" .. mod_name] = errmsg
-            return nil, errmsg
+             error(errmsg)
          end
       else
          -- print ("unable to load: " .. mod_name)
