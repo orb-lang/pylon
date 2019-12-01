@@ -133,9 +133,6 @@ collectgarbage()
 
 
 
-
--- we're going to run in parallel while we build the parser:
-
 rawset(_G, "brParse", package.argparse())
 
 brParse
@@ -180,6 +177,13 @@ helm_c
      : description "Begin a new, named session."
      : args(1)
 
+
+
+
+
+
+
+
 if rawget(_G, "arg") ~= nil then
    table.insert(arg, 0, "")
    _Bridge.args = brParse:parse()
@@ -197,4 +201,3 @@ if rawget(_G, "arg") ~= nil then
       print "kthxbye"
    end
 end
---]]

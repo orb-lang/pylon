@@ -122,13 +122,9 @@ collectgarbage()
 ```
 ## Parse
 
-Currently we are doing the dumbest possible thing to parse ``br`` invocations.
-
-
-Now that we have ``argparse`` it's time to do it right.
+Parse the arguments passed to ``br``.
 
 ```lua
--- we're going to run in parallel while we build the parser:
 
 rawset(_G, "brParse", package.argparse())
 
@@ -173,7 +169,12 @@ helm_c
    : option "-n --new-session"
      : description "Begin a new, named session."
      : args(1)
+```
+### Execute
 
+Run the commands requested.
+
+```lua
 if rawget(_G, "arg") ~= nil then
    table.insert(arg, 0, "")
    _Bridge.args = brParse:parse()
@@ -191,5 +192,4 @@ if rawget(_G, "arg") ~= nil then
       print "kthxbye"
    end
 end
---]]
 ```

@@ -108,6 +108,8 @@ WHERE code.code_id = %d ;
       br_mod = true
    end
 
+   _Bridge.modules_conn = sql.open(bridge_modules)
+
 
 
 
@@ -125,7 +127,7 @@ WHERE code.code_id = %d ;
    local function _loadModule(mod_name)
       assert(type(mod_name) == "string", "mod_name must be a string")
       --print ("attempting to load " .. mod_name)
-      local conn = sql.open(bridge_modules)
+      local conn = _Bridge.modules_conn
       if not conn then print "conn fail" ; return nil end
       package.bridge_loaded = package.bridge_loaded or {}
       -- split the module into project and modname
@@ -211,8 +213,6 @@ WHERE code.code_id = %d ;
          --]]
       end
       if not code_id then
-         -- print "no code_id"
-         conn:close()
          return nil, "no code_id for " .. mod_name
       end
       local bytecode = _unwrapForeignKey(
@@ -220,7 +220,6 @@ WHERE code.code_id = %d ;
                               sql.format(get_latest_module_bytecode, code_id)))
       if bytecode then
          _Bridge.bridge_modules["@" .. mod_name] = true
-         conn:close()
          local loadFn, errmsg = load(bytecode, "@" .. mod_name)
          if loadFn then
             return loadFn
@@ -228,8 +227,6 @@ WHERE code.code_id = %d ;
              error(errmsg)
          end
       else
-         -- print ("unable to load: " .. mod_name)
-         conn:close()
          return nil, ("unable to load: " .. mod_name)
       end
    end
