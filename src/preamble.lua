@@ -33,24 +33,24 @@ _Bridge.bridge_modules = { }
 
 
 
-   local get_project_id = [[
+local get_project_id = [[
 SELECT CAST (project.project_id AS REAL) FROM project
 WHERE project.name = %s;
 ]]
 
-   local get_code_id_by_hash = [[
+local get_code_id_by_hash = [[
 SELECT CAST (code.code_id AS REAL) FROM code
 WHERE code.hash = %s;
 ]]
 
-   local get_latest_module_code = [[
+local get_latest_module_code = [[
 SELECT CAST (module.code AS REAL) FROM module
 WHERE module.project = %d
    AND module.name = %s
 ORDER BY module.time DESC LIMIT 1;
 ]]
 
-   local get_all_module_ids = [[
+local get_all_module_ids = [[
 SELECT CAST (module.code AS REAL),
        CAST (module.project AS REAL)
 FROM module
@@ -84,31 +84,36 @@ WHERE code.code_id = %d ;
 
 
 
-   local home_dir = os.getenv "HOME"
-   local bridge_modules = os.getenv "BRIDGE_MODULES"
+local home_dir = os.getenv "HOME"
+local bridge_modules = os.getenv "BRIDGE_MODULES"
 
-   if not bridge_modules then
-      local xdg_data_home = os.getenv "XDG_DATA_HOME"
-      if xdg_data_home then
-         bridge_modules = xdg_data_home .. "/bridge/bridge.modules"
-      else
-         bridge_modules = home_dir .. "/.local/share/bridge/bridge.modules"
-      end
+if not bridge_modules then
+   local xdg_data_home = os.getenv "XDG_DATA_HOME"
+   if xdg_data_home then
+      bridge_modules = xdg_data_home .. "/bridge/bridge.modules"
+   else
+      bridge_modules = home_dir .. "/.local/share/bridge/bridge.modules"
    end
+end
 
 
 
 
 
-   local br_mod = io.open(bridge_modules)
-   if br_mod then
+local function _checkPath(path)
+   local maybe_file = io.open(path)
+   if maybe_file then
       -- close it
-      br_mod:close()
-      -- do the following dirty hack:
-      br_mod = true
+      maybe_file:close()
+      return true
    end
+end
 
+if _checkPath(bridge_modules) then
    _Bridge.modules_conn = sql.open(bridge_modules)
+else
+   print "no bridge.modules"
+end
 
 
 
@@ -116,18 +121,32 @@ WHERE code.code_id = %d ;
 
 
 
-   local function _unwrapForeignKey(result)
-      if result and result[1] and result[1][1] then
-         return result[1][1]
-      else
-         return nil
-      end
+
+
+
+
+local bridge_strap = home_dir .. "/.local/share/bridge/~bridge.modules"
+if _checkPath(bridge_strap) then
+   _Bridge.bootstrap_conn = sql.open(bridge_strap)
+end
+
+
+
+
+
+
+
+local function _unwrapForeignKey(result)
+   if result and result[1] and result[1][1] then
+      return result[1][1]
+   else
+      return nil
    end
+end
 
-   local function _loadModule(mod_name)
+local function loaderGen(conn)
+   return function (mod_name)
       assert(type(mod_name) == "string", "mod_name must be a string")
-      --print ("attempting to load " .. mod_name)
-      local conn = _Bridge.modules_conn
       if not conn then print "conn fail" ; return nil end
       package.bridge_loaded = package.bridge_loaded or {}
       -- split the module into project and modname
@@ -230,6 +249,7 @@ WHERE code.code_id = %d ;
          return nil, ("unable to load: " .. mod_name)
       end
    end
+end
 
 
 
@@ -239,14 +259,12 @@ WHERE code.code_id = %d ;
 
 
 
-
-
-
-   if br_mod then
-      table.insert(package.loaders, 1, _loadModule)
-   else
-      print "no bridge.modules"
-   end
+if _Bridge.bootstrap_conn then
+   table.insert(package.loaders, 1, loaderGen(_Bridge.bootstrap_conn))
+end
+if _Bridge.modules_conn then
+   table.insert(package.loaders, 1, loaderGen(_Bridge.modules_conn))
+end
 
 
 
