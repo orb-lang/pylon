@@ -44,7 +44,7 @@ if not bytes then
    print(err)
    os.exit(1)
 else
-   compileToHeader(arg[1], string.dump(bytes, arg[1]), outfile)
+   compileToHeader(arg[1], string.dump(bytes), outfile)
    os.exit(0)
 end
 
