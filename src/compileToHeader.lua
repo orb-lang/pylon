@@ -36,9 +36,10 @@ function compileToHeader(varName, bytes, out)
 end
 
 local infile = arg[2] and io.open(arg[2]) or io.stdin
+local infile_name = arg[2] and string.sub(arg[2], 1, -4) or "STDIN"
 local outfile = arg[3] and io.open(arg[3], "w+") or io.stdout
 
-local bytes, err = loadstring(infile:read("*a"), "@" .. arg[1])
+local bytes, err = loadstring(infile:read("*a"), infile_name)
 if not bytes then
    print(err)
    os.exit(1)
