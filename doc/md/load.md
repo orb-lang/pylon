@@ -132,7 +132,7 @@ brParse
    : require_command (false)
    : name "bridge"
    : description "An lua, howth castle & environs."
-   : epilog "For more info, see https://specialcircumstanc.es"
+   : epilog "For more info, see https://special-circumstanc.es"
 
 local orb_c = brParse : command ("orb o")
                       : description "Literate compiler for Orb format."
@@ -156,9 +156,41 @@ orb_c
    : command "weave"
    : description "Weave the codex."
 
-orb_c
+local orb_command_c = orb_c
    : command "compile"
    : description "Knits the codex and compiles the resulting sorcery files."
+
+orb_command_c
+  : option "-v --version"
+    : description "A (semantic) version string."
+    : args(1)
+
+orb_command_c
+  : option "-e --edition"
+    : description ( "A named edition:\n  special meaning applies to "
+                    .. "SESSION, CANDIDATE, and RELEASE.")
+    : args(1)
+
+orb_command_c
+  : option "-H --home"
+    : description ("URL to fetch versions of the project.")
+    : args(1)
+
+orb_command_c
+  : option "-R --repo"
+    : description ( "URL for the project's source repository.\n"
+                  .. "  Defaults to git remote 'origin'.")
+    : args(1)
+
+orb_command_c
+  : option "-W --website"
+    : description ("URL for the project's user-facing website:\n"
+                   .. "  documentation, tutorials, examples, etc.")
+    : args(1)
+
+orb_command_c
+  : option "-p --project"
+    : description "Name of project.  Defaults to name of home directory."
 
 helm_c
    : option "-s --session"
@@ -189,7 +221,6 @@ if rawget(_G, "arg") ~= nil then
       setfenv(0, __G)
       helm(__G)
       setfenv(0, _G)
-      print "kthxbye"
    end
 end
 ```

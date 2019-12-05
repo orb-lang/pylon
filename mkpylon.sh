@@ -77,7 +77,9 @@ cp deps/luv/build/deps/libuv/libuv_a.a build/libuv.a
 
 ## 2. (re)compile LuaJIT in amalgam (all-in-one-file) mode
 enter deps/luajit
-  make amalg XCFLAGS=-DLUAJIT_ENABLE_LUA52COMPAT
+  make amalg XCFLAGS=-DLUAJIT_ENABLE_LUA52COMPAT XCFLAGS+=-DLUA_USE_ASSERT
+  # Note: turn off the USE_ASSERT once we either figure out what's crashing,
+  # Or determine that it isn't helping.
 leave
 # move our artifacts over to pylon/build
 lj=deps/luajit/src
