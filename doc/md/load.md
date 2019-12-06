@@ -130,9 +130,11 @@ rawset(_G, "brParse", package.argparse())
 
 brParse
    : require_command (false)
-   : name "bridge"
-   : description "An lua, howth castle & environs."
+   : name "br"
+   : description ("An lua, howth castle & environs.\n\n"
+              .. "To view help for each command, type br <command> -h.")
    : epilog "For more info, see https://special-circumstanc.es"
+   : help_description_margin(35)
 
 local orb_c = brParse : command ("orb o")
                       : description "Literate compiler for Orb format."
@@ -159,6 +161,7 @@ orb_c
 local orb_command_c = orb_c
    : command "compile"
    : description "Knits the codex and compiles the resulting sorcery files."
+   : help_vertical_space(1)
 
 orb_command_c
   : option "-v --version"
@@ -208,8 +211,10 @@ Run the commands requested.
 
 ```lua
 if rawget(_G, "arg") ~= nil then
+   local ts = require "helm:helm/repr".ts
    table.insert(arg, 0, "")
    _Bridge.args = brParse:parse()
+   print(ts(_Bridge.args))
    if _Bridge.args["orb"] == true then
      print "orb"
      local orb = require "orb"
