@@ -133,7 +133,8 @@ Parse the arguments passed to =br=.
 
 #!lua
 
-rawset(_G, "brParse", package.argparse())
+_Bridge.brParse = package.argparse()
+local brParse = _Bridge.brParse
 
 brParse
    : require_command (false)

@@ -126,13 +126,14 @@ Parse the arguments passed to ``br``.
 
 ```lua
 
-rawset(_G, "brParse", package.argparse())
+_Bridge.brParse = package.argparse()
+local brParse = _Bridge.brParse
 
 brParse
    : require_command (false)
    : name "br"
    : description ("An lua, howth castle & environs.\n\n"
-              .. "To view help for each command, type br <command> -h.")
+               .. "To view help for each command, type br <command> -h.")
    : epilog "For more info, see https://special-circumstanc.es"
    : help_description_margin(35)
 
