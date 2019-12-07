@@ -924,8 +924,8 @@ end
       return function(value)
          local prag_str = __pragma(prag, value)
          conn:exec(prag_str)
-         -- check for a boolean
-         -- #todo make sure this gives sane results for a method-call pragma
+         -- cast booleans results to Lua booleans,
+         -- otherwise return the (string) result
          local answer = conn:exec(pragma_pre .. prag .. ";")
          if answer[1] and answer[1][1] then
             if answer[1][1] == 1 then
@@ -933,7 +933,7 @@ end
             elseif answer[1][1] == 0 then
                return false
             else
-               return nil
+               return answer[1][1]
             end
          end
       end
