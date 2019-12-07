@@ -80,7 +80,7 @@ src/sql.lua: orb/sql.orb
 src/lfs.lua: orb/lfs.orb
 	br o
 src/load.lua: orb/load.orb
-	br o
+	grym #br o
 src/preamble.lua: orb/preamble.orb
 	br o
 src/afterward.lua: orb/afterward.orb

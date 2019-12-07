@@ -148,39 +148,39 @@ local function loaderGen(conn)
       if project then
          proj_double = project .. "/" .. mod
       end
-      local code_id = nil
       if project then
          -- retrieve bytecode by project and module
          bytecode = _unwrapOneResult(
-                      project_stmt:bindkv { project_name = project,
-                                            module_name  = mod }
+                      project_stmt:bindkv ({ project_name = project,
+                                            module_name  = mod })
                       : resultset())
          if not bytecode then
             -- try mod_double
             project_stmt:reset()
             bytecode = _unwrapOneResult(
-                      project_stmt:bindkv { project_name = project,
-                                            module_name  = mod_double }
+                      project_stmt:bindkv ({ project_name = project,
+                                            module_name  = mod_double })
                       : resultset())
          end
          if not bytecode then
             -- try proj_double
             project_stmt:reset()
-            code_id = _unwrapOneResult(
-                      project_stmt:bindkv { project_name = project,
-                                            module_name  = proj_double }
+            bytecode = _unwrapOneResult(
+                      project_stmt:bindkv ({ project_name = project,
+                                             module_name  = proj_double })
                       : resultset())
          end
          project_stmt:reset()
       else
          -- retrieve by bare module name
          bytecode = _unwrapOneResult(
-                      module_stmt:bindkv { name  = mod }
+                      module_stmt:bindkv ({ name  = mod })
                       : resultset())
          if not bytecode then
             module_stmt:reset()
             bytecode =_unwrapOneResult(
-                      module_stmt:bindkv { name  = mod }
+                      module_stmt:bindkv ({ name  = mod })
+
                       : resultset())
          end
          module_stmt:reset()
