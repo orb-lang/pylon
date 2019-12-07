@@ -194,6 +194,9 @@ brParse
 local orb_c = brParse : command ("orb o")
                       : description "Literate compiler for Orb format."
 
+local grym_c = brParse : command "grym"
+                       : description ("Backup compiler for Orb format.\n"
+                                    .."Not intended for long-term use.")
 local helm_c = brParse
                   : command ("helm i")
                   : description "launch helm, the 'i'nteractive REPL."
@@ -290,6 +293,10 @@ if rawget(_G, "arg") ~= nil then
      local orb = require "orb"
      local uv = require "luv"
      orb.run(uv.cwd())
+   elseif _Bridge.args.grym == true then
+      local grym = require "grym:orb"
+      local uv = require "luv"
+      grym.run(uv.cwd())
    elseif _Bridge.args["helm"] == true then
       print "helm"
       local helm = require "helm:helm"
