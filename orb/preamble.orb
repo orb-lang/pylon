@@ -134,14 +134,13 @@ local function _unwrapOneResult(result)
 end
 
 local function loaderGen(conn)
+   -- check that we have a database conn
+   if not conn then error("sql connection failed") end
    -- make prepared statements
    local module_stmt = conn:prepare(bytecode_by_module)
    local project_stmt = conn:prepare(bytecode_by_module_and_project)
    -- return loader
    return function (mod_name)
-      module_stmt:reset()
-      project_stmt:reset()
-      if not conn then error("sql connection failed") end
       package.bridge_loaded = package.bridge_loaded or {}
       -- split the module into project and modname
       local bytecode = nil
