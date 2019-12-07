@@ -44,6 +44,7 @@ FROM code
 INNER JOIN module
 ON module.code = code.code_id
 INNER JOIN project
+ON project.project_id = module.project
 WHERE project.name = %s
 AND module.name = %s
 ORDER BY module.time desc limit 1
@@ -62,7 +63,6 @@ responsibility of ``orb``, which contains the compiler.
 
 
 First, let's get a plausible filename:
-
 
 ```lua
 local home_dir = os.getenv "HOME"

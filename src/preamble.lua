@@ -49,12 +49,12 @@ FROM code
 INNER JOIN module
 ON module.code = code.code_id
 INNER JOIN project
+ON project.project_id = module.project
 WHERE project.name = %s
 AND module.name = %s
 ORDER BY module.time desc limit 1
 ;
 ]]
-
 
 
 
