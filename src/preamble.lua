@@ -41,7 +41,7 @@ SELECT code.binary
 FROM code
 INNER JOIN module
 ON module.code = code.code_id
-WHERE module.name = %s
+WHERE module.name = :name
 ORDER BY module.time desc limit 1
 ;
 ]]
@@ -53,8 +53,8 @@ INNER JOIN module
 ON module.code = code.code_id
 INNER JOIN project
 ON project.project_id = module.project
-WHERE project.name = %s
-AND module.name = %s
+WHERE project.name = :project_name
+AND module.name = :module_name
 ORDER BY module.time desc limit 1
 ;
 ]]
@@ -136,6 +136,8 @@ end
 local function loaderGen(conn)
    return function (mod_name)
       if not conn then error("sql connection failed") end
+      local module_stmt = conn:prepare(bytecode_by_module)
+      local project_stmt = conn:prepare(bytecode_by_module_and_project)
       package.bridge_loaded = package.bridge_loaded or {}
       -- split the module into project and modname
       local bytecode = nil
@@ -155,35 +157,38 @@ local function loaderGen(conn)
       if project then
          -- retrieve bytecode by project and module
          bytecode = _unwrapOneResult(
-                           conn:exec(
-                           sql.format(bytecode_by_module_and_project,
-                                      project, mod)))
+                      project_stmt:bindkv { project_name = project,
+                                            module_name  = mod }
+                      : resultset())
          if not bytecode then
             -- try mod_double
+            project_stmt:reset()
             bytecode = _unwrapOneResult(
-                            conn:exec(
-                            sql.format(bytecode_by_module_and_project,
-                                      project, mod_double)))
+                      project_stmt:bindkv { project_name = project,
+                                            module_name  = mod_double }
+                      : resultset())
          end
          if not bytecode then
             -- try proj_double
+            project_stmt:reset()
             code_id = _unwrapOneResult(
-                            conn:exec(
-                            sql.format(bytecode_by_module_and_project,
-                                      project, proj_double)))
+                      project_stmt:bindkv { project_name = project,
+                                            module_name  = proj_double }
+                      : resultset())
          end
+         project_stmt:reset()
       else
          -- retrieve by bare module name
          bytecode = _unwrapOneResult(
-                                 conn:exec(
-                                 sql.format(bytecode_by_module,
-                                            mod)))
+                      module_stmt:bindkv { name  = mod }
+                      : resultset())
          if not bytecode then
-            bytecode = _unwrapOneResult(
-                                 conn:exec(
-                                 sql.format(bytecode_by_module,
-                                            mod_double)))
+            module_stmt:reset()
+            bytecode =_unwrapOneResult(
+                      module_stmt:bindkv { name  = mod }
+                      : resultset())
          end
+         module_stmt:reset()
       end
       if bytecode then
          _Bridge.bridge_modules["@" .. mod_name] = true
