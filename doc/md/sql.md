@@ -856,6 +856,7 @@ the result set and number of rows, in the correct order.
 
 ```lua
 function sqlayer.toRow(sql_result, num)
+   if not sql_result then return nil end
    local one_result = false
    local result_tab = {}
    if not num then

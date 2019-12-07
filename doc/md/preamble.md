@@ -3,6 +3,7 @@
 This adds the package loader, and will eventually contain the ``core`` standard
 library.
 
+
 ## _Bridge table
 
 This is what we test for to see if we're inside ``bridge``, and where we put
@@ -17,15 +18,16 @@ Since we're loading it straight from the binary, wrap it in a ``do`` block.
 
 ```lua
 do
-
 ```
 #### bridge_modules
-
 
 ```lua
 _Bridge.bridge_modules = { }
 ```
 ### SQL statements
+
+For now, we're just going to load the latest compiled version of a given
+module.
 
 ```lua
 local bytecode_by_module = [[
