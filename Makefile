@@ -2,6 +2,7 @@ BRLIBS = build/libluv.a   \
          build/libuv.a    \
          build/liblpeg.a  \
          build/libluajit.a \
+         build/lfs.a \
          build/lua-utf8.a
 
 CWARNS = -Wall -Wextra -pedantic \
@@ -31,7 +32,7 @@ uninstall:
 	rm ~/scripture/br
 
 OS_BUILDOPTS ?= $(error "either make $$PLAT or manually set OS_BUILDOPTS")
-$(BR): build/boot.o build/libluv.a
+$(BR): build/boot.o build/libluv.a build/lfs.a
 	$(CC) -o $@ $(CWARNS) build/boot.o $(BRLIBS) -Ibuild/ -Ilib/ $(OS_BUILDOPTS)
 
 linux:
@@ -39,18 +40,13 @@ linux:
 macosx:
 	$(MAKE) OS_BUILDOPTS="-pagezero_size 10000 -image_base 100000000"
 
-build/boot.o: src/boot.c build/load_char.h build/lfs.h build/sql.h build/preamble.h build/afterward.h build/argparse.h
+build/boot.o: src/boot.c build/load_char.h build/sql.h build/preamble.h build/afterward.h build/argparse.h
 	$(CC) -c -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/boot.c -o build/boot.o -Wall -Wextra -pedantic -std=c99
 
 build/load_char.h: src/load.lua src/compileToHeader.lua
 	build/luajit src/compileToHeader.lua LUA_LOAD src/load.lua build/~load_char.h
 	- colordiff build/load_char.h build/~load_char.h
 	mv build/~load_char.h build/load_char.h
-
-build/lfs.h: src/lfs.lua src/compileToHeader.lua
-	build/luajit src/compileToHeader.lua LUA_LFS src/lfs.lua build/~lfs.h
-	- colordiff build/lfs.h build/~lfs.h
-	mv build/~lfs.h build/lfs.h
 
 build/sql.h: src/sql.lua src/compileToHeader.lua
 	build/luajit src/compileToHeader.lua LUA_SQL src/sql.lua build/~sql.h
@@ -76,8 +72,6 @@ build/afterward.h: src/afterward.lua src/compileToHeader.lua
 #  is not installed
 
 src/sql.lua: orb/sql.orb
-	br o
-src/lfs.lua: orb/lfs.orb
 	br o
 src/load.lua: orb/load.orb
 	grym #br o
