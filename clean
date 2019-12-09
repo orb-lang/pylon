@@ -22,7 +22,7 @@ if cd deps/sqlite ; then
   cd ../..
 fi
 
-rm -f deps/luautf8/lutf8lib.o
+rm -f deps/luafilesystem/lfs.o deps/luautf8/lutf8lib.o
 
 if cd deps/lpeg ; then
   make clean

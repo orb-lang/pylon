@@ -25,7 +25,7 @@
 # Subdirectories in /deps contain code written by others that is not
 # governed by this license.  Look in the respective directories for
 # information on their copyright / license.
-# Same for `/nano`, `/hammer` (which still have to move…)
+# Same for `/hammer` (which still has to move…)
 
 # abort on error
 set -e
@@ -108,8 +108,14 @@ leave
 cp deps/lpeg/liblpeg.a build/
 
 
-## 5. lfs_ffi is a single file
-cp deps/luafilesystem_ffi/lfs_ffi.lua build/lfs.lua
+## 5. lfs
+# Makefile sucks, manual (and static) build
+enter deps/luafilesystem
+  gcc -O2 -I../../build -I../luajit/src -c src/lfs.c -o lfs.o
+  ar rcs lfs.a lfs.o
+leave
+# move (not cp) stuff over to pylon/build
+mv deps/luafilesystem/lfs.a build/lfs.a
 
 
 ## 6. luautf8
