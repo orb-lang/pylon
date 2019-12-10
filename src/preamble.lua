@@ -89,17 +89,9 @@ end
 
 
 
-local function _checkPath(path)
-   local maybe_file = io.open(path)
-   if maybe_file then
-      -- close it
-      maybe_file:close()
-      return true
-   end
-end
-
-if _checkPath(bridge_modules) then
-   _Bridge.modules_conn = sql.open(bridge_modules)
+local ok, bridge_conn = pcall(sql.open, bridge_modules, "rw")
+if ok then
+   _Bridge.modules_conn = bridge_conn
 else
    print "no bridge.modules"
 end
@@ -115,8 +107,9 @@ end
 
 
 local bridge_strap = home_dir .. "/.local/share/bridge/~bridge.modules"
-if _checkPath(bridge_strap) then
-   _Bridge.bootstrap_conn = sql.open(bridge_strap)
+local ok, strap_conn = pcall(sql.open, bridge_strap, "rw")
+if ok then
+   _Bridge.bootstrap_conn = strap_conn
 end
 
 
@@ -215,11 +208,14 @@ end
 
 
 
+
+
+
 if _Bridge.bootstrap_conn then
-   table.insert(package.loaders, 1, loaderGen(_Bridge.bootstrap_conn))
+   table.insert(package.loaders, 2, loaderGen(_Bridge.bootstrap_conn))
 end
 if _Bridge.modules_conn then
-   table.insert(package.loaders, 1, loaderGen(_Bridge.modules_conn))
+   table.insert(package.loaders, 2, loaderGen(_Bridge.modules_conn))
 end
 
 

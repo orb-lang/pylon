@@ -86,20 +86,12 @@ if not bridge_modules then
 end
 #/lua
 
-Then, since SQL will happily make something that doesn't exist, let's check:
+Add the conn to _Bridge:
 
 #!lua
-local function _checkPath(path)
-   local maybe_file = io.open(path)
-   if maybe_file then
-      -- close it
-      maybe_file:close()
-      return true
-   end
-end
-
-if _checkPath(bridge_modules) then
-   _Bridge.modules_conn = sql.open(bridge_modules)
+local ok, bridge_conn = pcall(sql.open, bridge_modules, "rw")
+if ok then
+   _Bridge.modules_conn = bridge_conn
 else
    print "no bridge.modules"
 end
@@ -115,8 +107,9 @@ For now, hard-coded:
 
 #!lua
 local bridge_strap = home_dir .. "/.local/share/bridge/~bridge.modules"
-if _checkPath(bridge_strap) then
-   _Bridge.bootstrap_conn = sql.open(bridge_strap)
+local ok, strap_conn = pcall(sql.open, bridge_strap, "rw")
+if ok then
+   _Bridge.bootstrap_conn = strap_conn
 end
 #/lua
 
@@ -214,12 +207,15 @@ end
 If we've loaded either database, add them, such that if we have both, the
 =modules_conn= default is checked before the =bootstrap_conn=.
 
+We want the loaders after the =package.preload= loader, so we put them in
+index 2:
+
 #!lua
 if _Bridge.bootstrap_conn then
-   table.insert(package.loaders, 1, loaderGen(_Bridge.bootstrap_conn))
+   table.insert(package.loaders, 2, loaderGen(_Bridge.bootstrap_conn))
 end
 if _Bridge.modules_conn then
-   table.insert(package.loaders, 1, loaderGen(_Bridge.modules_conn))
+   table.insert(package.loaders, 2, loaderGen(_Bridge.modules_conn))
 end
 #/lua
 

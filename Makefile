@@ -74,7 +74,7 @@ build/afterward.h: src/afterward.lua src/compileToHeader.lua
 src/sql.lua: orb/sql.orb
 	br o
 src/load.lua: orb/load.orb
-	grym #br o
+	br o
 src/preamble.lua: orb/preamble.orb
 	br o
 src/afterward.lua: orb/afterward.orb
