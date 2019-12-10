@@ -294,6 +294,15 @@ do
    local sql_set_code = [=[
    return function(stmt_or_value, v <opt_i>)
      local t = type(v)
+     if t == "table" then
+        -- only cast to string if the table has a
+        -- __tostring metamethod
+        t_M = getmetatable(v)
+        if t_M.__tostring then
+           v = tostring(v)
+           t = "string"
+        end
+     end
      if ffi.istype(int64_ct, v) then
        return sql.sqlite3_<variant>_int64(stmt_or_value <opt_i>, v)
      elseif t == "number" then
@@ -308,7 +317,7 @@ do
      elseif t == "nil" then
        return sql.sqlite3_<variant>_null(stmt_or_value <opt_i>)
      else
-       err("constraint", "unexpected Lua type")
+       err("constraint", "unexpected Lua type " .. t)
      end
    end
    ]=]
@@ -322,7 +331,8 @@ do
      blob_mt      = blob_mt,
      getmetatable = getmetatable,
      err          = err,
-     type         = type
+     type         = type,
+     tostring     = tostring,
    }
 
    local function sql_format(s, variant, index)
