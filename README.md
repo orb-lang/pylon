@@ -12,14 +12,16 @@ In addition to LuaJIT itself, `pylon` builds and loads:
 
 #### luautf8
 
-As well as bundling a pure-Lua `lfs` replacement, which is deprecated, but still used by Orb.
+#### luafilesystem
 
-To build it, be on macOS, and run
+To build it, run
 
 ```
-sh mkpylon.sh
+./clean
+./mkpylon.sh
 ```
 
-Which will put a `br` executable in the `~/scripture/` directory you probably don't have.  
+Which will put a `br` executable in the `build/` directory.
 
-You'll need a SQLite3 somewhere in the path, and I expect you'll have one. This requirement will be eliminated on the road to alpha release. 
+To do anything with it, you'll need modules, to be found in the
+[bridge.modules](https://gitlab.com/special-circumstance/bridge.modules) repo.
