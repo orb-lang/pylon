@@ -76,9 +76,9 @@ if not bridge_modules then
    if not bridge_home then
       local xdg_data_home = os.getenv "XDG_DATA_HOME"
       if xdg_data_home then
-         bridge_home = xdg_data_home.. "/bridge"
+         bridge_home = xdg_data_home .. "/bridge"
       else
-         bridge_home = "/.local/share/bridge"
+         bridge_home = home_dir .. "/.local/share/bridge"
       end
    end
    bridge_modules = bridge_home.. "/bridge.modules"
