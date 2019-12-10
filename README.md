@@ -12,7 +12,7 @@ In addition to LuaJIT itself, `pylon` builds and loads:
 
 #### luautf8
 
-As well as bundling a pure-Lua `lfs` replacement, which is deprecated, but still used by Orb.
+#### luafilesystem
 
 To build it, be on macOS, and run
 
