@@ -180,7 +180,7 @@ end
 ```
 ```lua
 
-_Bridge.brParse = package.argparse()
+_Bridge.brParse = require "argparse" ()
 local brParse = _Bridge.brParse
 
 brParse
