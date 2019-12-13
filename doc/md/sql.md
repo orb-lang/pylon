@@ -301,7 +301,8 @@ SQLite, so the system library is likely to be just fine.
         -- __tostring metamethod
         t_M = getmetatable(t)
         if t_M.__tostring then
-        t = tostring(t)
+           t = tostring(t)
+        end
      end
      if ffi.istype(int64_ct, v) then
        return sql.sqlite3_<variant>_int64(stmt_or_value <opt_i>, v)

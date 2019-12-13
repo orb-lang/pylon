@@ -297,10 +297,9 @@ do
      if t == "table" then
         -- only cast to string if the table has a
         -- __tostring metamethod
-        t_M = getmetatable(v)
+        t_M = getmetatable(t)
         if t_M.__tostring then
-           v = tostring(v)
-           t = "string"
+           t = tostring(t)
         end
      end
      if ffi.istype(int64_ct, v) then
@@ -331,8 +330,7 @@ do
      blob_mt      = blob_mt,
      getmetatable = getmetatable,
      err          = err,
-     type         = type,
-     tostring     = tostring,
+     type         = type
    }
 
    local function sql_format(s, variant, index)

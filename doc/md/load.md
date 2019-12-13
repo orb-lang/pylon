@@ -250,6 +250,10 @@ orb_command_c
                    .. "  documentation, tutorials, examples, etc.")
     : args(1)
 
+orb_c
+   : command "revert"
+   : description "Revert the latest compiled changes in project."
+
 orb_command_c
   : option "-p --project"
     : description "Name of project.  Defaults to name of home directory."
@@ -287,17 +291,22 @@ if rawget(_G, "arg") ~= nil then
    local ts = require "helm:helm/repr".ts
    table.insert(arg, 0, "")
    _Bridge.args = _Bridge.brParse:parse()
-   print(ts(_Bridge.args))
-   if _Bridge.args["orb"] == true then
-     print "orb"
-     local orb = require "orb"
-     local uv = require "luv"
-     orb.run(uv.cwd())
-   elseif _Bridge.args.grym == true then
+   local args = _Bridge.args
+   print(ts(args))
+   if args.orb then
+     if args.revert then
+        local revert = require "bundle:revert"
+        revert()
+     else
+        local orb = require "orb"
+        local uv = require "luv"
+        orb.run(uv.cwd())
+     end
+   elseif args.grym == true then
       local grym = require "grym:orb"
       local uv = require "luv"
       grym.run(uv.cwd())
-   elseif _Bridge.args["helm"] == true then
+   elseif args.helm then
       print "helm"
       local helm = require "helm:helm"
       setfenv(0, __G)
