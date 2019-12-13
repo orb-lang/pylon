@@ -259,13 +259,16 @@ orb_command_c
                    .. "  documentation, tutorials, examples, etc.")
     : args(1)
 
-orb_c
-   : command "revert"
-   : description "Revert the latest compiled changes in project."
-
 orb_command_c
   : option "-p --project"
     : description "Name of project.  Defaults to name of home directory."
+
+orb_c
+   : command "revert"
+   : description "Revert the latest compiled changes in project."
+   : option "-p --project"
+     : description "Project to revert."
+     : args(1)
 
 helm_c
    : option "-s --session"
