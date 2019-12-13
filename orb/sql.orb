@@ -295,11 +295,13 @@ SQLite, so the system library is likely to be just fine.
    return function(stmt_or_value, v <opt_i>)
      local t = type(v)
      if t == "table" then
-        -- only cast to string if the table has a
-        -- __tostring metamethod
-        t_M = getmetatable(t)
-        if t_M.__tostring then
-           t = tostring(t)
+        --  Convert on a __todb or __tostring
+        --  metamethod
+        local t_M = getmetatable(v)
+        local method = t_M and t_M.__todb or t_M.__tostring
+        if method then
+           v = method(v)
+           t = "string"
         end
      end
      if ffi.istype(int64_ct, v) then
@@ -330,7 +332,8 @@ SQLite, so the system library is likely to be just fine.
      blob_mt      = blob_mt,
      getmetatable = getmetatable,
      err          = err,
-     type         = type
+     type         = type,
+     tostring     = tostring
    }
 
    local function sql_format(s, variant, index)

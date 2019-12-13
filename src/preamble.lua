@@ -75,31 +75,30 @@ ORDER BY module.time desc limit 1
 
 local home_dir = os.getenv "HOME"
 local bridge_modules = os.getenv "BRIDGE_MODULES"
+local bridge_home = os.getenv "BRIDGE_HOME"
 
 if not bridge_modules then
-   local xdg_data_home = os.getenv "XDG_DATA_HOME"
-   if xdg_data_home then
-      bridge_modules = xdg_data_home .. "/bridge/bridge.modules"
-   else
-      bridge_modules = home_dir .. "/.local/share/bridge/bridge.modules"
+   -- use BRIDGE_HOME if we have it
+   if not bridge_home then
+      local xdg_data_home = os.getenv "XDG_DATA_HOME"
+      if xdg_data_home then
+         bridge_home = xdg_data_home .. "/bridge"
+      else
+         bridge_home = home_dir .. "/.local/share/bridge"
+      end
    end
+   bridge_modules = bridge_home.. "/bridge.modules"
 end
 
+_Bridge.bridge_home = bridge_home
 
 
 
 
-local function _checkPath(path)
-   local maybe_file = io.open(path)
-   if maybe_file then
-      -- close it
-      maybe_file:close()
-      return true
-   end
-end
 
-if _checkPath(bridge_modules) then
-   _Bridge.modules_conn = sql.open(bridge_modules)
+local ok, bridge_conn = pcall(sql.open, bridge_modules, "rw")
+if ok then
+   _Bridge.modules_conn = bridge_conn
 else
    print "no bridge.modules"
 end
@@ -115,8 +114,9 @@ end
 
 
 local bridge_strap = home_dir .. "/.local/share/bridge/~bridge.modules"
-if _checkPath(bridge_strap) then
-   _Bridge.bootstrap_conn = sql.open(bridge_strap)
+local ok, strap_conn = pcall(sql.open, bridge_strap, "rw")
+if ok then
+   _Bridge.bootstrap_conn = strap_conn
 end
 
 
@@ -215,11 +215,14 @@ end
 
 
 
+
+
+
 if _Bridge.bootstrap_conn then
-   table.insert(package.loaders, 1, loaderGen(_Bridge.bootstrap_conn))
+   table.insert(package.loaders, 2, loaderGen(_Bridge.bootstrap_conn))
 end
 if _Bridge.modules_conn then
-   table.insert(package.loaders, 1, loaderGen(_Bridge.modules_conn))
+   table.insert(package.loaders, 2, loaderGen(_Bridge.modules_conn))
 end
 
 
