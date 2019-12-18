@@ -263,6 +263,18 @@ if rawget(_G, "arg") ~= nil then
       setfenv(0, __G)
       helm(__G)
       setfenv(0, _G)
+   elseif args.export then
+      local bundle = require "bundle:export".export(args.project)
+      if args.outfile then
+         local file = io.open(args.outfile, "w+")
+         if not file then
+            error("unable to open " .. arg.outfile)
+         end
+         file:write(bundle)
+         file:close()
+      else
+         io.write(bundle)
+      end
    end
 end
 ```
