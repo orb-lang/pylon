@@ -213,12 +213,17 @@ helm_c
 
 local export_c = brParse
                     : command "export"
-                    : description "export a module from the database"
+                    : description "export a project from the database"
 
 export_c
    : argument "project"
      : description "project or projects to export"
      : args "+"
+
+export_c
+  : option "-o" "--outfile"
+  : description "A file to export projects to (defaults to stdout)"
+  : args(1)
 
 
 
