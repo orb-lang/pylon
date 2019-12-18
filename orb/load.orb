@@ -128,21 +128,11 @@ brParse
    : description ("An lua, howth castle & environs.\n\n"
                .. "To view help for each command, type br <command> -h.")
    : epilog "For more info, see https://special-circumstanc.es"
-   : help_description_margin(35)
+   : help_description_margin(25)
 
 local orb_c = brParse : command "orb o"
                       : description "Literate compiler for Orb format."
 
-local grym_c = brParse : command "grym"
-                       : description ("Backup compiler for Orb format.\n"
-                                    .."Not intended for long-term use.")
-local helm_c = brParse
-                  : command "helm i"
-                  : description "launch helm, the 'i'nteractive REPL."
-
-local export_c = brParse
-                    : command "export"
-                    : description "export a module from the database"
 orb_c
    : require_command (false)
 
@@ -203,6 +193,14 @@ orb_c
      : description "Project to revert."
      : args(1)
 
+local grym_c = brParse : command "grym"
+                       : description ("Backup compiler for Orb format.\n"
+                                    .."Not intended for long-term use.")
+local helm_c = brParse
+                  : command "helm i"
+                  : description "launch helm, the 'i'nteractive REPL."
+                  : help_description_margin(35)
+
 helm_c
    : option "-s --session"
      : description "Start the repl with a given, named session."
@@ -212,6 +210,15 @@ helm_c
    : option "-n --new-session"
      : description "Begin a new, named session."
      : args(1)
+
+local export_c = brParse
+                    : command "export"
+                    : description "export a module from the database"
+
+export_c
+   : argument "project"
+     : description "project or projects to export"
+     : args "+"
 #/lua
 
 
