@@ -295,8 +295,7 @@ do
    return function(stmt_or_value, v <opt_i>)
      local t = type(v)
      if t == "table" then
-        --  Convert on a __todb or __tostring
-        --  metamethod
+        --  Convert on a __todb or __tostring metamethod
         local t_M = getmetatable(v)
         local method = t_M and t_M.__todb or t_M.__tostring
         if method then
@@ -635,7 +634,7 @@ do
      get = get or "hik"
      maxrecords = maxrecords or math.huge
      if maxrecords < 1 then
-       err("constraint", "agument #1 to resultset must be >= 1")
+       err("constraint", "argument #2 to resultset must be >= 1")
      end
      local hash, hasi, hask = get:find("h"), get:find("i"), get:find("k")
      local r, h = self:_step({}, {})

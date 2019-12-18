@@ -39,6 +39,14 @@ do
 
 
 
+
+
+
+
+
+
+
+
 stricture(nil,_G,{_PROMPT=true,__global=true})
 stricture = nil
 
@@ -105,6 +113,8 @@ local function parse_version(str)
    return ver
 end
 
+_Bridge.parse_version = parse_version
+
 
 
 
@@ -120,16 +130,19 @@ brParse
    : epilog "For more info, see https://special-circumstanc.es"
    : help_description_margin(35)
 
-local orb_c = brParse : command ("orb o")
+local orb_c = brParse : command "orb o"
                       : description "Literate compiler for Orb format."
 
 local grym_c = brParse : command "grym"
                        : description ("Backup compiler for Orb format.\n"
                                     .."Not intended for long-term use.")
 local helm_c = brParse
-                  : command ("helm i")
+                  : command "helm i"
                   : description "launch helm, the 'i'nteractive REPL."
 
+local export_c = brParse
+                    : command "export"
+                    : description "export a module from the database"
 orb_c
    : require_command (false)
 
