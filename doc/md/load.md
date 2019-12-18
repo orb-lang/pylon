@@ -123,85 +123,85 @@ brParse
    : help_description_margin(25)
 
 local orb_c = brParse : command "orb o"
-                      : description "Literate compiler for Orb format."
+                         : description "Literate compiler for Orb format."
 
 orb_c
    : require_command (false)
 
 orb_c
    : command "serve"
-   : description "Launch the Orb server."
+      : description "Launch the Orb server."
 
 orb_c
    : command "knit"
-   : description "Knit the codex."
+      : description "Knit the codex."
 
 orb_c
    : command "weave"
-   : description "Weave the codex."
+      : description "Weave the codex."
 
 local orb_command_c = orb_c
    : command "compile"
-   : description "Knits the codex and compiles the resulting sorcery files."
-   : help_vertical_space(1)
+      : description "Knits the codex and compiles the resulting sorcery files."
+      : help_vertical_space(1)
 
 orb_command_c
   : option "-v --version"
-    : description "A (semantic) version string."
-    : convert(parse_version)
-    : args(1)
+     : description "A (semantic) version string."
+     : convert(parse_version)
+     : args(1)
 
 orb_command_c
   : option "-e --edition"
-    : description ( "A named edition:\n  special meaning applies to "
+     : description ( "A named edition:\n  special meaning applies to "
                     .. "SESSION, CANDIDATE, and RELEASE.")
-    : args(1)
+     : args(1)
 
 orb_command_c
   : option "-H --home"
-    : description ("URL to fetch versions of the project.")
-    : args(1)
+     : description ("URL to fetch versions of the project.")
+     : args(1)
 
 orb_command_c
   : option "-R --repo"
-    : description ( "URL for the project's source repository.\n"
+     : description ( "URL for the project's source repository.\n"
                   .. "  Defaults to git remote 'origin'.")
-    : args(1)
+     : args(1)
 
 orb_command_c
   : option "-W --website"
-    : description ("URL for the project's user-facing website:\n"
-                   .. "  documentation, tutorials, examples, etc.")
-    : args(1)
+     : description ("URL for the project's user-facing website:\n"
+                 .. "  documentation, tutorials, examples, etc.")
+     : args(1)
 
 orb_command_c
   : option "-p --project"
-    : description "Name of project.  Defaults to name of home directory."
+     : description "Name of project.  Defaults to name of home directory."
 
 orb_c
    : command "revert"
    : description "Revert the latest compiled changes in project."
    : option "-p --project"
-     : description "Project to revert."
-     : args(1)
+      : description "Project to revert."
+      : args(1)
 
 local grym_c = brParse : command "grym"
                        : description ("Backup compiler for Orb format.\n"
                                     .."Not intended for long-term use.")
 local helm_c = brParse
                   : command "helm i"
-                  : description "launch helm, the 'i'nteractive REPL."
-                  : help_description_margin(35)
+                     : description "launch helm, the 'i'nteractive REPL."
+                     : help_description_margin(35)
 
 helm_c
    : option "-s --session"
-     : description "Start the repl with a given, named session."
-     : args(1)
+      : description "Start the repl with a given, named session."
+      : args(1)
 
 helm_c
    : option "-n --new-session"
-     : description "Begin a new, named session."
-     : args(1)
+      : description "Begin a new, named session."
+      : args(1)
 
 local export_c = brParse
                     : command "export"
@@ -214,8 +214,8 @@ export_c
 
 export_c
   : option "-o" "--outfile"
-  : description "A file to export projects to (defaults to stdout)"
-  : args(1)
+     : description "A file to export projects to (defaults to stdout)"
+     : args(1)
 ```
 #### end do block
 
@@ -238,19 +238,21 @@ Run the commands requested.
 ```lua
 if rawget(_G, "arg") ~= nil then
    local ts = require "helm:helm/repr".ts
+   -- shim the arg array to emulate the "lua <scriptname>" calling
+   -- convention which argparse expects
    table.insert(arg, 0, "")
    _Bridge.args = _Bridge.brParse:parse()
    local args = _Bridge.args
    print(ts(args))
    if args.orb then
-     if args.revert then
-        local revert = require "bundle:revert"
-        revert()
-     else
-        local orb = require "orb"
-        local uv = require "luv"
-        orb.run(uv.cwd())
-     end
+      if args.revert then
+         local revert = require "bundle:revert"
+         revert()
+      else
+         local orb = require "orb"
+         local uv = require "luv"
+         orb.run(uv.cwd())
+      end
    elseif args.grym == true then
       local grym = require "grym:orb"
       local uv = require "luv"
