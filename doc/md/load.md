@@ -216,6 +216,14 @@ export_c
   : option "-o" "--outfile"
      : description "A file to export projects to (defaults to stdout)"
      : args(1)
+
+local import_c = brParse
+                    : command "import"
+                    : description "import a project from a bundle file"
+import_c
+   : option "-i" "--infile"
+   : description "A bundled file of projects"
+   : args(1)
 ```
 #### end do block
 
@@ -275,6 +283,8 @@ if rawget(_G, "arg") ~= nil then
       else
          io.write(bundle)
       end
+   elseif args.import then
+      require "bundle:import".import(args.infile)
    end
 end
 ```
