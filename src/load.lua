@@ -298,7 +298,7 @@ if rawget(_G, "arg") ~= nil then
          io.write(bundle)
       end
    elseif args.import then
-      local import = require "bundle:import".import
+      local import = require "bundle:import"
       for _, file in ipairs(args.file) do
          import(file)
       end
