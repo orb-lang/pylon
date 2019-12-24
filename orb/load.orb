@@ -118,9 +118,9 @@ _Bridge.parse_version = parse_version
 
 
 #!lua
+local brParse = require "argparse" ()
 
-_Bridge.brParse = require "argparse" ()
-local brParse = _Bridge.brParse
+_Bridge.brParse = brParse
 
 brParse
    : require_command (false)
