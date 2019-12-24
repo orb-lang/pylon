@@ -110,9 +110,9 @@ end
 _Bridge.parse_version = parse_version
 ```
 ```lua
+local brParse = require "argparse" ()
 
-_Bridge.brParse = require "argparse" ()
-local brParse = _Bridge.brParse
+_Bridge.brParse = brParse
 
 brParse
    : require_command (false)
@@ -221,9 +221,9 @@ local import_c = brParse
                     : command "import"
                     : description "import a project from a bundle file"
 import_c
-   : option "-i" "--infile"
-   : description "A bundled file of projects"
-   : args(1)
+   : argument "file"
+   : description "a bundled project file or files"
+   : args "+"
 ```
 #### end do block
 
@@ -284,7 +284,10 @@ if rawget(_G, "arg") ~= nil then
          io.write(bundle)
       end
    elseif args.import then
-      require "bundle:import".import(args.infile)
+      local import = require "bundle:import".import
+      for _, file in ipairs(args.file) do
+         import(file)
+      end
    end
 end
 ```
