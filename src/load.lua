@@ -118,9 +118,9 @@ _Bridge.parse_version = parse_version
 
 
 
+local brParse = require "argparse" ()
 
-_Bridge.brParse = require "argparse" ()
-local brParse = _Bridge.brParse
+_Bridge.brParse = brParse
 
 brParse
    : require_command (false)
@@ -225,6 +225,14 @@ export_c
      : description "A file to export projects to (defaults to stdout)"
      : args(1)
 
+local import_c = brParse
+                    : command "import"
+                    : description "import a project from a bundle file"
+import_c
+   : argument "file"
+   : description "a bundled project file or files"
+   : args "+"
+
 
 
 
@@ -288,6 +296,11 @@ if rawget(_G, "arg") ~= nil then
          file:close()
       else
          io.write(bundle)
+      end
+   elseif args.import then
+      local import = require "bundle:import"
+      for _, file in ipairs(args.file) do
+         import(file)
       end
    end
 end
