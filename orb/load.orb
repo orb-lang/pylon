@@ -222,12 +222,14 @@ export_c
 
 export_c
   : option "-o" "--outfile"
-     : description "A file to export projects to (defaults to stdout)"
+     : description ("A file to export projects to."
+                 .. "Defaults to ./<project>.bundle")
      : args(1)
 
 local import_c = brParse
                     : command "import"
                     : description "import a project from a bundle file"
+
 import_c
    : argument "file"
    : description "a bundled project file or files"
@@ -290,12 +292,18 @@ if rawget(_G, "arg") ~= nil then
       if args.outfile then
          local file = io.open(args.outfile, "w+")
          if not file then
-            error("unable to open " .. arg.outfile)
+            error("unable to open " .. args.outfile)
          end
          file:write(bundle)
          file:close()
       else
-         io.write(bundle)
+         local outfilepath = "./" .. args.project .. ".bundle"
+         local file = io.open(outfilepath, "w+")
+         if not file then
+            error("unable to open " .. outfilepath)
+         end
+         file:write(bundle)
+         file:close()
       end
    elseif args.import then
       local import = require "bundle:import"
