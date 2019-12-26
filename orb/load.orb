@@ -218,7 +218,7 @@ local export_c = brParse
 export_c
    : argument "project"
      : description "project or projects to export"
-     : args "+"
+     : args(1)
 
 export_c
   : option "-o" "--outfile"
