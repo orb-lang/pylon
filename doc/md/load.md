@@ -205,11 +205,11 @@ helm_c
 
 local export_c = brParse
                     : command "export"
-                    : description "export a project from the database"
+                    : description "Export a project from the database"
 
 export_c
    : argument "project"
-     : description "project or projects to export"
+     : description "Project or projects to export"
      : args(1)
 
 export_c
@@ -217,6 +217,12 @@ export_c
      : description ("A file to export projects to."
                  .. "Defaults to ./<project>.bundle")
      : args(1)
+
+export_c
+   : option "-v" "--version"
+      : description "Version of the project to export"
+      : convert(parse_version)
+      : args(1)
 
 local import_c = brParse
                     : command "import"
@@ -274,7 +280,8 @@ if rawget(_G, "arg") ~= nil then
       helm(__G)
       setfenv(0, _G)
    elseif args.export then
-      local bundle = require "bundle:export".export(args.project)
+      local bundle = require "bundle:export".export(args.project,
+                                                    args.version)
       if args.outfile then
          local file = io.open(args.outfile, "w+")
          if not file then
