@@ -4,7 +4,12 @@ This adds the package loader, and will eventually contain the ``core`` standard
 library.
 
 
-## _Bridge table
+## Globals
+
+Anything we want to put in the global namespace goes here.
+
+
+### _Bridge table
 
 This is what we test for to see if we're inside ``bridge``, and where we put
 things that we'll need later.
@@ -12,6 +17,28 @@ things that we'll need later.
 ```lua
 _Bridge = {}
 ```
+### 5.2 compatibility
+
+  Provides the function ``pack`` to the global namespace, for handling variadic
+arguments.
+
+
+#### pack(...)
+
+```lua
+function pack(...)
+   return { n = select('#', ...), ... }
+end
+```
+## Loader
+
+  ``bridge`` loads most of its code from a SQLite database containing module
+bytecode and associated metadata.
+
+
+Here we provide the loader, used by ``require``.
+
+
 #### do block
 
 Since we're loading it straight from the binary, wrap it in a ``do`` block.
@@ -223,16 +250,14 @@ This makes everything in the block into garbage if a loader isn't generated.
 ```lua
 end
 ```
-### Strict mode
+## Strict mode
 
 This, we make into a global, and nil out once we've used it, while
 keeping all its helper upvalues in a ``do`` block, so losing the stricture
 reference will collect them.
 
 
-I wanted to get this out of ``load`` because it's conceptually unrelated.
-
-## Stricture
+### Stricture
 
 Lifted straight from [[penlight]
 [https://stevedonovan.github.io/Penlight/api/index.html].

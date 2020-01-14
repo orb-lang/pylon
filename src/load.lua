@@ -11,13 +11,6 @@
 
 
 
--- local utf8 = require "lua-utf8"
--- assert(utf8, "no utf8")
-
-
-
-
-
 
 
 

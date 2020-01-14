@@ -10,7 +10,35 @@
 
 
 
+
+
+
+
+
 _Bridge = {}
+
+
+
+
+
+
+
+
+
+
+
+
+function pack(...)
+   return { n = select('#', ...), ... }
+end
+
+
+
+
+
+
+
+
 
 
 
@@ -234,7 +262,6 @@ end
 
 
 end
-
 
 
 

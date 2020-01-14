@@ -8,12 +8,7 @@ The responsibilities of ``load``:
 
 - Run the resulting behaviors
 
-### Check for lua-utf8
 
-```lua
--- local utf8 = require "lua-utf8"
--- assert(utf8, "no utf8")
-```
 ## Bridge Path
 
 ``bridge`` uses its own path, distinct from the ``LUA_PATH`` environment variable.
