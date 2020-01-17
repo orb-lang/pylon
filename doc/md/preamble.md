@@ -30,6 +30,14 @@ function pack(...)
    return { n = select('#', ...), ... }
 end
 ```
+### table.clear
+
+  ``table.clear`` is a stock part of LuaJIT, which is not namespaced by default
+for compatibility reasons.
+
+```lua
+require "table.clear"
+```
 ## Loader
 
   ``bridge`` loads most of its code from a SQLite database containing module
