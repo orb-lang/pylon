@@ -26,9 +26,7 @@ arguments.
 #### pack(...)
 
 ```lua
-function pack(...)
-   return { n = select('#', ...), ... }
-end
+pack = table.pack
 ```
 ### table.clear
 
@@ -167,6 +165,7 @@ local function loaderGen(conn)
    local module_stmt = conn:prepare(bytecode_by_module)
    local project_stmt = conn:prepare(bytecode_by_module_and_project)
    -- return loader
+
    return function (mod_name)
       package.bridge_loaded = package.bridge_loaded or {}
       -- split the module into project and modname

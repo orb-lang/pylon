@@ -41,7 +41,7 @@ macosx:
 	$(MAKE) OS_BUILDOPTS="-pagezero_size 10000 -image_base 100000000"
 
 build/boot.o: src/boot.c build/load_char.h build/sql.h build/preamble.h build/afterward.h build/argparse.h
-	$(CC) -c -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/boot.c -o build/boot.o -Wall -Wextra -pedantic -std=c99
+	$(CC) -c -O3 -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/boot.c -o build/boot.o -Wall -Wextra -pedantic -std=c99
 
 build/load_char.h: src/load.lua src/compileToHeader.lua
 	build/luajit src/compileToHeader.lua LUA_LOAD src/load.lua build/~load_char.h
@@ -72,12 +72,12 @@ build/afterward.h: src/afterward.lua src/compileToHeader.lua
 #  is not installed
 
 src/sql.lua: orb/sql.orb
-	br o
+	- br o
 src/load.lua: orb/load.orb
-	br o
+	- br o
 src/preamble.lua: orb/preamble.orb
-	br o
+	- br o
 src/afterward.lua: orb/afterward.orb
-	br o
+	- br o
 src/argparse.lua: orb/argparse.orb
-	br o
+	- br o
