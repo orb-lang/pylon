@@ -24,4 +24,6 @@ To build it, run
 Which will put a `br` executable in the `build/` directory.
 
 To do anything with it, you'll need modules, to be found in the
-[bridge.modules](https://gitlab.com/special-circumstance/bridge.modules) repo.
+[bridge.modules][0] repo.
+
+[0]: https://gitlab.special-circumstanc.es/bridge-tools/bridge.modules
