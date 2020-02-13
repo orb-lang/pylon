@@ -1,10 +1,12 @@
 # Pylon
 
-`pylon` is a LuaJIT binary distribution, serving as the core binary for `bridge` tools.
+
+`pylon` is a LuaJIT binary distribution, serving as the core binary for `bridge`
+tools.
 
 In addition to LuaJIT itself, `pylon` builds and loads:
 
-#### SQLite (currently a dylib)
+#### SQLite
 
 #### libuv (luv)
 
@@ -16,7 +18,7 @@ In addition to LuaJIT itself, `pylon` builds and loads:
 
 To build it, run
 
-```
+```sh
 ./clean
 ./mkpylon.sh
 ```
