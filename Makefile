@@ -16,7 +16,6 @@ CWARNS = -Wall -Wextra -pedantic \
 			-Wundef \
 			-Wwrite-strings \
 			-Wbad-function-cast \
-			-Wdeclaration-after-statement \
 			-Wmissing-prototypes \
 			-Wnested-externs \
 			-Wstrict-prototypes \
