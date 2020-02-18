@@ -971,6 +971,30 @@ over our ``conn``, passing it along to the pragma.
 
    conn_mt.__index = new_conn_index
 ```
+### conn:pclose()
+
+Close the conn in protected mode, inside a uv idler that will keep retrying it
+until it succeeds.
+
+```lua
+  local close = conn_mt.close
+
+  function conn_mt.pclose(conn)
+     local uv = require "luv"
+     local close_idler = uv.new_idle()
+     close_idler:start(function()
+       local success = pcall(close, conn)
+       if not success then
+         return nil
+       else
+         close_idler:stop()
+       end
+     end)
+     if not uv.loop_alive() then
+        uv.run "default"
+     end
+  end
+```
 #### End Closure and Add =sql= to _G
 
 ```lua

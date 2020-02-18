@@ -973,6 +973,32 @@ end
 
 
 
+
+
+
+  local close = conn_mt.close
+
+  function conn_mt.pclose(conn)
+     local uv = require "luv"
+     local close_idler = uv.new_idle()
+     close_idler:start(function()
+       local success = pcall(close, conn)
+       if not success then
+         return nil
+       else
+         close_idler:stop()
+       end
+     end)
+     if not uv.loop_alive() then
+        uv.run "default"
+     end
+  end
+
+
+
+
+
+
 end
 sql = sqlayer
 sqlayer = nil
