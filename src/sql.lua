@@ -220,6 +220,7 @@ do
    ]]
 
    --------------------------------------------------------------------------------
+   --[[
    local ok, sql = pcall(ffi.load,"sqlite3")
    if not ok then
       ok, sql = pcall(ffi.load, "libsqlite3.so.0")
@@ -227,7 +228,7 @@ do
    if not sql then
       error("failed to load sqlite3 dylib")
    end
-
+   --]]
    local transient = ffi.cast("sqlite3_destructor_type", -1)
    local int64_ct = ffi.typeof("int64_t")
 
@@ -253,7 +254,7 @@ do
 
    -- Helper function to get error msg and code from sqlite.
    local function codemsg(pconn, code)
-     return codes[code]:lower(), ffi.string(sql.sqlite3_errmsg(pconn))
+     return codes[code]:lower(), ffi.string(ffi.C.sqlite3_errmsg(pconn))
    end
 
    -- Throw error for a given connection.
@@ -264,7 +265,7 @@ do
 
    -- Test code is OK or throw error for a given connection.
    local function T_okcode(pconn, code)
-     if code ~= sql.SQLITE_OK then
+     if code ~= ffi.C.SQLITE_OK then
        E_conn(pconn, code)
      end
    end
@@ -278,18 +279,18 @@ do
    -- Getters / Setters to minimize code duplication ------------------------------
    local sql_get_code = [=[
    return function(stmt_or_value <opt_i>)
-     local t = sql.sqlite3_<variant>_type(stmt_or_value <opt_i>)
-     if t == sql.SQLITE_INTEGER then
-       return sql.sqlite3_<variant>_int64(stmt_or_value <opt_i>)
-     elseif t == sql.SQLITE_FLOAT then
-       return sql.sqlite3_<variant>_double(stmt_or_value <opt_i>)
-     elseif t == sql.SQLITE_TEXT then
-       local nb = sql.sqlite3_<variant>_bytes(stmt_or_value <opt_i>)
-       return ffi.string(sql.sqlite3_<variant>_text(stmt_or_value <opt_i>), nb)
-     elseif t == sql.SQLITE_BLOB then
-       local nb = sql.sqlite3_<variant>_bytes(stmt_or_value <opt_i>)
-       return ffi.string(sql.sqlite3_<variant>_blob(stmt_or_value <opt_i>), nb)
-     elseif t == sql.SQLITE_NULL then
+     local t = ffi.C.sqlite3_<variant>_type(stmt_or_value <opt_i>)
+     if t == ffi.C.SQLITE_INTEGER then
+       return ffi.C.sqlite3_<variant>_int64(stmt_or_value <opt_i>)
+     elseif t == ffi.C.SQLITE_FLOAT then
+       return ffi.C.sqlite3_<variant>_double(stmt_or_value <opt_i>)
+     elseif t == ffi.C.SQLITE_TEXT then
+       local nb = ffi.C.sqlite3_<variant>_bytes(stmt_or_value <opt_i>)
+       return ffi.string(ffi.C.sqlite3_<variant>_text(stmt_or_value <opt_i>), nb)
+     elseif t == ffi.C.SQLITE_BLOB then
+       local nb = ffi.C.sqlite3_<variant>_bytes(stmt_or_value <opt_i>)
+       return ffi.string(ffi.C.sqlite3_<variant>_blob(stmt_or_value <opt_i>), nb)
+     elseif t == ffi.C.SQLITE_NULL then
        return nil
      else
        err("constraint", "unexpected SQLite3 type")
@@ -310,18 +311,18 @@ do
         end
      end
      if ffi.istype(int64_ct, v) then
-       return sql.sqlite3_<variant>_int64(stmt_or_value <opt_i>, v)
+       return ffi.C.sqlite3_<variant>_int64(stmt_or_value <opt_i>, v)
      elseif t == "number" then
-       return sql.sqlite3_<variant>_double(stmt_or_value <opt_i>, v)
+       return ffi.C.sqlite3_<variant>_double(stmt_or_value <opt_i>, v)
      elseif t == "string" then
-       return sql.sqlite3_<variant>_text(stmt_or_value <opt_i>, v, #v,
+       return ffi.C.sqlite3_<variant>_text(stmt_or_value <opt_i>, v, #v,
          transient)
      elseif t == "table" and getmetatable(v) == blob_mt then
        v = v[1]
-       return sql.sqlite3_<variant>_blob(stmt_or_value <opt_i>, v, #v,
+       return ffi.C.sqlite3_<variant>_blob(stmt_or_value <opt_i>, v, #v,
          transient)
      elseif t == "nil" then
-       return sql.sqlite3_<variant>_null(stmt_or_value <opt_i>)
+       return ffi.C.sqlite3_<variant>_null(stmt_or_value <opt_i>)
      else
        err("constraint", "unexpected Lua type " .. t)
      end
@@ -359,9 +360,9 @@ do
 
    -- Connection ------------------------------------------------------------------
    local open_modes = {
-     ro = sql.SQLITE_OPEN_READONLY,
-     rw = sql.SQLITE_OPEN_READWRITE,
-     rwc = bit.bor(sql.SQLITE_OPEN_READWRITE, sql.SQLITE_OPEN_CREATE)
+     ro = ffi.C.SQLITE_OPEN_READONLY,
+     rw = ffi.C.SQLITE_OPEN_READWRITE,
+     rwc = bit.bor(ffi.C.SQLITE_OPEN_READWRITE, ffi.C.SQLITE_OPEN_CREATE)
    }
 
    local function open(str, mode)
@@ -372,12 +373,12 @@ do
      end
      local aptr = ffi.new("sqlite3*[1]")
      -- Usually aptr is set even if error code, so conn always needs to be closed.
-     local code = sql.sqlite3_open_v2(str, aptr, mode, nil)
+     local code = ffi.C.sqlite3_open_v2(str, aptr, mode, nil)
      local conn = conn_ct(aptr[0], false)
      -- Must create this anyway due to conn:close() function.
      connstmt[conn] = setmetatable({}, { __mode = "k" })
      conncb[conn] = { scalar = {}, step = {}, final = {} }
-     if code ~= sql.SQLITE_OK then
+     if code ~= ffi.C.SQLITE_OK then
        local code, msg = codemsg(conn._ptr, code) -- Before closing!
        conn:close() -- Free resources, should not fail here in this case!
        err(code, msg)
@@ -392,7 +393,7 @@ do
      for _,v in pairs(conncb[self].scalar) do v:free() end
      for _,v in pairs(conncb[self].step)   do v:free() end
      for _,v in pairs(conncb[self].final)  do v:free() end
-     local code = sql.sqlite3_close(self._ptr)
+     local code = ffi.C.sqlite3_close(self._ptr)
      T_okcode(self._ptr, code)
      connstmt[self] = nil -- Table connstmt is not weak, need to clear manually.
      conncb[self] = nil
@@ -406,7 +407,7 @@ do
    function conn_mt:prepare(stmtstr) T_open(self)
      local aptr = ffi.new("sqlite3_stmt*[1]")
      -- If error code aptr NULL, so no need to close anything.
-     local code = sql.sqlite3_prepare_v2(self._ptr, stmtstr, #stmtstr, aptr, nil)
+     local code = ffi.C.sqlite3_prepare_v2(self._ptr, stmtstr, #stmtstr, aptr, nil)
      T_okcode(self._ptr, code)
      local stmt = stmt_ct(aptr[0], false, self._ptr, code)
      connstmt[self][stmt] = true
@@ -487,7 +488,7 @@ do
        local ok, result = pcall(f, unpack(values, 1, nvalues))
        if not ok then
          local msg = "Lua registered scalar function "..name.." error: "..result
-         sql.sqlite3_result_error(context, msg, #msg)
+         ffi.C.sqlite3_result_error(context, msg, #msg)
        else
          set_value(context, result)
        end
@@ -500,7 +501,7 @@ do
    -- handled from Lua side.
    local function getstate(context, initstate, size)
      -- Only pointer address relevant for indexing, size irrelevant.
-     local ptr = sql.sqlite3_aggregate_context(context, size)
+     local ptr = ffi.C.sqlite3_aggregate_context(context, size)
      local pid = tonumber(ffi.cast("intptr_t",ptr))
      local state = aggregatestate[pid]
      if type(state) == "nil" then
@@ -521,7 +522,7 @@ do
        local ok, result = pcall(f, state, unpack(values, 1, nvalues))
        if not ok then
          local msg = "Lua registered step function "..name.." error: "..result
-         sql.sqlite3_result_error(context, msg, #msg)
+         ffi.C.sqlite3_result_error(context, msg, #msg)
        end
      end
      return ffi.cast("ljsqlite3_cbstep", sqlf)
@@ -536,7 +537,7 @@ do
        -- Throw error via sqlite function if necessary.
        if not ok then
          local msg = "Lua registered final function "..name.." error: "..result
-         sql.sqlite3_result_error(context, msg, #msg)
+         ffi.C.sqlite3_result_error(context, msg, #msg)
        else
          set_value(context, result)
        end
@@ -547,7 +548,7 @@ do
    function conn_mt:setscalar(name, f) T_open(self)
      jit.off(stmt_step) -- Necessary to avoid bad calloc in some use cases.
      local cbf = f and scalarcb(name, f) or nil
-     local code = sql.sqlite3_create_function(self._ptr, name, -1, 5, nil,
+     local code = ffi.C.sqlite3_create_function(self._ptr, name, -1, 5, nil,
        cbf, nil, nil) -- If cbf nil this clears the function is sqlite.
      T_okcode(self._ptr, code)
      updatecb(self, "scalar", name, cbf) -- Update and clear old.
@@ -557,7 +558,7 @@ do
      jit.off(stmt_step) -- Necessary to avoid bad calloc in some use cases.
      local cbs = step  and stepcb (name, step,  initstate) or nil
      local cbf = final and finalcb(name, final, initstate) or nil
-     local code = sql.sqlite3_create_function(self._ptr, name, -1, 5, nil,
+     local code = ffi.C.sqlite3_create_function(self._ptr, name, -1, 5, nil,
        nil, cbs, cbf) -- If cbs, cbf nil this clears the function is sqlite.
      T_okcode(self._ptr, code)
      updatecb(self, "step", name, cbs) -- Update and clear old.
@@ -570,16 +571,16 @@ do
    function stmt_mt:reset() T_open(self)
      -- Ignore possible error code, it would be repetition of error raised during
      -- most recent evaluation of statement which would have been raised already.
-     sql.sqlite3_reset(self._ptr)
-     self._code = sql.SQLITE_OK -- Always succeds.
+     ffi.C.sqlite3_reset(self._ptr)
+     self._code = ffi.C.SQLITE_OK -- Always succeds.
      return self
    end
 
    function stmt_mt:close() T_open(self)
      -- Ignore possible error code, it would be repetition of error raised during
      -- most recent evaluation of statement which would have been raised already.
-     sql.sqlite3_finalize(self._ptr)
-     self._code = sql.SQLITE_OK -- Always succeds.
+     ffi.C.sqlite3_finalize(self._ptr)
+     self._code = ffi.C.SQLITE_OK -- Always succeds.
      self._closed = true -- Must be called exaclty once.
    end
 
@@ -589,20 +590,20 @@ do
 
    -- Statement step, resultset ---------------------------------------------------
    function stmt_mt:_ncol()
-     return sql.sqlite3_column_count(self._ptr)
+     return ffi.C.sqlite3_column_count(self._ptr)
    end
 
    function stmt_mt:_header(h)
      for i=1,self:_ncol() do -- Here indexing 0,N-1.
-       h[i] = ffi.string(sql.sqlite3_column_name(self._ptr, i - 1))
+       h[i] = ffi.string(ffi.C.sqlite3_column_name(self._ptr, i - 1))
      end
    end
 
    stmt_step = function(self, row, header)
      -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
-     if self._code == sql.SQLITE_DONE then return nil end -- Already finished.
-     self._code = sql.sqlite3_step(self._ptr)
-     if self._code == sql.SQLITE_ROW then
+     if self._code == ffi.C.SQLITE_DONE then return nil end -- Already finished.
+     self._code = ffi.C.sqlite3_step(self._ptr)
+     if self._code == ffi.C.SQLITE_ROW then
        -- All the sql.* functions called never errors here.
        row = row or {}
        for i=1,self:_ncol() do
@@ -610,7 +611,7 @@ do
        end
        if header then self:_header(header) end
        return row, header
-     elseif self._code == sql.SQLITE_DONE then -- Have finished now.
+     elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now.
        return nil
      else -- If code not DONE or ROW then it's error.
        E_conn(self._conn, self._code)
@@ -694,7 +695,7 @@ do
      pre = pre or ":"
      for k,v in pairs(t) do
        if type(k) == "string" then
-         local param = sql.sqlite3_bind_parameter_index(self._ptr, pre..k)
+         local param = ffi.C.sqlite3_bind_parameter_index(self._ptr, pre..k)
          if param ~= 0 then
            self:_bind1(param, v)
          end
@@ -704,7 +705,7 @@ do
    end
 
    function stmt_mt:clearbind() T_open(self)
-     local code = sql.sqlite3_clear_bindings(self._ptr)
+     local code = ffi.C.sqlite3_clear_bindings(self._ptr)
      T_okcode(self._conn, code)
      return self
    end

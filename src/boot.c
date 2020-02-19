@@ -14,6 +14,7 @@ LUALIB_API int luaopen_utf8(lua_State *L);
 
 // Constant arrays of compiled bytecode
 
+
 #include "sql.h"
 #include "preamble.h"
 #include "load_char.h"
@@ -25,6 +26,11 @@ const char * PREAMBLE_NAME = "@preamble";
 const char * ARGPARSE_NAME = "@argparse";
 const char * LOAD_NAME = "@load";
 const char * AFTERWARD_NAME = "@afterward";
+
+// dummy pointer to statically link in SQLite
+
+
+int (* sqlite3_dummy_ptr) (sqlite3*, int) = &sqlite3_busy_timeout;
 
 // Print an error.
 static int lua_die(lua_State *L, int errno) {
