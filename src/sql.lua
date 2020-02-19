@@ -220,7 +220,13 @@ do
    ]]
 
    --------------------------------------------------------------------------------
-   local sql = ffi.load("sqlite3") or ffi.load "libsqlite3.so.0"
+   local ok, sql = pcall(ffi.load,"sqlite3")
+   if not ok then
+      ok, sql = pcall(ffi.load, "libsqlite3.so.0")
+   end
+   if not sql then
+      error("failed to load sqlite3 dylib")
+   end
 
    local transient = ffi.cast("sqlite3_destructor_type", -1)
    local int64_ct = ffi.typeof("int64_t")
