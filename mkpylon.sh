@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright 2019 Sam Putman.
+# Copyright 2020 Sam Putman.
 
 # MIT LICENSE:
 
@@ -93,7 +93,7 @@ enter deps/sqlite
   mkdir -p build
   cd build
   ../configure
-  make
+  make XCFLAGS=-DSQLITE_ENABLE_JSON1
 leave
 # move our artifacts over to pylon/build
 cp deps/sqlite/build/sqlite3.o build/

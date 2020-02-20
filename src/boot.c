@@ -13,8 +13,6 @@ LUALIB_API int luaopen_lfs (lua_State *L);
 LUALIB_API int luaopen_utf8(lua_State *L);
 
 // Constant arrays of compiled bytecode
-
-
 #include "sql.h"
 #include "preamble.h"
 #include "load_char.h"
@@ -28,8 +26,6 @@ const char * LOAD_NAME = "@load";
 const char * AFTERWARD_NAME = "@afterward";
 
 // dummy pointer to statically link in SQLite
-
-
 int (* sqlite3_dummy_ptr) (sqlite3*, int) = &sqlite3_busy_timeout;
 
 // Print an error.
@@ -39,7 +35,6 @@ static int lua_die(lua_State *L, int errno) {
 }
 
 // debug-load a string (or bytecode)
-
 static int debug_load(lua_State *L, const char bytecode[], int byte_len, const char * name) {
     lua_getglobal(L, "debug");
     lua_getfield(L, -1, "traceback");
