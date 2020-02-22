@@ -801,19 +801,6 @@ Unwraps and returns success, or ``false`` and error.
       end
    end
 ```
-### sql.lastid(conn)
-
-This could be improved by natively handling uint64_t ``cdata``.
-
-
-Y'know, if we ever keep more than 53 bits width of rows in uhhhhh SQLite.
-
-```lua
-   function sqlayer.lastRowId(conn)
-      local result = conn:rowexec "SELECT CAST(last_insert_rowid() AS REAL)"
-      return result
-   end
-```
 ### sql.unwrapKey(result_set)
 
 Unwraps the first result, of the first row, of returned results.
