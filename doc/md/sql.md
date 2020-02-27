@@ -682,7 +682,7 @@ SQLite, so the system library is likely to be just fine.
    -- indexed values.
    --
    -- Worse, it would *unpredictably* do the wrong thing, since stmts silently accept
-   -- rebinding, and `pair` offers no ordering guarantees.
+   -- rebinding, and `pairs` offers no ordering guarantees.
    --
 
    function stmt_mt:bindkv(t, pre) T_open(self)
@@ -828,7 +828,7 @@ function sqlayer.unwrapKey(result_set)
    end
 end
 ```
-### sqlayer.toRow(sql_result, num)
+### sql.toRow(sql_result, num)
 
 Unwraps one or more results from a sql_result, which assume that (at least)
 ``"k"`` was passed to ``conn:exec``.

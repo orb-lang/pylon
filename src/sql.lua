@@ -680,7 +680,7 @@ do
    -- indexed values.
    --
    -- Worse, it would *unpredictably* do the wrong thing, since stmts silently accept
-   -- rebinding, and `pair` offers no ordering guarantees.
+   -- rebinding, and `pairs` offers no ordering guarantees.
    --
 
    function stmt_mt:bindkv(t, pre) T_open(self)
