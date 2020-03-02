@@ -804,7 +804,7 @@ Unwraps and returns success, or ``false`` and error.
       end
    end
 ```
-### sql.lastid(conn)
+### sql.lastRowId(conn)
 
 This could be improved by natively handling uint64_t ``cdata``.
 
