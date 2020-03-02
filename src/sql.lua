@@ -815,6 +815,19 @@ do
 
 
 
+   function sqlayer.lastRowId(conn)
+      local result = conn:rowexec "SELECT CAST(last_insert_rowid() AS REAL)"
+      return result
+   end
+
+
+
+
+
+
+
+
+
 
 
 
