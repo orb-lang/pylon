@@ -808,7 +808,7 @@ Unwraps and returns success, or =false= and error.
 #/lua
 
 
-*** sql.lastid(conn)
+*** sql.lastRowId(conn)
 
 This could be improved by natively handling uint64_t =cdata=.
 
