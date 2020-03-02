@@ -313,6 +313,9 @@ do
        v = v[1]
        return ffi.C.sqlite3_<variant>_blob(stmt_or_value <opt_i>, v, #v,
          transient)
+     elseif t == "boolean" then
+       local bool_num = v and 1 or 0
+       return ffi.C.sqlite3_<variant>_double(stmt_or_value <opt_i>, bool_num)
      elseif t == "nil" then
        return ffi.C.sqlite3_<variant>_null(stmt_or_value <opt_i>)
      else
@@ -803,6 +806,19 @@ do
       end
    end
 
+
+
+
+
+
+
+
+
+
+   function sqlayer.lastRowId(conn)
+      local result = conn:rowexec "SELECT CAST(last_insert_rowid() AS REAL)"
+      return result
+   end
 
 
 
