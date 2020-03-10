@@ -135,7 +135,7 @@ local ok, bridge_conn = pcall(sql.open, bridge_modules, "rw")
 if ok then
    _Bridge.modules_conn = bridge_conn
 else
-   print "no bridge.modules"
+   print ("no bridge.modules: " .. tostring(bridge_conn))
 end
 
 
