@@ -33,7 +33,7 @@ uninstall:
 
 OS_BUILDOPTS ?= $(error "either make $$PLAT or manually set OS_BUILDOPTS")
 $(BR): build/boot.o build/libluv.a build/lfs.a build/sqlite3.o
-	$(CC) -o $@ $(CWARNS) build/boot.o $(BRLIBS) -Ibuild/ -Ilib/  $(OS_BUILDOPTS)
+	$(CC) -o $@ $(CWARNS) build/boot.o $(BRLIBS) -Ibuild/ -Ilib/ $(OS_BUILDOPTS)
 
 linux:
 	$(MAKE) OS_BUILDOPTS="-lm -ldl -lpthread"

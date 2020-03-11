@@ -266,6 +266,7 @@ collectgarbage()
 
 
 
+
 if rawget(_G, "arg") ~= nil then
    -- shim the arg array to emulate the "lua <scriptname>" calling
    -- convention which argparse expects
