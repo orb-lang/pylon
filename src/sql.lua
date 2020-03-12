@@ -324,10 +324,6 @@ do
    end
    ]=]
 
-   -- debug assertion for ffi.C
-
-   assert(ffi.C.sqlite3_open_v2)
-
    -- Environment for setters/getters.
    local sql_env = {
      sql          = sql,

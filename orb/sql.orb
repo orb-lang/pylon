@@ -324,10 +324,6 @@ SQLite, so the system library is likely to be just fine.
    end
    ]=]
 
-   -- debug assertion for ffi.C
-
-   assert(ffi.C.sqlite3_open_v2)
-
    -- Environment for setters/getters.
    local sql_env = {
      sql          = sql,
