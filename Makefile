@@ -36,7 +36,7 @@ $(BR): build/boot.o build/libluv.a build/lfs.a build/sqlite3.o
 	$(CC) -o $@ $(CWARNS) build/boot.o $(BRLIBS) -Ibuild/ -Ilib/  $(OS_BUILDOPTS)
 
 linux:
-	$(MAKE) OS_BUILDOPTS="-lm -ldl -lpthread -Wl -E"
+	$(MAKE) OS_BUILDOPTS="-lm -ldl -lpthread -Wl,-E"
 macosx:
 	$(MAKE) OS_BUILDOPTS="-pagezero_size 10000 -image_base 100000000"
 
