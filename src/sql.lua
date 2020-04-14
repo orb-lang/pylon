@@ -26,9 +26,6 @@
 
 
 
-
-
-
 local sqlayer = {}
 do
    local ffi  = require "ffi"

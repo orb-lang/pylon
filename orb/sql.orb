@@ -4,9 +4,6 @@
 This needs to load first, so that we can add a =package.loaders= which draws
 from the module database.
 
-I wanted to keep the =ljsqlite= code in its own file for as long as practical,
-this step entails changing that.
-
 
 **** Original licensing
 
