@@ -72,14 +72,9 @@ do
 ```
 ### SQLite FFI
 
-Some of this should eventually be replaced with a statically linked struct, as
-we were doing with ``femto``.  This will cause our SQLite binary to be
-statically linked to the binary, which I'm pretty sure doesn't currently
-happen.
-
-
-Low priority, since we aren't really out there flogging brand-new features of
-SQLite, so the system library is likely to be just fine.
+This has been modified to use the statically-linked SQLite library, which
+allows us to pin the version and avoid naming weirdness esp. in Ubuntu-style
+distributions.
 
 ```lua
    -- Codes -----------------------------------------------------------------------
@@ -292,9 +287,9 @@ SQLite, so the system library is likely to be just fine.
    return function(stmt_or_value, v <opt_i>)
      local t = type(v)
      if t == "table" then
-        --  Convert on a __todb or __tostring metamethod
+        --  Convert on a __todb metamethod
         local t_M = getmetatable(v)
-        local method = t_M and t_M.__todb or t_M.__tostring
+        local method = t_M and t_M.__todb
         if method then
            v = method(v)
            t = "string"

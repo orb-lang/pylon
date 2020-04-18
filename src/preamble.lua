@@ -38,7 +38,12 @@ pack = table.pack
 
 
 
+
+
+
+
 require "table.clear"
+require "table.new"
 
 
 

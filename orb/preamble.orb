@@ -32,13 +32,18 @@ pack = table.pack
 #/lua
 
 
-*** table.clear
+*** table.clear, table.new
 
-  =table.clear= is a stock part of LuaJIT, which is not namespaced by default
-for compatibility reasons.
+  =table.clear= and =table.new= are a stock part of LuaJIT, which is not
+namespaced by default for compatibility reasons.
+
+=table.clear(tab)= sets all values to =nil=, while =table.new(narr, nrec)=
+preallocates the given amount of slots in the array and record portions of the
+table.
 
 #!lua
 require "table.clear"
+require "table.new"
 #/lua
 
 ** Loader

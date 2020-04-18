@@ -77,10 +77,6 @@ do
 
 
 
-
-
-
-
    -- Codes -----------------------------------------------------------------------
    local sqlconstants = {} -- SQLITE_* and OPEN_* declarations.
    local codes = {
@@ -291,9 +287,9 @@ do
    return function(stmt_or_value, v <opt_i>)
      local t = type(v)
      if t == "table" then
-        --  Convert on a __todb or __tostring metamethod
+        --  Convert on a __todb metamethod
         local t_M = getmetatable(v)
-        local method = t_M and t_M.__todb or t_M.__tostring
+        local method = t_M and t_M.__todb
         if method then
            v = method(v)
            t = "string"
