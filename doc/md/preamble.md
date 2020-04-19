@@ -28,7 +28,7 @@ arguments.
 ```lua
 pack = table.pack
 ```
-### table.clear, table.new
+### Table Extensions
 
   ``table.clear`` and ``table.new`` are a stock part of LuaJIT, which is not
 namespaced by default for compatibility reasons.
@@ -38,9 +38,16 @@ namespaced by default for compatibility reasons.
 preallocates the given amount of slots in the array and record portions of the
 table.
 
+
+The openresty fork of LuaJIT provides additional functions, [documented here](https://github.com/openresty/luajit2#new-lua-apis).
+
 ```lua
 require "table.clear"
 require "table.new"
+require "table.isempty"
+require "table.isarray"
+require "table.nkeys"
+-- require "table.clone" -- we provide a more general, but slower, version
 ```
 ## Loader
 

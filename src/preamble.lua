@@ -42,8 +42,15 @@ pack = table.pack
 
 
 
+
+
+
 require "table.clear"
 require "table.new"
+require "table.isempty"
+require "table.isarray"
+require "table.nkeys"
+-- require "table.clone" -- we provide a more general, but slower, version
 
 
 
