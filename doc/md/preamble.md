@@ -131,6 +131,7 @@ if not bridge_modules then
 end
 
 _Bridge.bridge_home = bridge_home
+_Bridge.bridge_modules_home = bridge_modules
 ```
 
 Add the conn to _Bridge:

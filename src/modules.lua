@@ -17,6 +17,7 @@
 
 
 do
+print "modules"
 
 
 
@@ -138,6 +139,32 @@ CREATE TABLE IF NOT EXISTS module (
       REFERENCES code (code_id)
 );
 ]]
+
+
+
+
+
+
+
+
+
+
+if not _Bridge.modules_conn then
+   local yes, conn = pcall(sql.open, _Bridge.bridge_modules_home, "rwc")
+   if not yes then
+      error("Could not create " .. _Bridge.bridge_modules_home
+            .. ", consider creating the directory or setting"
+            .. " $BRIDGE_MODULES.")
+   end
+   if conn then
+      conn:exec(stmts.create_project_table)
+      conn:exec(stmts.create_version_table)
+      conn:exec(stmts.create_bundle_table)
+      conn:exec(stmts.create_code_table)
+      conn:exec(stmts.create_module_table)
+   end
+   _Bridge.modules_conn = conn
+end
 
 
 
