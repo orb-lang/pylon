@@ -19,15 +19,15 @@ In addition to LuaJIT itself, `pylon` builds and loads:
 
 ## Dependencies
 
-`pylon` itself requires the following tools: `sh`, `make`, and `cc`.  Some 
+`pylon` itself requires the following tools: `sh`, `make`, and `cc`.  Some
 effort has been made to keep this Posix compliant, if you run into an issue with
 a variation of one of these tools, please file an issue.
 
 Building the submodules requires these additional tools:
 
     automake autotools-dev cmake libtool
-    
-The pylon Makefile also uses `colordiff`, but the absence of this shouldn't 
+
+The pylon Makefile also uses `colordiff`, but the absence of this shouldn't
 throw any errors, it's just a convenience to print when Lua bytecode has
 changed between revisions.
 
@@ -43,6 +43,7 @@ To build it, run
 
 Which will put a `br` executable in the `build/` directory.
 
+
 Subsequent builds should simply require
 
     make <platform>
@@ -50,7 +51,24 @@ Subsequent builds should simply require
 Unless one is updating of the submodules.  Supported platforms, currently, are
 `macosx` and `linux`.
 
-To do anything with it, you'll need modules, to be found in the
-[bridge.modules][0] repo.
+To do anything with it, you'll need modules.
 
-[0]: https://gitlab.special-circumstanc.es/bridge-tools/bridge.modules
+There's an included `.bundle` file.  After making the binary, create
+a directory for the modules:
+
+```sh
+mkdir -p ~/.local/share/bridge/
+```
+Or any directory you would like, pointed to by the environment variable
+`$BRIDGE_HOME`.
+
+Then run
+
+```sh
+build/br
+```
+
+And the database should populate.
+
+At that point, you're free to move `br` anywhere on your path.
+
