@@ -40,7 +40,7 @@ linux:
 macosx:
 	$(MAKE) OS_BUILDOPTS="-pagezero_size 10000 -image_base 100000000"
 
-build/boot.o: src/boot.c build/load_char.h build/sql.h build/preamble.h build/afterward.h build/argparse.h
+build/boot.o: src/boot.c build/load_char.h build/sql.h build/preamble.h build/afterward.h build/argparse.h build/modules.h
 	$(CC) -c -O3 -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/boot.c -o build/boot.o -Wall -Wextra -pedantic -std=c99
 
 build/load_char.h: src/load.lua src/compileToHeader.lua
@@ -57,6 +57,11 @@ build/preamble.h: src/preamble.lua src/compileToHeader.lua
 	build/luajit src/compileToHeader.lua LUA_PREAMBLE src/preamble.lua build/~preamble.h
 	- colordiff build/preamble.h build/~preamble.h
 	mv build/~preamble.h build/preamble.h
+
+build/modules.h: src/modules.lua src/compileToHeader.lua
+	build/luajit src/compileToHeader.lua LUA_MODULES src/modules.lua build/~modules.h
+	- colordiff build/modules.h build/~modules.h
+	mv build/~modules.h build/modules.h
 
 build/argparse.h: src/argparse.lua src/compileToHeader.lua
 	build/luajit src/compileToHeader.lua LUA_ARGPARSE src/argparse.lua build/~argparse.h
@@ -76,6 +81,8 @@ src/sql.lua: orb/sql.orb
 src/load.lua: orb/load.orb
 	- br o
 src/preamble.lua: orb/preamble.orb
+	- br o
+src/modules.lua: orb/modules.orb
 	- br o
 src/afterward.lua: orb/afterward.orb
 	- br o

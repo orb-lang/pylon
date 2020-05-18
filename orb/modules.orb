@@ -10,12 +10,23 @@ This module is responsible for:
    =bridge.modules= database from an included =.bundle= file.
 
 
+***** do guard
+
+As is standard for our directly-loaded code, we wrap in a =do= block, to
+imitate the behavior of a module.
+
+#!lua
+do
+#/lua
+
+
 ** SQL for bridge.modules
 
 #Todo as soon as we switch to using the new knitter for orb files, make these
       into genuine SQL blocks.
 
 #Todo this currently lives in =orb= as well, we should move it.
+
 
 #!lua
 local stmts = {}
@@ -127,4 +138,11 @@ CREATE TABLE IF NOT EXISTS module (
       REFERENCES code (code_id)
 );
 ]]
+#/lua
+
+
+***** End of do guard
+
+#!lua
+end
 #/lua
