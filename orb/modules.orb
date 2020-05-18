@@ -1,0 +1,130 @@
+* Modules
+
+This module is responsible for:
+
+-  Building the =bridge.modules= database if it doesn't already exist
+
+-  #todo Implementing =use=, our =require= replacement.
+
+-  Containing =br import=, so that our self-contained binary can populate the
+   =bridge.modules= database from an included =.bundle= file.
+
+
+** SQL for bridge.modules
+
+#Todo as soon as we switch to using the new knitter for orb files, make these
+      into genuine SQL blocks.
+
+#Todo this currently lives in =orb= as well, we should move it.
+
+#!lua
+local stmts = {}
+#/lua
+
+
+*** CREATE
+
+These SQL statements create the bridge.modules database.
+
+Currently, we have no migrations.  When we do, they will follow the pattern
+[[established in helm][@br.helm:helm/historian]].
+
+
+**** create_project_table
+
+#!lua
+stmts.create_project_table = [[
+CREATE TABLE IF NOT EXISTS project (
+   project_id INTEGER PRIMARY KEY,
+   name STRING UNIQUE NOT NULL ON CONFLICT IGNORE,
+   repo STRING,
+   repo_type STRING DEFAULT 'git',
+   repo_alternates STRING,
+   home STRING,
+   website STRING
+);
+]]
+#/lua
+
+
+**** create_version_table
+
+#!lua
+stmts.create_version_table = [[
+CREATE TABLE IF NOT EXISTS version (
+   version_id INTEGER PRIMARY KEY,
+   stage STRING DEFAULT 'SNAPSHOT' COLLATE NOCASE,
+   edition STRING default '',
+   special STRING DEFAULT 'no' COLLATE NOCASE,
+   major INTEGER DEFAULT 0,
+   minor INTEGER DEFAULT 0,
+   patch INTEGER DEFAULT 0,
+   project INTEGER NOT NULL,
+   UNIQUE (project, stage, edition, special, major, minor, patch)
+      ON CONFLICT IGNORE,
+   FOREIGN KEY (project)
+      REFERENCES project (project_id)
+);
+]]
+#/lua
+
+
+**** create_bundle_table
+
+#!lua
+stmts.create_bundle_table = [[
+CREATE TABLE IF NOT EXISTS bundle (
+   bundle_id INTEGER PRIMARY KEY,
+   time DATETIME DEFAULT CURRENT_TIMESTAMP,
+   project INTEGER NOT NULL,
+   version INTEGER NOT NULL,
+   FOREIGN KEY (project)
+      REFERENCES project (project_id)
+   FOREIGN KEY (version)
+      REFERENCES version (version_id)
+);
+]]
+#/lua
+
+
+**** create_code_table
+
+#!lua
+stmts.create_code_table = [[
+CREATE TABLE IF NOT EXISTS code (
+   code_id INTEGER PRIMARY KEY,
+   hash TEXT UNIQUE ON CONFLICT IGNORE NOT NULL,
+   binary BLOB NOT NULL
+);
+]]
+#/lua
+
+
+**** create_module_table
+
+#!lua
+stmts.create_module_table = [[
+CREATE TABLE IF NOT EXISTS module (
+   module_id INTEGER PRIMARY KEY,
+   time DATETIME DEFAULT CURRENT_TIMESTAMP,
+   name STRING NOT NULL,
+   type STRING DEFAULT 'luaJIT-2.1-bytecode',
+   branch STRING,
+   vc_hash STRING,
+   project INTEGER NOT NULL,
+   version INTEGER NOT NULL,
+   bundle INTEGER,
+   code INTEGER NOT NULL,
+   FOREIGN KEY (project)
+      REFERENCES project (project_id)
+      ON DELETE RESTRICT
+   FOREIGN KEY (version)
+      REFERENCES version (version_id)
+   FOREIGN KEY (bundle)
+      REFERENCES bundle (bundle_id)
+      ON DELETE CASCADE
+   FOREIGN KEY (code)
+      REFERENCES code (code_id)
+);
+]]
+#/lua

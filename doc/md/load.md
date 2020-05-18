@@ -212,7 +212,7 @@ local export_c = brParse
 export_c
    : argument "project"
      : description "Project or projects to export"
-     : args(1)
+     : args "?"
 
 export_c
   : option "-o" "--outfile"
@@ -225,6 +225,11 @@ export_c
       : description "Version of the project to export"
       : convert(parse_version)
       : args(1)
+
+export_c
+   : flag "-a" "--all"
+      : description ("Export all projects."
+                     .. "Latest bundles if no version is specified.")
 
 local import_c = brParse
                     : command "import"
@@ -291,8 +296,16 @@ if rawget(_G, "arg") ~= nil then
       helm(__G)
       setfenv(0, _G)
    elseif args.export then
-      local bundle = require "bundle:export".export(args.project,
+      if (not args.project) and (not args.all) then
+         error "at least one project required without --all flag"
+      end
+      local bundle
+      if not args.all then
+         bundle = require "bundle:export".export(args.project,
                                                     args.version)
+      else
+         bundle = require "bundle:export".exportAll(args.version)
+      end
       if args.outfile then
          local file = io.open(args.outfile, "w+")
          if not file then
@@ -301,7 +314,8 @@ if rawget(_G, "arg") ~= nil then
          file:write(bundle)
          file:close()
       else
-         local outfilepath = "./" .. args.project .. ".bundle"
+         local bundle_name = args.project or "all_modules"
+         local outfilepath = "./" .. bundle_name .. ".bundle"
          local file = io.open(outfilepath, "w+")
          if not file then
             error("unable to open " .. outfilepath)
