@@ -124,16 +124,17 @@ local home_dir = os.getenv "HOME"
 local bridge_modules = os.getenv "BRIDGE_MODULES"
 local bridge_home = os.getenv "BRIDGE_HOME"
 
-if not bridge_modules then
    -- use BRIDGE_HOME if we have it
-   if not bridge_home then
-      local xdg_data_home = os.getenv "XDG_DATA_HOME"
-      if xdg_data_home then
-         bridge_home = xdg_data_home .. "/bridge"
-      else
-         bridge_home = home_dir .. "/.local/share/bridge"
-      end
+if not bridge_home then
+   local xdg_data_home = os.getenv "XDG_DATA_HOME"
+   if xdg_data_home then
+      bridge_home = xdg_data_home .. "/bridge"
+   else
+      bridge_home = home_dir .. "/.local/share/bridge"
    end
+end
+
+if not bridge_modules then
    bridge_modules = bridge_home.. "/bridge.modules"
 end
 

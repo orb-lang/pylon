@@ -17,7 +17,15 @@
 
 
 do
-print "modules"
+
+
+
+
+
+
+
+
+local new_modules = false
 
 
 
@@ -164,6 +172,283 @@ if not _Bridge.modules_conn then
       conn:exec(stmts.create_module_table)
    end
    _Bridge.modules_conn = conn
+   new_modules = true
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local new_project = [[
+INSERT INTO project (name, repo, repo_alternates, home, website)
+VALUES (:name, :repo, :repo_alternates, :home, :website)
+;
+]]
+
+
+
+
+
+
+local get_project_id = [[
+SELECT project_id FROM project
+WHERE project.name = ?
+;
+]]
+
+
+
+
+
+
+local update_project = [[
+UPDATE project
+SET
+   repo = :repo,
+   repo_alternates = :repo_alternates,
+   home = :home,
+   website = :website
+WHERE
+   name = :name
+;
+]]
+
+
+
+
+
+
+
+
+
+local get_version = [[
+SELECT CAST (version.version_id AS REAL) FROM version
+WHERE edition = :edition
+AND stage = :stage
+AND major = :major
+AND minor = :minor
+AND patch = :patch
+AND special = :special
+AND project = :project
+;
+]]
+
+
+
+
+
+
+local new_version_snapshot = [[
+INSERT INTO version (edition, project)
+VALUES (:edition, :project)
+;
+]]
+
+
+
+
+
+
+local new_version = [[
+INSERT INTO version (edition, project, major, minor, patch)
+VALUES (:edition, :project, :major, :minor, :patch)
+;
+]]
+
+
+
+
+
+
+
+
+
+local get_code_id_by_hash = [[
+SELECT CAST (code.code_id AS REAL) FROM code
+WHERE code.hash = ?;
+]]
+
+
+
+
+
+
+local new_code = [[
+INSERT INTO code (hash, binary)
+VALUES (:hash, :binary)
+;
+]]
+
+
+
+
+
+
+
+
+
+local new_bundle = [[
+INSERT INTO bundle (project, version)
+VALUES (?, ?)
+;
+]]
+
+
+
+
+
+local get_latest_bundle = [[
+SELECT CAST (bundle.bundle_id AS REAL), time FROM bundle
+WHERE bundle.project = ?
+AND bundle.version = ?
+ORDER BY
+   time DESC,
+   bundle_id DESC
+LIMIT 1
+;
+]]
+
+
+
+
+
+
+
+
+
+local add_module = [[
+INSERT INTO module (version, name, bundle,
+                    branch, vc_hash, project, code, time)
+VALUES (:version, :name, :bundle,
+        :branch, :vc_hash, :project, :code, :time)
+;
+]]
+
+
+
+local function _commitBundle(conn, bundle)
+   -- #todo verify byecode hashes, load bytecodes (but don't execute)
+   -- #todo verify bundle hash, and signature if possible/present
+   --
+   -- upsert project
+   local project_id = conn:prepare(get_project_id)
+                          :bind(bundle.project.name):step()
+   if not project_id then
+      conn:prepare(new_project):bindkv(bundle.project):step()
+      project_id = conn:prepare(get_project_id)
+                          :bind(bundle.project.name):step()
+   end
+   project_id = project_id[1]
+   print("project id is " .. tonumber(project_id))
+   conn:prepare(update_project):bindkv(bundle.project):step()
+   -- upsert version (what to do if version exists?)
+   bundle.version.project = project_id
+   conn:prepare(new_version):bindkv(bundle.version):step()
+   local version_id = conn:prepare(get_version)
+                          :bindkv(bundle.version):step()
+   if not version_id then
+      error "failed to create version"
+   end
+   version_id = version_id[1]
+   print("version id is " .. tonumber(version_id))
+   -- make bundle, get bundle id
+   conn:prepare(new_bundle):bind(project_id, version_id):step()
+   local bundle_info = conn:prepare(get_latest_bundle)
+                         :bind(project_id, version_id):step()
+   if not bundle_info then
+      error "failed to create bundle"
+   end
+   local bundle_id, now = bundle_info[1], bundle_info[2]
+   print("bundle_id is " .. tonumber(bundle_id))
+   local mod_stmt = conn:prepare(add_module)
+   for _, mod in ipairs(bundle.modules) do
+      -- commit code
+      local code_id = conn:prepare(get_code_id_by_hash)
+                         :bind(mod.hash):step()
+      if not code_id then
+         conn:prepare(new_code):bindkv(mod):step()
+         code_id = conn:prepare(get_code_id_by_hash)
+                         :bind(mod.hash):step()
+         if not code_id then
+            error ("failed to commit code for" .. mod.name)
+         end
+      end
+      code_id = code_id[1]
+      -- add module info
+      mod.code = code_id
+      mod.project = project_id
+      mod.version = version_id
+      mod.bundle = bundle_id
+      mod.time = now
+      mod_stmt:bindkv(mod):step()
+      mod_stmt:reset()
+   end
+end
+
+
+
+local function import(file_name)
+   local file = io.open(file_name, "r")
+   if not file then
+      error("can't open " .. file_name)
+   end
+   -- load() the file
+   local bundles, err = load(file:read("a"))
+   file:close()
+   if not bundles then
+      error(err)
+   end
+   local bundles = bundles()
+
+   local conn = _Bridge.modules_conn
+   conn:exec "BEGIN TRANSACTION;"
+   if bundles.project then
+      -- single-bundled project
+      _commitBundle(conn, bundles)
+   else
+      for _, bundle in ipairs(bundles) do
+         _commitBundle(conn, bundle)
+      end
+   end
+   conn:exec "COMMIT;"
+end
+
+_Bridge.import = import
+
+
+
+
+
+
+
+
+if new_modules then
+   print "importing modules bundle"
+   import("all_modules.bundle")
+else
+   print "no new_modules"
 end
 
 
