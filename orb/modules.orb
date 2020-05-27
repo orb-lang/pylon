@@ -156,13 +156,22 @@ If it exists already, we have a conn on =_Bridge=.
 
 If not, we can create it. We have the technology.
 
+
+*** _Bridge.new_modules_db(conn_home)
+
+  We want to retain the ability to instantiate a modules database, the
+motivating case being an in-memory version for testing.
+
 #!lua
-if not _Bridge.modules_conn then
-   local yes, conn = pcall(sql.open, _Bridge.bridge_modules_home, "rwc")
-   if not yes then
-      error("Could not create " .. _Bridge.bridge_modules_home
-            .. ", consider creating the directory or setting"
-            .. " $BRIDGE_MODULES.")
+local function new_modules_db(conn_home)
+   local yes, conn;
+   if type(conn_home) == 'string' then
+      yes, conn = pcall(sql.open, conn_home, "rwc")
+      if not yes then
+         error("Could not create " .. conn_home
+               .. ", consider creating the directory or setting"
+               .. " $BRIDGE_MODULES.")
+      end
    end
    if conn then
       conn:exec(stmts.create_project_table)
@@ -171,7 +180,14 @@ if not _Bridge.modules_conn then
       conn:exec(stmts.create_code_table)
       conn:exec(stmts.create_module_table)
    end
-   _Bridge.modules_conn = conn
+
+   return conn
+end
+
+_Bridge.new_modules_db = new_modules_db
+
+if not _Bridge.modules_conn then
+   _Bridge.modules_conn = new_modules_db(_Bridge.bridge_modules_home)
    new_modules = true
 end
 #/lua
@@ -361,7 +377,6 @@ local function _commitBundle(conn, bundle)
                           :bind(bundle.project.name):step()
    end
    project_id = project_id[1]
-   print("project id is " .. tonumber(project_id))
    conn:prepare(update_project):bindkv(bundle.project):step()
    -- upsert version (what to do if version exists?)
    bundle.version.project = project_id
@@ -372,7 +387,6 @@ local function _commitBundle(conn, bundle)
       error "failed to create version"
    end
    version_id = version_id[1]
-   print("version id is " .. tonumber(version_id))
    -- make bundle, get bundle id
    conn:prepare(new_bundle):bind(project_id, version_id):step()
    local bundle_info = conn:prepare(get_latest_bundle)
@@ -381,7 +395,6 @@ local function _commitBundle(conn, bundle)
       error "failed to create bundle"
    end
    local bundle_id, now = bundle_info[1], bundle_info[2]
-   print("bundle_id is " .. tonumber(bundle_id))
    local mod_stmt = conn:prepare(add_module)
    for _, mod in ipairs(bundle.modules) do
       -- commit code
@@ -447,8 +460,6 @@ Our bootstrap will assume that =br= is living in the =build= directory.
 if new_modules then
    print "importing modules bundle"
    import("all_modules.bundle")
-else
-   print "no new_modules"
 end
 #/lua
 
