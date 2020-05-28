@@ -149,7 +149,7 @@ local ok, bridge_conn = pcall(sql.open, bridge_modules, "rw")
 if ok then
    _Bridge.modules_conn = bridge_conn
 else
-   print ("no bridge.modules: " .. tostring(bridge_conn))
+   print "no bridge.modules"
 end
 
 
@@ -211,14 +211,14 @@ local function loaderGen(conn)
          bytecode = _unwrapOneResult(
                       project_stmt:bindkv ({ project_name = project,
                                             module_name  = mod })
-                      : resultset())
+                      : resultset("i"))
          if not bytecode then
             -- try mod_double
             project_stmt:reset()
             bytecode = _unwrapOneResult(
                       project_stmt:bindkv ({ project_name = project,
                                             module_name  = mod_double })
-                      : resultset())
+                      : resultset("i"))
          end
          if not bytecode then
             -- try proj_double
@@ -226,20 +226,20 @@ local function loaderGen(conn)
             bytecode = _unwrapOneResult(
                       project_stmt:bindkv ({ project_name = project,
                                              module_name  = proj_double })
-                      : resultset())
+                      : resultset("i"))
          end
          project_stmt:reset()
       else
          -- retrieve by bare module name
          bytecode = _unwrapOneResult(
                       module_stmt:bindkv ({ name  = mod })
-                      : resultset())
+                      : resultset("i"))
          if not bytecode then
             module_stmt:reset()
             bytecode =_unwrapOneResult(
                       module_stmt:bindkv ({ name  = mod })
 
-                      : resultset())
+                      : resultset("i"))
          end
          module_stmt:reset()
       end

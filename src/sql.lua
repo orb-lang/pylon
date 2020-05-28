@@ -626,7 +626,7 @@ do
    end
 
    function stmt_mt:resultset(get, maxrecords) T_open(self)
-     get = get or "hik"
+     get = get or "k"
      maxrecords = maxrecords or math.huge
      if maxrecords < 1 then
        err("constraint", "argument #2 to resultset must be >= 1")
@@ -932,7 +932,7 @@ end
          conn:exec(prag_str)
          -- cast booleans results to Lua booleans,
          -- otherwise return the (string) result
-         local answer = conn:exec(pragma_pre .. prag .. ";")
+         local answer = conn:exec(pragma_pre .. prag .. ";", "i")
          if answer[1] and answer[1][1] then
             if answer[1][1] == 1 then
                return true
