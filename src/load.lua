@@ -137,6 +137,10 @@ orb_c
    : require_command (false)
 
 orb_c
+  : command "new"
+     : description "Use the new toolchain. Feature flag."
+
+orb_c
    : command "serve"
       : description "Launch the Orb server."
 
@@ -292,6 +296,11 @@ if rawget(_G, "arg") ~= nil then
       if args.revert then
          local revert = require "bundle:revert"
          revert()
+      elseif args.new then
+          local orb = require "orb"
+          local uv  = require "luv"
+          -- the "" creates in-memory database, as a test for the feature
+          orb.lume(uv.cwd(), ""):run()
       else
          local orb = require "orb"
          local uv = require "luv"
