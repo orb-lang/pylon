@@ -1,45 +1,47 @@
 # Preamble
 
-This adds the package loader, and will eventually contain the ``core`` standard
-library.
+This adds the package loader, and will eventually contain the `core` standard
+library\.
 
 
 ## Globals
 
-Anything we want to put in the global namespace goes here.
+Anything we want to put in the global namespace goes here\.
 
 
-### _Bridge table
+### \_Bridge table
 
-This is what we test for to see if we're inside ``bridge``, and where we put
-things that we'll need later.
+This is what we test for to see if we're inside `bridge`, and where we put
+things that we'll need later\.
 
 ```lua
 _Bridge = {}
 ```
-### 5.2 compatibility
-
-  Provides the function ``pack`` to the global namespace, for handling variadic
-arguments.
 
 
-#### pack(...)
+### 5\.2 compatibility
+
+  Provides the function `pack` to the global namespace, for handling variadic
+arguments\.
+
+
+#### pack\(\.\.\.\)
 
 ```lua
 pack = table.pack
 ```
+
+
 ### Table Extensions
 
-  ``table.clear`` and ``table.new`` are a stock part of LuaJIT, which is not
-namespaced by default for compatibility reasons.
+  `table.clear` and `table.new` are a stock part of LuaJIT, which is not
+namespaced by default for compatibility reasons\.
 
-
-``table.clear(tab)`` sets all values to ``nil``, while ``table.new(narr, nrec)``
+`table.clear(tab)` sets all values to `nil`, while `table.new(narr, nrec)`
 preallocates the given amount of slots in the array and record portions of the
-table.
+table\.
 
-
-The openresty fork of LuaJIT provides additional functions, [documented here](https://github.com/openresty/luajit2#new-lua-apis).
+The openresty fork of LuaJIT provides additional functions, [documented here](https://github.com/openresty/luajit2#new-lua-apis)\.
 
 ```lua
 require "table.clear"
@@ -49,31 +51,35 @@ require "table.isarray"
 require "table.nkeys"
 -- require "table.clone" -- we provide a more general, but slower, version
 ```
+
 ## Loader
 
-  ``bridge`` loads most of its code from a SQLite database containing module
-bytecode and associated metadata.
+  `bridge` loads most of its code from a SQLite database containing module
+bytecode and associated metadata\.
 
-
-Here we provide the loader, used by ``require``.
+Here we provide the loader, used by `require`\.
 
 
 #### do block
 
-Since we're loading it straight from the binary, wrap it in a ``do`` block.
+Since we're loading it straight from the binary, wrap it in a `do` block\.
 
 ```lua
 do
 ```
-#### bridge_modules
+
+
+#### bridge\_modules
 
 ```lua
 _Bridge.bridge_modules = { }
 ```
+
+
 ### SQL statements
 
 For now, we're just going to load the latest compiled version of a given
-module.
+module\.
 
 ```lua
 local bytecode_by_module = [[
@@ -99,16 +105,16 @@ ORDER BY module.time desc limit 1
 ;
 ]]
 ```
-### _openBridgeModules()
-
-This either opens ``bridge.modules``, returning a ``conn``, or failing that
-returns ``nil``.
 
 
-If we get a conn, we append a ``package.loaders`` with it, otherwise we do
-nothing.  Creating ``bridge.modules`` in the event it doesn't exist is the
-responsibility of ``orb``, which contains the compiler.
+### \_openBridgeModules\(\)
 
+This either opens `bridge.modules`, returning a `conn`, or failing that
+returns `nil`\.
+
+If we get a conn, we append a `package.loaders` with it, otherwise we do
+nothing\.  Creating `bridge.modules` in the event it doesn't exist is the
+responsibility of `orb`, which contains the compiler\.
 
 First, let's get a plausible filename:
 
@@ -135,7 +141,7 @@ _Bridge.bridge_home = bridge_home
 _Bridge.bridge_modules_home = bridge_modules
 ```
 
-Add the conn to _Bridge:
+Add the conn to \_Bridge:
 
 ```lua
 local ok, bridge_conn = pcall(sql.open, bridge_modules, "rw")
@@ -145,13 +151,14 @@ else
    print "no bridge.modules"
 end
 ```
+
+
 #### bootstrap
 
 Sometimes we need to regenerate a database, since SQLite migration techniques
-are quite limited.
+are quite limited\.
 
-
-For now, hard-coded:
+For now, hard\-coded:
 
 ```lua
 local bridge_strap = home_dir .. "/.local/share/bridge/~bridge.modules"
@@ -160,9 +167,10 @@ if ok then
    _Bridge.bootstrap_conn = strap_conn
 end
 ```
-### loaderGen(conn)
 
-Returns a function which loads modules from a given database connection.
+### loaderGen\(conn\)
+
+Returns a function which loads modules from a given database connection\.
 
 ```lua
 local function _unwrapOneResult(result)
@@ -248,13 +256,14 @@ local function loaderGen(conn)
    end
 end
 ```
-### Add to package.loaders
+
+
+### Add to package\.loaders
 
 If we've loaded either database, add them, such that if we have both, the
-``modules_conn`` default is checked before the ``bootstrap_conn``.
+`modules_conn` default is checked before the `bootstrap_conn`\.
 
-
-We want the loaders after the ``package.preload`` loader, so we put them in
+We want the loaders after the `package.preload` loader, so we put them in
 index 2:
 
 ```lua
@@ -265,24 +274,29 @@ if _Bridge.modules_conn then
    table.insert(package.loaders, 2, loaderGen(_Bridge.modules_conn))
 end
 ```
+
+
+
 #### end do block
 
-This makes everything in the block into garbage if a loader isn't generated.
+This makes everything in the block into garbage if a loader isn't generated\.
 
 ```lua
 end
 ```
+
+
 ## Strict mode
 
 This, we make into a global, and nil out once we've used it, while
-keeping all its helper upvalues in a ``do`` block, so losing the stricture
-reference will collect them.
+keeping all its helper upvalues in a `do` block, so losing the stricture
+reference will collect them\.
 
 
 ### Stricture
 
-Lifted straight from [[penlight]
-[https://stevedonovan.github.io/Penlight/api/index.html].
+Lifted straight from \[\[penlight\]
+\[https://stevedonovan\.github\.io/Penlight/api/index\.html\]\.
 
 ```lua
 do

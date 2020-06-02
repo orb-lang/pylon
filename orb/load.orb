@@ -139,7 +139,8 @@ orb_c
 orb_c
   : command "new"
      : description "Use the new toolchain. Feature flag."
-
+        : flag "--serve"
+           : description "Run the new toolchain and launch server."
 orb_c
    : command "serve"
       : description "Launch the Orb server."
@@ -299,8 +300,11 @@ if rawget(_G, "arg") ~= nil then
       elseif args.new then
           local orb = require "orb"
           local uv  = require "luv"
-          -- the "" creates in-memory database, as a test for the feature
-          orb.lume(uv.cwd(), ""):run()
+          local lume = orb.lume(uv.cwd())
+          lume:run()
+          if args.serve then
+             lume:serve()
+          end
       else
          local orb = require "orb"
          local uv = require "luv"
@@ -345,7 +349,7 @@ if rawget(_G, "arg") ~= nil then
          file:close()
       end
    elseif args.import then
-      local import = require "bundle:import"
+      local import = assert(_Bridge.import)
       for _, file in ipairs(args.file) do
          import(file)
       end

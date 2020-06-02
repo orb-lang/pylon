@@ -166,7 +166,7 @@ motivating case being an in-memory version for testing.
 local function new_modules_db(conn_home)
    local yes, conn;
    if type(conn_home) == 'string' then
-      yes, conn = pcall(sql.open, conn_home, "rwc")
+      yes, conn = pcall(sql.open, conn_home, 'rwc')
       if not yes then
          error("Could not create " .. conn_home
                .. ", consider creating the directory or setting"

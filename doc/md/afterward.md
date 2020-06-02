@@ -1,8 +1,8 @@
 # Afterward
 
-Performs cleanup.
+Performs cleanup\.
 
-### Close _Bridge.modules_conn
+### Close \_Bridge\.modules\_conn
 
 ```lua
 do
@@ -15,3 +15,4 @@ do
    end
 end
 ```
+

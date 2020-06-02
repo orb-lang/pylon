@@ -1,25 +1,26 @@
 # load
 
-The responsibilities of ``load``:
+The responsibilities of `load`:
 
+\- Parse arguments
 
-- Parse arguments
-
-
-- Run the resulting behaviors
+\- Run the resulting behaviors
 
 
 ## Bridge Path
 
-``bridge`` uses its own path, distinct from the ``LUA_PATH`` environment variable.
+`bridge` uses its own path, distinct from the `LUA_PATH` environment variable\.
 
+This is, predictably enough, `BRIDGE_PATH`\.
 
-This is, predictably enough, ``BRIDGE_PATH``.
+\#NYI
 
 ```lua
 
 
 ```
+
+
 #### do block
 
 Once again, we're not going to waste a level of indentation on this, but
@@ -28,30 +29,33 @@ we want to collect all local variables, so we wrap in a do block:
 ```lua
 do
 ```
-#### make _G strict
-
-We make assignments to ``_G`` invalid outside of the outer context, and forbid
-nil lookups, to make it easier to catch mistakes.
 
 
-For now, at least, we also nil out the code which does this.  It may make more
-sense to add it to a preload package.
+#### make \_G strict
+
+We make assignments to `_G` invalid outside of the outer context, and forbid
+nil lookups, to make it easier to catch mistakes\.
+
+For now, at least, we also nil out the code which does this\.  It may make more
+sense to add it to a preload package\.
 
 ```lua
 stricture(nil,_G,{_PROMPT=true,__global=true})
 stricture = nil
 ```
+
+
+
 ## Parse
 
-Parse the arguments passed to ``br``.
+Parse the arguments passed to `br`\.
 
 
-### parseVersion(str)
+### parseVersion\(str\)
 
-Let's validate the version string on parse.
+Let's validate the version string on parse\.
 
-
-This function will be moved to ``load`` once I'm satisfied with how it works.
+This function will be moved to `load` once I'm satisfied with how it works\.
 
 ```lua
 local L = require "lpeg"
@@ -104,6 +108,8 @@ end
 
 _Bridge.parse_version = parse_version
 ```
+
+
 ```lua
 local brParse = require "argparse" ()
 
@@ -133,7 +139,8 @@ orb_c
 orb_c
   : command "new"
      : description "Use the new toolchain. Feature flag."
-
+        : flag "--serve"
+           : description "Run the new toolchain and launch server."
 orb_c
    : command "serve"
       : description "Launch the Orb server."
@@ -244,23 +251,29 @@ import_c
    : description "a bundled project file or files"
    : args "+"
 ```
+
+
 #### end do block
 
 ```lua
 end
 ```
+
+
 #### gc
 
-All of these ``do`` blocks are to emulate the per-module behavior of Lua,
-creating closures so that all ``local`` variables become garbage.  So let's
-collect them.
+All of these `do` blocks are to emulate the per\-module behavior of Lua,
+creating closures so that all `local` variables become garbage\.  So let's
+collect them\.
 
 ```lua
 collectgarbage()
 ```
+
+
 ### Execute
 
-Run the commands requested.
+Run the commands requested\.
 
 ```lua
 if rawget(_G, "arg") ~= nil then
@@ -287,8 +300,11 @@ if rawget(_G, "arg") ~= nil then
       elseif args.new then
           local orb = require "orb"
           local uv  = require "luv"
-          -- the "" creates in-memory database, as a test for the feature
-          orb.lume(uv.cwd(), ""):run()
+          local lume = orb.lume(uv.cwd())
+          lume:run()
+          if args.serve then
+             lume:serve()
+          end
       else
          local orb = require "orb"
          local uv = require "luv"
@@ -333,10 +349,23 @@ if rawget(_G, "arg") ~= nil then
          file:close()
       end
    elseif args.import then
-      local import = require "bundle:import"
+      local import = assert(_Bridge.import)
       for _, file in ipairs(args.file) do
          import(file)
       end
    end
 end
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+

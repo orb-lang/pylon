@@ -1,17 +1,17 @@
 # Argparse
 
-Now on [[0.7]].
+Now on [0.7]()\.
 
-
-``argparse`` is what it says on the label, and we're lifting it wholesale as
-``package.argparse``, at least for now.
+`argparse` is what it says on the label, and we're lifting it wholesale as
+`package.argparse`, at least for now\.
 
 
 ### License
 
 This is lightly modified by wrapping it in an anonymous function and assigning
-it to ``package.argparse``, but is otherwise exactly as
-[found here](https://github.com/luarocks/argparse/blob/6f28a24ed320107867ee2c81003dab60984b9be8/src/argparse.lua).
+it to `package.argparse`, but is otherwise exactly as
+\[\[found here\]
+\[https://github\.com/luarocks/argparse/blob/6f28a24ed320107867ee2c81003dab60984b9be8/src/argparse\.lua\]\]\.
 
 ```lua
 package.preload.argparse = (function ()

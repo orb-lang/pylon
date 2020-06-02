@@ -1,33 +1,29 @@
 # SQLite
 
 
-This needs to load first, so that we can add a ``package.loaders`` which draws
-from the module database.
+This needs to load first, so that we can add a `package.loaders` which draws
+from the module database\.
 
 
 #### Original licensing
 
-A library for interfacing with SQLite3 databases.
+A library for interfacing with SQLite3 databases\.
 
+Copyright \(C\) 2011\-2016 Stefano Peluchetti\. All rights reserved\.
 
-Copyright (C) 2011-2016 Stefano Peluchetti. All rights reserved.
-
-
-Features, documentation and more: http://www.scilua.org .
-
+Features, documentation and more: http://www\.scilua\.org \.
 
 This file is part of the LJSQLite3 library, which is released under the MIT
-license: full text in file LICENSE.TXT in the library's root folder.
+license: full text in file LICENSE\.TXT in the library's root folder\.
 
 
 ### imports
 
-We'll wrap this whole thing in a ``do`` block so local upvalues disappear.
+We'll wrap this whole thing in a `do` block so local upvalues disappear\.
 
-
-Instead of ``return``ing a module, we'll bind everything to a local variable
-``sqlayer``.  Once everything is constructed, we will assign it the global name
-``sql`` and set ``sqlayer`` to nil.
+Instead of `return`ing a module, we'll bind everything to a local variable
+`sqlayer`\.  Once everything is constructed, we will assign it the global name
+`sql` and set `sqlayer` to nil\.
 
 ```lua
 local sqlayer = {}
@@ -36,6 +32,8 @@ do
    local bit  = require "bit"
 
 ```
+
+
 #### helper functions
 
 ```lua
@@ -70,11 +68,13 @@ do
      error("ljsqlite3["..code.."] "..msg .. "\n" .. debug.traceback())
    end
 ```
+
+
 ### SQLite FFI
 
-This has been modified to use the statically-linked SQLite library, which
-allows us to pin the version and avoid naming weirdness esp. in Ubuntu-style
-distributions.
+This has been modified to use the statically\-linked SQLite library, which
+allows us to pin the version and avoid naming weirdness esp\. in Ubuntu\-style
+distributions\.
 
 ```lua
    -- Codes -----------------------------------------------------------------------
@@ -705,25 +705,28 @@ distributions.
      int32_t       _code;
    }]], stmt_mt)
 ```
+
 ```lua
    sqlayer.open = open
    sqlayer.blob = blob
 ```
+
+
 ## Additional SQL layer
 
-This is all code I wrote to make the library more useable.
+This is all code I wrote to make the library more useable\.
 
-
-© 2019 Sam Putman, MIT license.
+© 2019 Sam Putman, MIT license\.
 
 ```lua
    local pcall = assert (pcall)
    local gsub = assert(string.gsub)
    local format = assert(string.format)
 ```
-### sql.san(str)
 
-Sanitizes a string for SQL(ite) quoting.
+### sql\.san\(str\)
+
+Sanitizes a string for SQL\(ite\) quoting\.
 
 ```lua
    local function san(str)
@@ -732,27 +735,28 @@ Sanitizes a string for SQL(ite) quoting.
 
    sqlayer.san = san
 ```
-### sql.format(str)
+
+
+### sql\.format\(str\)
 
 The SQLite bindings I'm using support only an impoverished subset of the
-SQLite binds.  In the meantime we're going to use format strings, which at
-least typecheck parameters.
+SQLite binds\.  In the meantime we're going to use format strings, which at
+least typecheck parameters\.
 
+**Update** I've added `bindkv` which helps\.
 
-**Update** I've added ``bindkv`` which helps.
+This `format` command sanitizes string inputs, and also replaces any `%s`
+with `'%s'` without making any `''%s''`, or more accurately trimming them
+if it creates them\.
 
+So `sql.format("it's %s!", "it's")` and `sql.format("it's '%s'!", "it's")`
+both yield `"it's 'it''s"`\.  I figure any apostrophes in the format string
+belong there\.
 
-This ``format`` command sanitizes string inputs, and also replaces any ``%s``
-with ``'%s'`` without making any ``''%s''``, or more accurately trimming them
-if it creates them.
+Failure to format returns `false, err`\.
 
-
-So ``sql.format("it's %s!", "it's")`` and ``sql.format("it's '%s'!", "it's")``
-both yield ``"it's 'it''s"``.  I figure any apostrophes in the format string
-belong there.
-
-
-Failure to format returns ``false, err``.
+\#NB
+keywords and values, and this only allows for inserting literal strings\.
 
 ```lua
    function sqlayer.format(str, ...)
@@ -776,12 +780,12 @@ Failure to format returns ``false, err``.
       end
    end
 ```
-### sql.pexec(conn, stmt)
 
-Executes the statement on conn in protected mode.
+### sql\.pexec\(conn, stmt\)
 
+Executes the statement on conn in protected mode\.
 
-Unwraps and returns success, or ``false`` and error.
+Unwraps and returns success, or `false` and error\.
 
 ```lua
    function sqlayer.pexec(conn, stmt, col_str)
@@ -795,12 +799,13 @@ Unwraps and returns success, or ``false`` and error.
       end
    end
 ```
-### sql.lastRowId(conn)
-
-This could be improved by natively handling uint64_t ``cdata``.
 
 
-Y'know, if we ever keep more than 53 bits width of rows in uhhhhh SQLite.
+### sql\.lastRowId\(conn\)
+
+This could be improved by natively handling uint64\_t `cdata`\.
+
+Y'know, if we ever keep more than 53 bits width of rows in uhhhhh SQLite\.
 
 ```lua
    function sqlayer.lastRowId(conn)
@@ -808,18 +813,16 @@ Y'know, if we ever keep more than 53 bits width of rows in uhhhhh SQLite.
       return result
    end
 ```
-### sql.unwrapKey(result_set)
 
-Unwraps the first result, of the first row, of returned results.
+### sql\.unwrapKey\(result\_set\)
 
+Unwraps the first result, of the first row, of returned results\.
 
-Intended to be used for a unique foreign key, hence the name.
+Intended to be used for a unique foreign key, hence the name\.
 
+Will coerce cdata into a Lua number for ease of use\.
 
-Will coerce cdata into a Lua number for ease of use.
-
-
-Assumes that (at least) ``"i"`` was passed to ``conn:exec``.
+Assumes that \(at least\) `"i"` was passed to `conn:exec`\.
 
 ```lua
 function sqlayer.unwrapKey(result_set)
@@ -835,26 +838,24 @@ function sqlayer.unwrapKey(result_set)
    end
 end
 ```
-### sql.toRow(sql_result, num)
-
-Unwraps one or more results from a sql_result, which assume that (at least)
-``"k"`` was passed to ``conn:exec``.
 
 
-This converts from a column-oriented to a row-oriented form, and coerces cdata
-integers into Lua reals.
+### sql\.toRow\(sql\_result, num\)
 
+Unwraps one or more results from a sql\_result, which assume that \(at least\)
+`"k"` was passed to `conn:exec`\.
 
-If no ``num`` is provided, returns one table, with column names as the keys and
-values as the values.
+This converts from a column\-oriented to a row\-oriented form, and coerces cdata
+integers into Lua reals\.
 
+If no `num` is provided, returns one table, with column names as the keys and
+values as the values\.
 
 If a number is provided, including 1, it returns a table of tables, up to the
-number requested.
+number requested\.
 
-
-Conveniently, calling ``conn:exec`` within parentheses of ``toRow`` will provide
-the result set and number of rows, in the correct order.
+Conveniently, calling `conn:exec` within parentheses of `toRow` will provide
+the result set and number of rows, in the correct order\.
 
 
 ```lua
@@ -885,23 +886,21 @@ function sqlayer.toRow(sql_result, num)
    end
 end
 ```
-#### conn.pragma.etc(bool)
-
-A convenience wrapper over the SQL pragma commands.
 
 
-We can use the same interface for setting Lua-specific values, the one I need
-is ``conn.pragma.nulls_are_nil(false)``.
+#### conn\.pragma\.etc\(bool\)
 
+A convenience wrapper over the SQL pragma commands\.
 
-This is a subtle bit of function composition with a nice result.
+We can use the same interface for setting Lua\-specific values, the one I need
+is `conn.pragma.nulls_are_nil(false)`\.
 
+This is a subtle bit of function composition with a nice result\.
 
-I might be able to use this technique in ``check`` to favor ``.`` over ``:``.
+I might be able to use this technique in `check` to favor `.` over `:`\.
 
-
-Note: ``_prag_index`` closes over ``conn`` and thus does have to be generated
-fresh each time.
+Note: `_prag_index` closes over `conn` and thus does have to be generated
+fresh each time\.
 
 ```lua
    local pragma_pre = "PRAGMA "
@@ -948,7 +947,7 @@ fresh each time.
 ```
 
 This is the fun part: we swap the old metatable for a function which closes
-over our ``conn``, passing it along to the pragma.
+over our `conn`, passing it along to the pragma\.
 
 ```lua
    local function new_conn_index(conn, key)
@@ -964,10 +963,12 @@ over our ``conn``, passing it along to the pragma.
 
    conn_mt.__index = new_conn_index
 ```
-### conn:pclose()
+
+
+### conn:pclose\(\)
 
 Close the conn in protected mode, inside a uv idler that will keep retrying it
-until it succeeds.
+until it succeeds\.
 
 ```lua
   local close = conn_mt.close
@@ -988,7 +989,9 @@ until it succeeds.
      end
   end
 ```
-#### End Closure and Add =sql= to _G
+
+
+#### End Closure and Add =sql= to \_G
 
 ```lua
 end
