@@ -137,10 +137,9 @@ orb_c
    : require_command (false)
 
 orb_c
-  : command "new"
-     : description "Use the new toolchain. Feature flag."
-        : flag "--serve"
-           : description "Run the new toolchain and launch server."
+  : command "old"
+     : description "Use the original compiler. Deprecated."
+
 orb_c
    : command "serve"
       : description "Launch the Orb server."
@@ -297,7 +296,11 @@ if rawget(_G, "arg") ~= nil then
       if args.revert then
          local revert = require "bundle:revert"
          revert()
-      elseif args.new then
+      elseif args.old then
+         local orb = require "orb"
+         local uv = require "luv"
+         orb.run(uv.cwd())
+      else
           local orb = require "orb"
           local uv  = require "luv"
           local lume = orb.lume(uv.cwd())
@@ -305,10 +308,6 @@ if rawget(_G, "arg") ~= nil then
           if args.serve then
              lume:serve()
           end
-      else
-         local orb = require "orb"
-         local uv = require "luv"
-         orb.run(uv.cwd())
       end
    elseif args.grym == true then
       local grym = require "grym:orb"
