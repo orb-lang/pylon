@@ -47,13 +47,12 @@ local stmts = {}
 These SQL statements create the bridge\.modules database\.
 
 Currently, we have no migrations\.  When we do, they will follow the pattern
-\[\[established in helm\]\[@br\.helm:helm/historian\]\]\.
+\[\[established in helm\]\[@br/helm:helm/historian\]\]\.
 
 
 #### create\_project\_table
 
-```lua
-stmts.create_project_table = [[
+```sql
 CREATE TABLE IF NOT EXISTS project (
    project_id INTEGER PRIMARY KEY,
    name STRING UNIQUE NOT NULL ON CONFLICT IGNORE,
@@ -63,14 +62,12 @@ CREATE TABLE IF NOT EXISTS project (
    home STRING,
    website STRING
 );
-]]
 ```
 
 
 #### create\_version\_table
 
-```lua
-stmts.create_version_table = [[
+```sql
 CREATE TABLE IF NOT EXISTS version (
    version_id INTEGER PRIMARY KEY,
    stage STRING DEFAULT 'SNAPSHOT' COLLATE NOCASE,
@@ -85,14 +82,12 @@ CREATE TABLE IF NOT EXISTS version (
    FOREIGN KEY (project)
       REFERENCES project (project_id)
 );
-]]
 ```
 
 
 #### create\_bundle\_table
 
-```lua
-stmts.create_bundle_table = [[
+```sql
 CREATE TABLE IF NOT EXISTS bundle (
    bundle_id INTEGER PRIMARY KEY,
    time DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -103,27 +98,23 @@ CREATE TABLE IF NOT EXISTS bundle (
    FOREIGN KEY (version)
       REFERENCES version (version_id)
 );
-]]
 ```
 
 
 #### create\_code\_table
 
-```lua
-stmts.create_code_table = [[
+```sql
 CREATE TABLE IF NOT EXISTS code (
    code_id INTEGER PRIMARY KEY,
    hash TEXT UNIQUE ON CONFLICT IGNORE NOT NULL,
    binary BLOB NOT NULL
 );
-]]
 ```
 
 
 #### create\_module\_table
 
-```lua
-stmts.create_module_table = [[
+```sql
 CREATE TABLE IF NOT EXISTS module (
    module_id INTEGER PRIMARY KEY,
    time DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -146,7 +137,6 @@ CREATE TABLE IF NOT EXISTS module (
    FOREIGN KEY (code)
       REFERENCES code (code_id)
 );
-]]
 ```
 
 
@@ -215,30 +205,25 @@ that is tractable\.
 
 #### new\_project
 
-```lua
-local new_project = [[
+```sql
 INSERT INTO project (name, repo, repo_alternates, home, website)
 VALUES (:name, :repo, :repo_alternates, :home, :website)
 ;
-]]
 ```
 
 
 #### get\_project
 
-```lua
-local get_project_id = [[
+```sql
 SELECT project_id FROM project
 WHERE project.name = ?
 ;
-]]
 ```
 
 
 #### update\_project
 
-```lua
-local update_project = [[
+```sql
 UPDATE project
 SET
    repo = :repo,
@@ -248,7 +233,6 @@ SET
 WHERE
    name = :name
 ;
-]]
 ```
 
 
@@ -257,8 +241,7 @@ WHERE
 
 #### get\_version\_snapshot
 
-```lua
-local get_version = [[
+```sql
 SELECT CAST (version.version_id AS REAL) FROM version
 WHERE edition = :edition
 AND stage = :stage
@@ -268,29 +251,24 @@ AND patch = :patch
 AND special = :special
 AND project = :project
 ;
-]]
 ```
 
 
 #### new\_version\_snapshot
 
-```lua
-local new_version_snapshot = [[
+```sql
 INSERT INTO version (edition, project)
 VALUES (:edition, :project)
 ;
-]]
 ```
 
 
 #### new\_version
 
-```lua
-local new_version = [[
+```sql
 INSERT INTO version (edition, project, major, minor, patch)
 VALUES (:edition, :project, :major, :minor, :patch)
 ;
-]]
 ```
 
 
@@ -299,22 +277,18 @@ VALUES (:edition, :project, :major, :minor, :patch)
 
 #### get\_code\_id\_by\_hash
 
-```lua
-local get_code_id_by_hash = [[
+```sql
 SELECT CAST (code.code_id AS REAL) FROM code
 WHERE code.hash = ?;
-]]
 ```
 
 
 #### new\_code
 
-```lua
-local new_code = [[
+```sql
 INSERT INTO code (hash, binary)
 VALUES (:hash, :binary)
 ;
-]]
 ```
 
 
@@ -323,18 +297,15 @@ VALUES (:hash, :binary)
 
 #### new\_bundle
 
-```lua
-local new_bundle = [[
+```sql
 INSERT INTO bundle (project, version)
 VALUES (?, ?)
 ;
-]]
 ```
 
 #### get\_latest\_bundle
 
-```lua
-local get_latest_bundle = [[
+```sql
 SELECT CAST (bundle.bundle_id AS REAL), time FROM bundle
 WHERE bundle.project = ?
 AND bundle.version = ?
@@ -343,7 +314,6 @@ ORDER BY
    bundle_id DESC
 LIMIT 1
 ;
-]]
 ```
 
 
@@ -352,14 +322,12 @@ LIMIT 1
 
 #### add\_module
 
-```lua
-local add_module = [[
+```sql
 INSERT INTO module (version, name, bundle,
                     branch, vc_hash, project, code, time)
 VALUES (:version, :name, :bundle,
         :branch, :vc_hash, :project, :code, :time)
 ;
-]]
 ```
 
 ```lua

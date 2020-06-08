@@ -47,13 +47,12 @@ local stmts = {}
 These SQL statements create the bridge.modules database.
 
 Currently, we have no migrations.  When we do, they will follow the pattern
-[[established in helm][@br.helm:helm/historian]].
+[[established in helm][@br/helm:helm/historian]].
 
 
 **** create_project_table
 
-#!lua
-stmts.create_project_table = [[
+#!sql @stmts.create_project_table #asLua
 CREATE TABLE IF NOT EXISTS project (
    project_id INTEGER PRIMARY KEY,
    name STRING UNIQUE NOT NULL ON CONFLICT IGNORE,
@@ -63,14 +62,12 @@ CREATE TABLE IF NOT EXISTS project (
    home STRING,
    website STRING
 );
-]]
-#/lua
+#/sql
 
 
 **** create_version_table
 
-#!lua
-stmts.create_version_table = [[
+#!sql @stmts.create_version_table #asLua
 CREATE TABLE IF NOT EXISTS version (
    version_id INTEGER PRIMARY KEY,
    stage STRING DEFAULT 'SNAPSHOT' COLLATE NOCASE,
@@ -85,14 +82,12 @@ CREATE TABLE IF NOT EXISTS version (
    FOREIGN KEY (project)
       REFERENCES project (project_id)
 );
-]]
-#/lua
+#/sql
 
 
 **** create_bundle_table
 
-#!lua
-stmts.create_bundle_table = [[
+#!sql @stmts.create_bundle_table #asLua
 CREATE TABLE IF NOT EXISTS bundle (
    bundle_id INTEGER PRIMARY KEY,
    time DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -103,27 +98,23 @@ CREATE TABLE IF NOT EXISTS bundle (
    FOREIGN KEY (version)
       REFERENCES version (version_id)
 );
-]]
-#/lua
+#/sql
 
 
 **** create_code_table
 
-#!lua
-stmts.create_code_table = [[
+#!sql @stmts.create_code_table #asLua
 CREATE TABLE IF NOT EXISTS code (
    code_id INTEGER PRIMARY KEY,
    hash TEXT UNIQUE ON CONFLICT IGNORE NOT NULL,
    binary BLOB NOT NULL
 );
-]]
-#/lua
+#/sql
 
 
 **** create_module_table
 
-#!lua
-stmts.create_module_table = [[
+#!sql @stmts.create_module_table #asLua
 CREATE TABLE IF NOT EXISTS module (
    module_id INTEGER PRIMARY KEY,
    time DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -146,8 +137,7 @@ CREATE TABLE IF NOT EXISTS module (
    FOREIGN KEY (code)
       REFERENCES code (code_id)
 );
-]]
-#/lua
+#/sql
 
 
 ** Create bridge.modules
@@ -216,30 +206,25 @@ that is tractable.
 
 **** new_project
 
-#!lua
-local new_project = [[
+#!sql @new_project #asLua
 INSERT INTO project (name, repo, repo_alternates, home, website)
 VALUES (:name, :repo, :repo_alternates, :home, :website)
 ;
-]]
-#/lua
+#/sql
 
 
 **** get_project
 
-#!lua
-local get_project_id = [[
+#!sql @get_project_id #asLua
 SELECT project_id FROM project
 WHERE project.name = ?
 ;
-]]
-#/lua
+#/sql
 
 
 **** update_project
 
-#!lua
-local update_project = [[
+#!sql @update_project #asLua
 UPDATE project
 SET
    repo = :repo,
@@ -249,8 +234,7 @@ SET
 WHERE
    name = :name
 ;
-]]
-#/lua
+#/sql
 
 
 *** version
@@ -258,8 +242,7 @@ WHERE
 
 **** get_version_snapshot
 
-#!lua
-local get_version = [[
+#!sql @get_version #asLua
 SELECT CAST (version.version_id AS REAL) FROM version
 WHERE edition = :edition
 AND stage = :stage
@@ -269,30 +252,25 @@ AND patch = :patch
 AND special = :special
 AND project = :project
 ;
-]]
-#/lua
+#/sql
 
 
 **** new_version_snapshot
 
-#!lua
-local new_version_snapshot = [[
+#!sql @new_version_snapshot #asLua
 INSERT INTO version (edition, project)
 VALUES (:edition, :project)
 ;
-]]
-#/lua
+#/sql
 
 
 **** new_version
 
-#!lua
-local new_version = [[
+#!sql @new_version #asLua
 INSERT INTO version (edition, project, major, minor, patch)
 VALUES (:edition, :project, :major, :minor, :patch)
 ;
-]]
-#/lua
+#/sql
 
 
 *** code
@@ -300,23 +278,19 @@ VALUES (:edition, :project, :major, :minor, :patch)
 
 **** get_code_id_by_hash
 
-#!lua
-local get_code_id_by_hash = [[
+#!sql @get_code_id_by_hash #asLua
 SELECT CAST (code.code_id AS REAL) FROM code
 WHERE code.hash = ?;
-]]
-#/lua
+#/sql
 
 
 **** new_code
 
-#!lua
-local new_code = [[
+#!sql @new_code #asLua
 INSERT INTO code (hash, binary)
 VALUES (:hash, :binary)
 ;
-]]
-#/lua
+#/sql
 
 
 *** bundle
@@ -324,18 +298,15 @@ VALUES (:hash, :binary)
 
 **** new_bundle
 
-#!lua
-local new_bundle = [[
+#!sql @new_bundle #asLua
 INSERT INTO bundle (project, version)
 VALUES (?, ?)
 ;
-]]
-#/lua
+#/sql
 
 **** get_latest_bundle
 
-#!lua
-local get_latest_bundle = [[
+#!sql @get_latest_bundle #asLua
 SELECT CAST (bundle.bundle_id AS REAL), time FROM bundle
 WHERE bundle.project = ?
 AND bundle.version = ?
@@ -344,8 +315,7 @@ ORDER BY
    bundle_id DESC
 LIMIT 1
 ;
-]]
-#/lua
+#/sql
 
 
 *** module
@@ -353,15 +323,13 @@ LIMIT 1
 
 **** add_module
 
-#!lua
-local add_module = [[
+#!sql @add_module #asLua
 INSERT INTO module (version, name, bundle,
                     branch, vc_hash, project, code, time)
 VALUES (:version, :name, :bundle,
         :branch, :vc_hash, :project, :code, :time)
 ;
-]]
-#/lua
+#/sql
 
 #!lua
 local function _commitBundle(conn, bundle)

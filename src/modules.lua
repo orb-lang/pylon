@@ -52,7 +52,6 @@ local stmts = {}
 
 
 
-
 stmts.create_project_table = [[
 CREATE TABLE IF NOT EXISTS project (
    project_id INTEGER PRIMARY KEY,
@@ -163,6 +162,7 @@ CREATE TABLE IF NOT EXISTS module (
 
 
 
+
 local function new_modules_db(conn_home)
    local yes, conn;
    if type(conn_home) == 'string' then
@@ -190,7 +190,6 @@ if not _Bridge.modules_conn then
    _Bridge.modules_conn = new_modules_db(_Bridge.bridge_modules_home)
    new_modules = true
 end
-
 
 
 
@@ -361,6 +360,7 @@ VALUES (:version, :name, :bundle,
         :branch, :vc_hash, :project, :code, :time)
 ;
 ]]
+
 
 
 
