@@ -286,12 +286,6 @@ if rawget(_G, "arg") ~= nil then
       local ts = require "helm:helm/repr".ts
       print(ts(args))
    end
-   if args.file then
-      if args.file:sub(-4, -1) == ".lua" then
-         dofile(args.file)
-      end
-      -- handle .orb files here
-   end
    if args.orb then
       if args.revert then
          local revert = require "bundle:revert"
@@ -352,6 +346,11 @@ if rawget(_G, "arg") ~= nil then
       for _, file in ipairs(args.file) do
          import(file)
       end
+   elseif args.file then
+      if args.file:sub(-4, -1) == ".lua" then
+         dofile(args.file)
+      end
+      -- handle .orb files here
    end
 end
 ```

@@ -404,6 +404,7 @@ distributions.
 
    -- Connection exec, __call, rowexec --------------------------------------------
    function conn_mt:exec(commands, get) T_open(self)
+     get = get or 'ihk'
      local cmd1 = split(commands, ";")
      local res, n
      for i=1,#cmd1 do

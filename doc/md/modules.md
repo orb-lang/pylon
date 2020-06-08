@@ -1,58 +1,58 @@
-* Modules
+# Modules
 
 This module is responsible for:
 
--  Building the =bridge.modules= database if it doesn't already exist
+\-  Building the =bridge\.modules= database if it doesn't already exist
 
--  #todo Implementing =use=, our =require= replacement.
+\-  \#todo Implementing =use=, our =require= replacement\.
 
--  Containing =br import=, so that our self-contained binary can populate the
-   =bridge.modules= database from an included =.bundle= file.
+\-  Containing =br import=, so that our self\-contained binary can populate the
+   =bridge\.modules= database from an included =\.bundle= file\.
 
 
-***** do guard
+##### do guard
 
-As is standard for our directly-loaded code, we wrap in a =do= block, to
-imitate the behavior of a module.
+As is standard for our directly\-loaded code, we wrap in a `do` block, to
+imitate the behavior of a module\.
 
-#!lua
+```lua
 do
-#/lua
+```
 
 
-*** Sentinel
+### Sentinel
 
-If we create a new =bridge.modules= this is set to =true=.
+If we create a new `bridge.modules` this is set to `true`\.
 
-#!lua
+```lua
 local new_modules = false
-#/lua
+```
 
 
-** SQL for bridge.modules
+## SQL for bridge\.modules
 
-#Todo as soon as we switch to using the new knitter for orb files, make these
-      into genuine SQL blocks.
+\#Todo
+      into genuine SQL blocks\.
 
-#Todo this currently lives in =orb= as well, we should move it.
+\#Todo
 
 
-#!lua
+```lua
 local stmts = {}
-#/lua
+```
 
 
-*** CREATE
+### CREATE
 
-These SQL statements create the bridge.modules database.
+These SQL statements create the bridge\.modules database\.
 
-Currently, we have no migrations.  When we do, they will follow the pattern
-[[established in helm][@br/helm:helm/historian]].
+Currently, we have no migrations\.  When we do, they will follow the pattern
+\[\[established in helm\]\[@br/helm:helm/historian\]\]\.
 
 
-**** create_project_table
+#### create\_project\_table
 
-#!sql @stmts.create_project_table #asLua
+```sql
 CREATE TABLE IF NOT EXISTS project (
    project_id INTEGER PRIMARY KEY,
    name STRING UNIQUE NOT NULL ON CONFLICT IGNORE,
@@ -62,12 +62,12 @@ CREATE TABLE IF NOT EXISTS project (
    home STRING,
    website STRING
 );
-#/sql
+```
 
 
-**** create_version_table
+#### create\_version\_table
 
-#!sql @stmts.create_version_table #asLua
+```sql
 CREATE TABLE IF NOT EXISTS version (
    version_id INTEGER PRIMARY KEY,
    stage STRING DEFAULT 'SNAPSHOT' COLLATE NOCASE,
@@ -82,12 +82,12 @@ CREATE TABLE IF NOT EXISTS version (
    FOREIGN KEY (project)
       REFERENCES project (project_id)
 );
-#/sql
+```
 
 
-**** create_bundle_table
+#### create\_bundle\_table
 
-#!sql @stmts.create_bundle_table #asLua
+```sql
 CREATE TABLE IF NOT EXISTS bundle (
    bundle_id INTEGER PRIMARY KEY,
    time DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -98,23 +98,23 @@ CREATE TABLE IF NOT EXISTS bundle (
    FOREIGN KEY (version)
       REFERENCES version (version_id)
 );
-#/sql
+```
 
 
-**** create_code_table
+#### create\_code\_table
 
-#!sql @stmts.create_code_table #asLua
+```sql
 CREATE TABLE IF NOT EXISTS code (
    code_id INTEGER PRIMARY KEY,
    hash TEXT UNIQUE ON CONFLICT IGNORE NOT NULL,
    binary BLOB NOT NULL
 );
-#/sql
+```
 
 
-**** create_module_table
+#### create\_module\_table
 
-#!sql @stmts.create_module_table #asLua
+```sql
 CREATE TABLE IF NOT EXISTS module (
    module_id INTEGER PRIMARY KEY,
    time DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -137,22 +137,22 @@ CREATE TABLE IF NOT EXISTS module (
    FOREIGN KEY (code)
       REFERENCES code (code_id)
 );
-#/sql
+```
 
 
-** Create bridge.modules
+## Create bridge\.modules
 
-If it exists already, we have a conn on =_Bridge=.
+If it exists already, we have a conn on `_Bridge`\.
 
-If not, we can create it. We have the technology.
+If not, we can create it\. We have the technology\.
 
 
-*** _Bridge.new_modules_db(conn_home)
+### \_Bridge\.new\_modules\_db\(conn\_home\)
 
   We want to retain the ability to instantiate a modules database, the
-motivating case being an in-memory version for testing.
+motivating case being an in\-memory version for testing\.
 
-#!lua
+```lua
 local function new_modules_db(conn_home)
    local yes, conn;
    if type(conn_home) == 'string' then
@@ -180,51 +180,50 @@ if not _Bridge.modules_conn then
    _Bridge.modules_conn = new_modules_db(_Bridge.bridge_modules_home)
    new_modules = true
 end
-#/lua
+```
 
 
-* Import
+# Import
 
 
-Imports a bundle file into the database.
+Imports a bundle file into the database\.
 
 
-*** SQL
+### SQL
 
-This is going to be a copy-paste of SQL statements in [[Orb's database code]
-[@orb/compile/database]].
+This is going to be a copy\-paste of SQL statements in [Orb's database code](@orb/compile/database)\.
 
 Eventually I do want a single home for all this logic, and being as it's core
-to initializing bridge, that will probably be in pylon.
+to initializing bridge, that will probably be in pylon\.
 
-For extra points, it should be in a SQL-specific =.orb= file, and transcluded
+For extra points, it should be in a SQL\-specific `.orb` file, and transcluded
 into Lua source blocks, but we have several steps we need to accomplish before
-that is tractable.
+that is tractable\.
 
-*** project
+### project
 
 
-**** new_project
+#### new\_project
 
-#!sql @new_project #asLua
+```sql
 INSERT INTO project (name, repo, repo_alternates, home, website)
 VALUES (:name, :repo, :repo_alternates, :home, :website)
 ;
-#/sql
+```
 
 
-**** get_project
+#### get\_project
 
-#!sql @get_project_id #asLua
+```sql
 SELECT project_id FROM project
 WHERE project.name = ?
 ;
-#/sql
+```
 
 
-**** update_project
+#### update\_project
 
-#!sql @update_project #asLua
+```sql
 UPDATE project
 SET
    repo = :repo,
@@ -234,15 +233,15 @@ SET
 WHERE
    name = :name
 ;
-#/sql
+```
 
 
-*** version
+### version
 
 
-**** get_version_snapshot
+#### get\_version\_snapshot
 
-#!sql @get_version #asLua
+```sql
 SELECT CAST (version.version_id AS REAL) FROM version
 WHERE edition = :edition
 AND stage = :stage
@@ -252,61 +251,61 @@ AND patch = :patch
 AND special = :special
 AND project = :project
 ;
-#/sql
+```
 
 
-**** new_version_snapshot
+#### new\_version\_snapshot
 
-#!sql @new_version_snapshot #asLua
+```sql
 INSERT INTO version (edition, project)
 VALUES (:edition, :project)
 ;
-#/sql
+```
 
 
-**** new_version
+#### new\_version
 
-#!sql @new_version #asLua
+```sql
 INSERT INTO version (edition, project, major, minor, patch)
 VALUES (:edition, :project, :major, :minor, :patch)
 ;
-#/sql
+```
 
 
-*** code
+### code
 
 
-**** get_code_id_by_hash
+#### get\_code\_id\_by\_hash
 
-#!sql @get_code_id_by_hash #asLua
+```sql
 SELECT CAST (code.code_id AS REAL) FROM code
 WHERE code.hash = ?;
-#/sql
+```
 
 
-**** new_code
+#### new\_code
 
-#!sql @new_code #asLua
+```sql
 INSERT INTO code (hash, binary)
 VALUES (:hash, :binary)
 ;
-#/sql
+```
 
 
-*** bundle
+### bundle
 
 
-**** new_bundle
+#### new\_bundle
 
-#!sql @new_bundle #asLua
+```sql
 INSERT INTO bundle (project, version)
 VALUES (?, ?)
 ;
-#/sql
+```
 
-**** get_latest_bundle
+#### get\_latest\_bundle
 
-#!sql @get_latest_bundle #asLua
+```sql
 SELECT CAST (bundle.bundle_id AS REAL), time FROM bundle
 WHERE bundle.project = ?
 AND bundle.version = ?
@@ -315,23 +314,23 @@ ORDER BY
    bundle_id DESC
 LIMIT 1
 ;
-#/sql
+```
 
 
-*** module
+### module
 
 
-**** add_module
+#### add\_module
 
-#!sql @add_module #asLua
+```sql
 INSERT INTO module (version, name, bundle,
                     branch, vc_hash, project, code, time)
 VALUES (:version, :name, :bundle,
         :branch, :vc_hash, :project, :code, :time)
 ;
-#/sql
+```
 
-#!lua
+```lua
 local function _commitBundle(conn, bundle)
    -- #todo verify byecode hashes, load bytecodes (but don't execute)
    -- #todo verify bundle hash, and signature if possible/present
@@ -387,9 +386,9 @@ local function _commitBundle(conn, bundle)
       mod_stmt:reset()
    end
 end
-#/lua
+```
 
-#!lua
+```lua
 local function import(file_name)
    local file = io.open(file_name, "r")
    if not file then
@@ -417,23 +416,23 @@ local function import(file_name)
 end
 
 _Bridge.import = import
-#/lua
+```
 
 
-*** Try to load default bundle file
+### Try to load default bundle file
 
-Our bootstrap will assume that =br= is living in the =build= directory.
+Our bootstrap will assume that `br` is living in the `build` directory\.
 
-#!lua
+```lua
 if new_modules then
    print "importing modules bundle"
    import("all_modules.bundle")
 end
-#/lua
+```
 
 
-***** End of do guard
+##### End of do guard
 
-#!lua
+```lua
 end
-#/lua
+```
