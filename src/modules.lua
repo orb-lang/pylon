@@ -67,8 +67,6 @@ CREATE TABLE IF NOT EXISTS project (
 
 
 
-
-
 stmts.create_version_table = [[
 CREATE TABLE IF NOT EXISTS version (
    version_id INTEGER PRIMARY KEY,
@@ -89,8 +87,6 @@ CREATE TABLE IF NOT EXISTS version (
 
 
 
-
-
 stmts.create_bundle_table = [[
 CREATE TABLE IF NOT EXISTS bundle (
    bundle_id INTEGER PRIMARY KEY,
@@ -107,8 +103,6 @@ CREATE TABLE IF NOT EXISTS bundle (
 
 
 
-
-
 stmts.create_code_table = [[
 CREATE TABLE IF NOT EXISTS code (
    code_id INTEGER PRIMARY KEY,
@@ -116,8 +110,6 @@ CREATE TABLE IF NOT EXISTS code (
    binary BLOB NOT NULL
 );
 ]]
-
-
 
 
 
@@ -146,8 +138,6 @@ CREATE TABLE IF NOT EXISTS module (
       REFERENCES code (code_id)
 );
 ]]
-
-
 
 
 
@@ -225,15 +215,11 @@ VALUES (:name, :repo, :repo_alternates, :home, :website)
 
 
 
-
-
 local get_project_id = [[
 SELECT project_id FROM project
 WHERE project.name = ?
 ;
 ]]
-
-
 
 
 
@@ -256,8 +242,6 @@ WHERE
 
 
 
-
-
 local get_version = [[
 SELECT CAST (version.version_id AS REAL) FROM version
 WHERE edition = :edition
@@ -273,15 +257,11 @@ AND project = :project
 
 
 
-
-
 local new_version_snapshot = [[
 INSERT INTO version (edition, project)
 VALUES (:edition, :project)
 ;
 ]]
-
-
 
 
 
@@ -298,14 +278,10 @@ VALUES (:edition, :project, :major, :minor, :patch)
 
 
 
-
-
 local get_code_id_by_hash = [[
 SELECT CAST (code.code_id AS REAL) FROM code
 WHERE code.hash = ?;
 ]]
-
-
 
 
 
@@ -322,15 +298,11 @@ VALUES (:hash, :binary)
 
 
 
-
-
 local new_bundle = [[
 INSERT INTO bundle (project, version)
 VALUES (?, ?)
 ;
 ]]
-
-
 
 
 
@@ -351,8 +323,6 @@ LIMIT 1
 
 
 
-
-
 local add_module = [[
 INSERT INTO module (version, name, bundle,
                     branch, vc_hash, project, code, time)
@@ -360,8 +330,6 @@ VALUES (:version, :name, :bundle,
         :branch, :vc_hash, :project, :code, :time)
 ;
 ]]
-
-
 
 
 local function _commitBundle(conn, bundle)
