@@ -346,7 +346,7 @@ if rawget(_G, "arg") ~= nil then
       for _, file in ipairs(args.file) do
          import(file)
       end
-   elseif args.file then
+   elseif not args.import and args.file then
       if args.file:sub(-4, -1) == ".lua" then
          dofile(args.file)
       end
