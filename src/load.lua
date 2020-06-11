@@ -137,7 +137,7 @@ orb_c
    : require_command (false)
 
 orb_c
-  : option "-P --pedantic"
+  : flag "-P --pedantic"
     : description "Perform all filters, linting, crash on errors, etc."
 
 orb_c
