@@ -74,6 +74,7 @@ do
 
 
 _Bridge.bridge_modules = { }
+_Bridge.loaded = { }
 
 
 
@@ -244,7 +245,14 @@ local function loaderGen(conn)
          module_stmt:reset()
       end
       if bytecode then
+         -- return a module-loading closure if already in scope
+         if _Bridge.loaded[bytecode] then
+            return function()
+               return package.loaded[_Bridge.loaded[bytecode]]
+            end
+         end
          _Bridge.bridge_modules["@" .. mod_name] = true
+         _Bridge.loaded[bytecode] = mod_name
          local loadFn, errmsg = load(bytecode, "@" .. mod_name)
          if loadFn then
             return loadFn
