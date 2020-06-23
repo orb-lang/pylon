@@ -174,14 +174,7 @@ end
 Returns a function which loads modules from a given database connection\.
 
 ```lua
-local function _unwrapOneResult(result)
-   if result and result[1] and result[1][1] then
-      return result[1][1]
-   else
-      return nil
-   end
-end
-
+local toRow = assert(sql.toRow)
 local function loaderGen(conn)
    -- check that we have a database conn
    if not conn then error("sql connection failed") end
@@ -208,42 +201,43 @@ local function loaderGen(conn)
       end
       if project then
          -- retrieve bytecode by project and module
-         bytecode = _unwrapOneResult(
+         bytecode = toRow(
                       project_stmt:bindkv ({ project_name = project,
                                             module_name  = mod })
-                      : resultset("i"))
+                      : resultset())
          if not bytecode then
             -- try mod_double
             project_stmt:reset()
-            bytecode = _unwrapOneResult(
+            bytecode = toRow(
                       project_stmt:bindkv ({ project_name = project,
                                             module_name  = mod_double })
-                      : resultset("i"))
+                      : resultset())
          end
          if not bytecode then
             -- try proj_double
             project_stmt:reset()
-            bytecode = _unwrapOneResult(
+            bytecode = toRow(
                       project_stmt:bindkv ({ project_name = project,
                                              module_name  = proj_double })
-                      : resultset("i"))
+                      : resultset())
          end
          project_stmt:reset()
       else
          -- retrieve by bare module name
-         bytecode = _unwrapOneResult(
+         bytecode = toRow(
                       module_stmt:bindkv ({ name  = mod })
-                      : resultset("i"))
+                      : resultset())
          if not bytecode then
             module_stmt:reset()
-            bytecode =_unwrapOneResult(
+            bytecode =toRow(
                       module_stmt:bindkv ({ name  = mod })
 
-                      : resultset("i"))
+                      : resultset())
          end
          module_stmt:reset()
       end
       if bytecode then
+         bytecode = bytecode[1].binary
          -- return a module-loading closure if already in scope
          if _Bridge.loaded[bytecode] then
             return function()
