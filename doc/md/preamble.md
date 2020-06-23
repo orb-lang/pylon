@@ -84,7 +84,7 @@ module\.
 
 ```lua
 local bytecode_by_module = [[
-SELECT code.binary
+SELECT code.binary, code.hash
 FROM code
 INNER JOIN module
 ON module.code = code.code_id
@@ -94,7 +94,7 @@ ORDER BY module.time desc limit 1
 ]]
 
 local bytecode_by_module_and_project = [[
-SELECT code.binary
+SELECT code.binary, code.hash
 FROM code
 INNER JOIN module
 ON module.code = code.code_id
@@ -169,12 +169,19 @@ if ok then
 end
 ```
 
+
 ### loaderGen\(conn\)
 
 Returns a function which loads modules from a given database connection\.
 
 ```lua
 local toRow = assert(sql.toRow)
+
+local function resultMap(result)
+   if result == nil then return nil end
+   return toRow(result)
+end
+
 local function loaderGen(conn)
    -- check that we have a database conn
    if not conn then error("sql connection failed") end
@@ -201,14 +208,14 @@ local function loaderGen(conn)
       end
       if project then
          -- retrieve bytecode by project and module
-         bytecode = toRow(
+         bytecode = resultMap(
                       project_stmt:bindkv ({ project_name = project,
                                             module_name  = mod })
                       : resultset())
          if not bytecode then
             -- try mod_double
             project_stmt:reset()
-            bytecode = toRow(
+            bytecode = resultMap(
                       project_stmt:bindkv ({ project_name = project,
                                             module_name  = mod_double })
                       : resultset())
@@ -216,7 +223,7 @@ local function loaderGen(conn)
          if not bytecode then
             -- try proj_double
             project_stmt:reset()
-            bytecode = toRow(
+            bytecode = resultMap(
                       project_stmt:bindkv ({ project_name = project,
                                              module_name  = proj_double })
                       : resultset())
@@ -224,12 +231,12 @@ local function loaderGen(conn)
          project_stmt:reset()
       else
          -- retrieve by bare module name
-         bytecode = toRow(
+         bytecode = resultMap(
                       module_stmt:bindkv ({ name  = mod })
                       : resultset())
          if not bytecode then
             module_stmt:reset()
-            bytecode =toRow(
+            bytecode =resultMap(
                       module_stmt:bindkv ({ name  = mod })
 
                       : resultset())
@@ -237,17 +244,18 @@ local function loaderGen(conn)
          module_stmt:reset()
       end
       if bytecode then
-         bytecode = bytecode[1].binary
+         assert(bytecode.hash)
+         local binary, hash = bytecode.binary, bytecode.hash
          -- return a module-loading closure if already in scope
-         if _Bridge.loaded[bytecode] then
+         if _Bridge.loaded[hash] then
             return function()
-               return package.loaded[_Bridge.loaded[bytecode]]
+               return package.loaded[_Bridge.loaded[hash]]
             end
          end
          _Bridge.bridge_modules["@" .. mod_name] = true
-         _Bridge.loaded[bytecode] = mod_name
-         local loadFn, errmsg = load(bytecode, "@" .. mod_name)
+         local loadFn, errmsg = load(binary, "@" .. mod_name)
          if loadFn then
+            _Bridge.loaded[hash] = mod_name
             return loadFn
          else
              error(errmsg)
