@@ -74,6 +74,7 @@ do
 
 #!lua
 _Bridge.bridge_modules = { }
+_Bridge.loaded = { }
 #/lua
 
 
@@ -84,7 +85,7 @@ module.
 
 #!lua
 local bytecode_by_module = [[
-SELECT code.binary
+SELECT code.binary, code.hash
 FROM code
 INNER JOIN module
 ON module.code = code.code_id
@@ -94,7 +95,7 @@ ORDER BY module.time desc limit 1
 ]]
 
 local bytecode_by_module_and_project = [[
-SELECT code.binary
+SELECT code.binary, code.hash
 FROM code
 INNER JOIN module
 ON module.code = code.code_id
@@ -169,17 +170,17 @@ if ok then
 end
 #/lua
 
+
 *** loaderGen(conn)
 
 Returns a function which loads modules from a given database connection.
 
 #!lua
-local function _unwrapOneResult(result)
-   if result and result[1] and result[1][1] then
-      return result[1][1]
-   else
-      return nil
-   end
+local toRow = assert(sql.toRow)
+
+local function resultMap(result)
+   if result == nil then return nil end
+   return toRow(result)
 end
 
 local function loaderGen(conn)
@@ -208,45 +209,53 @@ local function loaderGen(conn)
       end
       if project then
          -- retrieve bytecode by project and module
-         bytecode = _unwrapOneResult(
+         bytecode = resultMap(
                       project_stmt:bindkv ({ project_name = project,
                                             module_name  = mod })
-                      : resultset("i"))
+                      : resultset())
          if not bytecode then
             -- try mod_double
             project_stmt:reset()
-            bytecode = _unwrapOneResult(
+            bytecode = resultMap(
                       project_stmt:bindkv ({ project_name = project,
                                             module_name  = mod_double })
-                      : resultset("i"))
+                      : resultset())
          end
          if not bytecode then
             -- try proj_double
             project_stmt:reset()
-            bytecode = _unwrapOneResult(
+            bytecode = resultMap(
                       project_stmt:bindkv ({ project_name = project,
                                              module_name  = proj_double })
-                      : resultset("i"))
+                      : resultset())
          end
          project_stmt:reset()
       else
          -- retrieve by bare module name
-         bytecode = _unwrapOneResult(
+         bytecode = resultMap(
                       module_stmt:bindkv ({ name  = mod })
-                      : resultset("i"))
+                      : resultset())
          if not bytecode then
             module_stmt:reset()
-            bytecode =_unwrapOneResult(
+            bytecode =resultMap(
                       module_stmt:bindkv ({ name  = mod })
 
-                      : resultset("i"))
+                      : resultset())
          end
          module_stmt:reset()
       end
       if bytecode then
+         local binary, hash = bytecode.binary, bytecode.hash
+         -- return a module-loading closure if already in scope
+         if _Bridge.loaded[hash] then
+            return function()
+               return package.loaded[_Bridge.loaded[hash]]
+            end
+         end
          _Bridge.bridge_modules["@" .. mod_name] = true
-         local loadFn, errmsg = load(bytecode, "@" .. mod_name)
+         local loadFn, errmsg = load(binary, "@" .. mod_name)
          if loadFn then
+            _Bridge.loaded[hash] = mod_name
             return loadFn
          else
              error(errmsg)
