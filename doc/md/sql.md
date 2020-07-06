@@ -976,6 +976,7 @@ until it succeeds\.
 
   function conn_mt.pclose(conn)
      local uv = require "luv"
+     local loop_alive = uv.loop_alive()
      local close_idler = uv.new_idle()
      close_idler:start(function()
        local success = pcall(close, conn)
@@ -985,8 +986,8 @@ until it succeeds\.
          close_idler:stop()
        end
      end)
-     if not uv.loop_alive() then
-        uv.run "default"
+     if not loop_alive then
+        uv.run 'default'
      end
   end
 ```

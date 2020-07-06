@@ -103,7 +103,7 @@ level forever\.
 
 Here's a hit list:
 
-\- \[X\]  Summon the raw terminal from =luv=\!
+\- \[X\]  Summon the raw terminal from `luv`\!
 
 \- \[X\]  Write an evented REPL\.
 

@@ -245,7 +245,6 @@ local function loaderGen(conn)
          module_stmt:reset()
       end
       if bytecode then
-         assert(bytecode.hash)
          local binary, hash = bytecode.binary, bytecode.hash
          -- return a module-loading closure if already in scope
          if _Bridge.loaded[hash] then
