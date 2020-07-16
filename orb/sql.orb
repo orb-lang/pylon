@@ -717,7 +717,7 @@ distributions.
 
 This is all code I wrote to make the library more useable.
 
-© 2019 Sam Putman, MIT license.
+© 2020 Sam Atman, MIT license.
 
 #!lua
    local pcall = assert (pcall)
@@ -919,7 +919,7 @@ fresh each time.
       elseif type(value) == "number" then
          val = " = " .. tostring(value)
       else
-         error(false, "value of type "
+         error("illegal value of type "
                .. type(value) .. ", "
                .. tostring(value))
       end
