@@ -353,6 +353,8 @@ distributions\.
      rwc = bit.bor(ffi.C.SQLITE_OPEN_READWRITE, ffi.C.SQLITE_OPEN_CREATE)
    }
 
+   local conn_map = setmetatable({}, { __mode = 'kv' })
+
    local function open(str, mode)
      mode = mode or "rwc"
      mode = open_modes[mode]
@@ -371,6 +373,7 @@ distributions\.
        conn:close() -- Free resources, should not fail here in this case!
        err(code, msg)
      end
+     conn_map[conn] = str
      return conn
    end
 
@@ -724,6 +727,18 @@ This is all code I wrote to make the library more useable\.
    local gsub = assert(string.gsub)
    local format = assert(string.format)
 ```
+
+
+### sql\.dir\_of\(conn\)
+
+Returns the string used to load the conn\.
+
+```lua
+  function sqlayer.dir_of(conn)
+     return conn_map[conn]
+  end
+```
+
 
 ### sql\.san\(str\)
 

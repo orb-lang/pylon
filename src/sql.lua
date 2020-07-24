@@ -353,6 +353,8 @@ do
      rwc = bit.bor(ffi.C.SQLITE_OPEN_READWRITE, ffi.C.SQLITE_OPEN_CREATE)
    }
 
+   local conn_map = setmetatable({}, { __mode = 'kv' })
+
    local function open(str, mode)
      mode = mode or "rwc"
      mode = open_modes[mode]
@@ -371,6 +373,7 @@ do
        conn:close() -- Free resources, should not fail here in this case!
        err(code, msg)
      end
+     conn_map[conn] = str
      return conn
    end
 
@@ -723,6 +726,18 @@ do
    local pcall = assert (pcall)
    local gsub = assert(string.gsub)
    local format = assert(string.format)
+
+
+
+
+
+
+
+
+  function sqlayer.dir_of(conn)
+     return conn_map[conn]
+  end
+
 
 
 
