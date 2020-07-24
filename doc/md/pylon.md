@@ -103,11 +103,11 @@ level forever\.
 
 Here's a hit list:
 
-\- \[X\]  Summon the raw terminal from `luv`\!
+- [X]  Summon the raw terminal from `luv`\!
 
-\- \[X\]  Write an evented REPL\.
+- [X]  Write an evented REPL\.
 
-\- \[X\]  Add persistence of history in a SQLite database called ~/\.bridge
+- [X]  Add persistence of history in a SQLite database called ~/\.bridge
 
 
 The hardest part of all of this will be keeping the event loop from

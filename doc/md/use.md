@@ -8,29 +8,29 @@ pure\-lua reimplementation of the existing `require`\.
 
 We'll then modify it, thus:
 
-\- \[ \]  \#Todo:
+- [ ]  \#Todo:
 
-  \- \[ \]  Uniqueness in `require` is determined by the require string\.  This is
-         not in keeping with how `bridge` loads programs, because we have
-         several equivalent ways to load a module, e\.g\. "helm:repr",
-         "helm/repr", "helm:helm/repr" all currently point to the same module,
-         but Lua will interpret them as different\.  This has bitten me several
-         times\.
+  - [ ]  Uniqueness in `require` is determined by the require string\.  This is
+      not in keeping with how `bridge` loads programs, because we have
+      several equivalent ways to load a module, e\.g\. "helm:repr",
+      "helm/repr", "helm:helm/repr" all currently point to the same module,
+      but Lua will interpret them as different\.  This has bitten me several
+      times\.
 
-         Since we store hashes, we can use those to deduplicate modules if
-         they're fetched from the database\.
+      Since we store hashes, we can use those to deduplicate modules if
+      they're fetched from the database\.
 
-  \- \[ \]  `use` will behave like `require` when passed a string\.  If passed a
-         table, the \[1\] position must be a require string, with the rest of
-         the table key\-value pairs expressing constraints of the module\.
+  - [ ]  `use` will behave like `require` when passed a string\.  If passed a
+      table, the \[1\] position must be a require string, with the rest of
+      the table key\-value pairs expressing constraints of the module\.
 
-  \- \[ \]  Eventually, constraints for a project will normally be expressed in a
-         manifest document in the root directory of the project\.  Making this
-         work correctly will be somewhat tricky, and the logic to enable this
-         will need to involve `use`\.
+  - [ ]  Eventually, constraints for a project will normally be expressed in a
+      manifest document in the root directory of the project\.  Making this
+      work correctly will be somewhat tricky, and the logic to enable this
+      will need to involve `use`\.
 
-         We need some insight into which project something is being required
-         from in order for these constraints to work\.
+      We need some insight into which project something is being required
+      from in order for these constraints to work\.
 
 
 ### Original License

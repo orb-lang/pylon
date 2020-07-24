@@ -2,9 +2,9 @@
 
 The responsibilities of `load`:
 
-\- Parse arguments
+- Parse arguments
 
-\- Run the resulting behaviors
+- Run the resulting behaviors
 
 
 ## Bridge Path
@@ -78,9 +78,9 @@ local function parse_version(str)
    local patch  = Cg(R"09"^1, "patch")
    local kelvin = P"[" * Cg(R"09"^1, "kelvin") * P"]"
    local knuth  = Cg(R"09"^1, "knuth") * P".."
-   local patt = Ct(major
+   local patt = Ct( major
                   * (P"." * minor)
-                  * (P"." * (kelvin + knuth + patch) + P(-1)))
+                  * (P"." * (kelvin + knuth + patch) + P(-1)) )
                   * P(-1)
    local ver = match(patt, str)
    if not ver then
@@ -156,6 +156,14 @@ orb_c
    : command "weave"
       : description "Weave the codex."
 
+orb_c
+   : command "revert"
+   : description "Revert the latest compiled changes in project."
+   : option "-p --project"
+      : description "Project to revert."
+      : args(1)
+
+
 local orb_command_c = orb_c
    : command "compile"
       : description "Knits the codex and compiles the resulting sorcery files."
@@ -194,16 +202,7 @@ orb_command_c
   : option "-p --project"
      : description "Name of project.  Defaults to name of home directory."
 
-orb_c
-   : command "revert"
-   : description "Revert the latest compiled changes in project."
-   : option "-p --project"
-      : description "Project to revert."
-      : args(1)
 
-local grym_c = brParse : command "grym"
-                       : description ("Backup compiler for Orb format.\n"
-                                    .."Not intended for long-term use.")
 local helm_c = brParse
                   : command "helm i"
                      : description "launch helm, the 'i'nteractive REPL."
@@ -215,9 +214,15 @@ helm_c
       : args(1)
 
 helm_c
+   : option "-M --macro"
+     : description ( "Macro-record a session of the given name. "
+                  .. "Results of all lines will be accepted as correct." )
+
+helm_c
    : option "-n --new-session"
       : description "Begin a new, named session."
       : args(1)
+
 
 local export_c = brParse
                     : command "export"
@@ -242,8 +247,9 @@ export_c
 
 export_c
    : flag "-a" "--all"
-      : description ("Export all projects."
-                     .. "Latest bundles if no version is specified.")
+      : description ( "Export all projects."
+                   .. "Latest bundles if no version is specified." )
+
 
 local import_c = brParse
                     : command "import"
@@ -307,10 +313,6 @@ if rawget(_G, "arg") ~= nil then
              lume:serve()
           end
       end
-   elseif args.grym == true then
-      local grym = require "grym:orb"
-      local uv = require "luv"
-      grym.run(uv.cwd())
    elseif args.helm then
       print "helm"
       local helm = require "helm:helm"

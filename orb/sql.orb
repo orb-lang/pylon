@@ -888,6 +888,90 @@ function sqlayer.toRow(sql_result, num)
 end
 #/lua
 
+** Migrations
+
+SQLite offers a =user_version= number, with no system-level semantics.
+
+We use it to perform migrations.
+
+Currently, these are functions which receive the database conn, and we will
+continue to offer that affordance for migrations which can't be accomplished
+any other way.
+
+But the normal migration is just a series of executed statements, and it may
+be cleaner to allow for a migration to be an array-table of such statements.
+
+Migrations are definitely a case where factoring out the common steps in
+booting and migrating a database into a helper module is going to be worth it.
+
+We only migrate one database currently, but I'm about to add a migration to
+=bridge.modules= and start a third database for =orb= metadata, so this will
+happen (relatively) soon.
+
+Note that =user_version= must start with 2, because SQLite uses 0 for false
+and 1 for true, and we cast those internally to booleans.
+
+The migration tables must be compact for =#= to work correctly, so the first
+migration should be =function() return true end=, although just =return= works
+as well.
+
+=migrations[2]= should create the initial tables, and so on and so forth.
+
+#!lua
+local function migrate(conn, migration, ...)
+   if type(migration) == 'function' then
+      migration(conn, ...)
+   elseif type(migration) == 'table' then
+      for i, step in ipairs(migration) do
+         if type(step) == 'string' then
+            conn:exec(step)
+         elseif type(step) == 'function' then
+            step(conn, ...)
+         else
+            error("invalid step #" .. i .. " of type " .. type(step))
+         end
+      end
+   else
+      error("cannot perform migration of type " .. type(migration))
+   end
+end
+#/lua
+
+#!lua
+local format = assert(string.format)
+local open = assert(open)
+
+function sqlayer.boot(conn, migrations)
+   conn = type(conn) == 'string' and open(conn) or conn
+   -- bail early with no migrations
+   if not migrations then return conn end
+   local version = #migrations
+   conn.pragma.foreign_keys(true)
+   conn.pragma.journal_mode 'wal'
+   -- check the user_version and perform migrations if necessary.
+   local user_version = tonumber(conn.pragma.user_version())
+   if not user_version then
+      user_version = 1
+   end
+   if user_version < version then
+      conn.pragma.foreign_keys(false)
+      conn:exec "BEGIN TRANSACTION;"
+      for i = user_version + 1, version do
+         migrate(conn, migrations[i])
+      end
+      conn:exec "COMMIT;"
+      conn.pragma.foreign_keys(true)
+      conn.pragma.user_version(version)
+   elseif user_version > version then
+      error(format("Error: database version is %d, expected %d",
+                   user_version, version))
+      os.exit(1)
+   end
+
+   return conn
+end
+#/lua
+
 
 **** conn.pragma.etc(bool)
 

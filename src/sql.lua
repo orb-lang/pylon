@@ -904,6 +904,90 @@ end
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local function migrate(conn, migration, ...)
+   if type(migration) == 'function' then
+      migration(conn, ...)
+   elseif type(migration) == 'table' then
+      for i, step in ipairs(migration) do
+         if type(step) == 'string' then
+            conn:exec(step)
+         elseif type(step) == 'function' then
+            step(conn, ...)
+         else
+            error("invalid step #" .. i .. " of type " .. type(step))
+         end
+      end
+   else
+      error("cannot perform migration of type " .. type(migration))
+   end
+end
+
+
+
+local format = assert(string.format)
+local open = assert(open)
+
+function sqlayer.boot(conn, migrations)
+   conn = type(conn) == 'string' and open(conn) or conn
+   -- bail early with no migrations
+   if not migrations then return conn end
+   local version = #migrations
+   conn.pragma.foreign_keys(true)
+   conn.pragma.journal_mode 'wal'
+   -- check the user_version and perform migrations if necessary.
+   local user_version = tonumber(conn.pragma.user_version())
+   if not user_version then
+      user_version = 1
+   end
+   if user_version < version then
+      conn.pragma.foreign_keys(false)
+      conn:exec "BEGIN TRANSACTION;"
+      for i = user_version + 1, version do
+         migrate(conn, migrations[i])
+      end
+      conn:exec "COMMIT;"
+      conn.pragma.foreign_keys(true)
+      conn.pragma.user_version(version)
+   elseif user_version > version then
+      error(format("Error: database version is %d, expected %d",
+                   user_version, version))
+      os.exit(1)
+   end
+
+   return conn
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    local pragma_pre = "PRAGMA "
 
    -- Builds and returns a pragma string
@@ -919,7 +1003,7 @@ end
       elseif type(value) == "number" then
          val = " = " .. tostring(value)
       else
-         error(false, "value of type "
+         error("illegal value of type "
                .. type(value) .. ", "
                .. tostring(value))
       end
