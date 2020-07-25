@@ -734,7 +734,7 @@ do
 
 
 
-  function sqlayer.dir_of(conn)
+  function sqlayer.conn_path(conn)
      return conn_map[conn]
   end
 

@@ -734,7 +734,7 @@ This is all code I wrote to make the library more useable.
 Returns the string used to load the conn.
 
 #!lua
-  function sqlayer.dir_of(conn)
+  function sqlayer.conn_path(conn)
      return conn_map[conn]
   end
 #/lua
