@@ -957,7 +957,7 @@ local format = assert(string.format)
 local open = assert(open)
 
 function sqlayer.boot(conn, migrations)
-   conn = type(conn) == 'string' and open(conn) or conn
+   conn = type(conn) == 'string' and open(conn, 'rwc') or conn
    -- bail early with no migrations
    if not migrations then return conn end
    local version = #migrations
