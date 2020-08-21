@@ -263,6 +263,14 @@ local session_c = brParse
                     : command "session s"
                     : description "session runner for testing"
 
+session_c
+   : flag "--all"
+   : description "run all accepted sessions in the database."
+
+session_c
+   : flag "-A" "--accepted"
+   : description "run only accepted session for a given project"
+
 
 
 
@@ -354,6 +362,20 @@ if rawget(_G, "arg") ~= nil then
       local import = assert(_Bridge.import)
       for _, file in ipairs(args.file) do
          import(file)
+      end
+   elseif args.session then
+      local session = require "valiant:session"
+      -- going to hard-code the helm database, but this is bad:
+      -- #todo move helm opening logic somewhere inside pylon
+      local helm_conn = sql.open(_Bridge.bridge_home .. "/helm/helm.sqlite")
+      if args.all then
+         session.runAllAcceptedSessions(helm_conn)
+      -- other options go here, as we add them.
+      elseif args.accepted then
+         error "NYI"
+      else
+         local uv = require "luv"
+         session.runProjectByDir(helm_conn, uv.cwd())
       end
    elseif args.file then
       if args.file:sub(-4, -1) == ".lua" then
