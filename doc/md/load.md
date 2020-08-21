@@ -53,9 +53,8 @@ Parse the arguments passed to `br`\.
 
 ### parseVersion\(str\)
 
-Let's validate the version string on parse\.
-
-This function will be moved to `load` once I'm satisfied with how it works\.
+We validate the version string on parse, since we divvy it up into pieces
+within the database\.
 
 ```lua
 local L = require "lpeg"
@@ -259,6 +258,10 @@ import_c
    : argument "file"
    : description "a bundled project file or files"
    : args "+"
+
+local session_c = brParse
+                    : command "session s"
+                    : description "session runner for testing"
 ```
 
 

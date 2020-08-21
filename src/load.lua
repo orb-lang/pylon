@@ -57,7 +57,6 @@ stricture = nil
 
 
 
-
 local L = require "lpeg"
 local P, C, Cg, Ct, R, match = L.P, L.C, L.Cg, L.Ct, L.R, L.match
 local format = assert(string.format)
@@ -259,6 +258,10 @@ import_c
    : argument "file"
    : description "a bundled project file or files"
    : args "+"
+
+local session_c = brParse
+                    : command "session s"
+                    : description "session runner for testing"
 
 
 
