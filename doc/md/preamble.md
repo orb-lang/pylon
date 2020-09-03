@@ -9,6 +9,15 @@ library\.
 Anything we want to put in the global namespace goes here\.
 
 
+#### jit off
+
+an experiment to see if turning the jit off 'fixes' the 'assertion failed'
+bug which has been dogging our steps\.
+
+```lua
+jit.off()
+```
+
 ### \_Bridge table
 
 This is what we test for to see if we're inside `bridge`, and where we put

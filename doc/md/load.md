@@ -17,7 +17,6 @@ This is, predictably enough, `BRIDGE_PATH`\.
 
 ```lua
 
-
 ```
 
 
