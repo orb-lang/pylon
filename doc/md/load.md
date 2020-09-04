@@ -363,6 +363,8 @@ if rawget(_G, "arg") ~= nil then
          import(file)
       end
    elseif args.session then
+      -- this one is consistently triggering the jit bug for some reason so:
+      jit.off()
       local session = require "valiant:session"
       -- going to hard-code the helm database, but this is bad:
       -- #todo move helm opening logic somewhere inside pylon
@@ -376,6 +378,7 @@ if rawget(_G, "arg") ~= nil then
          local uv = require "luv"
          session.runProjectByDir(helm_conn, uv.cwd())
       end
+      jit.on()
    elseif args.file then
       if args.file:sub(-4, -1) == ".lua" then
          dofile(args.file)
