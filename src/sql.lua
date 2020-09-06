@@ -617,7 +617,7 @@ do
 
 
    -- iterator for rows
-   function stmt_mt:rows() T_open(self)
+   function stmt_mt:irows() T_open(self)
      return function()
        local row = self:step()
        if row then
@@ -656,6 +656,31 @@ do
        for i=1,#h do out[h[i]] = o[i] end
      end
      return out, n
+   end
+
+   function stmt_mt:rows(maxrecords) T_open(self)
+      maxrecords = maxrecords or math.huge
+      if maxrecords < 1 or type(maxrecords) ~= 'number' then
+         err("constraint", "argument #2 to resultset must be >= 1")
+      end
+      local r, h = self:_step({}, {})
+      local n = 1
+      if not r then return nil, 0 end -- No records case.
+      return function()
+         if n > maxrecords then return nil end
+         n = n + 1
+         if r then
+            local row = {}
+            for i = 1, #h do
+               row[h[i]] = r[i]
+            end
+            r = self:step()
+            return row
+         else
+            self:clearbind():reset()
+            return nil
+         end
+      end
    end
 
    -- Statement bind --------------------------------------------------------------
