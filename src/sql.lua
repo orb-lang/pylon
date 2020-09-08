@@ -28,6 +28,7 @@
 
 local sqlayer = {}
 do
+   jit.off(true, true)
    local ffi  = require "ffi"
    local bit  = require "bit"
 
@@ -1120,6 +1121,7 @@ end
 
 
 
+jit.on()
 end
 sql = sqlayer
 sqlayer = nil

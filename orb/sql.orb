@@ -28,6 +28,7 @@ Instead of =return=ing a module, we'll bind everything to a local variable
 #!lua
 local sqlayer = {}
 do
+   jit.off(true, true)
    local ffi  = require "ffi"
    local bit  = require "bit"
 
@@ -1120,6 +1121,7 @@ until it succeeds.
 **** End Closure and Add =sql= to _G
 
 #!lua
+jit.on()
 end
 sql = sqlayer
 sqlayer = nil
