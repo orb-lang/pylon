@@ -260,16 +260,20 @@ import_c
 
 local session_c = brParse
                     : command "session s"
-                    : description "session runner for testing"
+                    : description ("Session runner. Provides unit tests"
+                        .. " derived from helm sessions.\nWith no arguments,"
+                        .. " runs all accepted sessions for the project"
+                        .. " at pwd.")
+                    : require_command(false)
 
 session_c
    : flag "--all"
    : description "run all accepted sessions in the database."
 
 session_c
-   : flag "-A" "--accepted"
-   : description "run only accepted session for a given project"
---[[
+   : flag "-e" "--every"
+   : description "run every session for a given project."
+---[[
 local session_list_c = session_c
                          : command "list l"
                          : description ("list (accepted) sessions. "
