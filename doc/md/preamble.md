@@ -304,8 +304,7 @@ reference will collect them\.
 
 ### Stricture
 
-Lifted straight from \[\[penlight\]
-\[https://stevedonovan\.github\.io/Penlight/api/index\.html\]\.
+Lifted straight from 
 
 ```lua
 do

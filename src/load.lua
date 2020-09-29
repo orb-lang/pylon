@@ -269,6 +269,12 @@ session_c
 session_c
    : flag "-A" "--accepted"
    : description "run only accepted session for a given project"
+--[[
+local session_list_c = session_c
+                         : command "list l"
+                         : description ("list (accepted) sessions. "
+                                        .. "Defaults to current project.")
+--]]
 
 
 
@@ -303,7 +309,7 @@ if rawget(_G, "arg") ~= nil then
    local args = _Bridge.args
    if args.show_arguments then
       args.show_arguments = nil -- no reason to include this
-      local ts = require "helm:helm/repr".ts
+      local ts = require "repr:repr" . ts
       print(ts(args))
    end
    if args.orb then

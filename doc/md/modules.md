@@ -47,7 +47,7 @@ local stmts = {}
 These SQL statements create the bridge\.modules database\.
 
 Currently, we have no migrations\.  When we do, they will follow the pattern
-\[\[established in helm\]\[@br/helm:helm/historian\]\]\.
+[established in helm](@br/helm:helm/historian)\.
 
 
 #### create\_project\_table

@@ -17,21 +17,44 @@ This file is part of the LJSQLite3 library, which is released under the MIT
 license: full text in file LICENSE\.TXT in the library's root folder\.
 
 
-### imports
+## sql\(layer\)
 
-We'll wrap this whole thing in a `do` block so local upvalues disappear\.
+At the end of the module, we assign this table the global name `sql`\.
 
-Instead of `return`ing a module, we'll bind everything to a local variable
-`sqlayer`\.  Once everything is constructed, we will assign it the global name
-`sql` and set `sqlayer` to nil\.
+This is probably no longer necessary, since we access SQLite from a local,
+statically\-linked copy, in `ffi.C`, whereas the original code loaded a dynamic
+library\.
 
 ```lua
 local sqlayer = {}
+```
+
+
+##### do block
+
+We create a closure with a `do` block, allowing for garbage collection
+of `locals` which don't escape context\.
+
+```lua
 do
-   jit.off(true, true)
+```
+
+
+##### disable JIT
+
+For whatever reason, the JIT has been choking on the SQLite code, so we
+disable it locally\.
+
+```lua
+    jit.off(true, true)
+```
+
+
+#### imports
+
+```lua
    local ffi  = require "ffi"
    local bit  = require "bit"
-
 ```
 
 

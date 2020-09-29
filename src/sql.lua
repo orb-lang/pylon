@@ -27,11 +27,34 @@
 
 
 local sqlayer = {}
+
+
+
+
+
+
+
+
+
 do
-   jit.off(true, true)
+
+
+
+
+
+
+
+
+
+    jit.off(true, true)
+
+
+
+
+
+
    local ffi  = require "ffi"
    local bit  = require "bit"
-
 
 
 
