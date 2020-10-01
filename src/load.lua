@@ -268,17 +268,27 @@ local session_c = brParse
 
 session_c
    : flag "--all"
-   : description "run all accepted sessions in the database."
+   : description("Run all accepted sessions in the database,"
+                 .. " for every project.")
 
 session_c
-   : flag "-e" "--every"
-   : description "run every session for a given project."
----[[
+   : flag "--total"
+   : description("Run every session in the database, no exceptions.")
+
+session_c
+   : flag "-E" "--every"
+   : description "Run every session for a given project."
+
 local session_list_c = session_c
                          : command "list l"
-                         : description ("list (accepted) sessions. "
+                         : description ("List (accepted) sessions. "
                                         .. "Defaults to current project.")
---]]
+
+session_list_c
+    : option "-l --latest"
+    : description "List the n most recent accepted sessions, default 5."
+    : args "?"
+
 
 
 
@@ -297,6 +307,16 @@ end
 
 
 collectgarbage()
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -375,17 +395,9 @@ if rawget(_G, "arg") ~= nil then
    elseif args.session then
       local session = require "valiant:session"
       -- going to hard-code the helm database, but this is bad:
-      -- #todo move helm opening logic somewhere inside pylon
+      -- #todo move helm opening logic into sessions
       local helm_conn = sql.open(_Bridge.bridge_home .. "/helm/helm.sqlite")
-      if args.all then
-         session.runAllAcceptedSessions(helm_conn)
-      -- other options go here, as we add them.
-      elseif args.accepted then
-         error "NYI"
-      else
-         local uv = require "luv"
-         session.runProjectByDir(helm_conn, uv.cwd())
-      end
+      session.session(args, helm_conn)
    elseif args.file then
       if args.file:sub(-4, -1) == ".lua" then
          dofile(args.file)
