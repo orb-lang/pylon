@@ -50,7 +50,7 @@ stricture = nil
 Parse the arguments passed to `br`\.
 
 
-### parseVersion\(str\)
+#### parseVersion\(str\)
 
 We validate the version string on parse, since we divvy it up into pieces
 within the database\.
@@ -106,6 +106,43 @@ end
 
 _Bridge.parse_version = parse_version
 ```
+
+
+#### parse\_list
+
+The argument to several `session` commands can be a title, a number, or a
+range of numbers\.
+
+The latter is of a form such as `[1,3,5..7,9..]`\.  Whitespace is allowed,
+although shell being shell, that would have to be quoted\.
+
+```lua
+local function open_range_fn(open)
+   return { tonumber(open:sub(1, -3)), "#" }
+end
+
+local num = C(R"09"^1) / tonumber
+local range = Ct((num * ".." * num))
+local open_range = C(num * "..") / open_range_fn
+local entry = range + num
+
+local list_p = Ct(P"[" * (P" "^0 * (range + num) * P" "^0 * P",")^0
+               * (P" "^0 * (range + open_range + num) * P" "^0)^-1 * P"]")
+
+local function parse_list(str)
+   local list = match(list_p, str)
+   if not list then
+      list = tonumber(str)
+      if list then return list end
+      return str
+   end
+
+   return list
+end
+
+_Bridge.parse_list = parse_list
+```
+
 
 
 ```lua
@@ -260,15 +297,36 @@ import_c
 
 local session_c = brParse
                     : command "session s"
-                    : description "session runner for testing"
+                    : description ("Session runner. Provides unit tests"
+                        .. " derived from helm sessions.\nWith no arguments,"
+                        .. " runs all accepted sessions for the project"
+                        .. " at pwd.")
+                    : require_command(false)
 
 session_c
    : flag "--all"
-   : description "run all accepted sessions in the database."
+   : description("Run all accepted sessions in the database,"
+                 .. " for every project.")
 
 session_c
-   : flag "-A" "--accepted"
-   : description "run only accepted session for a given project"
+   : flag "--total"
+   : description("Run every session in the database, no exceptions.")
+
+session_c
+   : flag "-E" "--every"
+   : description "Run every session for a given project."
+
+local session_list_c = session_c
+                         : command "list l"
+                         : description ("List (accepted) sessions. "
+                                        .. "Defaults to current project.")
+
+session_list_c
+    : option "-l --latest"
+    : description "List the n most recent accepted sessions, default 5."
+    : args "?"
+    : argname "<n>"
+
 ```
 
 
@@ -294,6 +352,16 @@ collectgarbage()
 
 Run the commands requested\.
 
+This is becoming a towering edifice of conditionals; some of this setup is
+necessary, but a lot of it can be moved into the relevant projects\.
+
+\#Todo
+verbs, and use `argparse` to build their own flag parser for it\.
+
+For blessed bridge projects, which are part of the standard distribution, we
+can add a single entry point, passing in the `args` table, so that the runtime
+logic lives inside the project itself\.
+
 ```lua
 if rawget(_G, "arg") ~= nil then
    -- shim the arg array to emulate the "lua <scriptname>" calling
@@ -303,7 +371,7 @@ if rawget(_G, "arg") ~= nil then
    local args = _Bridge.args
    if args.show_arguments then
       args.show_arguments = nil -- no reason to include this
-      local ts = require "helm:helm/repr".ts
+      local ts = require "repr:repr" . ts
       print(ts(args))
    end
    if args.orb then
@@ -365,17 +433,9 @@ if rawget(_G, "arg") ~= nil then
    elseif args.session then
       local session = require "valiant:session"
       -- going to hard-code the helm database, but this is bad:
-      -- #todo move helm opening logic somewhere inside pylon
+      -- #todo move helm opening logic into sessions
       local helm_conn = sql.open(_Bridge.bridge_home .. "/helm/helm.sqlite")
-      if args.all then
-         session.runAllAcceptedSessions(helm_conn)
-      -- other options go here, as we add them.
-      elseif args.accepted then
-         error "NYI"
-      else
-         local uv = require "luv"
-         session.runProjectByDir(helm_conn, uv.cwd())
-      end
+      session.session(args, helm_conn)
    elseif args.file then
       if args.file:sub(-4, -1) == ".lua" then
          dofile(args.file)

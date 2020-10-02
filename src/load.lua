@@ -109,6 +109,43 @@ _Bridge.parse_version = parse_version
 
 
 
+
+
+
+
+
+
+
+
+local function open_range_fn(open)
+   return { tonumber(open:sub(1, -3)), "#" }
+end
+
+local num = C(R"09"^1) / tonumber
+local range = Ct((num * ".." * num))
+local open_range = C(num * "..") / open_range_fn
+local entry = range + num
+
+local list_p = Ct(P"[" * (P" "^0 * (range + num) * P" "^0 * P",")^0
+               * (P" "^0 * (range + open_range + num) * P" "^0)^-1 * P"]")
+
+local function parse_list(str)
+   local list = match(list_p, str)
+   if not list then
+      list = tonumber(str)
+      if list then return list end
+      return str
+   end
+
+   return list
+end
+
+_Bridge.parse_list = parse_list
+
+
+
+
+
 local brParse = require "argparse" ()
 
 _Bridge.brParse = brParse
@@ -288,6 +325,7 @@ session_list_c
     : option "-l --latest"
     : description "List the n most recent accepted sessions, default 5."
     : args "?"
+    : argname "<n>"
 
 
 
