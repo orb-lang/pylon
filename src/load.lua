@@ -431,11 +431,8 @@ if rawget(_G, "arg") ~= nil then
          import(file)
       end
    elseif args.session then
-      local session = require "valiant:session"
-      -- going to hard-code the helm database, but this is bad:
-      -- #todo move helm opening logic into sessions
-      local helm_conn = sql.open(_Bridge.bridge_home .. "/helm/helm.sqlite")
-      session.session(args, helm_conn)
+      local session = assert(require "valiant:session" . session)
+      session(args)
    elseif args.file then
       if args.file:sub(-4, -1) == ".lua" then
          dofile(args.file)
