@@ -317,9 +317,9 @@ session_c
    : description "Run every session for a given project."
 
 local session_list_c = session_c
-                         : command "list l"
-                         : description ("List (accepted) sessions. "
-                                        .. "Defaults to current project.")
+                          : command "list l"
+                          : description ("List (accepted) sessions. "
+                             .. "Defaults to current project.")
 
 session_list_c
     : option "-l --latest"
@@ -327,6 +327,16 @@ session_list_c
     : args "?"
     : argname "<n>"
 
+local session_update_c = session_c
+                            : command "update u"
+                            : description ("Update session(s) to latest "
+                               .. "results.")
+session_update_c
+   : argument "to_update"
+   : description ("A session title, session number, or list of session "
+      .. "numbers/ranges e.g. [1,3,5..6,8..].")
+   : convert(parse_list)
+   : args(1)
 
 
 
@@ -440,3 +450,4 @@ if rawget(_G, "arg") ~= nil then
       -- handle .orb files here
    end
 end
+

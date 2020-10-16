@@ -103,9 +103,12 @@ level forever\.
 
 Here's a hit list:
 
+
 - [X]  Summon the raw terminal from `luv`\!
 
+
 - [X]  Write an evented REPL\.
+
 
 - [X]  Add persistence of history in a SQLite database called ~/\.bridge
 

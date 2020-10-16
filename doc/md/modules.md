@@ -2,9 +2,12 @@
 
 This module is responsible for:
 
+
 -  Building the `bridge.modules` database if it doesn't already exist
 
+
 -  \#todo Implementing `use`, our `require` replacement\.
+
 
 -  Containing `br import`, so that our self\-contained binary can populate the
     `bridge.modules` database from an included `.bundle` file\.
