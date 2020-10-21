@@ -68,10 +68,10 @@ enter deps/luv
   # updates submodules & resets tree
   make reset
   # builds static library
-  BUILD_MODULE=OFF make
+  BUILD_MODULE=OFF BUILD_STATIC_LIBS=ON make
 leave
 # move our artifacts over to pylon/build
-cp deps/luv/build/libluv.a build/
+cp deps/luv/build/libluv_a.a build/libluv.a
 cp deps/luv/build/deps/libuv/libuv_a.a build/libuv.a
 
 
