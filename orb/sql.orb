@@ -636,6 +636,25 @@ distributions.
    end
    stmt_mt._step = stmt_step
 
+   function stmt_mt:stepkv(row, header) T_open(self)
+       -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
+      if self._code == ffi.C.SQLITE_DONE then return nil end -- Already finished.
+      self._code = ffi.C.sqlite3_step(self._ptr)
+      if self._code == ffi.C.SQLITE_ROW then
+         row = row or {}
+         for i = 0, self:_ncol() - 1 do
+            local col = ffi.string(ffi.C.sqlite3_column_name(self._ptr, i))
+            row[col] = get_column(self._ptr, i)
+         end
+         if header then self:_header(header) end
+         return row, header
+      elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now.
+         return nil
+      else -- If code not DONE or ROW then it's error.
+         E_conn(self._conn, self._code)
+      end
+   end
+
    function stmt_mt:step(row, header) T_open(self)
      return self:_step(row, header)
    end
