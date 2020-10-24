@@ -196,6 +196,7 @@ distributions\.
    int sqlite3_bind_blob(sqlite3_stmt*, int, const void*, int n, void(*)(void*));
 
    int sqlite3_bind_parameter_index(sqlite3_stmt *stmt, const char *name);
+   const char *sqlite3_bind_parameter_name(sqlite3_stmt*, int);
 
    // Clear bindings.
    int sqlite3_clear_bindings(sqlite3_stmt*);
@@ -723,26 +724,22 @@ distributions\.
      return self
    end
 
-   -- note: after some thought, I've decided to let this method only handle string
-   -- values.  It would be possible to bind against numeric indices as well, but this
-   -- would do the wrong thing if given a table with the correct named keys as well as
-   -- indexed values.
-   --
-   -- Worse, it would *unpredictably* do the wrong thing, since stmts silently accept
-   -- rebinding, and `pairs` offers no ordering guarantees.
-   --
-
-   function stmt_mt:bindkv(t, pre) T_open(self)
-     pre = pre or ":"
-     for k,v in pairs(t) do
-       if type(k) == "string" then
-         local param = ffi.C.sqlite3_bind_parameter_index(self._ptr, pre..k)
-         if param ~= 0 then
-           self:_bind1(param, v)
+   function stmt_mt:bindkv(t) T_open(self)
+      local params = {}
+      local p_idx = 1
+      while true do
+         local param = ffi.C.sqlite3_bind_parameter_name(self._ptr, p_idx)
+         if param == nil then break end
+         param = ffi.string(param)
+         params[param:sub(2)] = p_idx
+         p_idx = p_idx + 1
+      end
+      for key, index in pairs(params) do
+         if t[key] then
+            self:_bind1(index, t[key])
          end
-       end
-     end
-     return self
+      end
+      return self
    end
 
    function stmt_mt:clearbind() T_open(self)
