@@ -707,19 +707,13 @@ distributions.
       if maxrecords < 1 or type(maxrecords) ~= 'number' then
          err("constraint", "argument #2 to resultset must be >= 1")
       end
-      local r, h = self:_step({}, {})
       local n = 1
-      if not r then return nil, 0 end -- No records case.
       return function()
          if n > maxrecords then return nil end
-         n = n + 1
+         local r = self:stepkv()
          if r then
-            local row = {}
-            for i = 1, #h do
-               row[h[i]] = r[i]
-            end
-            r = self:step()
-            return row
+            n = n + 1
+            return r
          else
             self:clearbind():reset()
             return nil
