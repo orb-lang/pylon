@@ -661,8 +661,14 @@ distributions.
 
 
    -- iterator for rows
-   function stmt_mt:irows() T_open(self)
-     return function()
+   function stmt_mt:irows(maxrecords) T_open(self)
+      maxrecords = maxrecords or math.huge
+      if maxrecords < 1 or type(maxrecords) ~= 'number' then
+         err("constraint", "argument #2 to resultset must be >= 1")
+      end
+      local n = 1
+      return function()
+         if n > maxrecords then return nil end
        local row = self:step()
        if row then
          return row
