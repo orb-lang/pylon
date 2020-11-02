@@ -74,6 +74,7 @@ do
 ```lua
 _Bridge.bridge_modules = { }
 _Bridge.loaded = { }
+_Bridge.load_hashes = { }
 ```
 
 
@@ -255,6 +256,7 @@ local function loaderGen(conn)
          local loadFn, errmsg = load(binary, "@" .. mod_name)
          if loadFn then
             _Bridge.loaded[hash] = mod_name
+            _Bridge.load_hashes[mod_name] = hash
             return loadFn
          else
              error(errmsg)
