@@ -1,6 +1,7 @@
-# load
+# Load
 
-The responsibilities of `load`:
+
+  The responsibilities of `load`:
 
 
 - Parse arguments
@@ -178,10 +179,6 @@ orb_c
     : description "Perform all filters, linting, crash on errors, etc."
 
 orb_c
-  : command "old"
-     : description "Use the original compiler. Deprecated."
-
-orb_c
    : command "serve"
       : description "Launch the Orb server."
 
@@ -259,6 +256,11 @@ helm_c
    : option "-n --new-session"
       : description "Begin a new, named session."
       : args(1)
+
+helm_c
+   : flag "-l --listen"
+   : description ( "Open with a listener, which compiles files on save and "
+                .. "restarts the session." )
 
 
 local export_c = brParse
