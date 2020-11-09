@@ -401,6 +401,7 @@ local function import(file_name)
    if not bundles then
       error(err)
    end
+   setfenv(bundles, {})
    local bundles = bundles()
 
    local conn = _Bridge.modules_conn
