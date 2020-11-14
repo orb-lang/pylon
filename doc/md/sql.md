@@ -711,7 +711,7 @@ distributions\.
    function stmt_mt:rows(maxrecords) T_open(self)
       maxrecords = maxrecords or math.huge
       if maxrecords < 1 or type(maxrecords) ~= 'number' then
-         err("constraint", "argument #2 to resultset must be >= 1")
+         err("constraint", "argument to rows must be >= 1")
       end
       local n = 1
       return function()
@@ -723,6 +723,35 @@ distributions\.
          else
             self:clearbind():reset()
             return nil
+         end
+      end
+   end
+
+   function stmt_mt:cols(maxrecords) T_open(self)
+      maxrecords = maxrecords or math.huge
+      if maxrecords < 1 or type(maxrecords) ~= 'number' then
+         err("constraint", "argument to cols must be >= 1")
+      end
+      local row, ncol, n = {}, self:_ncol(), 1
+      return function()
+         if n > maxrecords then return nil end
+         -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
+         if self._code == ffi.C.SQLITE_DONE then return nil end -- Already finished.
+         -- reset container
+         for i = 1, ncol do
+            row[i] = nil
+         end
+         self._code = ffi.C.sqlite3_step(self._ptr)
+         if self._code == ffi.C.SQLITE_ROW then
+            n = n + 1
+            for i = 1, ncol do
+               row[i] = get_column(self._ptr, i - 1)
+            end
+            return unpack(row, 1, ncol)
+         elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now.
+            return nil
+         else -- If code not DONE or ROW then it's error.
+            E_conn(self._conn, self._code)
          end
       end
    end
@@ -895,6 +924,7 @@ Y'know, if we ever keep more than 53 bits width of rows in uhhhhh SQLite\.
    end
 ```
 
+
 ### sql\.unwrapKey\(result\_set\)
 
 Unwraps the first result, of the first row, of returned results\.
@@ -967,6 +997,7 @@ function sqlayer.toRow(sql_result, num)
    end
 end
 ```
+
 
 ## Migrations
 
@@ -1061,8 +1092,6 @@ We can use the same interface for setting Lua\-specific values, the one I need
 is `conn.pragma.nulls_are_nil(false)`\.
 
 This is a subtle bit of function composition with a nice result\.
-
-I might be able to use this technique in `check` to favor `.` over `:`\.
 
 Note: `_prag_index` closes over `conn` and thus does have to be generated
 fresh each time\.

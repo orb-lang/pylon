@@ -711,7 +711,7 @@ do
    function stmt_mt:rows(maxrecords) T_open(self)
       maxrecords = maxrecords or math.huge
       if maxrecords < 1 or type(maxrecords) ~= 'number' then
-         err("constraint", "argument #2 to resultset must be >= 1")
+         err("constraint", "argument to rows must be >= 1")
       end
       local n = 1
       return function()
@@ -723,6 +723,35 @@ do
          else
             self:clearbind():reset()
             return nil
+         end
+      end
+   end
+
+   function stmt_mt:cols(maxrecords) T_open(self)
+      maxrecords = maxrecords or math.huge
+      if maxrecords < 1 or type(maxrecords) ~= 'number' then
+         err("constraint", "argument to cols must be >= 1")
+      end
+      local row, ncol, n = {}, self:_ncol(), 1
+      return function()
+         if n > maxrecords then return nil end
+         -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
+         if self._code == ffi.C.SQLITE_DONE then return nil end -- Already finished.
+         -- reset container
+         for i = 1, ncol do
+            row[i] = nil
+         end
+         self._code = ffi.C.sqlite3_step(self._ptr)
+         if self._code == ffi.C.SQLITE_ROW then
+            n = n + 1
+            for i = 1, ncol do
+               row[i] = get_column(self._ptr, i - 1)
+            end
+            return unpack(row, 1, ncol)
+         elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now.
+            return nil
+         else -- If code not DONE or ROW then it's error.
+            E_conn(self._conn, self._code)
          end
       end
    end
@@ -906,6 +935,7 @@ do
 
 
 
+
 function sqlayer.unwrapKey(result_set)
    if result_set and result_set[1] and result_set[1][1] then
       local id = result_set[1][1]
@@ -998,6 +1028,7 @@ end
 
 
 
+
 local function migrate(conn, migration, ...)
    if type(migration) == 'function' then
       migration(conn, ...)
@@ -1050,8 +1081,6 @@ function sqlayer.boot(conn, migrations)
 
    return conn
 end
-
-
 
 
 
