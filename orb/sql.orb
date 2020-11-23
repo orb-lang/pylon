@@ -777,9 +777,12 @@ distributions.
       local ncol = ffi.C.sqlite3_bind_parameter_count(self._ptr)
       for i = 1, ncol do
          local param = ffi.C.sqlite3_bind_parameter_name(self._ptr, i)
-         param = ffi.string(param):sub(2)
-         if t[param] then
-            self:_bind1(i, t[param])
+         -- params of form :NNN eg :123 can have holes, so we check for NULL:
+         if param ~= nil then
+            param = ffi.string(param):sub(2)
+            if t[param] then
+               self:_bind1(i, t[param])
+            end
          end
       end
       return self
@@ -1005,18 +1008,16 @@ Currently, these are functions which receive the database conn, and we will
 continue to offer that affordance for migrations which can't be accomplished
 any other way.
 
-But the normal migration is just a series of executed statements, and it may
-be cleaner to allow for a migration to be an array-table of such statements.
+But the normal migration is just a series of executed statements, and it's
+cleaner to allow for a migration to be an array-table of such statements.
 
-Migrations are definitely a case where factoring out the common steps in
-booting and migrating a database into a helper module is going to be worth it.
-
-We only migrate one database currently, but I'm about to add a migration to
-=bridge.modules= and start a third database for =orb= metadata, so this will
-happen (relatively) soon.
+So a migration is either a function, with the signature =(conn, s, ...)=,
+where =s= is a =status= instance and =...= is any additional parameters passed
+to =boot=, it's an array, each slot of which is either a string to be passed
+to =conn:exec=, or a function with the same signature.
 
 Note that =user_version= must start with 2, because SQLite uses 0 for false
-and 1 for true, and we cast those internally to booleans.
+and 1 for true, and we cast those internally to booleans when using =pragma=.
 
 The migration tables must be compact for =#= to work correctly, so the first
 migration should be =function() return true end=, although just =return= works
@@ -1025,15 +1026,16 @@ as well.
 =migrations[2]= should create the initial tables, and so on and so forth.
 
 #!lua
-local function migrate(conn, migration, ...)
+local function migrate(conn, migration, s, ...)
    if type(migration) == 'function' then
-      migration(conn, ...)
+      migration(conn, s, ...)
    elseif type(migration) == 'table' then
       for i, step in ipairs(migration) do
          if type(step) == 'string' then
+            s:verb(step)
             conn:exec(step)
          elseif type(step) == 'function' then
-            step(conn, ...)
+            step(conn, s, ...)
          else
             error("invalid step #" .. i .. " of type " .. type(step))
          end
@@ -1048,7 +1050,7 @@ end
 local format = assert(string.format)
 local open = assert(open)
 
-function sqlayer.boot(conn, migrations)
+function sqlayer.boot(conn, migrations, ...)
    conn = type(conn) == 'string' and open(conn, 'rwc') or conn
    -- bail early with no migrations
    if not migrations then return conn end
@@ -1061,14 +1063,20 @@ function sqlayer.boot(conn, migrations)
       user_version = 1
    end
    if user_version < version then
+      local s = require "status:status" (io.stdout, io.stderr)
+      s.verbose = true -- probably not the correct default
       conn.pragma.foreign_keys(false)
       conn:exec "BEGIN TRANSACTION;"
       for i = user_version + 1, version do
-         migrate(conn, migrations[i])
+         s:chat("Performing migration %d", i)
+         migrate(conn, migrations[i], s, ...)
       end
       conn:exec "COMMIT;"
+      s:chat "Cleaning up..."
+      conn:exec "VACUUM;"
       conn.pragma.foreign_keys(true)
       conn.pragma.user_version(version)
+      s:chat("Migrations completed, your version is %d", version)
    elseif user_version > version then
       error(format("Error: database version is %d, expected %d",
                    user_version, version))
