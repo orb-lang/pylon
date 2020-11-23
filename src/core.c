@@ -1,6 +1,21 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #include <stdio.h>
 #include <string.h>
 #include <lua.h>
@@ -9,11 +24,33 @@
 #include "luajit.h"
 #include "sqlite3.h"
 
+
+
+
+
+
+
+
+
+
 // declaration for registries of static object libraries
 LUALIB_API int luaopen_luv (lua_State *L);
 LUALIB_API int luaopen_lpeg (lua_State *L);
 LUALIB_API int luaopen_lfs (lua_State *L);
 LUALIB_API int luaopen_utf8(lua_State *L);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Constant arrays of compiled bytecode
 #include "sql.h"
@@ -30,8 +67,24 @@ const char * ARGPARSE_NAME = "@argparse";
 const char * LOAD_NAME = "@load";
 const char * AFTERWARD_NAME = "@afterward";
 
+
+
+
+
+
+
+
+
+
 // dummy pointer to statically link in SQLite
 int (* sqlite3_dummy_ptr) (sqlite3*, int) = &sqlite3_busy_timeout;
+
+
+
+
+
+
+
 
 // Print an error.
 static int lua_die(lua_State *L, int errno) {
@@ -39,8 +92,19 @@ static int lua_die(lua_State *L, int errno) {
     return errno;
 }
 
+
+
+
+
+
+
+
+
 // debug-load a string (or bytecode)
-static int debug_load(lua_State *L, const char bytecode[], int byte_len, const char * name) {
+static int debug_load(lua_State *L,
+                      const char bytecode[],
+                      int byte_len,
+                      const char * name) {
     lua_getglobal(L, "debug");
     lua_getfield(L, -1, "traceback");
     lua_replace(L, -2);
@@ -56,6 +120,15 @@ static int debug_load(lua_State *L, const char bytecode[], int byte_len, const c
     return ret;
 }
 
+
+
+
+
+
+
+
+
+
 //  main()
 //
 //  We do the minimum necessary and hand control to Lua.
@@ -68,8 +141,9 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // load Lua libraries
+    // load core Lua libraries
     luaL_openlibs(L);
+
     // place arguments, if any, in a table
     if (argc > 1) {
         lua_newtable(L); // args
@@ -80,6 +154,8 @@ int main(int argc, char *argv[]) {
         }
         lua_setglobal(L, "arg");
     }
+
+    // place old-school FFI libs into package.preload
     lua_getglobal(L, "package");
     lua_getfield(L, -1, "preload"); /* get 'package.preload' */
     lua_pushcfunction(L, luaopen_luv);
@@ -90,12 +166,16 @@ int main(int argc, char *argv[]) {
     lua_setfield(L, -2, "lfs");
     lua_pushcfunction(L, luaopen_utf8);
     lua_setfield(L, -2, "lua-utf8");
+
+    // set up runtime
+    // LUA_LOAD aka load.orb handles all application code
     debug_load(L, LUA_SQL, sizeof LUA_SQL, SQL_NAME);
     debug_load(L, LUA_PREAMBLE, sizeof LUA_PREAMBLE, PREAMBLE_NAME);
     debug_load(L, LUA_MODULES, sizeof LUA_MODULES, MODULES_NAME);
     debug_load(L, LUA_ARGPARSE, sizeof LUA_ARGPARSE, ARGPARSE_NAME);
     debug_load(L, LUA_LOAD, sizeof LUA_LOAD, LOAD_NAME);
-    // et voila
+
+    // tear down and close lua_State
     debug_load(L, LUA_AFTERWARD, sizeof LUA_AFTERWARD, AFTERWARD_NAME);
     lua_close(L); // Close Lua
     return 0;
