@@ -150,9 +150,10 @@ distributions\.
    -- SQLITE_*, OPEN_*
 
    ffi.cdef(table.concat(sqlconstants))
+```
 
-   -- sqlite3*, ljsqlite3_*
-   ffi.cdef[[
+
+```c
    // Typedefs.
    typedef struct sqlite3 sqlite3;
    typedef struct sqlite3_stmt sqlite3_stmt;
@@ -236,8 +237,9 @@ distributions\.
      void (*xStep)(sqlite3_context*,int,sqlite3_value**),
      void (*xFinal)(sqlite3_context*)
    );
-   ]]
+```
 
+```lua
    ---------------------------------------------------------------------------
 
    local transient = ffi.cast("sqlite3_destructor_type", -1)

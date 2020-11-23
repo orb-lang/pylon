@@ -151,8 +151,9 @@ do
 
    ffi.cdef(table.concat(sqlconstants))
 
-   -- sqlite3*, ljsqlite3_*
-   ffi.cdef[[
+
+
+ffi.cdef  [[
    // Typedefs.
    typedef struct sqlite3 sqlite3;
    typedef struct sqlite3_stmt sqlite3_stmt;
@@ -236,7 +237,8 @@ do
      void (*xStep)(sqlite3_context*,int,sqlite3_value**),
      void (*xFinal)(sqlite3_context*)
    );
-   ]]
+]]
+
 
    ---------------------------------------------------------------------------
 
