@@ -341,6 +341,29 @@ session_update_c
       .. "numbers/ranges e.g. [1,3,5..6,8..].")
    : convert(parse_list)
    : args(1)
+
+local session_delete_c = session_c
+                            : command "delete d"
+                            : description ("Delete listed sessions. "
+                               .. "Will only delete a rejected session.")
+session_delete_c
+   : argument "to_delete"
+   : description ("A session title, session number, or list of session "
+      .. "numbers/ranges e.g. [1,3,5..6,8..].")
+   : convert(parse_list)
+   : args(1)
+
+local session_force_delete_c = session_c
+                                  : command "force-delete D"
+                                  : description
+                                     ("Delete listed sessions, including "
+                                      .. "accepted sessions.")
+session_force_delete_c
+   : argument "to_delete"
+   : description ("A session title, session number, or list of session "
+      .. "numbers/ranges e.g. [1,3,5..6,8..].")
+   : convert(parse_list)
+   : args(1)
 ```
 
 

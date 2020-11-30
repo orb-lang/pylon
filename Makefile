@@ -76,6 +76,8 @@ build/afterward.h: src/afterward.lua src/compileToHeader.lua
 #  These steps should be pre-baked in an install so we - the call in case orb
 #  is not installed
 
+scr/core.c: orb/core.orb
+	- br o
 src/sql.lua: orb/sql.orb
 	- br o
 src/load.lua: orb/load.orb
