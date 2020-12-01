@@ -406,11 +406,8 @@ if rawget(_G, "arg") ~= nil then
           end
       end
    elseif args.helm then
-      print "helm"
       local helm = require "helm:helm"
-      setfenv(0, __G)
-      helm(__G)
-      setfenv(0, _G)
+      helm()
    elseif args.export then
       if (not args.project) and (not args.all) then
          error "at least one project required without --all flag"
