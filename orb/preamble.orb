@@ -239,7 +239,7 @@ local function loaderGen(conn)
          if not bytecode then
             module_stmt:reset()
             bytecode =resultMap(
-                      module_stmt:bindkv ({ name  = mod })
+                      module_stmt:bindkv ({ name  = mod_double })
 
                       : resultset())
          end
