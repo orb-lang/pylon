@@ -386,7 +386,7 @@ local session_deprecate_c = session_c
          : description("dePrecate a session, or list of sessions, which will "
                      .."no longer be run with `br session`.")
 
-session_accept_c
+session_deprecate_c
    : argument "to_deprecate"
    : description ("A session title, session number, or list of session "
       .. "numbers/ranges e.g. [1,3,5..6,8..].")
