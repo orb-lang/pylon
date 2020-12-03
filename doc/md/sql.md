@@ -752,9 +752,9 @@ growing increasingly extensive\.
       if maxrecords < 1 or type(maxrecords) ~= 'number' then
          err("constraint", "argument to cols must be >= 1")
       end
-      local row, ncol, n = {}, self:_ncol(), 1
+      local row, ncol, n = {}, self:_ncol(), 0
       return function()
-         if n > maxrecords then return nil end
+         if n >= maxrecords then return nil end
          -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
          if self._code == ffi.C.SQLITE_DONE then return nil end -- Already finished.
          -- reset container
@@ -767,7 +767,7 @@ growing increasingly extensive\.
             for i = 1, ncol do
                row[i] = get_column(self._ptr, i - 1)
             end
-            return unpack(row, 1, ncol)
+            return n, unpack(row, 1, ncol)
          elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now.
             return nil
          else -- If code not DONE or ROW then it's error.
