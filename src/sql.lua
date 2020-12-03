@@ -768,13 +768,38 @@ int sqlite3_create_function(
                row[i] = get_column(self._ptr, i - 1)
             end
             return n, unpack(row, 1, ncol)
-         elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now.
+         elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now
+            self:clearbind():reset()
             return nil
          else -- If code not DONE or ROW then it's error.
             E_conn(self._conn, self._code)
          end
       end
    end
+
+
+
+
+
+
+
+
+
+
+
+
+
+function stmt_mt:value() T_open(self)
+   local result, val = self:_step(), nil
+   if result then
+      val = result[1]
+   end
+   self:clearbind():reset()
+   return val
+end
+
+
+
 
    -- Statement bind --------------------------------------------------------------
    function stmt_mt:_bind1(i, v)

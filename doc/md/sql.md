@@ -768,13 +768,38 @@ growing increasingly extensive\.
                row[i] = get_column(self._ptr, i - 1)
             end
             return n, unpack(row, 1, ncol)
-         elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now.
+         elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now
+            self:clearbind():reset()
             return nil
          else -- If code not DONE or ROW then it's error.
             E_conn(self._conn, self._code)
          end
       end
    end
+```
+
+
+### stmt:value\(\)
+
+Executes one step, returning either `nil` or the value of the first return\.
+
+Intended for cases where exactly one value is expected\.
+
+Will clearbind and reset the statement, like any statement method which can
+know that this is the correct thing to do\.
+
+```lua
+function stmt_mt:value() T_open(self)
+   local result, val = self:_step(), nil
+   if result then
+      val = result[1]
+   end
+   self:clearbind():reset()
+   return val
+end
+```
+
+```lua
 
    -- Statement bind --------------------------------------------------------------
    function stmt_mt:_bind1(i, v)
