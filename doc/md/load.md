@@ -337,9 +337,9 @@ session_list_c
     : action(function(args) args.list_all = true end)
 
 local session_update_c = session_c
-                            : command "update u"
-                            : description ("Update session(s) to latest "
-                               .. "results.")
+         : command "update u"
+         : description ("Update session(s) premises to accept latest "
+                        .. "results.")
 session_update_c
    : argument "to_update"
    : description ("A session title, session number, or list of session "
@@ -348,9 +348,9 @@ session_update_c
    : args(1)
 
 local session_delete_c = session_c
-                            : command "delete d"
-                            : description ("Delete listed sessions. "
-                               .. "Will only delete a rejected session.")
+         : command "delete d"
+         : description ("Delete listed sessions. "
+                     .. "Will only delete a deprecated session.")
 session_delete_c
    : argument "to_delete"
    : description ("A session title, session number, or list of session "
