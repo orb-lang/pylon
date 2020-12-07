@@ -157,7 +157,9 @@ brParse
    : description ("The bridge tools suite for repl-driven "
                   .. "literate programming.\n\n"
                   .. "To view help for each command, type br <command> -h.")
-   : epilog "For more info, see https://special-circumstanc.es"
+   : epilog ("To run user-installed projects, type br <project> with "
+             .. "any arguments.\n\n"
+             .. "For more info, see https://special-circumstanc.es")
    : help_description_margin(25)
    : help_max_width(80)
    : option "-f" "--file"
@@ -239,7 +241,7 @@ orb_command_c
 
 local helm_c = brParse
                   : command "helm i"
-                     : description "launch helm, the 'i'nteractive REPL."
+                     : description "Launch helm, the 'i'nteractive REPL."
                      : help_description_margin(35)
 
 helm_c
@@ -265,7 +267,7 @@ helm_c
 
 local export_c = brParse
                     : command "export"
-                    : description "Export a project from the database"
+                    : description "Export a project from the database."
 
 export_c
    : argument "project"
@@ -292,7 +294,7 @@ export_c
 
 local import_c = brParse
                     : command "import"
-                    : description "import a project from a bundle file"
+                    : description "Import a project from a bundle file."
 
 import_c
    : argument "file"
@@ -302,7 +304,7 @@ import_c
 local session_c = brParse
                     : command "session s"
                     : description ("Session runner. Provides unit tests"
-                        .. " derived from helm sessions.\nWith no arguments,"
+                        .. " derived from helm sessions. With no arguments,"
                         .. " runs all accepted sessions for the project"
                         .. " at pwd.")
                     : require_command(false)

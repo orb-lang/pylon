@@ -156,13 +156,16 @@ _Bridge.brParse = brParse
 brParse
    : require_command (false)
    : name "br"
-   : description ("An lua, howth castle & environs.\n\n"
-               .. "To view help for each command, type br <command> -h.")
-   : epilog "For more info, see https://special-circumstanc.es"
+   : description ("The bridge tools suite for repl-driven "
+                  .. "literate programming.\n\n"
+                  .. "To view help for each command, type br <command> -h.")
+   : epilog ("To run user-installed projects, type br <project> with "
+             .. "any arguments.\n\n"
+             .. "For more info, see https://special-circumstanc.es")
    : help_description_margin(25)
    : help_max_width(80)
    : option "-f" "--file"
-      : description "load and run a file. Lua only, for now"
+      : description "Run a file. Lua only, for now."
       : args(1)
 
 brParse
@@ -240,7 +243,7 @@ orb_command_c
 
 local helm_c = brParse
                   : command "helm i"
-                     : description "launch helm, the 'i'nteractive REPL."
+                     : description "Launch helm, the 'i'nteractive REPL."
                      : help_description_margin(35)
 
 helm_c
@@ -266,7 +269,7 @@ helm_c
 
 local export_c = brParse
                     : command "export"
-                    : description "Export a project from the database"
+                    : description "Export a project from the database."
 
 export_c
    : argument "project"
@@ -293,7 +296,7 @@ export_c
 
 local import_c = brParse
                     : command "import"
-                    : description "import a project from a bundle file"
+                    : description "Import a project from a bundle file."
 
 import_c
    : argument "file"
@@ -303,7 +306,7 @@ import_c
 local session_c = brParse
                     : command "session s"
                     : description ("Session runner. Provides unit tests"
-                        .. " derived from helm sessions.\nWith no arguments,"
+                        .. " derived from helm sessions. With no arguments,"
                         .. " runs all accepted sessions for the project"
                         .. " at pwd.")
                     : require_command(false)
@@ -440,78 +443,104 @@ can add a single entry point, passing in the `args` table, so that the runtime
 logic lives inside the project itself\.
 
 ```lua
+local arglist = { s = true,
+                  o = true,
+                  i = true,
+                  orb = true,
+                  helm = true,
+                  session = true,
+                  export = true,
+                  import = true, }
+```
+
+```lua
 if rawget(_G, "arg") ~= nil then
    -- shim the arg array to emulate the "lua <scriptname>" calling
    -- convention which argparse expects
    table.insert(arg, 0, "")
-   _Bridge.args = _Bridge.brParse:parse()
-   local args = _Bridge.args
-   if args.show_arguments then
-      args.show_arguments = nil -- no reason to include this
-      local ts = require "repr:repr" . ts
-      print(ts(args))
-   end
-   if args.orb then
-      if args.revert then
-         local revert = require "bundle:revert"
-         revert()
-      elseif args.old then
-         local orb = require "orb"
-         local uv = require "luv"
-         orb.run(uv.cwd())
+   -- check for custom command
+   if not(arglist[arg[1]] or string.sub(arg[1], 1, 1) == "-") then
+      local verb, args = table.remove(arg, 1), nil
+      local ok, argP = pcall(require, verb .. ":argparse")
+      if ok then
+         args = argP:parse()
+      end
+      local ok, mod = pcall(require, verb .. ":" .. verb)
+      if ok then
+         mod(args)
       else
-          local orb = require "orb"
-          local uv  = require "luv"
-          local lume = orb.lume(uv.cwd())
-          lume:run()
-          if args.serve then
-             lume:serve()
-          end
+         print("Can't find a project " .. verb .. ".")
       end
-   elseif args.helm then
-      local helm = require "helm:helm"
-      helm()
-   elseif args.export then
-      if (not args.project) and (not args.all) then
-         error "at least one project required without --all flag"
+   else
+      _Bridge.args = _Bridge.brParse:parse()
+      local args = _Bridge.args
+      if args.show_arguments then
+         args.show_arguments = nil -- no reason to include this
+         local ts = require "repr:repr" . ts
+         print(ts(args))
       end
-      local bundle
-      if not args.all then
-         bundle = require "bundle:export".export(args.project,
-                                                    args.version)
-      else
-         bundle = require "bundle:export".exportAll(args.version)
-      end
-      if args.outfile then
-         local file = io.open(args.outfile, "w+")
-         if not file then
-            error("unable to open " .. args.outfile)
+      if args.orb then
+         if args.revert then
+            local revert = require "bundle:revert"
+            revert()
+         elseif args.old then
+            local orb = require "orb"
+            local uv = require "luv"
+            orb.run(uv.cwd())
+         else
+             local orb = require "orb"
+             local uv  = require "luv"
+             local lume = orb.lume(uv.cwd())
+             lume:run()
+             if args.serve then
+                lume:serve()
+             end
          end
-         file:write(bundle)
-         file:close()
-      else
-         local bundle_name = args.project or "all_modules"
-         local outfilepath = "./" .. bundle_name .. ".bundle"
-         local file = io.open(outfilepath, "w+")
-         if not file then
-            error("unable to open " .. outfilepath)
+      elseif args.helm then
+         local helm = require "helm:helm"
+         helm()
+      elseif args.export then
+         if (not args.project) and (not args.all) then
+            error "at least one project required without --all flag"
          end
-         file:write(bundle)
-         file:close()
+         local bundle
+         if not args.all then
+            bundle = require "bundle:export".export(args.project,
+                                                       args.version)
+         else
+            bundle = require "bundle:export".exportAll(args.version)
+         end
+         if args.outfile then
+            local file = io.open(args.outfile, "w+")
+            if not file then
+               error("unable to open " .. args.outfile)
+            end
+            file:write(bundle)
+            file:close()
+         else
+            local bundle_name = args.project or "all_modules"
+            local outfilepath = "./" .. bundle_name .. ".bundle"
+            local file = io.open(outfilepath, "w+")
+            if not file then
+               error("unable to open " .. outfilepath)
+            end
+            file:write(bundle)
+            file:close()
+         end
+      elseif args.import then
+         local import = assert(_Bridge.import)
+         for _, file in ipairs(args.file) do
+            import(file)
+         end
+      elseif args.session then
+         local session = assert(require "valiant:session" . session)
+         session(args)
+      elseif args.file then
+         if args.file:sub(-4, -1) == ".lua" then
+            dofile(args.file)
+         end
+         -- handle .orb files here
       end
-   elseif args.import then
-      local import = assert(_Bridge.import)
-      for _, file in ipairs(args.file) do
-         import(file)
-      end
-   elseif args.session then
-      local session = assert(require "valiant:session" . session)
-      session(args)
-   elseif args.file then
-      if args.file:sub(-4, -1) == ".lua" then
-         dofile(args.file)
-      end
-      -- handle .orb files here
    end
 end
 ```
