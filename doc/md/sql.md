@@ -640,6 +640,21 @@ function stmt_mt:_header(h)
    end
 end
 
+local function _stepGen(action)
+   return function(self, row, header)
+      local row, header = action(self, row, header)
+      if row ~= false then
+         return row, header
+      end
+      if self._code == ffi.C.SQLITE_BUSY
+         or self._code == ffi.C.SQLITE_LOCKED then
+         _retry(action, self, row, header)
+      else  -- Other codes are errors we can't recover from.
+         E_conn(self._conn, self._code)
+      end
+   end
+end
+
 local function step_action(self, row, header)
    -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
    if self._code == ffi.C.SQLITE_DONE then return nil end -- Already finished.
@@ -659,18 +674,8 @@ local function step_action(self, row, header)
    end
 end
 
-stmt_step = function(self, row, header)
-   local row, header = step_action(self, row, header)
-   if row ~= false then
-      return row, header
-   end
-   if self._code == ffi.C.SQLITE_BUSY
-      or self._code == ffi.C.SQLITE_LOCKED then
-      _retry(step_action, self, row, header)
-   else  -- Other codes are errors we can't recover from.
-      E_conn(self._conn, self._code)
-   end
-end
+stmt_step = _stepGen(step_action)
+
 stmt_mt._step = stmt_step
 
 local function stepkv_action(self, row, header)
@@ -692,15 +697,7 @@ local function stepkv_action(self, row, header)
    end
 end
 
-function stmt_mt:stepkv(row, header) T_open(self)
-   local row, header = stepkv_action(self, row, header)
-   if row ~= false then
-      return row, header
-   end
-   if true then -- If code not DONE or ROW then it's error.
-      E_conn(self._conn, self._code)
-   end
-end
+stmt_mt.stepkv = _stepGen(stepkv_action)
 
 function stmt_mt:step(row, header) T_open(self)
    return self:_step(row, header)
