@@ -640,7 +640,7 @@ function stmt_mt:_header(h)
    end
 end
 
-stmt_step = function(self, row, header)
+local function step_action(self, row, header)
    -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
    if self._code == ffi.C.SQLITE_DONE then return nil end -- Already finished.
    self._code = ffi.C.sqlite3_step(self._ptr)
@@ -652,7 +652,17 @@ stmt_step = function(self, row, header)
       end
       if header then self:_header(header) end
       return row, header
-   elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now.
+   else
+      return false
+   end
+end
+
+stmt_step = function(self, row, header)
+   local row, header = step_action(self, row, header)
+   if row ~= false then
+      return row, header
+   end
+   if self._code == ffi.C.SQLITE_DONE then -- Have finished now.
       return nil
    else -- If code not DONE or ROW then it's error.
       E_conn(self._conn, self._code)
@@ -660,8 +670,8 @@ stmt_step = function(self, row, header)
 end
 stmt_mt._step = stmt_step
 
-function stmt_mt:stepkv(row, header) T_open(self)
-     -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
+local function stepkv_action(self, row, header)
+   -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
    if self._code == ffi.C.SQLITE_DONE then return nil end -- Already finished.
    self._code = ffi.C.sqlite3_step(self._ptr)
    if self._code == ffi.C.SQLITE_ROW then
@@ -672,7 +682,17 @@ function stmt_mt:stepkv(row, header) T_open(self)
       end
       if header then self:_header(header) end
       return row, header
-   elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now.
+   else
+      return false
+   end
+end
+
+function stmt_mt:stepkv(row, header) T_open(self)
+   local row, header = stepkv_action(self, row, header)
+   if row ~= false then
+      return row, header
+   end
+   if self._code == ffi.C.SQLITE_DONE then -- Have finished now.
       return nil
    else -- If code not DONE or ROW then it's error.
       E_conn(self._conn, self._code)
