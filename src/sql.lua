@@ -652,6 +652,8 @@ local function step_action(self, row, header)
       end
       if header then self:_header(header) end
       return row, header
+   elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now.
+      return nil
    else
       return false
    end
@@ -662,9 +664,7 @@ stmt_step = function(self, row, header)
    if row ~= false then
       return row, header
    end
-   if self._code == ffi.C.SQLITE_DONE then -- Have finished now.
-      return nil
-   else -- If code not DONE or ROW then it's error.
+   if true then -- If code not DONE or ROW then it's error.
       E_conn(self._conn, self._code)
    end
 end
@@ -682,6 +682,8 @@ local function stepkv_action(self, row, header)
       end
       if header then self:_header(header) end
       return row, header
+   elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now.
+      return nil
    else
       return false
    end
@@ -692,9 +694,7 @@ function stmt_mt:stepkv(row, header) T_open(self)
    if row ~= false then
       return row, header
    end
-   if self._code == ffi.C.SQLITE_DONE then -- Have finished now.
-      return nil
-   else -- If code not DONE or ROW then it's error.
+   if true then -- If code not DONE or ROW then it's error.
       E_conn(self._conn, self._code)
    end
 end
