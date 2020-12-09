@@ -664,7 +664,10 @@ stmt_step = function(self, row, header)
    if row ~= false then
       return row, header
    end
-   if true then -- If code not DONE or ROW then it's error.
+   if self._code == ffi.C.SQLITE_BUSY
+      or self._code == ffi.C.SQLITE_LOCKED then
+      _retry(step_action, self, row, header)
+   else  -- Other codes are errors we can't recover from.
       E_conn(self._conn, self._code)
    end
 end
