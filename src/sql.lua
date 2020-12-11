@@ -460,7 +460,6 @@ function conn_mt:prepare(stmtstr)
          while retrying do
              -- sleep 0.2 seconds (200000) microseconds
              ffi.C.usleep(200000)
-             print("retry " .. count)
              code = ffi.C.sqlite3_prepare_v2(self._ptr, stmtstr, #stmtstr, aptr, nil)
              if code == ffi.C.SQLITE_OK or count >= 100 then
                retrying = false
