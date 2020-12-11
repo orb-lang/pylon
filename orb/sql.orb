@@ -46,15 +46,16 @@ For whatever reason, the JIT has been choking on the SQLite code, so we
 disable it locally.
 
 #!lua
-    jit.off(true, true)
+jit.off(true, true)
 #/lua
 
 
 **** imports
 
 #!lua
-   local ffi  = require "ffi"
-   local bit  = require "bit"
+local ffi  = require "ffi"
+local bit  = require "bit"
+local uv   = require "luv"
 #/lua
 
 
@@ -239,6 +240,8 @@ typedef void (*ljsqlite3_cbfinal)(sqlite3_context*);
 
 // Posix/libc sleep function, for non-blocking waits outside of event loops
 unsigned int sleep(unsigned int seconds);
+
+int usleep(int useconds); //pass in microseconds
 
 // Register callbacks.
 int sqlite3_create_function(
@@ -443,10 +446,48 @@ function conn_mt:__gc()
    if not self._closed then self:close() end
 end
 
-function conn_mt:prepare(stmtstr) T_open(self)
+function conn_mt:prepare(stmtstr)
    local aptr = ffi.new("sqlite3_stmt*[1]")
    -- If error code aptr NULL, so no need to close anything.
    local code = ffi.C.sqlite3_prepare_v2(self._ptr, stmtstr, #stmtstr, aptr, nil)
+   if (code == ffi.C.SQLITE_BUSY or code == ffi.C.SQLITE_LOCKED) then
+      -- are we in a coro loop?
+      local thread, main = coroutine.running()
+      local async = (not main) and uv.loop_alive()
+      if not async then
+         local retrying = true
+         local count = 1
+         while retrying do
+             -- sleep 0.2 seconds (200000) microseconds
+             ffi.C.usleep(200000)
+             print("retry " .. count)
+             code = ffi.C.sqlite3_prepare_v2(self._ptr, stmtstr, #stmtstr, aptr, nil)
+             if code == ffi.C.SQLITE_OK or count >= 100 then
+               retrying = false
+             end
+             count = count + 1
+         end
+      else
+         -- async retry
+         local idle = uv.new_idle()
+         idle:start(function()
+            code = ffi.C.sqlite3_prepare_v2(self._ptr, stmtstr, #stmtstr, aptr, nil)
+            if code == ffi.C.SQLITE_OK then
+               -- resume the thread
+               local stmt = stmt_ct(aptr[0], false, self._ptr, code)
+               connstmt[self][stmt] = true
+               idle:stop()
+               coroutine.resume(thread, stmt)
+            elseif not (code == ffi.C.SQLITE_BUSY
+                        or code == ffi.C.SQLITE_LOCKED) then
+               idle:stop()
+               T_okcode(self._ptr, code)
+            end
+            return nil
+         end)
+         return coroutine.yield()
+      end
+   end
    T_okcode(self._ptr, code)
    local stmt = stmt_ct(aptr[0], false, self._ptr, code)
    connstmt[self][stmt] = true
@@ -638,6 +679,29 @@ function stmt_mt:_header(h)
    for i=1,self:_ncol() do -- Here indexing 0,N-1.
       h[i] = ffi.string(ffi.C.sqlite3_column_name(self._ptr, i - 1))
    end
+end
+
+local function _retry(action, self, row, header)
+   -- blocking first
+   local retrying = true
+   local count = 1
+   while retrying do
+      -- 0.2 seconds
+      ffi.C.usleep(200000)
+      local row, header = action(self, row, header)
+      if row ~= false then
+         return row, header
+      end
+      count = count + 1
+      if not (self._code == ffi.C.SQLITE_BUSY
+              or self._code == ffi.C.SQLITE_LOCKED) then
+         E_conn(self._conn, self._code)
+      end
+      if count >= 100 then
+         retrying = false
+      end
+   end
+   E_conn(self._conn, self._code)
 end
 
 local function _stepGen(action)
