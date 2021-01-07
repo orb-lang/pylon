@@ -407,6 +407,22 @@ session_rename_c
                 .. "and a new title for it.")
   : args(2)
   : argname {"<old>", "<new>"}
+
+local session_export_c = session_c
+         : command "export e"
+         : description "Export a session or list of sessions."
+
+session_export_c
+   : argument "to_export"
+   : description ("A session title, session number, or list of session "
+      .. "numbers/ranges e.g. [1,3,5..6,8..].")
+   : convert(parse_list)
+   : args(1)
+
+session_export_c
+   : option "-o" "--outfile"
+   : description "A file path. Defaults to stdout if not provided."
+   : args(1)
 ```
 
 
@@ -496,6 +512,9 @@ if rawget(_G, "arg") ~= nil then
                 lume:serve()
              end
          end
+      elseif args.session then
+         local session = assert(require "valiant:session" . session)
+         session(args)
       elseif args.helm then
          local helm = require "helm:helm"
          helm()
@@ -532,9 +551,6 @@ if rawget(_G, "arg") ~= nil then
          for _, file in ipairs(args.file) do
             import(file)
          end
-      elseif args.session then
-         local session = assert(require "valiant:session" . session)
-         session(args)
       elseif args.file then
          if args.file:sub(-4, -1) == ".lua" then
             dofile(args.file)
