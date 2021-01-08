@@ -422,6 +422,16 @@ session_export_c
    : description "A file path. Defaults to stdout if not provided."
    : args(1)
 
+local session_import_c = session_c
+         : command "import i"
+         : description ("Import sessions from a bundle file, into the project "
+                     .. "named in the bundle.")
+
+session_import_c
+   : argument "infile"
+   : description "A session bundle file. Defaults to stdin if not provided."
+   : args "?"
+
 
 
 
