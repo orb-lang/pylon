@@ -160,6 +160,7 @@ brParse
    : epilog ("To run user-installed projects, type br <project> with "
              .. "any arguments.\n\n"
              .. "For more info, see https://special-circumstanc.es")
+   : command_target "verb"
    : help_description_margin(25)
    : help_max_width(80)
    : option "-f" "--file"
