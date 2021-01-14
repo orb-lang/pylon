@@ -520,12 +520,12 @@ if rawget(_G, "arg") ~= nil then
                 lume:serve()
              end
          end
-      elseif args.session then
-         local session = assert(require "valiant:session" . session)
-         session(args)
       elseif args.helm then
          local helm = require "helm:helm"
          helm()
+      elseif args.session then
+         local session = assert(require "valiant:session" . session)
+         session(args)
       elseif args.export then
          if (not args.project) and (not args.all) then
             error "at least one project required without --all flag"
