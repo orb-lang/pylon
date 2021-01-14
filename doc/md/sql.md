@@ -711,7 +711,9 @@ local function _stepGen(action)
       end
       if self._code == ffi.C.SQLITE_BUSY
          or self._code == ffi.C.SQLITE_LOCKED then
-         _retry(action, self, row, header)
+         -- retries are stubbed out because untested
+         E_conn(self._conn, self._code)
+         -- _retry(action, self, row, header)
       else  -- Other codes are errors we can't recover from.
          E_conn(self._conn, self._code)
       end
