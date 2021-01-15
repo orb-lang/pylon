@@ -160,6 +160,7 @@ brParse
    : epilog ("To run user-installed projects, type br <project> with "
              .. "any arguments.\n\n"
              .. "For more info, see https://special-circumstanc.es")
+   : command_target "verb"
    : help_description_margin(25)
    : help_max_width(80)
    : option "-f" "--file"
@@ -467,14 +468,79 @@ collectgarbage()
 
 
 
-local arglist = { s = true,
-                  o = true,
-                  i = true,
-                  orb = true,
-                  helm = true,
-                  session = true,
-                  export = true,
-                  import = true, }
+
+
+
+
+
+
+local verbs = { s = true, o = true, i = true}
+
+function verbs.orb(args)
+   if args.revert then
+      local revert = require "bundle:revert"
+      revert()
+   elseif args.old then
+      local orb = require "orb"
+      local uv = require "luv"
+      orb.run(uv.cwd())
+   else
+       local orb = require "orb"
+       local uv  = require "luv"
+       local lume = orb.lume(uv.cwd())
+       lume:run()
+       if args.serve then
+          lume:serve()
+       end
+   end
+end
+
+function verbs.session(args)
+   local session = assert(require "valiant:session" . session)
+   session(args)
+end
+
+function verbs.helm(args)
+   local helm = require "helm:helm"
+   helm()
+end
+
+function verbs.export(args)
+   if (not args.project) and (not args.all) then
+      error "at least one project required without --all flag"
+   end
+   local bundle
+   if not args.all then
+      bundle = require "bundle:export".export(args.project,
+                                                 args.version)
+   else
+      bundle = require "bundle:export".exportAll(args.version)
+   end
+   if args.outfile then
+      local file = io.open(args.outfile, "w+")
+      if not file then
+         error("unable to open " .. args.outfile)
+      end
+      file:write(bundle)
+      file:close()
+   else
+      local bundle_name = args.project or "all_modules"
+      local outfilepath = "./" .. bundle_name .. ".bundle"
+      local file = io.open(outfilepath, "w+")
+      if not file then
+         error("unable to open " .. outfilepath)
+      end
+      file:write(bundle)
+      file:close()
+   end
+end
+
+function verbs.import(args)
+   local import = assert(_Bridge.import)
+   for _, file in ipairs(args.file) do
+      import(file)
+   end
+end
 
 
 
@@ -483,7 +549,7 @@ if rawget(_G, "arg") ~= nil then
    -- convention which argparse expects
    table.insert(arg, 0, "")
    -- check for custom command
-   if not(arglist[arg[1]] or string.sub(arg[1], 1, 1) == "-") then
+   if not(verbs[arg[1]] or string.sub(arg[1], 1, 1) == "-") then
       local verb, args = table.remove(arg, 1), nil
       local ok, argP = pcall(require, verb .. ":argparse")
       if ok then
@@ -503,67 +569,19 @@ if rawget(_G, "arg") ~= nil then
          local ts = require "repr:repr" . ts
          print(ts(args))
       end
-      if args.orb then
-         if args.revert then
-            local revert = require "bundle:revert"
-            revert()
-         elseif args.old then
-            local orb = require "orb"
-            local uv = require "luv"
-            orb.run(uv.cwd())
-         else
-             local orb = require "orb"
-             local uv  = require "luv"
-             local lume = orb.lume(uv.cwd())
-             lume:run()
-             if args.serve then
-                lume:serve()
-             end
-         end
-      elseif args.helm then
-         local helm = require "helm:helm"
-         helm()
-      elseif args.session then
-         local session = assert(require "valiant:session" . session)
-         session(args)
-      elseif args.export then
-         if (not args.project) and (not args.all) then
-            error "at least one project required without --all flag"
-         end
-         local bundle
-         if not args.all then
-            bundle = require "bundle:export".export(args.project,
-                                                       args.version)
-         else
-            bundle = require "bundle:export".exportAll(args.version)
-         end
-         if args.outfile then
-            local file = io.open(args.outfile, "w+")
-            if not file then
-               error("unable to open " .. args.outfile)
-            end
-            file:write(bundle)
-            file:close()
-         else
-            local bundle_name = args.project or "all_modules"
-            local outfilepath = "./" .. bundle_name .. ".bundle"
-            local file = io.open(outfilepath, "w+")
-            if not file then
-               error("unable to open " .. outfilepath)
-            end
-            file:write(bundle)
-            file:close()
-         end
-      elseif args.import then
-         local import = assert(_Bridge.import)
-         for _, file in ipairs(args.file) do
-            import(file)
-         end
-      elseif args.file then
+
+      if args.file then
          if args.file:sub(-4, -1) == ".lua" then
             dofile(args.file)
          end
-         -- handle .orb files here
+         -- #todo handle .orb files here
+      elseif verbs[args.verb] then
+         verbs[args.verb](args)
+      else
+         -- should be unreachable, but may as well print what we have:
+         local ts = require "repr:repr" . ts
+         print(ts(args))
+         error "argparse should have thrown an error but didn't?"
       end
    end
 end
