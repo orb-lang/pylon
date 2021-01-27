@@ -569,14 +569,13 @@ if rawget(_G, "arg") ~= nil then
          local ts = require "repr:repr" . ts
          print(ts(args))
       end
-
-      if args.file then
+      if verbs[args.verb] then
+         verbs[args.verb](args)
+      elseif args.file then
          if args.file:sub(-4, -1) == ".lua" then
             dofile(args.file)
          end
          -- #todo handle .orb files here
-      elseif verbs[args.verb] then
-         verbs[args.verb](args)
       else
          -- should be unreachable, but may as well print what we have:
          local ts = require "repr:repr" . ts
