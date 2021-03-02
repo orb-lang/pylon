@@ -323,6 +323,12 @@ session_c
    : flag "-E" "--every"
    : description "Run every session for a given project."
 
+session_c
+   : option "-s" "--some"
+   : description "Run only the indicated sessions, by name, number, or list."
+   : convert(parse_list)
+   : args(1)
+
 local session_list_c = session_c
                           : command "list l"
                           : description ("List (accepted) sessions. "
