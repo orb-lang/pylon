@@ -141,6 +141,38 @@ local function parse_list(str)
    return list
 end
 
+
+
+
+
+
+
+
+
+
+
+
+
+local function validate_session_name(name)
+   -- check if the string is only integers with possible whitespace padding
+   if name:find("^%s*%d+%s*$") then
+      error("can't give a session an integer name such as " .. name .. ".")
+   end
+   return name
+end
+
+local function validate_session_rename()
+   local first = true
+   return function(name)
+      if first then
+         first = false
+         return name:find("^%s*%d+%s*$") and tonumber(name) or name
+      else
+         return validate_session_name(name)
+      end
+   end
+end
+
 _Bridge.parse_list = parse_list
 
 
@@ -254,10 +286,13 @@ helm_c
    : option "-M --macro"
      : description ( "Macro-record a session of the given name. "
                   .. "Results of all lines will be accepted as correct." )
+      : convert(validate_session_name)
+      : args(1)
 
 helm_c
    : option "-n --new-session"
       : description "Begin a new, named session."
+      : convert(validate_session_name)
       : args(1)
 
 helm_c
@@ -410,6 +445,7 @@ session_rename_c
   : argument "to_rename"
   : description("The title or number of an existing session, "
                 .. "and a new title for it.")
+  : convert(validate_session_rename())
   : args(2)
   : argname {"<old>", "<new>"}
 
