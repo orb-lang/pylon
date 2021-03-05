@@ -382,62 +382,44 @@ session_list_c
     : description "List all sessions including deprecated sessions."
     : action(function(args) args.list_all = true end)
 
-local session_update_c = session_c
-         : command "update u"
-         : description ("Update session(s) premises to accept latest "
-                        .. "results.")
-session_update_c
-   : argument "to_update"
+local function add_range_arg(cmd, arg_name)
+   cmd
+      : argument(arg_name)
    : description ("A session title, session number, or list of session "
       .. "numbers/ranges e.g. [1,3,5..6,8..].")
    : convert(parse_list)
    : args(1)
+end
+
+local session_update_c = session_c
+         : command "update u"
+         : description ("Update session(s) premises to accept latest "
+                        .. "results.")
+add_range_arg(session_update_c, "to_update")
 
 local session_delete_c = session_c
          : command "delete d"
          : description ("Delete listed sessions. "
                      .. "Will only delete a deprecated session.")
-session_delete_c
-   : argument "to_delete"
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+add_range_arg(session_delete_c, "to_delete")
 
 local session_force_delete_c = session_c
                                   : command "force-delete D"
                                   : description
                                      ("Delete listed sessions, including "
                                       .. "accepted sessions.")
-session_force_delete_c
-   : argument "to_delete"
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+add_range_arg(session_force_delete_c, "to_delete")
 
 local session_accept_c = session_c
          : command "accept a"
          : description "Mark a session or list as accepted."
-
-session_accept_c
-   : argument "to_accept"
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+add_range_arg(session_accept_c, "to_accept")
 
 local session_deprecate_c = session_c
          : command "deprecate p"
          : description("dePrecate a session, or list of sessions, which will "
                      .."no longer be run with `br session`.")
-
-session_deprecate_c
-   : argument "to_deprecate"
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+add_range_arg(session_deprecate_c, "to_deprecate")
 
 local session_rename_c = session_c
          : command "rename r"
@@ -454,13 +436,7 @@ session_rename_c
 local session_export_c = session_c
          : command "export e"
          : description "Export a session or list of sessions."
-
-session_export_c
-   : argument "to_export"
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+add_range_arg(session_export_c, "to_export")
 
 session_export_c
    : option "-o" "--outfile"
@@ -629,16 +605,3 @@ if rawget(_G, "arg") ~= nil then
    end
 end
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
