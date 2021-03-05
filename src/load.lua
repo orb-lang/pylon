@@ -65,8 +65,8 @@ local MAX_INT = 9007199254740991
 local function cast_to_int(str_val)
    local num = tonumber(str_val)
    if num > MAX_INT then
-      error ("version numbers cannot exceed 2^53 - 1, "
-             .. str_val .. " is invalid")
+      return nil, "Version numbers cannot exceed 2^53 - 1, "
+             .. str_val .. " is invalid"
    end
    return num
 end
@@ -84,9 +84,9 @@ local function parse_version(str)
    local ver = match(patt, str)
    if not ver then
       if match(R"09"^1 * P"."^-1 * P(-1), str) then
-         error("Must provide at least major and minor version numbers")
+         return nil, "Must provide at least major and minor version numbers"
       else
-         error("invalid --version format: " .. str)
+         return nil, "Invalid --version format: " .. str
       end
    end
    -- Cast to number
@@ -156,7 +156,7 @@ end
 local function validate_session_name(name)
    -- check if the string is only integers with possible whitespace padding
    if name:find("^%s*%d+%s*$") then
-      error("can't give a session an integer name such as " .. name .. ".")
+      return nil, "Can't give a session an integer name such as " .. name .. "."
    end
    return name
 end
