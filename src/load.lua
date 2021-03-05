@@ -141,6 +141,7 @@ local function parse_list(str)
    return list
 end
 
+_Bridge.parse_list = parse_list
 
 
 
@@ -152,6 +153,11 @@ end
 
 
 
+
+
+local function parse_session_identifier(name)
+   return name:find("^%s*%d+%s*$") and tonumber(name) or name
+end
 
 local function validate_session_name(name)
    -- check if the string is only integers with possible whitespace padding
@@ -160,21 +166,6 @@ local function validate_session_name(name)
    end
    return name
 end
-
-local function validate_session_rename()
-   local first = true
-   return function(name)
-      if first then
-         first = false
-         return name:find("^%s*%d+%s*$") and tonumber(name) or name
-      else
-         return validate_session_name(name)
-      end
-   end
-end
-
-_Bridge.parse_list = parse_list
-
 
 
 
@@ -280,6 +271,7 @@ local helm_c = brParse
 helm_c
    : option "-s --session"
       : description "Start the repl with a given, named session."
+      : convert(parse_session_identifier)
       : args(1)
 
 helm_c
@@ -424,12 +416,14 @@ local session_rename_c = session_c
          : description "Give a session a new title."
 
 session_rename_c
-  : argument "to_rename"
-  : description("The title or number of an existing session, "
-                .. "and a new title for it.")
-  : convert(validate_session_rename())
-  : args(2)
-  : argname {"<old>", "<new>"}
+  : argument "old_name"
+  : description "The title or number of an existing session to rename."
+  : convert(parse_session_identifier)
+
+session_rename_c
+  : argument "new_name"
+  : description "The new title for the session."
+  : convert(validate_session_name)
 
 local session_export_c = session_c
          : command "export e"
