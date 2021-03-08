@@ -375,10 +375,10 @@ session_list_c
 local function add_range_arg(cmd, arg_name)
    cmd
       : argument(arg_name)
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+      : description ("A session title, session number, or list of session "
+         .. "numbers/ranges e.g. [1,3,5..6,8..].")
+      : convert(parse_list)
+      : args(1)
 end
 
 local session_update_c = session_c
