@@ -65,8 +65,8 @@ local MAX_INT = 9007199254740991
 local function cast_to_int(str_val)
    local num = tonumber(str_val)
    if num > MAX_INT then
-      error ("version numbers cannot exceed 2^53 - 1, "
-             .. str_val .. " is invalid")
+      return nil, "Version numbers cannot exceed 2^53 - 1, "
+             .. str_val .. " is invalid"
    end
    return num
 end
@@ -84,9 +84,9 @@ local function parse_version(str)
    local ver = match(patt, str)
    if not ver then
       if match(R"09"^1 * P"."^-1 * P(-1), str) then
-         error("Must provide at least major and minor version numbers")
+         return nil, "Must provide at least major and minor version numbers"
       else
-         error("invalid --version format: " .. str)
+         return nil, "Invalid --version format: " .. str
       end
    end
    -- Cast to number
@@ -141,6 +141,7 @@ local function parse_list(str)
    return list
 end
 
+_Bridge.parse_list = parse_list
 
 
 
@@ -152,29 +153,19 @@ end
 
 
 
+
+
+local function parse_session_identifier(name)
+   return name:find("^%s*%d+%s*$") and tonumber(name) or name
+end
 
 local function validate_session_name(name)
    -- check if the string is only integers with possible whitespace padding
    if name:find("^%s*%d+%s*$") then
-      error("can't give a session an integer name such as " .. name .. ".")
+      return nil, "Can't give a session an integer name such as " .. name .. "."
    end
    return name
 end
-
-local function validate_session_rename()
-   local first = true
-   return function(name)
-      if first then
-         first = false
-         return name:find("^%s*%d+%s*$") and tonumber(name) or name
-      else
-         return validate_session_name(name)
-      end
-   end
-end
-
-_Bridge.parse_list = parse_list
-
 
 
 
@@ -280,6 +271,7 @@ local helm_c = brParse
 helm_c
    : option "-s --session"
       : description "Start the repl with a given, named session."
+      : convert(parse_session_identifier)
       : args(1)
 
 helm_c
@@ -380,85 +372,63 @@ session_list_c
     : description "List all sessions including deprecated sessions."
     : action(function(args) args.list_all = true end)
 
+local function add_range_arg(cmd, arg_name)
+   cmd
+      : argument(arg_name)
+      : description ("A session title, session number, or list of session "
+         .. "numbers/ranges e.g. [1,3,5..6,8..].")
+      : convert(parse_list)
+      : args(1)
+end
+
 local session_update_c = session_c
          : command "update u"
          : description ("Update session(s) premises to accept latest "
                         .. "results.")
-session_update_c
-   : argument "to_update"
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+add_range_arg(session_update_c, "to_update")
 
 local session_delete_c = session_c
          : command "delete d"
          : description ("Delete listed sessions. "
                      .. "Will only delete a deprecated session.")
-session_delete_c
-   : argument "to_delete"
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+add_range_arg(session_delete_c, "to_delete")
 
 local session_force_delete_c = session_c
                                   : command "force-delete D"
                                   : description
                                      ("Delete listed sessions, including "
                                       .. "accepted sessions.")
-session_force_delete_c
-   : argument "to_delete"
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+add_range_arg(session_force_delete_c, "to_delete")
 
 local session_accept_c = session_c
          : command "accept a"
          : description "Mark a session or list as accepted."
-
-session_accept_c
-   : argument "to_accept"
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+add_range_arg(session_accept_c, "to_accept")
 
 local session_deprecate_c = session_c
          : command "deprecate p"
          : description("dePrecate a session, or list of sessions, which will "
                      .."no longer be run with `br session`.")
-
-session_deprecate_c
-   : argument "to_deprecate"
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+add_range_arg(session_deprecate_c, "to_deprecate")
 
 local session_rename_c = session_c
          : command "rename r"
          : description "Give a session a new title."
 
 session_rename_c
-  : argument "to_rename"
-  : description("The title or number of an existing session, "
-                .. "and a new title for it.")
-  : convert(validate_session_rename())
-  : args(2)
-  : argname {"<old>", "<new>"}
+  : argument "old_name"
+  : description "The title or number of an existing session to rename."
+  : convert(parse_session_identifier)
+
+session_rename_c
+  : argument "new_name"
+  : description "The new title for the session."
+  : convert(validate_session_name)
 
 local session_export_c = session_c
          : command "export e"
          : description "Export a session or list of sessions."
-
-session_export_c
-   : argument "to_export"
-   : description ("A session title, session number, or list of session "
-      .. "numbers/ranges e.g. [1,3,5..6,8..].")
-   : convert(parse_list)
-   : args(1)
+add_range_arg(session_export_c, "to_export")
 
 session_export_c
    : option "-o" "--outfile"
