@@ -306,8 +306,9 @@ reference will collect them\.
 
 ### Stricture
 
-Lifted straight from 
+Lifted straight from [penlight](link line not found for obelus: \.
 
+[https://stevedonovan.github.io/Penlight/api/index.html on line 310)
 ```lua
 do
    local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget

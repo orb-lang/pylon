@@ -34,7 +34,7 @@ do
 **** make _G strict
 
 We make assignments to =_G= invalid outside of the outer context, and forbid
-nil lookups, to make it easier to catch mistakes.
+=nil= lookups, to make it easier to catch mistakes.
 
 For now, at least, we also nil out the code which does this.  It may make more
 sense to add it to a preload package.
@@ -192,7 +192,16 @@ brParse
 
 brParse
    : flag "--show-arguments"
-      : description "display the args table. For development purposes."
+      : description "Display the args table. For development purposes."
+
+brParse
+  : flag "-v --verbose"
+    : description "Verbose output (vv for very verbose)."
+    : count "0-2"
+
+brParse
+  : flag "-t --terse"
+  : description "Terse output."
 
 local orb_c = brParse : command "orb o"
                          : description "Literate compiler for Orb format."
@@ -561,7 +570,16 @@ if rawget(_G, "arg") ~= nil then
    -- convention which argparse expects
    table.insert(arg, 0, "")
    -- check for custom command
-   if not(verbs[arg[1]] or string.sub(arg[1], 1, 1) == "-") then
+   local first_verb = nil
+   for i = 1, #arg do
+      print('argument #' .. i .. ": " .. arg[i])
+      if string.sub(arg[i], 1, 1) ~= '-' then
+         print("first verb: " ..arg[i])
+         first_verb = arg[i]
+         break
+      end
+   end
+   if first_verb and not(verbs[first_verb]) then
       local verb, args = table.remove(arg, 1), nil
       local ok, argP = pcall(require, verb .. ":argparse")
       if ok then
@@ -571,7 +589,7 @@ if rawget(_G, "arg") ~= nil then
       if ok then
          mod(args)
       else
-         print("Can't find a project " .. verb .. ".")
+         print("Can't find a project " .. first_verb .. ".")
       end
    else
       _Bridge.args = _Bridge.brParse:parse()
@@ -589,10 +607,7 @@ if rawget(_G, "arg") ~= nil then
          end
          -- #todo handle .orb files here
       else
-         -- should be unreachable, but may as well print what we have:
-         local ts = require "repr:repr" . ts
-         print(ts(args))
-         error "argparse should have thrown an error but didn't?"
+         -- no further arguments, just exit
       end
    end
 end
