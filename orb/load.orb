@@ -570,16 +570,26 @@ if rawget(_G, "arg") ~= nil then
    -- convention which argparse expects
    table.insert(arg, 0, "")
    -- check for custom command
-   local first_verb = nil
-   for i = 1, #arg do
-      print('argument #' .. i .. ": " .. arg[i])
+   local first_verb, i = nil, 1
+   while i <= #arg do
       if string.sub(arg[i], 1, 1) ~= '-' then
-         print("first verb: " ..arg[i])
          first_verb = arg[i]
          break
       end
+      i = i + 1
    end
    if first_verb and not(verbs[first_verb]) then
+      -- needs a rewrite
+      -- annoying, because "arg" is magic in argparse
+      -- so:
+      -- first get everything after the verb out of arg
+      -- allow brParse code to run
+      -- if we have a first_verb, then at the end of the
+      -- decision tree, replace the contents of arg with
+      -- the saved contents from before
+      -- summon custom arg parse if it exists, call it
+      -- run custom project, again, if it exists
+      -- question our life choices
       local verb, args = table.remove(arg, 1), nil
       local ok, argP = pcall(require, verb .. ":argparse")
       if ok then
