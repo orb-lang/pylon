@@ -1,0 +1,20 @@
+* Global Manifest
+
+
+  This contains the root fields for every Orb project on my computer.
+
+
+*** Ref table
+
+Used to resolve refs into URLs.
+
+#!toml #manifest
+[ref]
+
+default_domain = 'br'
+post_project = '-/blob/trunk/'
+
+[ref.domains]
+
+br = "https://gitlab.com/special-circumstance/"
+#/toml
