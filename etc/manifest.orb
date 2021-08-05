@@ -1,7 +1,21 @@
-* Global Manifest
+* Example Global Manifest
 
 
-  This contains the root fields for every Orb project on my computer.
+ Orb projects are configured using manifests.
+
+This file should be copied to =$ORB_HOME=, the default value of which is
+=~/.local/share/bridge/orb= with the name =manifest.orb=.
+
+It is currently set up to correctly weave Markdown for display on a GitLab
+instance.
+
+To convert it for your own projects, change the value of =default_domain= to
+whatever short form you use to refer to your code, and update the URL
+accordingly.
+
+For more details, see the [[Manifests][@br/br-guide:orb#manifests]] section of
+the [[Bridge guide][@br/br-guide/]].
+
 
 
 *** Ref table

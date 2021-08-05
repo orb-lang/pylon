@@ -71,3 +71,12 @@ And the database should populate.
 
 At that point, you're free to move `br` anywhere on your path.
 
+
+### Manifests
+
+Orb uses manifest files for configuration, these contain TOML blocks which
+are interpreted by Orb in various ways.
+
+A sample manifest is included at `pylon/etc/manifest.orb`, which you can copy
+to the Orb home directory at `~/.local/share/bridge/orb`.
+
