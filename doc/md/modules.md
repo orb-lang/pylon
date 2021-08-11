@@ -50,7 +50,7 @@ local stmts = {}
 These SQL statements create the bridge\.modules database\.
 
 Currently, we have no migrations\.  When we do, they will follow the pattern
-[established in helm](@br/helm:helm/historian)\.
+[established in helm](https://gitlab.com/special-circumstance/helm/-/blob/trunk/doc/md/helm/historian.md)\.
 
 
 #### create\_project\_table
@@ -194,7 +194,7 @@ Imports a bundle file into the database\.
 
 ### SQL
 
-This is going to be a copy\-paste of SQL statements in [Orb's database code](@orb/compile/database)\.
+This is going to be a copy\-paste of SQL statements in [Orb's database code](https://gitlab.com/special-circumstance/pylon/-/blob/trunk/doc/md/orb/compile/database.md)\.
 
 Eventually I do want a single home for all this logic, and being as it's core
 to initializing bridge, that will probably be in pylon\.

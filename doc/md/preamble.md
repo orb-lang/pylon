@@ -209,38 +209,26 @@ local function loaderGen(conn)
       end
       if project then
          -- retrieve bytecode by project and module
-         bytecode = resultMap(
-                      project_stmt:bindkv ({ project_name = project,
-                                            module_name  = mod })
-                      : resultset())
+         bytecode = resultMap(project_stmt :bind(project, mod) :resultset())
          if not bytecode then
             -- try mod_double
             project_stmt:reset()
-            bytecode = resultMap(
-                      project_stmt:bindkv ({ project_name = project,
-                                            module_name  = mod_double })
-                      : resultset())
+            bytecode = resultMap(project_stmt :bind(project, mod_double)
+                                    :resultset())
          end
          if not bytecode then
             -- try proj_double
             project_stmt:reset()
-            bytecode = resultMap(
-                      project_stmt:bindkv ({ project_name = project,
-                                             module_name  = proj_double })
-                      : resultset())
+            bytecode = resultMap(project_stmt :bind(project, proj_double)
+                                    :resultset())
          end
          project_stmt:reset()
       else
          -- retrieve by bare module name
-         bytecode = resultMap(
-                      module_stmt:bindkv ({ name  = mod })
-                      : resultset())
+         bytecode = resultMap(module_stmt :bind(mod) :resultset())
          if not bytecode then
             module_stmt:reset()
-            bytecode =resultMap(
-                      module_stmt:bindkv ({ name  = mod_double })
-
-                      : resultset())
+            bytecode = resultMap(module_stmt :bind(mod_double) :resultset())
          end
          module_stmt:reset()
       end
@@ -308,7 +296,7 @@ reference will collect them\.
 
 Lifted straight from [penlight](link line not found for obelus: \.
 
-[https://stevedonovan.github.io/Penlight/api/index.html on line 310)
+[https://stevedonovan.github.io/Penlight/api/index.html on line 298)
 ```lua
 do
    local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget

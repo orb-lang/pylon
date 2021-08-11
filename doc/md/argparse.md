@@ -1,6 +1,6 @@
 # Argparse
 
-Now on [](0.7)\.
+Now on [0.7](0.7)\.
 
 `argparse` is what it says on the label, and we're lifting it wholesale as
 `package.argparse`, at least for now\.
