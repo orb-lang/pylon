@@ -14,19 +14,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 do
 
 
@@ -192,7 +179,16 @@ brParse
 
 brParse
    : flag "--show-arguments"
-      : description "display the args table. For development purposes."
+      : description "Display the args table. For development purposes."
+
+brParse
+  : flag "-v --verbose"
+    : description "Verbose output (vv for very verbose)."
+    : count "0-2"
+
+brParse
+  : flag "-t --terse"
+  : description "Terse output."
 
 local orb_c = brParse : command "orb o"
                          : description "Literate compiler for Orb format."
@@ -556,12 +552,35 @@ end
 
 
 
+
+
+
+
+
+
+
+
 if rawget(_G, "arg") ~= nil then
    -- shim the arg array to emulate the "lua <scriptname>" calling
    -- convention which argparse expects
    table.insert(arg, 0, "")
+
    -- check for custom command
-   if not(verbs[arg[1]] or string.sub(arg[1], 1, 1) == "-") then
+   local first_verb, lead_char = nil, string.sub(arg[1], 1, 1)
+   first_verb = lead_char ~= '-' and arg[1] or nil
+
+   if first_verb and not(verbs[first_verb]) then
+      -- needs a rewrite
+      -- annoying, because "arg" is magic in argparse
+      -- so:
+      -- first get everything after the verb out of arg
+      -- allow brParse code to run
+      -- if we have a first_verb, then at the end of the
+      -- decision tree, replace the contents of arg with
+      -- the saved contents from before
+      -- summon custom arg parse if it exists, call it
+      -- run custom project, again, if it exists
+      -- question our life choices
       local verb, args = table.remove(arg, 1), nil
       local ok, argP = pcall(require, verb .. ":argparse")
       if ok then
@@ -571,15 +590,27 @@ if rawget(_G, "arg") ~= nil then
       if ok then
          mod(args)
       else
-         print("Can't find a project " .. verb .. ".")
+         print("Can't find a project " .. first_verb .. ".")
       end
    else
       _Bridge.args = _Bridge.brParse:parse()
       local args = _Bridge.args
+      -- show_arguments is for development purposes
       if args.show_arguments then
          args.show_arguments = nil -- no reason to include this
          local ts = require "repr:repr" . ts
          print(ts(args))
+      end
+      -- check for and dispatch verbosity flags
+      if args.terse or (args.verbose > 0) then
+         local S = require "status:status"
+         if args.verbose == 1 then
+            S.Verbose = true
+         elseif args.verbose == 2 then
+            S.Boring = true
+         elseif args.terse then
+            S.Chatty = false
+         end
       end
       if verbs[args.verb] then
          verbs[args.verb](args)
@@ -589,10 +620,7 @@ if rawget(_G, "arg") ~= nil then
          end
          -- #todo handle .orb files here
       else
-         -- should be unreachable, but may as well print what we have:
-         local ts = require "repr:repr" . ts
-         print(ts(args))
-         error "argparse should have thrown an error but didn't?"
+         -- no further arguments, just exit
       end
    end
 end

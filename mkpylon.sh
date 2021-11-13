@@ -59,7 +59,7 @@ unset LUA_INIT LUA_INIT_5_1 LUA_PATH LUA_PATH_5_1
 git submodule update --init --recursive
 
 enter deps/luajit/ # symlink into luv's deps
-  git checkout v2.1-agentzh
+  git checkout might-work
 leave
 
 
@@ -77,7 +77,7 @@ cp deps/luv/build/deps/libuv/libuv_a.a build/libuv.a
 
 ## 2. (re)compile LuaJIT in amalgam (all-in-one-file) mode
 enter deps/luajit
-  git checkout v2.1-agentzh
+  git checkout might-work
   make amalg XCFLAGS=-DLUAJIT_ENABLE_LUA52COMPAT XCFLAGS+=-DLUA_USE_ASSERT
   # Note: turn off the USE_ASSERT once we either figure out what's crashing,
   # Or determine that it isn't helping.

@@ -1,6 +1,6 @@
 # Pylon
 
-\#Deprecated,
+\#Deprecated
 
 `pylon` is our userspace kernel\.
 
