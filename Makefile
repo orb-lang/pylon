@@ -38,7 +38,7 @@ $(BR): build/core.o build/libluv.a build/lfs.a build/sqlite3.o
 linux:
 	$(MAKE) OS_BUILDOPTS="-lm -ldl -lpthread -Wl,-E"
 macosx:
-	$(MAKE) OS_BUILDOPTS="-pagezero_size 10000 -image_base 100000000"
+	$(MAKE) OS_BUILDOPTS="-pagezero_size 10000 -image_base 100000000 -funwind-tables"
 
 build/core.o: src/core.c build/load_char.h build/sql.h build/preamble.h build/afterward.h build/argparse.h build/modules.h
 	$(CC) -c -O3 -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/core.c -o build/core.o -Wall -Wextra -pedantic -std=c99

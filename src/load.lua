@@ -14,19 +14,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 do
 
 
@@ -565,19 +552,23 @@ end
 
 
 
+
+
+
+
+
+
+
+
 if rawget(_G, "arg") ~= nil then
    -- shim the arg array to emulate the "lua <scriptname>" calling
    -- convention which argparse expects
    table.insert(arg, 0, "")
+
    -- check for custom command
-   local first_verb, i = nil, 1
-   while i <= #arg do
-      if string.sub(arg[i], 1, 1) ~= '-' then
-         first_verb = arg[i]
-         break
-      end
-      i = i + 1
-   end
+   local first_verb, lead_char = nil, string.sub(arg[1], 1, 1)
+   first_verb = lead_char ~= '-' and arg[1] or nil
+
    if first_verb and not(verbs[first_verb]) then
       -- needs a rewrite
       -- annoying, because "arg" is magic in argparse
