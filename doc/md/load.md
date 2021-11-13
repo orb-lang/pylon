@@ -597,10 +597,22 @@ if rawget(_G, "arg") ~= nil then
    else
       _Bridge.args = _Bridge.brParse:parse()
       local args = _Bridge.args
+      -- show_arguments is for development purposes
       if args.show_arguments then
          args.show_arguments = nil -- no reason to include this
          local ts = require "repr:repr" . ts
          print(ts(args))
+      end
+      -- check for and dispatch verbosity flags
+      if args.terse or (args.verbose > 0) then
+         local S = require "status:status"
+         if args.verbose == 1 then
+            S.Verbose = true
+         elseif args.verbose == 2 then
+            S.Boring = true
+         elseif args.terse then
+            S.Chatty = false
+         end
       end
       if verbs[args.verb] then
          verbs[args.verb](args)
