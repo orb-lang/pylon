@@ -59,7 +59,8 @@ unset LUA_INIT LUA_INIT_5_1 LUA_PATH LUA_PATH_5_1
 git submodule update --init --recursive
 
 enter deps/luajit/ # symlink into luv's deps
-  git checkout might-work
+  # pin a plausible commit hash until unwind-protect bug is addressed -@atman
+  git checkout 553bacf5e67ebacf5d31f07d374386bd025de21e
 leave
 
 

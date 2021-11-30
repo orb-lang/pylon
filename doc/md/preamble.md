@@ -183,6 +183,23 @@ local function resultMap(result)
    return toRow(result)
 end
 
+local function modNames(mod_name)
+   local project, mod = string.match(mod_name, "(.*):(.*)")
+   if not mod then
+      mod = mod_name
+   end
+   -- might be "module/module":
+   local mod_double = mod .. "/" .. mod
+   -- might be "project:module" -> "project/module"
+   local proj_double = ""
+   if project then
+      proj_double = project .. "/" .. mod
+   end
+   return project, mod, proj_double, mod_double
+end
+
+_Bridge.modNames = modNames
+
 local function loaderGen(conn)
    -- check that we have a database conn
    if not conn then error("sql connection failed") end
@@ -195,18 +212,7 @@ local function loaderGen(conn)
       package.bridge_loaded = package.bridge_loaded or {}
       -- split the module into project and modname
       local bytecode = nil
-      local project, mod = string.match(mod_name, "(.*):(.*)")
-      if not mod then
-         mod = mod_name
-      end
-      local proj_name = project or ""
-      -- might be "module/module":
-      local mod_double = mod .. "/" .. mod
-      -- might be "project:module" -> "project/module"
-      local proj_double = ""
-      if project then
-         proj_double = project .. "/" .. mod
-      end
+      local project, mod, proj_double, mod_double = modNames(mod_name)
       if project then
          -- retrieve bytecode by project and module
          bytecode = resultMap(project_stmt :bind(project, mod) :resultset())
@@ -296,7 +302,7 @@ reference will collect them\.
 
 Lifted straight from [penlight](link line not found for obelus: \.
 
-[https://stevedonovan.github.io/Penlight/api/index.html on line 298)
+[https://stevedonovan.github.io/Penlight/api/index.html on line 304)
 ```lua
 do
    local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget
