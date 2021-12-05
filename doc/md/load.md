@@ -40,7 +40,7 @@ stricture = nil
 Various functions which parse and validate some of the command\-line arguments\.
 
 
-#### parseVersion\(str\)
+### parseVersion\(str\)
 
 We validate the version string on parse, since we divvy it up into pieces
 within the database\.
@@ -98,7 +98,7 @@ _Bridge.parse_version = parse_version
 ```
 
 
-#### parse\_list
+### parse\_list
 
 The argument to several `session` commands can be a title, a number, or a
 range of numbers\.
@@ -134,7 +134,7 @@ _Bridge.parse_list = parse_list
 ```
 
 
-#### Session name validation
+### Session name validation
 
 When referring to a session, we can use either its title or integer index\. In
 the index case, we want to perform conversion to an integer here\.
@@ -156,6 +156,26 @@ local function validate_session_name(name)
    return name
 end
 ```
+
+### isint\(arg\)
+
+Just casts to number and returns the floor of it if it exists\.
+
+```lua
+local floor = assert(math.floor)
+
+local function isint(arg)
+   local num = tonumber(arg)
+   if num then
+      return floor(num)
+   else
+      return nil, arg .. " isn't a number from Lua's perspective."
+   end
+end
+```
+
+
+### Bridge Argument Parser
 
 
 ```lua
@@ -284,6 +304,17 @@ helm_c
       : description "Begin a new, named session."
       : convert(validate_session_name)
       : args(1)
+
+helm_c
+   : flag "-r --restart"
+   : description "Restart helm and execute all lines from the last run."
+
+helm_c
+   : option "-b --back"
+   : description "Replay the last <number> lines."
+   : convert(isint)
+   : args(1)
+
 
 helm_c
    : flag "-l --listen"

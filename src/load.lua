@@ -157,6 +157,26 @@ end
 
 
 
+
+
+
+local floor = assert(math.floor)
+
+local function isint(arg)
+   local num = tonumber(arg)
+   if num then
+      return floor(num)
+   else
+      return nil, arg .. " isn't a number from Lua's perspective."
+   end
+end
+
+
+
+
+
+
+
 local brParse = require "argparse" ()
 
 _Bridge.brParse = brParse
@@ -282,6 +302,17 @@ helm_c
       : description "Begin a new, named session."
       : convert(validate_session_name)
       : args(1)
+
+helm_c
+   : flag "-r --restart"
+   : description "Restart helm and execute all lines from the last run."
+
+helm_c
+   : option "-b --back"
+   : description "Replay the last <number> lines."
+   : convert(isint)
+   : args(1)
+
 
 helm_c
    : flag "-l --listen"
