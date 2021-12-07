@@ -14,8 +14,22 @@ Anything we want to put in the global namespace goes here.
 This is what we test for to see if we're inside =bridge=, and where we put
 things that we'll need later.
 
+#Deprecated we're turning this into a =package.preload=
+
 #!lua
-_Bridge = {}
+local _Bridge = {}
+-- remove this to vanish _Bridge from _G
+-- using rawset here to express intention
+rawset(_G, "_Bridge", _Bridge)
+#/lua
+
+
+*** package.preload["bridge"]
+
+A closure to return the =_Bridge= table, which will no longer be global.
+
+#!lua
+package.preload.bridge = function() return _Bridge end
 #/lua
 
 

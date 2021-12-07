@@ -15,7 +15,21 @@
 
 
 
-_Bridge = {}
+
+
+local _Bridge = {}
+-- remove this to vanish _Bridge from _G
+-- using rawset here to express intention
+rawset(_G, "_Bridge", _Bridge)
+
+
+
+
+
+
+
+
+package.preload.bridge = function() return _Bridge end
 
 
 

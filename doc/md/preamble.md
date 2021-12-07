@@ -14,8 +14,22 @@ Anything we want to put in the global namespace goes here\.
 This is what we test for to see if we're inside `bridge`, and where we put
 things that we'll need later\.
 
+\#Deprecated
+
 ```lua
-_Bridge = {}
+local _Bridge = {}
+-- remove this to vanish _Bridge from _G
+-- using rawset here to express intention
+rawset(_G, "_Bridge", _Bridge)
+```
+
+
+### package\.preload\["bridge"\]
+
+A closure to return the `_Bridge` table, which will no longer be global\.
+
+```lua
+package.preload.bridge = function() return _Bridge end
 ```
 
 
@@ -302,7 +316,7 @@ reference will collect them\.
 
 Lifted straight from [penlight](link line not found for obelus: \.
 
-[https://stevedonovan.github.io/Penlight/api/index.html on line 304)
+[https://stevedonovan.github.io/Penlight/api/index.html on line 318)
 ```lua
 do
    local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget
