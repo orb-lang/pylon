@@ -93,6 +93,16 @@ _Bridge.load_hashes = { }
 #/lua
 
 
+**** bridge.is_tty
+
+Tells us if we're living in TTY land, so we can decide things like whether to
+colorize.
+
+#!lua
+_Bridge.is_tty = require "luv" . guess_handle(1) == 'tty'
+#/lua
+
+
 *** SQL statements
 
 For now, we're just going to load the latest compiled version of a given

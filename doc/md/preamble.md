@@ -92,6 +92,16 @@ _Bridge.load_hashes = { }
 ```
 
 
+#### bridge\.is\_tty
+
+Tells us if we're living in TTY land, so we can decide things like whether to
+colorize\.
+
+```lua
+_Bridge.is_tty = require "luv" . guess_handle(1) == 'tty'
+```
+
+
 ### SQL statements
 
 For now, we're just going to load the latest compiled version of a given
@@ -316,7 +326,7 @@ reference will collect them\.
 
 Lifted straight from [penlight](link line not found for obelus: \.
 
-[https://stevedonovan.github.io/Penlight/api/index.html on line 318)
+[https://stevedonovan.github.io/Penlight/api/index.html on line 328)
 ```lua
 do
    local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget

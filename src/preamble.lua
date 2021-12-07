@@ -99,6 +99,16 @@ _Bridge.load_hashes = { }
 
 
 
+_Bridge.is_tty = require "luv" . guess_handle(1) == 'tty'
+
+
+
+
+
+
+
+
+
 local bytecode_by_module = [[
 SELECT code.binary, code.hash
 FROM code
