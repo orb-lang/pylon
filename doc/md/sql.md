@@ -969,6 +969,18 @@ Returns the string used to load the conn\.
 ```
 
 
+### sql\.isconn\(conn?\)
+
+Returns `true` for a conn\.
+
+```lua
+local istype = assert(ffi.istype)
+
+function sqlayer.isconn(conn)
+   return istype(conn_ct, conn)
+end
+```
+
 ### sql\.san\(str\)
 
 Sanitizes a string for SQL\(ite\) quoting\.

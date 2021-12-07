@@ -974,6 +974,18 @@ end
 
 
 
+local istype = assert(ffi.istype)
+
+function sqlayer.isconn(conn)
+   return istype(conn_ct, conn)
+end
+
+
+
+
+
+
+
    local function san(str)
       return gsub(str, "'", "''")
    end
