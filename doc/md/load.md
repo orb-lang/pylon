@@ -199,6 +199,8 @@ brParse
       : description "Run a file. Lua only, for now."
       : args(1)
 
+brParse : flag "--no-jit" : description "Turn off the JIT."
+
 brParse
    : flag "--show-arguments"
       : description "Display the args table. For development purposes."
@@ -628,6 +630,14 @@ if rawget(_G, "arg") ~= nil then
    else
       _Bridge.args = _Bridge.brParse:parse()
       local args = _Bridge.args
+      -- no JIT? kill it and make it stay dead, like this:
+      if args.no_jit then
+         local jit = require "jit"
+         -- kill it
+         jit.off()
+         -- so it /stays dead/
+         jit.on = function() end
+      end
       -- show_arguments is for development purposes
       if args.show_arguments then
          args.show_arguments = nil -- no reason to include this
