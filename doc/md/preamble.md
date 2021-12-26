@@ -199,6 +199,7 @@ end
 
 Returns a function which loads modules from a given database connection\.
 
+
 ```lua
 local toRow = assert(sql.toRow)
 
@@ -224,6 +225,26 @@ end
 
 _Bridge.modNames = modNames
 
+```
+
+
+#### db\_hit\_count
+
+This is an expedient for checking the Voltron loader\.
+
+Also a harmless metric to collect, so we might well keep it\.
+
+```lua
+_Bridge.db_hit_count = 0
+
+local function db_hit()
+   _Bridge.db_hit_count = _Bridge.db_hit_count + 1
+end
+```
+
+
+
+```lua
 local function loaderGen(conn)
    -- check that we have a database conn
    if not conn then error("sql connection failed") end
@@ -240,17 +261,20 @@ local function loaderGen(conn)
       if project then
          -- retrieve bytecode by project and module
          bytecode = resultMap(project_stmt :bind(project, mod) :resultset())
+         db_hit()
          if not bytecode then
             -- try mod_double
             project_stmt:reset()
             bytecode = resultMap(project_stmt :bind(project, mod_double)
                                     :resultset())
+            db_hit()
          end
          if not bytecode then
             -- try proj_double
             project_stmt:reset()
             bytecode = resultMap(project_stmt :bind(project, proj_double)
                                     :resultset())
+            db_hit()
          end
          project_stmt:reset()
       else
@@ -259,6 +283,7 @@ local function loaderGen(conn)
          if not bytecode then
             module_stmt:reset()
             bytecode = resultMap(module_stmt :bind(mod_double) :resultset())
+            db_hit()
          end
          module_stmt:reset()
       end
@@ -324,9 +349,9 @@ reference will collect them\.
 
 ### Stricture
 
-Lifted straight from [penlight](link line not found for obelus: \.
+Lifted straight from [penlight](link line not found for obelus: 
+[https://stevedonovan.github.io/Penlight/api/index.html on line 353)\.
 
-[https://stevedonovan.github.io/Penlight/api/index.html on line 328)
 ```lua
 do
    local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget

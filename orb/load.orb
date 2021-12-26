@@ -541,7 +541,10 @@ function verbs.session(args)
    session(args)
 end
 
+voltron = require "voltron:voltron"
+
 function verbs.helm(args)
+
    local helm = require "helm:helm"
    helm()
 end
@@ -634,6 +637,7 @@ if rawget(_G, "arg") ~= nil then
          -- kill it
          jit.off()
          -- so it /stays dead/
+         jit.dead = true
          jit.on = function() end
       end
       -- show_arguments is for development purposes
