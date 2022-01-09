@@ -203,13 +203,15 @@ Returns a function which loads modules from a given database connection\.
 ```lua
 local toRow = assert(sql.toRow)
 
+local match = assert(string.match)
+
 local function resultMap(result)
    if result == nil then return nil end
    return toRow(result)
 end
 
 local function modNames(mod_name)
-   local project, mod = string.match(mod_name, "(.*):(.*)")
+   local project, mod = match(mod_name, "(.*):(.*)")
    if not mod then
       mod = mod_name
    end
@@ -278,8 +280,22 @@ local function loaderGen(conn)
          end
          project_stmt:reset()
       else
-         -- retrieve by bare module name
-         bytecode = resultMap(module_stmt :bind(mod) :resultset())
+         -- do we have slashes?
+         local slashed = match(mod_name, ".*(/).*")
+         if not slashed then
+            -- possible "module" is both project and module name
+            --[[
+            project_stmt:reset()
+            bytecode = resultMap(project_stmt :bind(mod_name, mod_name)
+                                    :resultset())
+            --]]
+         end
+
+         if not bytecode then
+            -- retrieve by bare module name
+            bytecode = resultMap(module_stmt :bind(mod) :resultset())
+            db_hit()
+         end
          if not bytecode then
             module_stmt:reset()
             bytecode = resultMap(module_stmt :bind(mod_double) :resultset())
@@ -350,7 +366,7 @@ reference will collect them\.
 ### Stricture
 
 Lifted straight from [penlight](link line not found for obelus: 
-[https://stevedonovan.github.io/Penlight/api/index.html on line 353)\.
+[https://stevedonovan.github.io/Penlight/api/index.html on line 369)\.
 
 ```lua
 do
