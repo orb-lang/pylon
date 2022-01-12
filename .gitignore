@@ -5,6 +5,7 @@
 *.a
 *.dylib
 *.so
+*.o
 # old stuff - remove?
 .codex
 vmdef.lua

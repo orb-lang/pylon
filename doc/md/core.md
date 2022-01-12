@@ -44,7 +44,7 @@ LUALIB_API int luaopen_utf8(lua_State *L);
 #### bytecode
 
   We generate a `luajit` binary as a useful side effect of creating
-`libluajit`, and use this to run a script, [interpol](@:interpol), to
+`libluajit`, and use this to run a script, [interpol](https://gitlab.com/special-circumstance/pylon/-/blob/trunk/doc/md/interpol.md), to
 convert our knitted Lua code into byte arrays\.
 
 We give them load\-time names, for stack trace reporting: but this doesn't work
