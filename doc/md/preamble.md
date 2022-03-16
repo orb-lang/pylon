@@ -63,7 +63,13 @@ require "table.new"
 require "table.isempty"
 require "table.isarray"
 require "table.nkeys"
--- require "table.clone" -- we provide a more general, but slower, version
+```
+
+Note that there's a native `table.clone`, and we favor a pure\-lua version with
+more control, but to get the fast jittable version do this:
+
+```lua
+require "table.clone"
 ```
 
 ## Loader
@@ -326,7 +332,7 @@ reference will collect them\.
 
 Lifted straight from [penlight](link line not found for obelus: \.
 
-[https://stevedonovan.github.io/Penlight/api/index.html on line 328)
+[https://stevedonovan.github.io/Penlight/api/index.html on line 334)
 ```lua
 do
    local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget

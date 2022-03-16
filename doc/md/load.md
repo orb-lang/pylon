@@ -10,6 +10,18 @@
 - Run the resulting behaviors
 
 
+#### bridge\.retcode
+
+It's possible to exit bridge "with prejudice" at any time using `os.exit`\.
+
+We provide `bridge.retcode` to allow applications to signal an erroneous exit,
+without having to quit\.
+
+```lua
+_Bridge.retcode = 0
+```
+
+
 #### do block
 
 Once again, we're not going to waste a level of indentation on this, but
@@ -668,3 +680,8 @@ if rawget(_G, "arg") ~= nil then
    end
 end
 ```
+
+
+### exit
+
+The story continues in [the afterword](https://gitlab.com/special-circumstance/pylon/-/blob/trunk/doc/md/./afterward.md)\.

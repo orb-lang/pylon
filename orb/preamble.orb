@@ -64,7 +64,13 @@ require "table.new"
 require "table.isempty"
 require "table.isarray"
 require "table.nkeys"
--- require "table.clone" -- we provide a more general, but slower, version
+#/lua
+
+Note that there's a native =table.clone=, and we favor a pure-lua version with
+more control, but to get the fast jittable version do this:
+
+#!lua #noKnit
+require "table.clone"
 #/lua
 
 ** Loader
