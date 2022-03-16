@@ -527,6 +527,8 @@ collectgarbage()
 
 
 
+local uv  = require "luv"
+
 local verbs = { s = true, o = true, i = true}
 
 function verbs.orb(args)
@@ -539,7 +541,6 @@ function verbs.orb(args)
       orb.run(uv.cwd())
    else
        local orb = require "orb"
-       local uv  = require "luv"
        local lume = orb.lume(uv.cwd())
        lume:run()
        if args.serve then
@@ -676,5 +677,16 @@ if rawget(_G, "arg") ~= nil then
          -- no further arguments, just exit
       end
    end
+end
+
+
+
+
+
+
+
+
+if uv.loop_alive() and (not uv.loop_mode()) then
+   uv.run 'default'
 end
 
