@@ -165,9 +165,8 @@ ffi.cdef(table.concat(sqlconstants))
 
 Defines the rest of the SQLite FFI\.
 
-```lua
---#!c #asLua
-ffi.cdef[[
+```c
+
 // Typedefs.
 typedef struct sqlite3 sqlite3;
 typedef struct sqlite3_stmt sqlite3_stmt;
@@ -256,8 +255,6 @@ int sqlite3_create_function(
     void (*xStep)(sqlite3_context*,int,sqlite3_value**),
     void (*xFinal)(sqlite3_context*)
 );
-]]
---#/c
 ```
 
 
