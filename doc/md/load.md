@@ -672,7 +672,7 @@ if rawget(_G, "arg") ~= nil then
          verbs[args.verb](args)
       elseif args.file then
          if args.file:sub(-4, -1) == ".lua" then
-            dofile(args.file)
+            xpcall(dofile, debug.traceback, args.file)
          end
          -- #todo handle .orb files here
       else
