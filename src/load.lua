@@ -224,6 +224,9 @@ brParse
   : flag "-t --terse"
   : description "Terse output."
 
+brParse -- to generate shell completions
+  : add_complete()
+
 local orb_c = brParse : command "orb o"
                          : description "Literate compiler for Orb format."
 
