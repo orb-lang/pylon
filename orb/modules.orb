@@ -4,8 +4,6 @@ This module is responsible for:
 
 -  Building the =bridge.modules= database if it doesn't already exist
 
--  #todo Implementing =use=, our =require= replacement.
-
 -  Containing =br import=, so that our self-contained binary can populate the
    =bridge.modules= database from an included =.bundle= file.
 
@@ -31,11 +29,6 @@ local new_modules = false
 
 ** SQL for bridge.modules
 
-#Todo as soon as we switch to using the new knitter for orb files, make these
-      into genuine SQL blocks.
-
-#Todo this currently lives in =orb= as well, we should move it.
-
 
 #!lua
 local stmts = {}
@@ -46,8 +39,7 @@ local stmts = {}
 
 These SQL statements create the bridge.modules database.
 
-Currently, we have no migrations.  When we do, they will follow the pattern
-[[established in helm][@br/helm:helm/historian]].
+Currently, we have no migrations.  When we do, they will use the Arcivist.
 
 
 **** create_project_table
@@ -139,6 +131,11 @@ CREATE TABLE IF NOT EXISTS module (
 );
 #/sql
 
+#!sql @stmts.create_module_time_idx #asLua
+CREATE INDEX IF NOT EXISTS module_time_idx
+ON module (time DESC);
+#/sql
+
 
 ** Create bridge.modules
 
@@ -164,11 +161,8 @@ local function new_modules_db(conn_home)
       end
    end
    if conn then
-      conn:exec(stmts.create_project_table)
-      conn:exec(stmts.create_version_table)
-      conn:exec(stmts.create_bundle_table)
-      conn:exec(stmts.create_code_table)
-      conn:exec(stmts.create_module_table)
+      for name, stmt in stmts do
+      conn:exec(stmt)
    end
 
    return conn
@@ -200,6 +194,7 @@ to initializing bridge, that will probably be in pylon.
 For extra points, it should be in a SQL-specific =.orb= file, and transcluded
 into Lua source blocks, but we have several steps we need to accomplish before
 that is tractable.
+
 
 *** project
 
@@ -240,7 +235,7 @@ WHERE
 *** version
 
 
-**** get_version_snapshot
+**** get_version
 
 #!sql @get_version #asLua
 SELECT CAST (version.version_id AS REAL) FROM version
