@@ -324,6 +324,10 @@ helm_c
    : description "Restart helm and execute all lines from the last run."
 
 helm_c
+   : flag "-R --run"
+   : description "Edit the last run then restart."
+
+helm_c
    : option "-b --back"
    : description "Replay the last <number> lines."
    : convert(isint)
