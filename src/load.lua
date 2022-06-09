@@ -305,13 +305,6 @@ helm_c
       : args(1)
 
 helm_c
-   : option "-M --macro"
-     : description ( "Macro-record a session of the given name. "
-                  .. "Results of all lines will be accepted as correct." )
-      : convert(validate_session_name)
-      : args(1)
-
-helm_c
    : option "-n --new-session"
       : description "Begin a new, named session."
       : convert(validate_session_name)
@@ -330,7 +323,6 @@ helm_c
    : description "Replay the last <number> lines."
    : convert(isint)
    : args(1)
-
 
 helm_c
    : flag "-l --listen"

@@ -28,7 +28,7 @@ Building the submodules requires these additional tools:
     automake autotools-dev cmake libtool
 
 The pylon Makefile also uses `colordiff`, but the absence of this won't stop the build, it's just a convenience to print when Lua bytecode has
-changed between revisions.
+changed between revisions
 
 
 ## Building the br binary
@@ -61,7 +61,8 @@ mkdir -p ~/.local/share/bridge/
 Or any directory you would like, pointed to by the environment variable
 `$BRIDGE_HOME`.
 
-Then run
+Then create the following subdirectories: `helm`, `orb`, and `status`, in `$BRIDGE_HOME`, and
+run this from the project root:
 
 ```sh
 build/br
