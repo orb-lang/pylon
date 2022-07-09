@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright 2020 Sam Putman.
+# Copyright 2022 Sam Putman.
 
 # MIT LICENSE:
 
