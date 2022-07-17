@@ -239,58 +239,15 @@ orb_c
       : description "Launch the Orb server."
 
 orb_c
-   : command "knit"
-      : description "Knit the codex."
-
-orb_c
-   : command "weave"
-      : description "Weave the codex."
-
-orb_c
    : command "revert"
    : description "Revert the latest compiled changes in project."
    : option "-p --project"
       : description "Project to revert."
       : args(1)
 
-
-local orb_command_c = orb_c
-   : command "compile"
-      : description "Knits the codex and compiles the resulting sorcery files."
-      : help_vertical_space(1)
-
-orb_command_c
-  : option "-v --version"
-     : description "A (semantic) version string."
-     : convert(parse_version)
-     : args(1)
-
-orb_command_c
-  : option "-e --edition"
-     : description ( "A named edition:\n  special meaning applies to "
-                    .. "SESSION, CANDIDATE, and RELEASE.")
-     : args(1)
-
-orb_command_c
-  : option "-H --home"
-     : description ("URL to fetch versions of the project.")
-     : args(1)
-
-orb_command_c
-  : option "-R --repo"
-     : description ( "URL for the project's source repository.\n"
-                  .. "  Defaults to git remote 'origin'.")
-     : args(1)
-
-orb_command_c
-  : option "-W --website"
-     : description ("URL for the project's user-facing website:\n"
-                 .. "  documentation, tutorials, examples, etc.")
-     : args(1)
-
-orb_command_c
-  : option "-p --project"
-     : description "Name of project.  Defaults to name of home directory."
+orb_c
+   : command "scry"
+   : description "Performs analysis on knit Lua documents. Experimental!"
 
 
 local helm_c = brParse
