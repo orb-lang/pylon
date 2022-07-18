@@ -116,6 +116,32 @@ _Bridge.parse_version = parse_version
 
 
 
+local function dataload(lua_tab)
+   local f, err = loadstring("return " .. lua_tab)
+   if not f then
+      return f, err
+   end
+   setfenv(f, {})
+   local ok, maybe_tab = pcall(f)
+   if not ok then
+      return ok, maybe_tab
+   elseif type(maybe_tab) == 'table' then
+      return maybe_tab
+   else
+      return nil, "bad lua data of type " .. type(maybe_tab)
+   end
+end
+
+
+
+
+
+
+
+
+
+
+
 
 local function open_range_fn(open)
    return { tonumber(open:sub(1, -3)), "#" }
@@ -205,6 +231,8 @@ brParse
    : command_target "verb"
    : help_description_margin(25)
    : help_max_width(80)
+
+brParse
    : option "-f" "--file"
       : description "Run a file. Lua only, for now."
       : args(1)
@@ -212,13 +240,15 @@ brParse
 brParse : flag "--no-jit" : description "Turn off the JIT."
 
 brParse
-   : flag "--show-arguments"
+   : flag "--show-args"
       : description "Display the args table. For development purposes."
 
 brParse
-   : flag "--inject"
+   : option "--inject-args"
    : description ("Take a valid Lua table and add the contents to the parsed"
               .. " arguments.  Will print results as above.")
+   : convert(dataload)
+   : args(1)
 
 brParse
   : flag "-v --verbose"
@@ -599,6 +629,7 @@ if rawget(_G, "arg") ~= nil then
    else
       _Bridge.args = _Bridge.brParse:parse()
       local args = _Bridge.args
+
       -- no JIT? kill it and make it stay dead, like this:
       if args.no_jit then
          local jit = require "jit"
@@ -607,12 +638,26 @@ if rawget(_G, "arg") ~= nil then
          -- so it /stays dead/
          jit.on = function() end
       end
-      -- show_arguments is for development purposes
-      if args.show_arguments then
-         args.show_arguments = nil -- no reason to include this
+
+      -- inject any arguments
+      if args.inject_args then
+         local inject = args.inject_args
+         args.inject_args = nil
+         for k, v in pairs(inject) do
+            args[k] = v
+         end
+         -- print as below
          local ts = require "repr:repr" . ts
          print(ts(args))
       end
+
+      -- show_args is for development purposes
+      if args.show_args then
+         args.show_args = nil -- no reason to include this
+         local ts = require "repr:repr" . ts
+         print(ts(args))
+      end
+
       -- check for and dispatch verbosity flags
       if args.terse or (args.verbose > 0) then
          local S = require "status:status"
@@ -624,6 +669,8 @@ if rawget(_G, "arg") ~= nil then
             S.Chatty = false
          end
       end
+
+      -- load bridge verbs
       if verbs[args.verb] then
          verbs[args.verb](args)
       elseif args.file then
