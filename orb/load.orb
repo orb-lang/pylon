@@ -216,6 +216,11 @@ brParse
       : description "Display the args table. For development purposes."
 
 brParse
+   : flag "--inject"
+   : description ("Take a valid Lua table and add the contents to the parsed"
+              .. " arguments.  Will print results as above.")
+
+brParse
   : flag "-v --verbose"
     : description "Verbose output (vv for very verbose)."
     : count "0-2"
