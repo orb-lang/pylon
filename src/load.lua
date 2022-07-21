@@ -16,17 +16,29 @@
 
 
 
-_Bridge.retcode = 0
-
-
-
-
-
 
 
 
 
 do
+
+
+
+
+
+
+local bridge = require "bridge"
+
+
+
+do
+
+
+
+
+
+
+
 
 
 
@@ -104,7 +116,7 @@ local function parse_version(str)
    return ver
 end
 
-_Bridge.parse_version = parse_version
+bridge.parse_version = parse_version
 
 
 
@@ -166,7 +178,7 @@ local function parse_list(str)
    return list
 end
 
-_Bridge.parse_list = parse_list
+bridge.parse_list = parse_list
 
 
 
@@ -217,7 +229,7 @@ end
 
 local brParse = require "argparse" ()
 
-_Bridge.brParse = brParse
+bridge.brParse = brParse
 
 brParse
    : require_command (false)
@@ -246,7 +258,7 @@ brParse
 brParse
    : option "--inject-args"
    : description ("Take a valid Lua table and add the contents to the parsed"
-              .. " arguments.  Will print results as above.")
+              .. " arguments. Will print results as above.")
    : convert(dataload)
    : args(1)
 
@@ -577,8 +589,10 @@ function verbs.export(args)
    end
 end
 
+
+local import = assert(bridge.import)
+
 function verbs.import(args)
-   local import = assert(_Bridge.import)
    for _, file in ipairs(args.file) do
       import(file)
    end
@@ -627,8 +641,8 @@ if rawget(_G, "arg") ~= nil then
          print("Can't find a project " .. first_verb .. ".")
       end
    else
-      _Bridge.args = _Bridge.brParse:parse()
-      local args = _Bridge.args
+      bridge.args = bridge.brParse:parse()
+      local args = bridge.args
 
       -- no JIT? kill it and make it stay dead, like this:
       if args.no_jit then
@@ -693,5 +707,14 @@ end
 
 if uv.loop_alive() and (not uv.loop_mode()) then
    uv.run 'default'
+end
+
+
+
+
+
+
+
+
 end
 

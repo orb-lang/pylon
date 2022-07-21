@@ -889,51 +889,63 @@ function stmt_mt:value() T_open(self)
 end
 #/lua
 
+
+*** stmt:row() #NYI
+
+This would be really convenient, the one-row form of =:value=.
+
 #!lua
+function stmt_mt:row() T_open(self)
+   local row, header = self:stepkv()
+   self :clearbind() :reset()
+   return row, header
+end
+#/lua
 
-   -- Statement bind --------------------------------------------------------------
-   function stmt_mt:_bind1(i, v)
-     local code = set_column(self._ptr, v, i) -- Here indexing 1,N.
-     T_okcode(self._conn, code)
-     return self
-   end
+#!lua
+-- Statement bind --------------------------------------------------------------
+function stmt_mt:_bind1(i, v)
+  local code = set_column(self._ptr, v, i) -- Here indexing 1,N.
+  T_okcode(self._conn, code)
+  return self
+end
 
-   function stmt_mt:bind1(i, v) T_open(self)
-     return self:_bind1(i, v)
-   end
+function stmt_mt:bind1(i, v) T_open(self)
+  return self:_bind1(i, v)
+end
 
-   function stmt_mt:bind(...) T_open(self)
-     for i=1,select("#", ...) do self:_bind1(i, select(i, ...)) end
-     return self
-   end
+function stmt_mt:bind(...) T_open(self)
+  for i=1,select("#", ...) do self:_bind1(i, select(i, ...)) end
+  return self
+end
 
-   function stmt_mt:bindkv(t) T_open(self)
-      local ncol = ffi.C.sqlite3_bind_parameter_count(self._ptr)
-      for i = 1, ncol do
-         local param = ffi.C.sqlite3_bind_parameter_name(self._ptr, i)
-         -- params of form :NNN eg :123 can have holes, so we check for NULL:
-         if param ~= nil then
-            param = ffi.string(param):sub(2)
-            if t[param] then
-               self:_bind1(i, t[param])
-            end
+function stmt_mt:bindkv(t) T_open(self)
+   local ncol = ffi.C.sqlite3_bind_parameter_count(self._ptr)
+   for i = 1, ncol do
+      local param = ffi.C.sqlite3_bind_parameter_name(self._ptr, i)
+      -- params of form :NNN eg :123 can have holes, so we check for NULL:
+      if param ~= nil then
+         param = ffi.string(param):sub(2)
+         if t[param] then
+            self:_bind1(i, t[param])
          end
       end
-      return self
    end
+   return self
+end
 
-   function stmt_mt:clearbind() T_open(self)
-     local code = ffi.C.sqlite3_clear_bindings(self._ptr)
-     T_okcode(self._conn, code)
-     return self
-   end
+function stmt_mt:clearbind() T_open(self)
+  local code = ffi.C.sqlite3_clear_bindings(self._ptr)
+  T_okcode(self._conn, code)
+  return self
+end
 
-   stmt_ct = ffi.metatype([[struct {
-     sqlite3_stmt* _ptr;
-     bool          _closed;
-     sqlite3*      _conn;
-     int32_t       _code;
-   }]], stmt_mt)
+stmt_ct = ffi.metatype([[struct {
+  sqlite3_stmt* _ptr;
+  bool          _closed;
+  sqlite3*      _conn;
+  int32_t       _code;
+}]], stmt_mt)
 #/lua
 
 #!lua

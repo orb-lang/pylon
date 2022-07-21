@@ -9,69 +9,8 @@ library.
 Anything we want to put in the global namespace goes here.
 
 
-*** _Bridge table
+**** Below here: loader.orb
 
-This is what we test for to see if we're inside =bridge=, and where we put
-things that we'll need later.
-
-#Deprecated we're turning this into a =package.preload=
-
-#!lua
-local _Bridge = {}
--- remove this to vanish _Bridge from _G
--- using rawset here to express intention
-rawset(_G, "_Bridge", _Bridge)
-#/lua
-
-
-*** package.preload["bridge"]
-
-A closure to return the =_Bridge= table, which will no longer be global.
-
-#!lua
-package.preload.bridge = function() return _Bridge end
-#/lua
-
-
-*** 5.2 compatibility
-
-  Provides the function =pack= to the global namespace, for handling variadic
-arguments.
-
-
-**** pack(...)
-
-#!lua
-pack = table.pack
-#/lua
-
-
-*** Table Extensions
-
-  =table.clear= and =table.new= are a stock part of LuaJIT, which is not
-namespaced by default for compatibility reasons.
-
-=table.clear(tab)= sets all values to =nil=, while =table.new(narr, nrec)=
-preallocates the given amount of slots in the array and record portions of the
-table.
-
-The openresty fork of LuaJIT provides additional functions, [[documented here]
-[https://github.com/openresty/luajit2#new-lua-apis]].
-
-#!lua
-require "table.clear"
-require "table.new"
-require "table.isempty"
-require "table.isarray"
-require "table.nkeys"
-#/lua
-
-Note that there's a native =table.clone=, and we favor a pure-lua version with
-more control, but to get the fast jittable version do this:
-
-#!lua #noKnit
-require "table.clone"
-#/lua
 
 ** Loader
 
@@ -80,39 +19,14 @@ bytecode and associated metadata.
 
 Here we provide the loader, used by =require=.
 
-
-**** do block
-
-Since we're loading it straight from the binary, wrap it in a =do= block.
-
-#!lua
-do
-#/lua
-
-
-**** bridge_modules
-
-#!lua
-_Bridge.bridge_modules = { }
-_Bridge.loaded = { }
-_Bridge.load_hashes = { }
-#/lua
-
-
-**** bridge.is_tty
-
-Tells us if we're living in TTY land, so we can decide things like whether to
-colorize.
-
-#!lua
-_Bridge.is_tty = require "luv" . guess_handle(1) == 'tty'
-#/lua
-
-
 *** SQL statements
 
 For now, we're just going to load the latest compiled version of a given
 module.
+
+#!lua
+do
+#/lua
 
 #!lua
 local bytecode_by_module = [[
@@ -139,66 +53,12 @@ ORDER BY module.time desc limit 1
 ]]
 #/lua
 
+**** spit check for bridge.orb
 
-*** _openBridgeModules()
-
-This either opens =bridge.modules=, returning a =conn=, or failing that
-returns =nil=.
-
-If we get a conn, we append a =package.loaders= with it, otherwise we do
-nothing.  Creating =bridge.modules= in the event it doesn't exist is the
-responsibility of =orb=, which contains the compiler.
-
-First, let's get a plausible filename:
+Normally not needed:
 
 #!lua
-local home_dir = os.getenv "HOME"
-local bridge_modules = os.getenv "BRIDGE_MODULES"
-local bridge_home = os.getenv "BRIDGE_HOME"
-
-   -- use BRIDGE_HOME if we have it
-if not bridge_home then
-   local xdg_data_home = os.getenv "XDG_DATA_HOME"
-   if xdg_data_home then
-      bridge_home = xdg_data_home .. "/bridge"
-   else
-      bridge_home = home_dir .. "/.local/share/bridge"
-   end
-end
-
-if not bridge_modules then
-   bridge_modules = bridge_home.. "/bridge.modules"
-end
-
-_Bridge.bridge_home = bridge_home
-_Bridge.bridge_modules_home = bridge_modules
-#/lua
-
-Add the conn to _Bridge:
-
-#!lua
-local ok, bridge_conn = pcall(sql.open, bridge_modules, "rw")
-if ok then
-   _Bridge.modules_conn = bridge_conn
-else
-   print "no bridge.modules"
-end
-#/lua
-
-
-**** bootstrap
-
-Sometimes we need to regenerate a database, since SQLite migration techniques
-are quite limited.
-
-For now, hard-coded:
-
-#!lua
-local bridge_strap = home_dir .. "/.local/share/bridge/~bridge.modules"
-local ok, strap_conn = pcall(sql.open, bridge_strap, "rw")
-if ok then
-   _Bridge.bootstrap_conn = strap_conn
-end
+assert(require "bridge" . bridge_home)
 #/lua
 
 
@@ -303,14 +163,9 @@ We want the loaders after the =package.preload= loader, so we put them in
 index 2:
 
 #!lua
-if _Bridge.bootstrap_conn then
-   table.insert(package.loaders, 2, loaderGen(_Bridge.bootstrap_conn))
-end
-if _Bridge.modules_conn then
-   table.insert(package.loaders, 2, loaderGen(_Bridge.modules_conn))
-end
+assert(_Bridge.modules_conn, "missing bridge modules conn!")
+table.insert(package.loaders, 2, loaderGen(_Bridge.modules_conn))
 #/lua
-
 
 
 **** end do block

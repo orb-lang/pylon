@@ -17,67 +17,6 @@
 
 
 
-local _Bridge = {}
--- remove this to vanish _Bridge from _G
--- using rawset here to express intention
-rawset(_G, "_Bridge", _Bridge)
-
-
-
-
-
-
-
-
-package.preload.bridge = function() return _Bridge end
-
-
-
-
-
-
-
-
-
-
-
-
-pack = table.pack
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-require "table.clear"
-require "table.new"
-require "table.isempty"
-require "table.isarray"
-require "table.nkeys"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -87,31 +26,6 @@ require "table.nkeys"
 
 
 do
-
-
-
-
-
-
-_Bridge.bridge_modules = { }
-_Bridge.loaded = { }
-_Bridge.load_hashes = { }
-
-
-
-
-
-
-
-
-
-_Bridge.is_tty = require "luv" . guess_handle(1) == 'tty'
-
-
-
-
-
-
 
 
 
@@ -144,61 +58,7 @@ ORDER BY module.time desc limit 1
 
 
 
-
-
-
-
-
-
-
-
-local home_dir = os.getenv "HOME"
-local bridge_modules = os.getenv "BRIDGE_MODULES"
-local bridge_home = os.getenv "BRIDGE_HOME"
-
-   -- use BRIDGE_HOME if we have it
-if not bridge_home then
-   local xdg_data_home = os.getenv "XDG_DATA_HOME"
-   if xdg_data_home then
-      bridge_home = xdg_data_home .. "/bridge"
-   else
-      bridge_home = home_dir .. "/.local/share/bridge"
-   end
-end
-
-if not bridge_modules then
-   bridge_modules = bridge_home.. "/bridge.modules"
-end
-
-_Bridge.bridge_home = bridge_home
-_Bridge.bridge_modules_home = bridge_modules
-
-
-
-
-
-local ok, bridge_conn = pcall(sql.open, bridge_modules, "rw")
-if ok then
-   _Bridge.modules_conn = bridge_conn
-else
-   print "no bridge.modules"
-end
-
-
-
-
-
-
-
-
-
-
-
-local bridge_strap = home_dir .. "/.local/share/bridge/~bridge.modules"
-local ok, strap_conn = pcall(sql.open, bridge_strap, "rw")
-if ok then
-   _Bridge.bootstrap_conn = strap_conn
-end
+assert(require "bridge" . bridge_home)
 
 
 
@@ -303,13 +163,8 @@ end
 
 
 
-if _Bridge.bootstrap_conn then
-   table.insert(package.loaders, 2, loaderGen(_Bridge.bootstrap_conn))
-end
-if _Bridge.modules_conn then
-   table.insert(package.loaders, 2, loaderGen(_Bridge.modules_conn))
-end
-
+assert(_Bridge.modules_conn, "missing bridge modules conn!")
+table.insert(package.loaders, 2, loaderGen(_Bridge.modules_conn))
 
 
 

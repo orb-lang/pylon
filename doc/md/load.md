@@ -9,16 +9,10 @@
 
 - Run the resulting behaviors
 
-
-#### bridge\.retcode
-
-It's possible to exit bridge "with prejudice" at any time using `os.exit`\.
-
-We provide `bridge.retcode` to allow applications to signal an erroneous exit,
-without having to quit\.
+### Unglobe bridge
 
 ```lua
-_Bridge.retcode = 0
+_Bridge = nil
 ```
 
 
@@ -32,6 +26,16 @@ do
 ```
 
 
+#### get bridge table right back
+
+```lua
+local bridge = require "bridge"
+```
+
+```lua
+do
+```
+
 #### make \_G strict
 
 We make assignments to `_G` invalid outside of the outer context, and forbid
@@ -39,6 +43,14 @@ We make assignments to `_G` invalid outside of the outer context, and forbid
 
 For now, at least, we also nil out the code which does this\.  It may make more
 sense to add it to a preload package\.
+
+Which would just look like this:
+
+```lua
+package.preload.strict = function() return stricture end
+```
+
+Which I'll leave in potentia for now\.
 
 ```lua
 stricture(nil,_G,{_PROMPT=true,__global=true})
@@ -106,7 +118,7 @@ local function parse_version(str)
    return ver
 end
 
-_Bridge.parse_version = parse_version
+bridge.parse_version = parse_version
 ```
 
 
@@ -168,7 +180,7 @@ local function parse_list(str)
    return list
 end
 
-_Bridge.parse_list = parse_list
+bridge.parse_list = parse_list
 ```
 
 
@@ -219,7 +231,7 @@ end
 ```lua
 local brParse = require "argparse" ()
 
-_Bridge.brParse = brParse
+bridge.brParse = brParse
 
 brParse
    : require_command (false)
@@ -248,7 +260,7 @@ brParse
 brParse
    : option "--inject-args"
    : description ("Take a valid Lua table and add the contents to the parsed"
-              .. " arguments.  Will print results as above.")
+              .. " arguments. Will print results as above.")
    : convert(dataload)
    : args(1)
 
@@ -579,8 +591,10 @@ function verbs.export(args)
    end
 end
 
+
+local import = assert(bridge.import)
+
 function verbs.import(args)
-   local import = assert(_Bridge.import)
    for _, file in ipairs(args.file) do
       import(file)
    end
@@ -629,8 +643,8 @@ if rawget(_G, "arg") ~= nil then
          print("Can't find a project " .. first_verb .. ".")
       end
    else
-      _Bridge.args = _Bridge.brParse:parse()
-      local args = _Bridge.args
+      bridge.args = bridge.brParse:parse()
+      local args = bridge.args
 
       -- no JIT? kill it and make it stay dead, like this:
       if args.no_jit then
@@ -695,6 +709,15 @@ If there's anything pending in uv\-land, we may as well run it\.
 ```lua
 if uv.loop_alive() and (not uv.loop_mode()) then
    uv.run 'default'
+end
+```
+
+
+### final do block ends
+
+Releases bridge table\.
+
+```lua
 end
 ```
 

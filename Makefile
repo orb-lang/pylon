@@ -40,7 +40,7 @@ linux:
 macosx:
 	$(MAKE) OS_BUILDOPTS="-pagezero_size 10000 -image_base 100000000 -funwind-tables"
 
-build/core.o: src/core.c build/load_char.h build/sql.h build/preamble.h build/afterward.h build/argparse.h build/modules.h
+build/core.o: src/core.c build/load_char.h build/sql.h build/bridge.h build/preamble.h build/afterward.h build/argparse.h build/modules.h
 	$(CC) -c -O3 -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/core.c -o build/core.o -Wall -Wextra -pedantic -std=c99
 
 build/load_char.h: src/load.lua src/compileToHeader.lua
@@ -52,6 +52,11 @@ build/sql.h: src/sql.lua src/compileToHeader.lua
 	build/luajit src/compileToHeader.lua LUA_SQL src/sql.lua build/~sql.h
 	- diff build/sql.h build/~sql.h
 	mv build/~sql.h build/sql.h
+
+build/bridge.h: src/bridge.lua src/compileToHeader.lua
+	build/luajit src/compileToHeader.lua LUA_BRIDGE src/bridge.lua build/~bridge.h
+	- diff build/bridge.h build/~bridge.h
+	mv build/~bridge.h build/bridge.h
 
 build/preamble.h: src/preamble.lua src/compileToHeader.lua
 	build/luajit src/compileToHeader.lua LUA_PREAMBLE src/preamble.lua build/~preamble.h
@@ -79,6 +84,8 @@ build/afterward.h: src/afterward.lua src/compileToHeader.lua
 scr/core.c: orb/core.orb
 	- br o
 src/sql.lua: orb/sql.orb
+	- br o
+src/bridge.lua: orb/bridge.orb
 	- br o
 src/load.lua: orb/load.orb
 	- br o
