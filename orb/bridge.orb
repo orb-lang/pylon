@@ -4,11 +4,11 @@ Moving the bridge table here, wiring it in, then getting to work on a
 metatable to handle the =.green= field.
 
 
-*** 5.2 compatibility (move to preamble)
+** 5.2 compatibility (move to preamble)
 
 
 *Note: we need to split preamble and put bridge in the middle*
-*This stuff belongs in preamble*
+*This stuff belongs in preamble, preamble belongs in loader, shoganai*
 
   Provides the function =pack= to the global namespace, for handling variadic
 arguments.
@@ -49,6 +49,21 @@ require "table.clone"
 #/lua
 
 
+** bridge
+
+The bridge table lurks in the backround, providing a window into matters
+bridgy, and offering a global state of last resort.
+
+Especially at this point in development, it is broadly useful to assign data
+of one sort or another to the bridge table, some of which might end up in this
+file someday.
+
+It's time to start offering this affordance, while protecting the core state
+from less-than-determined meddling.
+
+So we'll be adding a dummy table as part of getting the Green protocol working.
+
+
 **** do block
 
 Since we're loading it straight from the binary, wrap it in a =do= block.
@@ -63,6 +78,17 @@ do
 This is what we test for to see if we're inside =bridge=, and where we put
 things that we'll need later.
 
+
+**** expect and protect
+
+We need to expect certain keys, and protect a superset of those keys from
+being shadowed.
+
+We'll do this mutably, with a =_expect= key / =true= map, copying the keys
+over to =protect=, an upvalued table.
+
+We'll add a line to assert that _expect is empty, and delete the field before
+the first GC run in =load=.
 
 
 *** _Bridge global
@@ -86,15 +112,6 @@ without having to quit.
 
 #!lua
 bridge.retcode = 0
-#/lua
-
-
-*** package.preload["bridge"]
-
-A closure to return the =bridge= table, which will no longer be global.
-
-#!lua
-package.preload.bridge = function() return bridge end
 #/lua
 
 
@@ -190,6 +207,33 @@ local base = nil
 
 #!lua
 local No = newproxy()
+#/lua
+
+
+**** Notes on No
+
+We need an 'active false' in some circumstances, such as round-tripping JSON,
+caring about NULL values in SQL (for instance, wanting results as separate
+array columns).
+
+Lua, and this is surely good for performance, offers no =__falsy= metamethod,
+so we can't just =if thing then= and skip the branch if thing is No.
+
+But! we can make =if No(thing)= return true *iff* thing is No.
+
+Or if =thing= is =false= or =nil=! So that's a possibility.  And of course, if
+we say ===thing == No=== we have a test for No only, which isn't special in
+itself, but it means we can add No to the Falsy Cinematic Universe as long as
+we use it alone in situations where it may occur.
+
+#!lua #noKnit
+local function _noCall(_No, it)
+   if (not it) or it == _No then
+      return true
+   else
+      return false
+   end
+end
 #/lua
 
 #!lua
@@ -292,6 +336,16 @@ end
 #/lua
 
 
+*** package.preload["bridge"]
+
+A closure to return the =bridge= table, which will no longer be global.
+
+We're doing this last, to make it easier to add the additional machinery to
+the bridge table.
+
+#!lua
+package.preload.bridge = function() return bridge end
+#/lua
 
 
 *** end of do block

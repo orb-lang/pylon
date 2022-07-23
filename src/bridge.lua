@@ -92,15 +92,6 @@ bridge.retcode = 0
 
 
 
-
-
-package.preload.bridge = function() return bridge end
-
-
-
-
-
-
 bridge.bridge_modules = { }
 bridge.loaded = { }
 bridge.load_hashes = { }
@@ -291,6 +282,16 @@ local function _integer(n, state)
 end
 
 
+
+
+
+
+
+
+
+
+
+package.preload.bridge = function() return bridge end
 
 
 
