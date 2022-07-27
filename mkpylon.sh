@@ -95,7 +95,7 @@ enter deps/sqlite
   mkdir -p build
   cd build
   ../configure
-  make XCFLAGS=-DSQLITE_ENABLE_JSON1
+  make XCFLAGS=-DSQLITE_ENABLE_JSON1 XCFLAGS+=-DSQLITE_CORE
 leave
 # move our artifacts over to pylon/build
 cp deps/sqlite/build/sqlite3.o build/

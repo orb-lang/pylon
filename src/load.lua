@@ -397,6 +397,10 @@ session_c
    : convert(parse_list)
    : args(1)
 
+session_c
+   : option "-S" "--show-results"
+   : description "Print all results for premises."
+
 local session_list_c = session_c
                           : command "list l"
                           : description ("List (accepted) sessions. "
