@@ -400,7 +400,7 @@ session_c
    : args(1)
 
 session_c
-   : option "-S" "--show-results"
+   : flag "-S" "--show-results"
    : description "Print all results for premises."
 
 local session_list_c = session_c
