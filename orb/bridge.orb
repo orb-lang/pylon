@@ -49,6 +49,31 @@ require "table.clone"
 #/lua
 
 
+** Extra Global Functions
+
+I've been very stingy but as a result, the preamble of every module is
+exceedingly verbose.  So, after all this time, we add:
+
+
+*** use(... :s): Any
+
+This is going to streamline a lot of code.
+
+=use= takes as many strings as given and requires them returning each.
+
+It's a beautiful and terse piece of code:
+
+#!lua
+local require = require
+
+function use(...)
+   local req = ...
+   if not req then return end
+   return require(req), use(select(2, ...))
+end
+#/lua
+
+
 ** bridge
 
 The bridge table lurks in the backround, providing a window into matters

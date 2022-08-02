@@ -1,0 +1,379 @@
+# Bridge Table
+
+Moving the bridge table here, wiring it in, then getting to work on a
+metatable to handle the `.green` field\.
+
+
+## 5\.2 compatibility \(move to preamble\)
+
+
+**Note: we need to split preamble and put bridge in the middle**
+**This stuff belongs in preamble, preamble belongs in loader, shoganai**
+
+  Provides the function `pack` to the global namespace, for handling variadic
+arguments\.
+
+
+#### pack\(\.\.\.\)
+
+```lua
+pack = table.pack
+```
+
+
+### Table Extensions
+
+  `table.clear` and `table.new` are a stock part of LuaJIT, which is not
+namespaced by default for compatibility reasons\.
+
+`table.clear(tab)` sets all values to `nil`, while `table.new(narr, nrec)`
+preallocates the given amount of slots in the array and record portions of the
+table\.
+
+The openresty fork of LuaJIT provides additional functions, [documented here](https://github.com/openresty/luajit2#new-lua-apis)\.
+
+```lua
+require "table.clear"
+require "table.new"
+require "table.isempty"
+require "table.isarray"
+require "table.nkeys"
+```
+
+Note that there's a native `table.clone`, and we favor a pure\-lua version with
+more control, but to get the fast jittable version do this:
+
+```lua
+require "table.clone"
+```
+
+
+## Extra Global Functions
+
+I've been very stingy but as a result, the preamble of every module is
+exceedingly verbose\.  So, after all this time, we add:
+
+
+### use\(\.\.\. :s\): Any
+
+This is going to streamline a lot of code\.
+
+`use` takes as many strings as given and requires them returning each\.
+
+It's a beautiful and terse piece of code:
+
+```lua
+local require = require
+
+function use(...)
+   local req = ...
+   if not req then return end
+   return require(req), use(select(2, ...))
+end
+```
+
+
+## bridge
+
+The bridge table lurks in the backround, providing a window into matters
+bridgy, and offering a global state of last resort\.
+
+Especially at this point in development, it is broadly useful to assign data
+of one sort or another to the bridge table, some of which might end up in this
+file someday\.
+
+It's time to start offering this affordance, while protecting the core state
+from less\-than\-determined meddling\.
+
+So we'll be adding a dummy table as part of getting the Green protocol working\.
+
+
+#### do block
+
+Since we're loading it straight from the binary, wrap it in a `do` block\.
+
+```lua
+do
+```
+
+
+### bridge table
+
+This is what we test for to see if we're inside `bridge`, and where we put
+things that we'll need later\.
+
+
+#### expect and protect
+
+We need to expect certain keys, and protect a superset of those keys from
+being shadowed\.
+
+We'll do this mutably, with a `_expect` key / `true` map, copying the keys
+over to `protect`, an upvalued table\.
+
+We'll add a line to assert that \_expect is empty, and delete the field before
+the first GC run in `load`\.
+
+
+### \_Bridge global
+
+We will retain this to pass the global along to `load.orb`, but it's not
+intended to remain in the global environment once things get running\.
+
+```lua
+local bridge = {}
+
+-- using rawset here to express intention
+rawset(_G, "_Bridge", bridge)
+```
+
+#### bridge\.retcode
+
+It's possible to exit bridge "with prejudice" at any time using `os.exit`\.
+
+We provide `bridge.retcode` to allow applications to signal an erroneous exit,
+without having to quit\.
+
+```lua
+bridge.retcode = 0
+```
+
+
+#### bridge\_modules
+
+```lua
+bridge.bridge_modules = { }
+bridge.loaded = { }
+bridge.load_hashes = { }
+```
+
+
+#### bridge\.is\_tty
+
+Tells us if we're living in TTY land, so we can decide things like whether to
+colorize\.
+
+```lua
+bridge.is_tty = require "luv" . guess_handle(1) == 'tty'
+```
+
+
+
+### \_openBridgeModules\(\)
+
+This either opens `bridge.modules`, returning a `conn`, or failing that
+returns `nil`\.
+
+If we get a conn, we append a `package.loaders` with it, otherwise we do
+nothing\.  Creating `bridge.modules` in the event it doesn't exist is the
+responsibility of `orb`, which contains the compiler\.
+
+First, let's get a plausible filename:
+
+```lua
+local home_dir = os.getenv "HOME"
+local bridge_modules = os.getenv "BRIDGE_MODULES"
+local bridge_home = os.getenv "BRIDGE_HOME"
+
+   -- use BRIDGE_HOME if we have it
+if not bridge_home then
+   local xdg_data_home = os.getenv "XDG_DATA_HOME"
+   if xdg_data_home then
+      bridge_home = xdg_data_home .. "/bridge"
+   else
+      bridge_home = home_dir .. "/.local/share/bridge"
+   end
+end
+
+if not bridge_modules then
+   bridge_modules = bridge_home.. "/bridge.modules"
+end
+
+bridge.bridge_home = bridge_home
+bridge.bridge_modules_home = bridge_modules
+```
+
+Add the conn to bridge:
+
+```lua
+local ok, bridge_conn = pcall(sql.open, bridge_modules, "rw")
+if ok then
+   bridge.modules_conn = bridge_conn
+else
+   print "no bridge.modules"
+end
+```
+
+
+### Lean Green State Machine
+
+The `.green` field has a restricted set of valid states, each with a subset of
+transitions it supports\.
+
+All valid state transitions return `true`\.
+
+All invalid state transitions return `nil, reason`\.
+
+`.green` begins at `nil`, and allows these transitions:
+
+`nil (nil) -> nil`
+`nil (true) -> true`
+`nil (false) -> false`
+`nil (1) -> integer<1>, base -> nil`
+
+Base is a second local state machine:
+
+```lua
+local base = nil
+```
+
+`nil` itself being meaningful, we use a unique to signal no:
+
+```lua
+local No = newproxy()
+```
+
+
+#### Notes on No
+
+We need an 'active false' in some circumstances, such as round\-tripping JSON,
+caring about NULL values in SQL \(for instance, wanting results as separate
+array columns\)\.
+
+Lua, and this is surely good for performance, offers no `__falsy` metamethod,
+so we can't just `if thing then` and skip the branch if thing is No\.
+
+But\! we can make `if No(thing)` return true **iff** thing is No\.
+
+Or if `thing` is `false` or `nil`\! So that's a possibility\.  And of course, if
+we say `thing == No` we have a test for No only, which isn't special in
+itself, but it means we can add No to the Falsy Cinematic Universe as long as
+we use it alone in situations where it may occur\.
+
+```lua
+local function _noCall(_No, it)
+   if (not it) or it == _No then
+      return true
+   else
+      return false
+   end
+end
+```
+
+```lua
+local function _nil(state)
+   if state == nil or
+      state == true or
+      state == false then
+      return state
+   elseif state == 1 then
+      base = nil
+      return 1
+   else
+      return No, "illegal transition nil -> " .. tostring(state)
+   end
+end
+```
+
+The `true` state allows these transitions:
+
+`true (true) -> true`
+`true (false) -> false`
+`true (nil) -> nil`
+`true (1) -> integer<1>, base -> true`
+
+```lua
+local function _true(state)
+   if state == nil or
+      state == true or
+      state == false then
+      return state
+   elseif state == 1 then
+      base = true
+      return 1
+   else
+      return No, "illegal transition true -> " .. tostring(state)
+   end
+end
+```
+
+While `false` allows only these:
+
+`false (false) -> false`
+`false (true) -> true`
+
+```lua
+local function _false(state)
+   if state == true or
+      state == false then
+      return state
+   else
+      return No, "illegal transition false -> " .. tostring(state)
+   end
+end
+```
+
+We don't allow `false (nil) -> nil` because the difference between `nil` state
+and `false` state may be accessed by passing `true`\.
+
+In English, passing `nil` lets auto\-threading take over, which is also the
+case with `true`\.  It is of course possible to get to `nil` with `true,nil`,
+if that is the user intention\.
+
+Last we have the integer states:
+
+`integer<n> (1) -> integer<n+1>`
+`integer<n> (-1) -> 0 -> base`
+`integer<n> (-1) -> n > 0 -> integer<n-1>`
+`integer<n> (true) -> integer<n>, base -> true`
+`integer<n> (nil) -> integer<n>, base -> nil`
+`integer<n> (false) -> false`
+
+What I mean by `base` above is a second cached state, one of `true` or `nil`
+which is only true in the `integer`, and only sometimes\.  This is what the
+protocol returns to when the count reaches 0\.
+
+```lua
+local function _integer(n, state)
+   if state == 1 then
+      return n + 1
+   elseif state == - 1 then
+      if n > 1 then
+         return n - 1
+      elseif n == 1 then
+         return base
+      else
+         return No, "illegal n" .. tostring(n)
+      end
+   elseif state == true then
+      base = true
+      return n
+   elseif state == nil then
+      base = nil
+      return n
+   elseif state == false then
+      return false
+   else
+      return No, "illegal transition integer<n> -> " .. tostring(n)
+   end
+end
+```
+
+
+### package\.preload\["bridge"\]
+
+A closure to return the `bridge` table, which will no longer be global\.
+
+We're doing this last, to make it easier to add the additional machinery to
+the bridge table\.
+
+```lua
+package.preload.bridge = function() return bridge end
+```
+
+
+### end of do block
+
+```lua
+end
+```

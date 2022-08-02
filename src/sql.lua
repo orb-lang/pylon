@@ -1351,6 +1351,19 @@ end
 
 
 
+
+
+
+
+
+local _sql = sqlayer
+package.preload.sql = function() return _sql end
+
+
+
+
+
+
 jit.on()
 end
 sql = sqlayer

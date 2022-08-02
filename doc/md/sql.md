@@ -1348,6 +1348,19 @@ until it succeeds\.
 ```
 
 
+### Protect against running twice
+
+There's something I'm not getting about the loaded C array code, but it
+amounts to a risk that `require "sql"` will execute this file again\.
+
+This is unlikely the ideal way to handle this, but it does handle it:
+
+```lua
+local _sql = sqlayer
+package.preload.sql = function() return _sql end
+```
+
+
 #### End Closure and Add =sql= to \_G
 
 ```lua
