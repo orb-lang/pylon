@@ -215,6 +215,7 @@ end
 
 
 
+local _green = nil
 
 
 
@@ -225,7 +226,14 @@ end
 
 
 
-local base = nil
+
+
+
+
+
+
+
+local _base = nil
 
 
 
@@ -335,29 +343,71 @@ end
 
 
 
-local function _integer(n, state)
+local function _integer(state)
    if state == 1 then
-      return n + 1
+      return _green + 1
    elseif state == - 1 then
-      if n > 1 then
-         return n - 1
-      elseif n == 1 then
-         return base
+      if _green > 1 then
+         return _green - 1
+      elseif _green == 1 then
+         return _base
       else
-         return No, "illegal n" .. tostring(n)
+         return No, "illegal n " .. tostring(n)
       end
    elseif state == true then
-      base = true
-      return n
+      _base = true
+      return _green
    elseif state == nil then
-      base = nil
-      return n
+      _base = nil
+      return _green
    elseif state == false then
       return false
    else
       return No, "illegal transition integer<n> -> " .. tostring(n)
    end
 end
+
+
+
+
+
+
+
+
+local _S = _nil
+
+local function greenIndex(state)
+   -- we /can/ use the error messages but don't need them
+   local transit = _S(state)
+
+   if transit == nil then
+      _S = _nil
+   elseif transit == true then
+      _S = _true
+   elseif transit == false then
+      _S = _false
+   elseif type(transit) == 'number' then
+      _S = _Integer
+   end
+   if transit ~= No then
+      _green = transit
+   end
+end
+
+
+
+
+
+
+
+
+bridge.green_states = { Nil = _nil,
+                        True = _true,
+                        False = _false,
+                        greenIndex = greenIndex,
+                        Integer = _integer }
+
+
 
 
 

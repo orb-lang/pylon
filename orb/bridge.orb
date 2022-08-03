@@ -209,11 +209,18 @@ end
 *** Lean Green State Machine
 
 The =.green= field has a restricted set of valid states, each with a subset of
-transitions it supports.
+transitions it supports.  Any assignment to =bridge.green= which doesn't
+correspond to a valid transition is ignored.
+
+This is kept on an upvalue which begins in the =nil= state.
+
+#!lua
+local _green = nil
+#/lua
 
 All valid state transitions return =true=.
 
-All invalid state transitions return =nil, reason=.
+All invalid state transitions return =No, reason=.
 
 =.green= begins at =nil=, and allows these transitions:
 
@@ -222,10 +229,11 @@ All invalid state transitions return =nil, reason=.
 =nil (false) -> false=
 =nil (1) -> integer<1>, base -> nil=
 
-Base is a second local state machine:
+Base is a second local state, only accessible via the Green state machine,
+with valid states =(nil|true)=.
 
 #!lua
-local base = nil
+local _base = nil
 #/lua
 
 =nil= itself being meaningful, we use a unique to signal no:
@@ -235,7 +243,7 @@ local No = newproxy()
 #/lua
 
 
-**** Notes on No
+**** Notes on No #NYI
 
 We need an 'active false' in some circumstances, such as round-tripping JSON,
 caring about NULL values in SQL (for instance, wanting results as separate
@@ -335,23 +343,23 @@ which is only true in the =integer=, and only sometimes.  This is what the
 protocol returns to when the count reaches 0.
 
 #!lua
-local function _integer(n, state)
+local function _integer(state)
    if state == 1 then
-      return n + 1
+      return _green + 1
    elseif state == - 1 then
-      if n > 1 then
-         return n - 1
-      elseif n == 1 then
-         return base
+      if _green > 1 then
+         return _green - 1
+      elseif _green == 1 then
+         return _base
       else
-         return No, "illegal n" .. tostring(n)
+         return No, "illegal n " .. tostring(n)
       end
    elseif state == true then
-      base = true
-      return n
+      _base = true
+      return _green
    elseif state == nil then
-      base = nil
-      return n
+      _base = nil
+      return _green
    elseif state == false then
       return false
    else
@@ -359,6 +367,48 @@ local function _integer(n, state)
    end
 end
 #/lua
+
+
+*** The Machine
+
+We call this from a general-purpose __newindex function.
+
+#!lua
+local _S = _nil
+
+local function greenIndex(state)
+   -- we /can/ use the error messages but don't need them
+   local transit = _S(state)
+
+   if transit == nil then
+      _S = _nil
+   elseif transit == true then
+      _S = _true
+   elseif transit == false then
+      _S = _false
+   elseif type(transit) == 'number' then
+      _S = _Integer
+   end
+   if transit ~= No then
+      _green = transit
+   end
+end
+#/lua
+
+
+***** block to test the state transitions
+
+It's not like they'll break or change so this will normally be commented out.
+
+#!lua
+bridge.green_states = { Nil = _nil,
+                        True = _true,
+                        False = _false,
+                        greenIndex = greenIndex,
+                        Integer = _integer }
+#/lua
+
+
 
 
 *** package.preload["bridge"]
