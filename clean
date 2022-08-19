@@ -15,6 +15,7 @@ fi
 
 if cd deps/sqlite ; then
   rm -rf build
+  make clean
   # for some reason the out-of-tree build still modifies this...
   git checkout .
   # ...and creates/leaves this directory behind

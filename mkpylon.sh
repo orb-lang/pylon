@@ -34,9 +34,11 @@ set -e
 # slightly more readable paths (no more cd ../../..(/..?) )
 basedir="$PWD"
 enter() {
+  echo "entering $1"
   cd "$1"
 }
 leave() {
+  echo "leaving $1"
   cd "$basedir"
 }
 
@@ -60,7 +62,7 @@ git submodule update --init --recursive
 
 enter deps/luajit/ # symlink into luv's deps
   # pin a plausible commit hash until unwind-protect bug is addressed -@atman
-  git checkout 553bacf5e67ebacf5d31f07d374386bd025de21e
+  git checkout v2.1-agentzh
 leave
 
 
@@ -78,8 +80,8 @@ cp deps/luv/build/deps/libuv/libuv_a.a build/libuv.a
 
 ## 2. (re)compile LuaJIT in amalgam (all-in-one-file) mode
 enter deps/luajit
-  git checkout 553bacf5e67ebacf5d31f07d374386bd025de21e
-  make amalg XCFLAGS=-DLUAJIT_ENABLE_LUA52COMPAT XCFLAGS+=-DLUA_USE_ASSERT
+  git checkout v2.1-agentzh
+  make amalg XCFLAGS=-DLUAJIT_ENABLE_LUA52COMPAT # XCFLAGS+=-DLUA_USE_ASSERT
   # Note: turn off the USE_ASSERT once we either figure out what's crashing,
   # Or determine that it isn't helping.
 leave

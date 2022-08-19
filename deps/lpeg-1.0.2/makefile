@@ -33,7 +33,7 @@ linux:
 
 # For Mac OS
 macosx:
-	$(MAKE) lpeg.so "DLLFLAGS = -bundle -undefined dynamic_lookup"
+	$(MAKE) lpeg.so "DLLFLAGS = -bundle -undefined dynamic_lookup -DLPEG_DEBUG=1"
 
 lpeg.so: $(FILES)
 	env $(CC) $(DLLFLAGS) $(FILES) -o lpeg.so

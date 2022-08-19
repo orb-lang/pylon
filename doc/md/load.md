@@ -561,6 +561,14 @@ function verbs.session(args)
 end
 
 function verbs.helm(args)
+   bridge.helm = true
+   if args.voltron then
+      print "voltron!"
+      local voltstr = io.open('/Users/atman/.local/share/bridge/voltron/helm.voltron'):read('*a')
+      print("volt str " .. #voltstr)
+      local voltload = require "voltron:load"
+      voltload(voltstr)
+   end
    local helm = require "helm:helm"
    helm()
 end

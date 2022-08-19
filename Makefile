@@ -32,13 +32,13 @@ uninstall:
 	rm ~/scripture/br
 
 OS_BUILDOPTS ?= $(error "either make $$PLAT or manually set OS_BUILDOPTS")
-$(BR): build/core.o build/libluv.a build/lfs.a build/sqlite3.o
+$(BR): build/core.o build/libluv.a build/sqlite3.o
 	$(CC) -o $@ $(CWARNS) build/core.o $(BRLIBS) -Ibuild/ -Ilib/  $(OS_BUILDOPTS)
 
 linux:
 	$(MAKE) OS_BUILDOPTS="-lm -ldl -lpthread -Wl,-E"
 macosx:
-	$(MAKE) OS_BUILDOPTS="-pagezero_size 10000 -image_base 100000000 -funwind-tables"
+	$(MAKE) OS_BUILDOPTS=""
 
 build/core.o: src/core.c build/load_char.h build/sql.h build/bridge.h build/preamble.h build/afterward.h build/argparse.h build/modules.h
 	$(CC) -c -O3 -Ibuild/ -Ilib/ -Isrc/ $(CWARNS) src/core.c -o build/core.o -Wall -Wextra -pedantic -std=c99

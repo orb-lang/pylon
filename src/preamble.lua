@@ -91,6 +91,8 @@ end
 
 _Bridge.modNames = modNames
 
+_Bridge.dbLoaded = 1
+
 local function loaderGen(conn)
    -- check that we have a database conn
    if not conn then error("sql connection failed") end
@@ -137,6 +139,7 @@ local function loaderGen(conn)
                return package.loaded[_Bridge.loaded[hash]]
             end
          end
+         _Bridge.dbLoaded = _Bridge.dbLoaded + 1
          _Bridge.bridge_modules["@" .. mod_name] = true
          local loadFn, errmsg = load(binary, "@" .. mod_name)
          if loadFn then
