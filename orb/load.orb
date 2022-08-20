@@ -248,8 +248,26 @@ brParse
    : option "-f" "--file"
       : description "Run a file. Lua only, for now."
       : args(1)
+      : overwrite(false)
+
+brParse :mutex(
+   brParse
+   : option "--freeze"
+      : description "Cache the verb given for faster loading."
+      : args(1)
+      : overwrite(false)
+      : argname "'verb'",
+   brParse
+     : option "--thaw"
+     : description "Load the verb from individual modules."
+     : args(1)
+     : overwrite(false)
+     : argname "'verb'"
+
+)
 
 brParse : flag "--no-jit" : description "Turn off the JIT."
+
 
 brParse
    : flag "--show-args"
@@ -261,6 +279,7 @@ brParse
               .. " arguments. Will print results as above.")
    : convert(dataload)
    : args(1)
+   : overwrite(false)
 
 brParse
   : flag "-v --verbose"
