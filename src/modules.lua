@@ -470,7 +470,7 @@ WHERE type = 'table' AND name = 'voltron'
 ]]
 
 local get_voltron_names = [[
-SELECT name FROM voltron;
+SELECT name FROM voltron WHERE active = 1;
 ]]
 
 

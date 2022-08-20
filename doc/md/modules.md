@@ -471,7 +471,7 @@ WHERE type = 'table' AND name = 'voltron'
 ```
 
 ```sql
-SELECT name FROM voltron;
+SELECT name FROM voltron WHERE active = 1;
 ```
 
 For now we need a shim to create our new tables

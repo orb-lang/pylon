@@ -470,7 +470,7 @@ WHERE type = 'table' AND name = 'voltron'
 #/sql
 
 #!sql @get_voltron_names #asLua
-SELECT name FROM voltron;
+SELECT name FROM voltron WHERE active = 1;
 #/sql
 
 For now we need a shim to create our new tables
