@@ -10,3 +10,6 @@
 [submodule "deps/luajit"]
 	path = deps/luajit
 	url = https://github.com/openresty/luajit2.git
+[submodule "deps/lpeglabel"]
+	path = deps/lpeglabel
+	url = https://github.com/mnemnion/lpeglabel

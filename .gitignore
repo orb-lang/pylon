@@ -3,6 +3,7 @@
 # even when building in a subdirectory, the sqlite build modifies/adds stuff
 /deps/sqlite*/autom4te.cache
 /deps/unroll-sqlite*
+/deps/lpeglabel/.git
 *.a
 *.dylib
 *.so

@@ -143,6 +143,33 @@ CREATE TABLE IF NOT EXISTS module (
 
 
 
+stmts.create_module_table_index = [[
+CREATE INDEX IF NOT EXISTS module_time_idx ON module (time DESC, name);
+]]
+
+
+
+
+stmts.create_voltron_table = [[
+CREATE TABLE IF NOT EXISTS voltron (
+   voltron_id INTEGER PRIMARY KEY,
+   voltron LUATEXT NOT NULL,
+   name TEXT NOT NULL,
+   project INTEGER,
+   time DATETIME DEFAULT (strftime('%Y-%m-%dT%H:%M:%f', 'now')),
+   active INTEGER NOT NULL DEFAULT 1 CHECK (active = 0 or active = 1),
+   -- add version in a real migration
+   FOREIGN KEY (project)
+      REFERENCES project (project_id)
+);
+]]
+
+
+
+
+
+
+
 
 
 
@@ -167,6 +194,7 @@ local function new_modules_db(conn_home)
       conn:exec(stmts.create_bundle_table)
       conn:exec(stmts.create_code_table)
       conn:exec(stmts.create_module_table)
+      conn:exect(stmts.create_module_table_index)
    end
 
    return conn
@@ -178,7 +206,6 @@ if not _Bridge.modules_conn then
    _Bridge.modules_conn = new_modules_db(_Bridge.bridge_modules_home)
    new_modules = true
 end
-
 
 
 

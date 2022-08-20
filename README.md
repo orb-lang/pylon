@@ -27,8 +27,6 @@ Building the submodules requires these additional tools:
 
     automake autotools-dev cmake libtool
 
-The pylon Makefile also uses `colordiff`, but the absence of this won't stop the build, it's just a convenience to print when Lua bytecode has
-changed between revisions
 
 
 ## Building the br binary

@@ -140,6 +140,33 @@ CREATE TABLE IF NOT EXISTS module (
 ```
 
 
+#### create\_module\_table\_index
+
+Indexing the time and name gives a modest boost in performance, we can shave
+more time with a new schema, that work is elsewhere\.
+
+```sql
+CREATE INDEX IF NOT EXISTS module_time_idx ON module (time DESC, name);
+```
+
+
+#### create\_voltron\_table
+
+```sql
+CREATE TABLE IF NOT EXISTS voltron (
+   voltron_id INTEGER PRIMARY KEY,
+   voltron LUATEXT NOT NULL,
+   name TEXT NOT NULL,
+   project INTEGER,
+   time DATETIME DEFAULT (strftime('%Y-%m-%dT%H:%M:%f', 'now')),
+   active INTEGER NOT NULL DEFAULT 1 CHECK (active = 0 or active = 1),
+   -- add version in a real migration
+   FOREIGN KEY (project)
+      REFERENCES project (project_id)
+);
+```
+
+
 ## Create bridge\.modules
 
 If it exists already, we have a conn on `_Bridge`\.
@@ -169,6 +196,7 @@ local function new_modules_db(conn_home)
       conn:exec(stmts.create_bundle_table)
       conn:exec(stmts.create_code_table)
       conn:exec(stmts.create_module_table)
+      conn:exect(stmts.create_module_table_index)
    end
 
    return conn
@@ -184,7 +212,6 @@ end
 
 
 # Import
-
 
 Imports a bundle file into the database\.
 

@@ -541,11 +541,12 @@ function verbs.orb(args)
    if args.revert then
       local revert = require "bundle:revert"
       revert()
-   elseif args.old then
-      local orb = require "orb"
-      local uv = require "luv"
-      orb.run(uv.cwd())
    else
+      if args.voltron then
+         local voltstr = io.open('/Users/atman/.local/share/bridge/voltron/orb.voltron'):read('*a')
+         local voltload = require "voltron:load"
+         voltload(voltstr)
+      end
        local orb = require "orb"
        local lume = orb.lume(uv.cwd())
        lume:run()
@@ -563,9 +564,7 @@ end
 function verbs.helm(args)
    bridge.helm = true
    if args.voltron then
-      print "voltron!"
       local voltstr = io.open('/Users/atman/.local/share/bridge/voltron/helm.voltron'):read('*a')
-      print("volt str " .. #voltstr)
       local voltload = require "voltron:load"
       voltload(voltstr)
    end
@@ -674,12 +673,9 @@ if rawget(_G, "arg") ~= nil then
          for k, v in pairs(inject) do
             args[k] = v
          end
-         -- print as below
-         local ts = require "repr:repr" . ts
-         print(ts(args))
       end
 
-      -- show_args is for development purposes
+      -- show arguments if so requested
       if args.show_args then
          args.show_args = nil -- no reason to include this
          local ts = require "repr:repr" . ts
@@ -695,6 +691,7 @@ if rawget(_G, "arg") ~= nil then
             S.Boring = true
          elseif args.terse then
             S.Chatty = false
+            S.Verbose = false
          end
       end
 
