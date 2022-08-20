@@ -196,7 +196,8 @@ local function new_modules_db(conn_home)
       conn:exec(stmts.create_bundle_table)
       conn:exec(stmts.create_code_table)
       conn:exec(stmts.create_module_table)
-      conn:exect(stmts.create_module_table_index)
+      conn:exec(stmts.create_module_table_index)
+      conn:exect(stmts.create_voltron_table)
    end
 
    return conn
@@ -455,6 +456,41 @@ Our bootstrap will assume that `br` is living in the `build` directory\.
 if new_modules then
    print "importing modules bundle"
    import("all_modules.bundle")
+end
+```
+
+
+
+### Voltron
+
+```sql
+SELECT name
+FROM sqlite_master
+WHERE type = 'table' AND name = 'voltron'
+;
+```
+
+```sql
+SELECT name FROM voltron;
+```
+
+For now we need a shim to create our new tables
+
+```lua
+local conn = _Bridge.modules_conn
+
+local has_voltron = conn:prepare(check_voltron) :value()
+
+if not has_voltron then
+   conn:exec(stmts.create_module_table_index)
+   conn:exec(stmts.create_voltron_table)
+   _Bridge.volts = {}
+else
+   local volts = {}
+   for i, name in conn:prepare(get_voltron_names) :cols() do
+      volts[name] = true
+   end
+   _Bridge.volts = volts
 end
 ```
 
