@@ -542,11 +542,6 @@ function verbs.orb(args)
       local revert = require "bundle:revert"
       revert()
    else
-      if args.voltron then
-         local voltstr = io.open('/Users/atman/.local/share/bridge/voltron/orb.voltron'):read('*a')
-         local voltload = require "voltron:load"
-         voltload(voltstr)
-      end
        local orb = require "orb"
        local lume = orb.lume(uv.cwd())
        lume:run()
@@ -563,11 +558,6 @@ end
 
 function verbs.helm(args)
    bridge.helm = true
-   if args.voltron then
-      local voltstr = io.open('/Users/atman/.local/share/bridge/voltron/helm.voltron'):read('*a')
-      local voltload = require "voltron:load"
-      voltload(voltstr)
-   end
    local helm = require "helm:helm"
    helm()
 end
@@ -610,6 +600,13 @@ function verbs.import(args)
       import(file)
    end
 end
+```
+
+
+### Voltron\-load Active Voltrons
+
+```sql
+SELECT voltron FROM voltron WHERE name = :name;
 ```
 
 
@@ -697,6 +694,12 @@ if rawget(_G, "arg") ~= nil then
 
       -- load bridge verbs
       if verbs[args.verb] then
+         if bridge.volts[args.verb] then
+            local voltstr = bridge.modules_conn :prepare(get_voltron)
+                              :bind(args.verb) :value()
+            local voltload = require "voltron:load"
+            voltload(voltstr)
+         end
          verbs[args.verb](args)
       elseif args.file then
          if args.file:sub(-4, -1) == ".lua" then
