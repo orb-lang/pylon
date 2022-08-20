@@ -25,7 +25,7 @@ fi
 
 rm -f deps/luafilesystem/lfs.o deps/luautf8/lutf8lib.o
 
-if cd deps/lpeg ; then
+if cd deps/lpeglabel ; then
   make clean
   cd ../..
 fi

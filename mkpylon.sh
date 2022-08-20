@@ -105,11 +105,12 @@ cp deps/sqlite/sqlite3.h build/ # NOTE sqlite3.h went to lib initially
 
 
 ## 4. build lpeg
-enter deps/lpeg
-  make "LUADIR=../luajit/src" "$PLAT" liblpeg.a
+enter deps/lpeglabel
+  make "LUADIR=../luajit/src" "$PLAT" liblpeglabel.a
 leave
 # move our artifacts over to pylon/build
-cp deps/lpeg/liblpeg.a build/
+cp deps/lpeglabel/liblpeglabel.a build/liblpeg.a
+
 
 
 ## 5. lfs
