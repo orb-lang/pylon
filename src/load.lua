@@ -626,6 +626,10 @@ local get_voltron = [[
 SELECT voltron FROM voltron WHERE name = :name;
 ]]
 
+local thaw_voltron = [[
+UPDATE voltron SET active = 0 WHERE name = :name;
+]]
+
 
 
 
@@ -709,6 +713,20 @@ if rawget(_G, "arg") ~= nil then
          end
       end
 
+      -- freeze or thaw
+      if args.freeze then
+         print("Assembling modules of " .. args.freeze)
+         local voltron = require "voltron:voltron"
+         voltron(args.freeze):voltron()
+         print "ok"
+         goto bottom
+      elseif args.thaw then
+         bridge.modules_conn
+             :prepare(thaw_voltron) :bind(args.thaw) :value()
+         print "ok"
+         goto bottom
+      end
+
       -- load bridge verbs
       if verbs[args.verb] then
          if bridge.volts[args.verb] then
@@ -727,6 +745,7 @@ if rawget(_G, "arg") ~= nil then
          -- no further arguments, just exit
       end
    end
+   :: bottom ::
 end
 
 
