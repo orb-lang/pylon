@@ -20,11 +20,6 @@
 
 
 
-
-
-
-
-
 do
 
 
@@ -51,14 +46,6 @@ AND module.name = :module_name
 ORDER BY module.time desc limit 1
 ;
 ]]
-
-
-
-
-
-
-
-assert(require "bridge" . bridge_home)
 
 
 
@@ -140,7 +127,6 @@ local function loaderGen(conn)
             end
          end
          _Bridge.dbLoaded = _Bridge.dbLoaded + 1
-         _Bridge.bridge_modules["@" .. mod_name] = true
          local loadFn, errmsg = load(binary, "@" .. mod_name)
          if loadFn then
             _Bridge.loaded[hash] = mod_name
@@ -154,9 +140,6 @@ local function loaderGen(conn)
       end
    end
 end
-
-
-
 
 
 

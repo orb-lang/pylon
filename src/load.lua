@@ -623,7 +623,8 @@ end
 
 
 local get_voltron = [[
-SELECT voltron FROM voltron WHERE name = :name;
+SELECT voltron FROM voltron WHERE name = :name
+ORDER BY TIME DESC LIMIT 1;
 ]]
 
 local thaw_voltron = [[

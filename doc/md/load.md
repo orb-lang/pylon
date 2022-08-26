@@ -625,7 +625,8 @@ end
 ### Voltron\-load Active Voltrons
 
 ```sql
-SELECT voltron FROM voltron WHERE name = :name;
+SELECT voltron FROM voltron WHERE name = :name
+ORDER BY TIME DESC LIMIT 1;
 ```
 
 ```sql

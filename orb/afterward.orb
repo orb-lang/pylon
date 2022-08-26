@@ -18,6 +18,7 @@ local bridge = require "bridge"
 #!lua
 if bridge.modules_conn then
    bridge.modules_conn:pclose()
+
 end
 #/lua
 

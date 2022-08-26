@@ -1,3 +1,10 @@
+SHELL := bash
+.ONESHELL:
+.SHELLFLAGS := -eu -o pipefail -c
+.DELETE_ON_ERROR:
+MAKEFLAGS += --warn-undefined-variables
+MAKEFLAGS += --no-builtin-rules
+
 BRLIBS = build/libluv.a   \
          build/libuv.a    \
          build/liblpeg.a  \
@@ -81,19 +88,27 @@ build/afterward.h: src/afterward.lua src/compileToHeader.lua
 #  These steps should be pre-baked in an install so we - the call in case orb
 #  is not installed
 
-scr/core.c: orb/core.orb
+src/core.c: orb/core.orb
+	echo 1
 	- br o
 src/sql.lua: orb/sql.orb
+	echo 2
 	- br o
 src/bridge.lua: orb/bridge.orb
+	echo 3
 	- br o
 src/load.lua: orb/load.orb
+	echo 4
 	- br o
 src/preamble.lua: orb/preamble.orb
+	echo 5
 	- br o
 src/modules.lua: orb/modules.orb
+	echo 6
 	- br o
 src/afterward.lua: orb/afterward.orb
+	echo 7
 	- br o
 src/argparse.lua: orb/argparse.orb
+	echo 8
 	- br o

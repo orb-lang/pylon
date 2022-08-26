@@ -4,11 +4,6 @@ This adds the package loader, and will eventually contain the `core` standard
 library\.
 
 
-## Globals
-
-Anything we want to put in the global namespace goes here\.
-
-
 #### Below here: loader\.orb
 
 
@@ -51,14 +46,6 @@ AND module.name = :module_name
 ORDER BY module.time desc limit 1
 ;
 ]]
-```
-
-#### spit check for bridge\.orb
-
-Normally not needed:
-
-```lua
-assert(require "bridge" . bridge_home)
 ```
 
 
@@ -140,7 +127,6 @@ local function loaderGen(conn)
             end
          end
          _Bridge.dbLoaded = _Bridge.dbLoaded + 1
-         _Bridge.bridge_modules["@" .. mod_name] = true
          local loadFn, errmsg = load(binary, "@" .. mod_name)
          if loadFn then
             _Bridge.loaded[hash] = mod_name
@@ -159,11 +145,8 @@ end
 
 ### Add to package\.loaders
 
-If we've loaded either database, add them, such that if we have both, the
-`modules_conn` default is checked before the `bootstrap_conn`\.
-
 We want the loaders after the `package.preload` loader, so we put them in
-index 2:
+index 2\.
 
 ```lua
 assert(_Bridge.modules_conn, "missing bridge modules conn!")
@@ -189,9 +172,9 @@ reference will collect them\.
 
 ### Stricture
 
-Lifted straight from [penlight](link line not found for obelus: 
-[https://stevedonovan.github.io/Penlight/api/index.html on line 192)\.
+Lifted straight from [penlight](link line not found for obelus: \.
 
+[https://stevedonovan.github.io/Penlight/api/index.html on line 175)
 ```lua
 do
    local getinfo, error, rawset, rawget = debug.getinfo, error, rawset, rawget

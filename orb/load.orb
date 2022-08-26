@@ -623,7 +623,8 @@ end
 *** Voltron-load Active Voltrons
 
 #!sql @get_voltron #asLua
-SELECT voltron FROM voltron WHERE name = :name;
+SELECT voltron FROM voltron WHERE name = :name
+ORDER BY TIME DESC LIMIT 1;
 #/sql
 
 #!sql @thaw_voltron #asLua
