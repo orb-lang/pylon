@@ -252,6 +252,7 @@ brParse
       : args(1)
       : overwrite(false)
 
+--[[
 brParse :mutex(
    brParse
    : option "--freeze"
@@ -267,6 +268,7 @@ brParse :mutex(
      : argname "'verb'"
 
 )
+--]]
 
 brParse : flag "--no-jit" : description "Turn off the JIT."
 
@@ -291,7 +293,12 @@ brParse
 brParse
   : flag "-t --terse"
   : description "Terse output."
+```
 
+
+#### Orb
+
+```lua
 local orb_c = brParse : command "orb o"
                          : description "Literate compiler for Orb format."
 
@@ -316,8 +323,12 @@ orb_c
 orb_c
    : command "scry"
    : description "Performs analysis on knit Lua documents. Experimental!"
+```
 
 
+#### Helm
+
+```lua
 local helm_c = brParse
                   : command "helm i"
                      : description "Launch helm, the 'i'nteractive REPL."
@@ -353,8 +364,12 @@ helm_c
    : flag "-l --listen"
    : description ( "Open with a listener, which compiles files on save and "
                 .. "restarts the session." )
+```
 
 
+#### Import and Export
+
+```lua
 local export_c = brParse
                     : command "export"
                     : description "Export a project from the database."
@@ -390,7 +405,12 @@ import_c
    : argument "file"
    : description "a bundled project file or files"
    : args "+"
+```
 
+
+#### Session
+
+```lua
 local session_c = brParse
                     : command "session s"
                     : description ("Session runner. Provides unit tests"
@@ -513,6 +533,44 @@ session_import_c
 ```
 
 
+#### Codex
+
+```lua
+local codex_c = brParse
+                   : command "codex c"
+                   : description "Tools for working with a codex."
+
+local codex_freeze_c = codex_c
+   : command "freeze f"
+   : description "Freeze the verb. Pins dependencies, loads faster."
+
+codex_freeze_c
+   : argument "verb"
+   : args(1)
+
+codex_freeze_c
+   : option "-m" "--module"
+   : description "Use if the module string isn't \"verb:verb\"."
+   : args(1)
+
+local codex_thaw_c = codex_c
+   : command "thaw t"
+   : description "Thaws a verb.  Will load latest modules individually."
+
+codex_thaw_c
+   : argument "verb"
+   : args(1)
+
+local codex_activate_c = codex_c
+   : command "activate a"
+   : description "Activate the last frozen version of the verb."
+
+codex_activate_c
+   : argument "verb"
+   : args(1)
+```
+
+
 #### end do block
 
 ```lua
@@ -554,7 +612,7 @@ attempt to dispatch them\.
 ```lua
 local uv  = require "luv"
 
-local verbs = { s = true, o = true, i = true}
+local verbs = { s = true, o = true, i = true, c = true}
 
 function verbs.orb(args)
    if args.revert then
@@ -618,6 +676,10 @@ function verbs.import(args)
    for _, file in ipairs(args.file) do
       import(file)
    end
+end
+
+function verbs.codex(args)
+
 end
 ```
 
