@@ -250,24 +250,6 @@ brParse
       : args(1)
       : overwrite(false)
 
---[[
-brParse :mutex(
-   brParse
-   : option "--freeze"
-      : description "Cache the verb given for faster loading."
-      : args(1)
-      : overwrite(false)
-      : argname "'verb'",
-   brParse
-     : option "--thaw"
-     : description "Load the verb from individual modules."
-     : args(1)
-     : overwrite(false)
-     : argname "'verb'"
-
-)
---]]
-
 brParse : flag "--no-jit" : description "Turn off the JIT."
 
 
@@ -544,6 +526,7 @@ local codex_freeze_c = codex_c
 
 codex_freeze_c
    : argument "verb"
+   : name "module-name"
    : args(1)
 
 codex_freeze_c
@@ -557,6 +540,7 @@ local codex_thaw_c = codex_c
 
 codex_thaw_c
    : argument "verb"
+   : name "module-name"
    : args(1)
 
 local codex_activate_c = codex_c
@@ -565,6 +549,7 @@ local codex_activate_c = codex_c
 
 codex_activate_c
    : argument "verb"
+   : name "module-name"
    : args(1)
 
 
@@ -676,22 +661,45 @@ function verbs.import(args)
    end
 end
 
-function verbs.codex(args)
-
-end
 
 
 
 
+
+
+
+local thaw_voltron = [[
+UPDATE voltron SET active = 0 WHERE name = :name;
+]]
+
+local activate_voltron = [[
+UPDATE voltron SET active = 1 WHERE name = :name;
+]]
 
 local get_voltron = [[
 SELECT voltron FROM voltron WHERE name = :name
 ORDER BY TIME DESC LIMIT 1;
 ]]
 
-local thaw_voltron = [[
-UPDATE voltron SET active = 0 WHERE name = :name;
-]]
+
+function verbs.codex(args)
+   local mod = args['module-name']
+   if args.freeze then
+      print("Assembling modules of " .. args.verb)
+      local voltron = require "voltron:voltron"
+      voltron(mod, args.module):voltron()
+      print "ok"
+   elseif args.thaw then
+      bridge.modules_conn
+          :prepare(thaw_voltron) :bind(mod) :value()
+      print "ok"
+   elseif args.activate then
+      bridge.modules_conn
+         :prepare(activate_voltron) :bind(mod) :value()
+      print "ok"
+   end
+end
+
 
 
 
@@ -774,20 +782,6 @@ if rawget(_G, "arg") ~= nil then
             S.Chatty = false
             S.Verbose = false
          end
-      end
-
-      -- freeze or thaw
-      if args.freeze then
-         print("Assembling modules of " .. args.freeze)
-         local voltron = require "voltron:voltron"
-         voltron(args.freeze):voltron()
-         print "ok"
-         goto bottom
-      elseif args.thaw then
-         bridge.modules_conn
-             :prepare(thaw_voltron) :bind(args.thaw) :value()
-         print "ok"
-         goto bottom
       end
 
       -- load bridge verbs
