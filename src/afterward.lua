@@ -7,9 +7,6 @@
 
 
 
-
-
-
 local bridge = require "bridge"
 
 
@@ -31,7 +28,11 @@ end
 
 
 if bridge.status_on then
-   require "status:status" :close()
+   S = require "status:status"
+   -- this is defensive behavior
+   if S and type(S) == 'table' then
+      S():close()
+   end
 end
 
 
