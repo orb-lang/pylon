@@ -10,15 +10,6 @@ Performs cleanup.
 local bridge = require "bridge"
 #/lua
 
-*** Close bridge.modules_conn
-
-#!lua
-if bridge.modules_conn then
-   bridge.modules_conn:pclose()
-
-end
-#/lua
-
 
 *** Close status
 
@@ -35,6 +26,17 @@ if bridge.status_on then
    end
 end
 #/lua
+
+*** Close bridge.modules_conn
+
+
+#!lua
+if bridge.modules_conn then
+   bridge.modules_conn:pclose()
+
+end
+#/lua
+
 
 
 *** Return code
