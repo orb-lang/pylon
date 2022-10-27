@@ -4,6 +4,23 @@ Moving the bridge table here, wiring it in, then getting to work on a
 metatable to handle the `.green` field\.
 
 
+#### Next
+
+The goal is to have a bridge table which is protective of its builtin fields,
+while allowing assignment of anything else\.
+
+The latter might not last until the alpha release, but the ability to test out
+bridge settings from modules which might use it, without having to recompile
+bridge, is useful\.
+
+So the next feature turns the bridge table *per se* into private state, and
+pairs index and newindex, to keep e\.g\. `bridge.modules_conn` from being
+overwritten\.
+
+This also allows us to set up the Green state machine so that it can be
+manipulated with ordinary\-looking assignment and lookup\.
+
+
 ## 5\.2 compatibility \(move to preamble\)
 
 
@@ -156,8 +173,6 @@ colorize\.
 ```lua
 bridge.is_tty = require "luv" . guess_handle(1) == 'tty'
 ```
-
-
 
 ### \_openBridgeModules\(\)
 
@@ -406,8 +421,6 @@ bridge.green_states = { Nil = _nil,
                         greenIndex = greenIndex,
                         Integer = _integer }
 ```
-
-
 
 
 ### package\.preload\["bridge"\]
