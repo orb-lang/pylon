@@ -681,6 +681,10 @@ SELECT voltron FROM voltron WHERE name = :name
 ORDER BY TIME DESC LIMIT 1;
 ]]
 
+local count_voltron = [[
+SELECT count(voltron) FROM voltron WHERE name = :name;
+]]
+
 
 function verbs.codex(args)
    local mod = args['module-name']
@@ -690,13 +694,25 @@ function verbs.codex(args)
       voltron(mod, args.module):voltron()
       print "ok"
    elseif args.thaw then
-      bridge.modules_conn
-          :prepare(thaw_voltron) :bind(mod) :value()
-      print "ok"
+      local count = bridge.modules_conn
+          :prepare(count_voltron) :bind(mod) :value()
+      if count < 1 then
+         print("No frozen " .. mod .. " to thaw")
+      else
+         bridge.modules_conn
+             :prepare(thaw_voltron) :bind(mod) :value()
+         print "ok"
+      end
    elseif args.activate then
-      bridge.modules_conn
-         :prepare(activate_voltron) :bind(mod) :value()
-      print "ok"
+      local count = bridge.modules_conn
+          :prepare(count_voltron) :bind(mod) :value()
+      if count < 1 then
+         print("No frozen " .. mod .. " to activate")
+      else
+         bridge.modules_conn
+            :prepare(activate_voltron) :bind(mod) :value()
+         print "ok"
+      end
    end
 end
 
@@ -815,7 +831,6 @@ end
 if uv.loop_alive() and (not uv.loop_mode()) then
    uv.run 'default'
 end
-
 
 
 
