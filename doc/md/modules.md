@@ -463,6 +463,9 @@ end
 
 ### Voltron
 
+  Voltron 'stealth\-migrates', which we'll make official with migration 2, when
+that happens\.
+
 ```sql
 SELECT name
 FROM sqlite_master

@@ -462,6 +462,9 @@ end
 
 *** Voltron
 
+  Voltron 'stealth-migrates', which we'll make official with migration 2, when
+that happens.
+
 #!sql @check_voltron #asLua
 SELECT name
 FROM sqlite_master

@@ -552,6 +552,10 @@ codex_activate_c
    : name "module-name"
    : args(1)
 
+local codex_list_c = codex_c
+   : command "list l"
+   : description "List frozen codices, with activation status"
+
 
 
 
@@ -685,6 +689,20 @@ local count_voltron = [[
 SELECT count(voltron) FROM voltron WHERE name = :name;
 ]]
 
+local voltron_active = [[
+SELECT CAST(active AS REAL) FROM voltron WHERE name = :name
+ORDER BY TIME DESC LIMIT 1;
+]]
+
+local voltrons = [[
+SELECT active, name
+FROM voltron WHERE (name, time) IN
+(SELECT name, MAX(time)
+   FROM voltron
+   GROUP BY name)
+;
+]]
+
 
 function verbs.codex(args)
    local mod = args['module-name']
@@ -693,25 +711,39 @@ function verbs.codex(args)
       local voltron = require "voltron:voltron"
       voltron(mod, args.module):voltron()
       print "ok"
-   elseif args.thaw then
+   elseif args.thaw or args.activate then
+      local which = args.thaw and 'thaw' or 'activate'
+      local to_voltron = args.thaw and thaw_voltron or activate_voltron
       local count = bridge.modules_conn
-          :prepare(count_voltron) :bind(mod) :value()
+               :prepare(count_voltron) :bind(mod) :value()
       if count < 1 then
-         print("No frozen " .. mod .. " to thaw")
+         print("No frozen " .. mod .. " to " .. which)
       else
-         bridge.modules_conn
-             :prepare(thaw_voltron) :bind(mod) :value()
-         print "ok"
+         local is_active = bridge.modules_conn
+                  :prepare(voltron_active) :bind(mod) :value() == 1
+         if is_active and which == 'activate' then
+            print(mod .. " is already active")
+         elseif (not is_active) and which == 'thaw' then
+            print(mod .. " is not frozen")
+         else
+            bridge.modules_conn
+                :prepare(to_voltron) :bind(mod) :value()
+            print "ok"
+         end
       end
-   elseif args.activate then
-      local count = bridge.modules_conn
-          :prepare(count_voltron) :bind(mod) :value()
-      if count < 1 then
-         print("No frozen " .. mod .. " to activate")
-      else
-         bridge.modules_conn
-            :prepare(activate_voltron) :bind(mod) :value()
-         print "ok"
+   elseif args.list then
+      local verbs, isactive, maxpr = {}, {}, 0
+      for i, active, verb in bridge.modules_conn:prepare(voltrons) :cols() do
+         verbs[i] = verb
+         isactive[i] = active == 1
+         maxpr = math.max(maxpr, #verb)
+      end
+      print(("="):rep(maxpr + 9))
+      for i = 1, #verbs do
+         local on, verb = isactive[i], verbs[i]
+         verb = (" "):rep(maxpr - #verb) .. verb
+         on = on and "active" or "frozen"
+         print(verb .. "   " .. on)
       end
    end
 end
