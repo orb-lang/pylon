@@ -744,7 +744,7 @@ function verbs.codex(args)
       for i = 1, #verbs do
          local on, verb = isactive[i], verbs[i]
          verb = (" "):rep(maxpr - #verb) .. verb
-         on = on and "active" or "frozen"
+         on = on and "thawed" or "frozen"
          print(verb .. "   " .. on)
       end
    end
