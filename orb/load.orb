@@ -696,8 +696,8 @@ ORDER BY TIME DESC LIMIT 1;
 
 #!sql @voltrons #asLua
 SELECT active, name
-FROM voltron WHERE (name, time) IN
-(SELECT name, MAX(time)
+FROM voltron WHERE (name, voltron_id) IN
+(SELECT name, MAX(voltron_id)
    FROM voltron
    GROUP BY name)
 ;
@@ -742,7 +742,7 @@ function verbs.codex(args)
       for i = 1, #verbs do
          local on, verb = isactive[i], verbs[i]
          verb = (" "):rep(maxpr - #verb) .. verb
-         on = on and "thawed" or "frozen"
+         on = on and "frozen" or "thawed"
          print(verb .. "   " .. on)
       end
    end

@@ -778,12 +778,15 @@ function stmt_mt:irows(maxrecords) T_open(self)
    end
    local n = 1
    return function()
-       if n > maxrecords then return nil end
+       if n > maxrecords then
+         self :clearbind() :reset()
+         return nil
+       end
        local row = self:step()
        if row then
          return row
        else
-         self:clearbind():reset()
+         self :clearbind() :reset()
          return nil
        end
    end
@@ -818,54 +821,60 @@ function stmt_mt:resultset(get, maxrecords) T_open(self)
    return out, n
 end
 
-   function stmt_mt:rows(maxrecords) T_open(self)
-      maxrecords = maxrecords or math.huge
-      if maxrecords < 1 or type(maxrecords) ~= 'number' then
-         err("constraint", "argument to rows must be >= 1")
+function stmt_mt:rows(maxrecords) T_open(self)
+   maxrecords = maxrecords or math.huge
+   if maxrecords < 1 or type(maxrecords) ~= 'number' then
+      err("constraint", "argument to rows must be >= 1")
+   end
+   local n = 1
+   return function()
+      if n > maxrecords then
+         self :clearbind() :reset()
+         return nil
       end
-      local n = 1
-      return function()
-         if n > maxrecords then return nil end
-         local r = self:stepkv()
-         if r then
-            n = n + 1
-            return r
-         else
-            self:clearbind():reset()
-            return nil
-         end
+      local r = self:stepkv()
+      if r then
+         n = n + 1
+         return r
+      else
+         self:clearbind():reset()
+         return nil
       end
    end
+end
 
-   function stmt_mt:cols(maxrecords) T_open(self)
-      maxrecords = maxrecords or math.huge
-      if maxrecords < 1 or type(maxrecords) ~= 'number' then
-         err("constraint", "argument to cols must be >= 1")
+function stmt_mt:cols(maxrecords) T_open(self)
+   maxrecords = maxrecords or math.huge
+   if maxrecords < 1 or type(maxrecords) ~= 'number' then
+      err("constraint", "argument to cols must be >= 1")
+   end
+   local row, ncol, n = {}, self:_ncol(), 0
+   return function()
+      if n > maxrecords then
+         self :clearbind() :reset()
+         return nil
       end
-      local row, ncol, n = {}, self:_ncol(), 0
-      return function()
-         if n >= maxrecords then return nil end
-         -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
-         if self._code == ffi.C.SQLITE_DONE then return nil end -- Already finished.
-         -- reset container
+      -- Must check code ~= SQL_DONE or sqlite3_step --> undefined result.
+      if self._code == ffi.C.SQLITE_DONE then return nil end -- Already finished.
+      -- reset container
+      for i = 1, ncol do
+         row[i] = nil
+      end
+      self._code = ffi.C.sqlite3_step(self._ptr)
+      if self._code == ffi.C.SQLITE_ROW then
+         n = n + 1
          for i = 1, ncol do
-            row[i] = nil
+            row[i] = get_column(self._ptr, i - 1)
          end
-         self._code = ffi.C.sqlite3_step(self._ptr)
-         if self._code == ffi.C.SQLITE_ROW then
-            n = n + 1
-            for i = 1, ncol do
-               row[i] = get_column(self._ptr, i - 1)
-            end
-            return n, unpack(row, 1, ncol)
-         elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now
-            self:clearbind():reset()
-            return nil
-         else -- If code not DONE or ROW then it's error.
-            E_conn(self._conn, self._code)
-         end
+         return n, unpack(row, 1, ncol)
+      elseif self._code == ffi.C.SQLITE_DONE then -- Have finished now
+         self:clearbind():reset()
+         return nil
+      else -- If code not DONE or ROW then it's error.
+         E_conn(self._conn, self._code)
       end
    end
+end
 ```
 
 
@@ -890,9 +899,9 @@ end
 ```
 
 
-### stmt:row\(\) \#NYI
+### stmt:row\(\)
 
-This would be really convenient, the one\-row form of `:value`\.
+The one\-row form of `:value`\.
 
 ```lua
 function stmt_mt:row() T_open(self)

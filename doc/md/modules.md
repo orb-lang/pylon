@@ -154,7 +154,7 @@ CREATE INDEX IF NOT EXISTS module_time_idx ON module (time DESC, name);
 
 ```sql
 CREATE TABLE IF NOT EXISTS voltron (
-   voltron_id INTEGER PRIMARY KEY,
+   voltron_id INTEGER PRIMARY KEY AUTOINCREMENT,
    voltron LUATEXT NOT NULL,
    name TEXT NOT NULL,
    project INTEGER,
