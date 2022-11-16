@@ -7,6 +7,7 @@
 
 - Run the resulting behaviors
 
+
 *** Unglobe bridge
 
 #!lua #noKnit
@@ -171,8 +172,9 @@ local function parse_list(str)
    local list = match(list_p, str)
    if not list then
       list = tonumber(str)
-      if list then return list end
-      return str
+      if not list then
+         return nil, "couldn't make a list from " .. str
+      end
    end
 
    return list
@@ -242,7 +244,7 @@ brParse
              .. "For more info, see https://special-circumstanc.es")
    : command_target "verb"
    : help_description_margin(25)
-   : help_max_width(80)
+   : help_max_width(78)
 
 brParse
    : option "-f" "--file"
@@ -312,38 +314,47 @@ orb_c
 local helm_c = brParse
                   : command "helm i"
                      : description "Launch helm, the 'i'nteractive REPL."
-                     : help_description_margin(35)
+                     : help_description_margin(30)
+
+helm_c :group( "Sessions",
+   helm_c
+      : option "--new-session" "-n"
+         : description "Begin a new, named session."
+         : convert(validate_session_name)
+         : argname "<s>"
+         : args(1),
+
+   helm_c
+      : option "--start" "-s"
+         : description "Start the repl with session, given name or number. \z
+                        Defaults to the latest session of the project."
+         : convert(parse_session_identifier)
+         : argname "<s>"
+         : args(1),
+
+   helm_c
+      : option "--session" "-S"
+         : description "Edit a session of the given name or number."
+         : convert(parse_session_identifier)
+         : argname "<s>"
+         : args(1)
+)
 
 helm_c
-   : option "-s --session"
-      : description "Start the repl with a given, named session."
-      : convert(parse_session_identifier)
-      : args(1)
+   : flag "-r --rerun"
+   : description "Start helm and execute all lines from the last run."
+   : target "restart" -- #todo remove
 
 helm_c
-   : option "-n --new-session"
-      : description "Begin a new, named session."
-      : convert(validate_session_name)
-      : args(1)
-
-helm_c
-   : flag "-r --restart"
-   : description "Restart helm and execute all lines from the last run."
-
-helm_c
-   : flag "-R --run"
-   : description "Edit the last run then restart."
-
-helm_c
-   : option "-b --back"
-   : description "Replay the last <number> lines."
-   : convert(isint)
-   : args(1)
+   : flag "-R --review"
+   : description "Edit the last run then restart. May also take a session \z
+                  with -s."
+   : target "run" -- #todo remove
 
 helm_c
    : flag "-l --listen"
-   : description ( "Open with a listener, which compiles files on save and "
-                .. "restarts the session." )
+   : description "Open with a listener, which compiles files on save and \z
+                  restarts the session."
 #/lua
 
 
