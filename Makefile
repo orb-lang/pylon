@@ -60,7 +60,7 @@ build/sql.h: src/sql.lua src/compileToHeader.lua
 	mv build/~sql.h build/sql.h
 
 build/tcc.h: src/tcc.lua src/compileToHeader.lua
-	build/luajit src/compileToHeader.lua LUA_TCC src/preamble.lua build/~tcc.h
+	build/luajit src/compileToHeader.lua LUA_TCC src/tcc.lua build/~tcc.h
 	mv build/~tcc.h build/tcc.h
 
 build/bridge.h: src/bridge.lua src/compileToHeader.lua
